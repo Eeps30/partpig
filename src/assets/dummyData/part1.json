@@ -1,15 +1,31 @@
 {
-	"data": {
-		"sellerID": 1,
-		"title": "4 Subaru Stock Wheels",
-		"price": 500,
-		"location": "Irvine, CA",
-		"condition": "excellent",
-		"make": "Yokohama",
-		"model name": " Geolander G95",
-		"size": "P225/55R17",
-		"category": "Tires, Rims, Wheels, Crosstrek, Impreza, Outback, Subaru, Parts",
-		"description": "Hello!I have 4 stock wheels from my 2014 Crosstrek that I took off a few months after buying and stashed in the garage when I upgraded to different wheels.",
-		"images":["../images/subaruWheelsMain1.jpg", "../images/subaruWheels2.jpg", "../images/subarWheels3.jpg", "../images/subarWheels4.jpg"]
-	}
+	"parts": [
+		{
+			"sellerID": 1,
+			"title": "4 Subaru Stock Wheels",
+			"price": 500,
+			"location": "Irvine, CA",
+			"condition": "excellent",
+			"make": "Yokohama",
+			"model name": " Geolander G95",
+			"size": "P225/55R17",
+			"categories": [
+				"Tires",
+				"Rims",
+				"Wheels",
+				"Crosstrek",
+				"Impreza",
+				"Outback",
+				"Subaru",
+				"Parts"
+			],
+			"description": "Hello!I have 4 stock wheels from my 2014 Crosstrek that I took off a few months after buying and stashed in the garage when I upgraded to different wheels.",
+			"images": [
+				"../images/part1/subaruWheelsMain1.jpg",
+				"../images/part1/subaruWheels2.jpg",
+				"../images/part1/subarWheels3.jpg",
+				"../images/part1/subarWheels4.jpg"
+			]
+		}
+	]
 }
