@@ -1,0 +1,27 @@
+body {
+    display: grid;
+    grid-template-rows: 20vh 60vh 20vh;
+    grid-template-columns: 1fr 1fr
+}
+
+#buyContainer {
+    vertical-align: middle;
+    top: 50%;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    grid-row: 2/3;
+    grid-column: 1/2;
+    background-color: grey;
+}
+
+#sellContainer {
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    background-color: grey;
+}
