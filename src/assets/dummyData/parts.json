@@ -191,8 +191,9 @@
 				"../images/part6/part6e.jpg"
 			]
 		},
+
 		{
-			"sellerID": 3,
+			"sellerID": 7,
 			"listingID": 7,
 			"make": "Mitsubishi",
 			"model name": "Lancer Evolution",
