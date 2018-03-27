@@ -1,6 +1,6 @@
 import React from 'react';
-import ImageGallery from './imageGallery';
-import '../assets/css/app.css';
+import ImageGallery from '../image_gallery/imageGallery.js';
+import './app.css';
 
 const App = () => (
     <div className='mainContainer'>                    

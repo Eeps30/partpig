@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../assets/css/product_details.css';
+import './imageGallery.css';
 
 
 class ImageGallery extends Component{
@@ -35,14 +35,14 @@ class ImageGallery extends Component{
         if(this.props.showList){ 
             //we go through every image in the list and create the element           
             list = this.imageList.map((item,index)=>{
-                return <img key={index} onClick={this.handleClickImg} name = {item} src={require(`../assets/images/${item}`)}/>        
+                return <img key={index} onClick={this.handleClickImg} name = {item} src={require(`../../assets/images/${item}`)}/>        
             });
             divList = (<div className="imageList"> {list} </div>);
         }
         return(
             <div className="imageContainer">             
                 <div className="mainImage">
-                    <img src={require(`../assets/images/${this.state.mainImg}`)}/>
+                    <img src={require(`../../assets/images/${this.state.mainImg}`)}/>
                 </div>
                 {divList}
             </div>
