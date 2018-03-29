@@ -1,8 +1,8 @@
 import React from "react";
-import './login_dropdown.css';
+import './loginDropdown.css';
 import LoginIcon from '../../assets/icons/loginicon.png'
 
-const Login_Dropdown = () => (
+const LoginDropdown = () => (
     <div className="login-dropdown">
     <div><img src={LoginIcon} className="login-icon"/></div>
         <div className="login-dropdown-content">
@@ -12,6 +12,6 @@ const Login_Dropdown = () => (
   </div>
 );
 
-export default Login_Dropdown;
+export default LoginDropdown;
 
 
