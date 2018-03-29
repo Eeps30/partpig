@@ -1,0 +1,35 @@
+import React from 'react';
+import './part.css';
+
+const PartInfo = (props) => {
+
+    let details = '';    
+    if(props.isDetails){
+        details = (
+            <div>
+                <hr/>                
+                <p className="productDescription">{props.partInfo.description}</p>
+                <p className="productCondition">Condition: {props.partInfo.condition}</p>
+                <p className="productLocation">Location: {props.partInfo.location}</p>
+                <p className="productSize">Size: {props.partInfo.size}</p>
+                <p>Selling by {props.partInfo.seller} > <a href="">Contact {props.partInfo.seller}</a></p>
+                <hr/>
+                <div className="addButton">                
+                    <button>Add To Wishlist</button>
+                </div>
+            </div>           
+        );
+    }
+    return (
+        <div className="productContainer">
+            <span className="productBrand">{props.partInfo.brand}</span>
+            <h2 className="productTitle">{props.partInfo.title}</h2>
+            <span><b>{props.partInfo.category} - {props.partInfo.make} {props.partInfo.model} {props.partInfo.year} </b></span>
+            <p>Part # {props.partInfo.partNumber} </p>
+            <p className="productPrice">${props.partInfo.price}</p>
+            {details}
+        </div> 
+    );
+}
+
+export default PartInfo;
