@@ -32,7 +32,7 @@ module.exports = {
                         outputPath: 'assets/fonts/'
                     }
                 }
-            }
+            },
         ]
     }
 };

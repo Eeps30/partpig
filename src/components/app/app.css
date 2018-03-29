@@ -1,12 +1,12 @@
 html {
-    font-size: 1vh;
+    font-size: 1vmin;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+body {    
+    width: 99.5vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #root{
