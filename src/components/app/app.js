@@ -11,8 +11,7 @@ const App = () => (
     <div className='mainContainer'>
         <Header/>
         <Breadcrumbs/>   
-        <PartList />       
-    
+        <PartList /> 
         <Footer/>  
     </div>
 );

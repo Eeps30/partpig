@@ -9,6 +9,8 @@ header {
 }
 
 .logo-container{
+    width: 50%;
+    text-align: center;
     display: table-cell;
     vertical-align: middle;
     font-size: 3vh;
@@ -16,6 +18,16 @@ header {
 }
 
 .user-nav{
+    width: 25%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 2vh;
+    height: 4vh;
+    text-align: right;
+}
+
+.hamburger{
+    width: 25%;
     display: table-cell;
     vertical-align: middle;
     font-size: 2vh;
