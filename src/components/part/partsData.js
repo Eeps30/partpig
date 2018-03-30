@@ -15,8 +15,8 @@
 		"images": [
 			"part1/subaruWheelsMain1.jpg",
 			"part1/subaruWheels2.jpg",
-			"part1/subarWheels3.jpg",
-			"part1/subarWheels4.jpg"
+			"part1/subaruWheels3.jpg",
+			"part1/subaruWheels4.jpg"
 		],
 		"size": "P225/55R17",  
 		"seller":"Nitro",

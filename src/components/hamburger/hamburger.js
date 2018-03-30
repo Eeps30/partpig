@@ -1,5 +1,6 @@
 import React from "react";
 import './hamburger.css';
+import {Link} from 'react-router-dom';
 
 const Hamburger = () => (
       <div id="menuToggle">
@@ -8,11 +9,11 @@ const Hamburger = () => (
         <span></span>
         <span></span>
         <ul id="menu">
-          <a href="/"><li>Home</li></a>
-          <a href="/partresults"><li>Part Results</li></a>
-          <a href="/sellpart"><li>Sell a Part</li></a>
-          <a href="/about"><li>About us</li></a>
-          <a href="/contact"><li>Contact</li></a>
+          <Link to="/"><li>Home</li></Link>
+          <Link to="/partresults"><li>Part Results</li></Link>
+          <Link to="/sellpart"><li>Sell a Part</li></Link>
+          <Link to="/about"><li>About us</li></Link>
+          <Link to="/contact"><li>Contact</li></Link>
         </ul>
       </div>
 );
