@@ -1,22 +1,28 @@
 {
-    "make": {
-        "subaru": {
-            "model": {
-                "impreza wrx sti": [
-                    2015,
-                    2014
-                ],
-                "XV Crosstrek": [
-                    2015
-                ]
-            }
+    "make": [
+        { "name": "Subaru",
+          "model": [
+                        {
+                            "name": "Impreza wrx sti",
+                            "year": [ 2014, 2015]
+                        },
+                        {
+                            "name": "XV Crosstrek",
+                            "year": [ 2014, 2015]
+                        }
+                   ]
         },
-        "mistsubishi": {
-            "model": {
-                "lancer evolution": [
-                    2017
-                ]
-            }
+        { "name": "honda",
+          "model": [
+                        {
+                            "name": "Accord",
+                            "year": [ 2014, 2015]
+                        },
+                        {
+                            "name": "XV Crosstrek",
+                            "year": [ 2014, 2015]
+                        }
+                  ]
         }
-    }
+    ]
 }

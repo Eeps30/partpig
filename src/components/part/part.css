@@ -1,0 +1,55 @@
+.partList{
+    width: 70%;
+    height: 90%;    
+    margin: auto;
+    overflow-y: scroll;
+}
+
+.partList::-webkit-scrollbar {
+    display: none;
+}
+
+.part{
+    display: inline-block;
+    width: 33%;
+    height: 65%;
+    margin-top: 2%;
+    padding: 1%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.productContainer{
+    display: inline-block;
+    width: 100%;
+    height: 30%;
+    font-size: 1.5em;
+    margin-top: 5%;
+    padding: 1%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.productContainer a{
+    margin-left: 10px;
+    text-decoration:none;
+}
+
+.productTitle{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.productPrice{
+    color:darkblue;
+    font-size: 1.5em;
+}
+
+button{
+    padding: 2%;
+}
+
+.addButton button{
+    width: 100%;
+    margin-top: 10px;
+}
