@@ -8,6 +8,15 @@
 
 }
 
+.imageDetailsContainer{
+    display: inline-block;
+    width: 40%;
+    height: 65%;
+    vertical-align: top;
+    text-align: center;
+    margin: 5%;
+}
+
 .imageList{    
     margin: 4% 0;
     width: 100%;

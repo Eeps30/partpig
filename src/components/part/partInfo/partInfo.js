@@ -1,5 +1,5 @@
 import React from 'react';
-import './part.css';
+import './partInfo.css';
 
 const PartInfo = (props) => {
 
@@ -21,7 +21,7 @@ const PartInfo = (props) => {
         );
     }
     return (
-        <div className="productContainer">
+        <div className={props.isDetails ? "productDetailsContainer":"productContainer"}>
             <span className="productBrand">{props.partInfo.brand}</span>
             <h2 className="productTitle">{props.partInfo.title}</h2>
             <span><b>{props.partInfo.category} - {props.partInfo.make} {props.partInfo.model} {props.partInfo.year} </b></span>
