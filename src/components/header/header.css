@@ -23,7 +23,7 @@ header {
     vertical-align: middle;
     font-size: 2vh;
     height: 4vh;
-    text-align: right;
+    align-content: right;
 }
 
 .hamburger{
