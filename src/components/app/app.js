@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import './app.css';
-import Loading from '../loading/loading';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import {
     BrowserRouter as Router,
     Route,
@@ -15,6 +13,7 @@ import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
 import Contact from '../contact/contact';
 import SellPart from '../sellpart/sellpart';
+import Login from '../login/login';
 
 
 class App extends Component{
