@@ -1,9 +1,7 @@
 import React from 'react';
 import './app.css';
-import Loading from '../loading/loading';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import {
     BrowserRouter as Router,
     Route,
@@ -14,19 +12,19 @@ import PartList from '../part/partList';
 import About from '../about/about';
 import Contact from '../contact/contact';
 import SellPart from '../sellpart/sellpart';
+import Login from '../login/login';
 
 
 const App = () => (
     <Router>
         <div className='mainContainer'>
             <Header/>
-            <div><Link to="/partresults">Part Results</Link></div>
-            <div><Link to="/about">About Us</Link></div>
             <Route exact path='/' component={Home}/>
             <Route path='/partresults' component={PartList}/>
             <Route path='/about' component={About}/>
             <Route path='/contact' component={Contact}/>
             <Route path='/sellpart' component={SellPart}/>
+            <Route path='/login' component={Login}/>
             <Footer/>  
         </div>
     </Router>    
