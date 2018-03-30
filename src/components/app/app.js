@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './app.css';
 import Loading from '../loading/loading';
 import Header from '../header/header';
@@ -10,26 +10,41 @@ import {
     Link
 } from 'react-router-dom';
 import Home from '../home/home';
-import PartList from '../part/partList';
+import PartList from '../part/partList/partList';
+import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
 import Contact from '../contact/contact';
 import SellPart from '../sellpart/sellpart';
 
 
-const App = () => (
-    <Router>
-        <div className='mainContainer'>
-            <Header/>
-            <div><Link to="/partresults">Part Results</Link></div>
-            <div><Link to="/about">About Us</Link></div>
-            <Route exact path='/' component={Home}/>
-            <Route path='/partresults' component={PartList}/>
-            <Route path='/about' component={About}/>
-            <Route path='/contact' component={Contact}/>
-            <Route path='/sellpart' component={SellPart}/>
-            <Footer/>  
-        </div>
-    </Router>    
-);
+class App extends Component{
+
+    constructor(props){
+        super(props);
+
+        this.partInfo = {};
+    }
+
+    renderPartInfo(info){
+        this.partInfo = info;
+    }
+
+    render(){
+        return (
+            <Router>
+                <div className='mainContainer'>
+                    <Header/>            
+                    <Route exact path='/' component={Home}/>
+                    <Route path='/partresults' render={() => <PartList info={this.renderPartInfo.bind(this)}/>} />
+                    <Route path='/partdetails' render={() => <PartDetails partInfo={this.partInfo}/>}/>
+                    <Route path='/about' component={About}/>
+                    <Route path='/contact' component={Contact}/>
+                    <Route path='/sellpart' component={SellPart}/>
+                    <Footer/>  
+                </div>
+            </Router>  
+        );
+    }  
+}
 
 export default App;

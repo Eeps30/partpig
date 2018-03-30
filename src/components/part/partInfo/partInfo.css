@@ -1,0 +1,46 @@
+.productContainer{
+    display: inline-block;
+    width: 100%;
+    height: 30%;
+    font-size: 1.5em;
+    margin-top: 5%;
+    padding: 1%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.productContainer a{
+    margin-left: 10px;
+    text-decoration:none;
+}
+
+.productDetailsContainer{
+    display: inline-block;
+    width: 45%;
+    height: 30%;
+    font-size: 1.5em;
+    margin-top: 5%;
+    padding: 1%;
+    box-sizing: border-box;
+    text-align: left;
+    margin-right: 5%;
+}
+
+.productTitle{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.productPrice{
+    color:darkblue;
+    font-size: 1.5em;
+}
+
+button{
+    padding: 2%;
+}
+
+.addButton button{
+    width: 100%;
+    margin-top: 10px;
+}
