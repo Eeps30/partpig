@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 31, 2018 at 06:25 AM
+-- Generation Time: Mar 31, 2018 at 06:49 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.1.7
 
@@ -93,6 +93,36 @@ CREATE TABLE `image` (
 
 INSERT INTO `image` (`id`, `name`, `url`, `alt`, `part_id`) VALUES
 (1, '99-04 JDM Subaru Legacy BH5 Manual Trans Axle', 'https://i.ebayimg.com/images/g/74EAAOSw53NY~ea5/s-l300.jpg', 'Subaru Legacy BH5 Manual Trans Axle', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `part_id` int(10) UNSIGNED NOT NULL,
+  `cost` decimal(10,3) UNSIGNED NOT NULL,
+  `status` enum('Order Received','Order being processed','Shipped','Delayed','Transaction complete') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_meta`
+--
+
+CREATE TABLE `order_meta` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `buyer_id` int(10) UNSIGNED NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `count` smallint(5) UNSIGNED NOT NULL,
+  `total` decimal(10,3) UNSIGNED NOT NULL,
+  `tax` decimal(10,3) NOT NULL,
+  `status` enum('Order received','Order being processed','Shipped','Delayed','Transaction complete') NOT NULL,
+  `address_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -216,6 +246,18 @@ ALTER TABLE `image`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_meta`
+--
+ALTER TABLE `order_meta`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `part`
 --
 ALTER TABLE `part`
@@ -263,6 +305,16 @@ ALTER TABLE `category`
 --
 ALTER TABLE `image`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `order_meta`
+--
+ALTER TABLE `order_meta`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `part`
 --
