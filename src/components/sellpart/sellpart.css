@@ -1,0 +1,103 @@
+.sell-part-form {
+    width: 60%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    margin-top: 3%;
+    padding: 2%;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(41,51,57,.5);
+    overflow-y: scroll;
+}
+
+.sell-part-form::-webkit-scrollbar {
+    display: none;
+}
+
+fieldset {
+    border-color: rgba(255, 255, 255, 0.637);
+    border-width: 1px;
+
+}
+
+input, label { 
+    display: block;
+    width: 10em;
+    margin-right: 1em;
+    font-size: 1.3em;
+    font-weight: bold;
+
+}
+
+.partDetails{
+    text-align: left;
+    width: 100%;
+}
+
+.partNumberInput {
+    margin: 2%;
+    width: 40%;
+    display: inline-block;
+}
+
+.partBrandInput {
+    margin: 2%;
+    width: 40%;
+    display: inline-block;
+}
+
+.partTitleInput {
+    width: 100%;
+    margin: 2%;
+    display: inline-block;
+}
+
+.priceInput {
+    margin: 2%;
+    width: 30%;
+    display: inline-block;
+}
+
+.inputFields{
+    width: 50%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.pictureUpload {
+    float: right;
+    margin: auto;
+    vertical-align: top;
+    width: 35vh;
+    height: 35vh;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(41,51,57,.5);
+    display: inline-block;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
