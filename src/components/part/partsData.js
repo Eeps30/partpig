@@ -1,5 +1,5 @@
- [
-	{
+ const parts = 
+	 [{
 		"make": "Subaru",
 		"model": "XV Crosstrek",
 		"year":2015,
@@ -15,14 +15,13 @@
 		"images": [
 			"part1/subaruWheelsMain1.jpg",
 			"part1/subaruWheels2.jpg",
-			"part1/subarWheels3.jpg",
-			"part1/subarWheels4.jpg"
+			"part1/subaruWheels3.jpg",
+			"part1/subaruWheels4.jpg"
 		],
 		"size": "P225/55R17",  
 		"seller":"Nitro",
 		"partNumber":"VO345467847"                  
 	},
-
 	{                    
 		"make": "Subaru",
 		"model": "Impreza WRX STI",
@@ -96,7 +95,6 @@
 			"part4/part4d.jpg"
 		]
 	},
-
 	{
 		"sellerID": 5,
 		"listingID": 5,
@@ -120,7 +118,6 @@
 			"part5/part5b.jpg"
 		]
 	},
-
 	{
 		"sellerID": 6,
 		"listingID": 6,
@@ -147,7 +144,6 @@
 			"part6/part6e.jpg"
 		]
 	},
-
 	{
 		"sellerID": 7,
 		"listingID": 7,
@@ -171,7 +167,7 @@
 			"part7/part7b.jpg",
 			"part7/part7c.jpg"
 		]
-	}
+	}]
 
-]
+export default parts;
 
