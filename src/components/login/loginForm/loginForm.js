@@ -6,11 +6,10 @@ const LoginForm = () => (
         <h2>Login with email address</h2>
             <form>
                 <label>Email address</label>
-                <input type="text" id="email" name="email" placeholder="Email address"></input>
+                <input type="text" id="email" name="email" placeholder="Email address"/>
                 <label>Password</label>
-                <input type="text" id="password" name="password" placeholder="Password"></input>
-                <input type="submit" value="Login">
-                </input>
+                <input type="text" id="password" name="password" placeholder="Password"/>
+                <input type="submit" value="Login"/>
             </form>
     </div>
 );

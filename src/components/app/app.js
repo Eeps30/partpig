@@ -13,7 +13,7 @@ import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
 import Contact from '../contact/contact';
 import SellPart from '../sellpart/sellpart';
-import Login from '../login/login';
+import Login from '../login/loginForm/loginForm';
 
 
 class App extends Component{
