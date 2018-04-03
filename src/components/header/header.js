@@ -8,7 +8,7 @@ const Header = () => (
  <header>
      <div className="hamburger"><Hamburger/></div>
      <div className="logo-container">Part Pig</div>
-     <div className="user-nav"><Link to="/login"><img src={LoginIcon} className="login-icon"/></Link></div>
+     <div className="user-nav"><button id="sellPartButton">Sell Part</button><Link to="/login"><img src={LoginIcon} className="login-icon"/></Link></div>
     
  </header>
 );
