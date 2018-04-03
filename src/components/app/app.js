@@ -22,10 +22,12 @@ class App extends Component{
         super(props);
 
         this.partInfo = {};
+        this.filterBrands = [];
     }
 
-    renderPartInfo(info){
+    recoverInfo(info,filters){
         this.partInfo = info;
+        this.filters = filters;
     }
 
     render(){
@@ -34,8 +36,8 @@ class App extends Component{
                 <div className='mainContainer'>
                     <Header/>            
                     <Route exact path='/' component={Home}/>
-                    <Route path='/partresults' render={() => <PartList info={this.renderPartInfo.bind(this)}/>} />
-                    <Route path='/partdetails' render={() => <PartDetails partInfo={this.partInfo}/>}/>
+                    <Route path='/partresults' render={() => <PartList info={this.recoverInfo.bind(this)} filters={this.filters}/>} />
+                    <Route path='/partdetails' render={() => <PartDetails partInfo={this.partInfo} />}/>
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>
                     <Route path='/sellpart' component={SellPart}/>

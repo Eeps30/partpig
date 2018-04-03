@@ -20,7 +20,8 @@
 		],
 		"size": "P225/55R17",  
 		"seller":"Nitro",
-		"partNumber":"VO345467847"                  
+		"partNumber":"VO345467847",
+		"display":{'brand':true,'price':true}
 	},
 	{                    
 		"make": "Subaru",
@@ -44,7 +45,8 @@
 		],
 		"size": "P225/55R17",  
 		"seller":"Axel",
-		"partNumber":"VO384111927"
+		"partNumber":"VO384111927",
+		"display":{'brand':true,'price':true}            
 	},
 	{
 		"sellerID": 3,
@@ -68,7 +70,8 @@
 		],
 		"size": "P225/55R17",  
 		"seller":"Axel",
-		"partNumber":"VO384111927"
+		"partNumber":"VO384111927",
+		"display":{'brand':true,'price':true}            
 	},
 	{
 		"sellerID": 4,
@@ -93,7 +96,8 @@
 			"part4/part4b.jpg",
 			"part4/part4c.jpg",
 			"part4/part4d.jpg"
-		]
+		],
+		"display":{'brand':true,'price':true}            
 	},
 	{
 		"sellerID": 5,
@@ -116,7 +120,8 @@
 		"images": [
 			"part5/part5a.jpg",
 			"part5/part5b.jpg"
-		]
+		],
+		"display":{'brand':true,'price':true}            
 	},
 	{
 		"sellerID": 6,
@@ -142,7 +147,8 @@
 			"part6/part6c.jpg",
 			"part6/part6d.jpg",
 			"part6/part6e.jpg"
-		]
+		],
+		"display":{'brand':true,'price':true}            
 	},
 	{
 		"sellerID": 7,
@@ -166,7 +172,8 @@
 			"part7/part7a.jpg",
 			"part7/part7b.jpg",
 			"part7/part7c.jpg"
-		]
+		],
+		"display":{'brand':true,'price':true}            
 	}]
 
 export default parts;

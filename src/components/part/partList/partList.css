@@ -1,7 +1,13 @@
-.partList{
-    width: 70%;
+.partResults{
+    width: 80%;
     height: 90%;    
     margin: auto;
+}
+
+.partList{
+    display: inline-block;
+    width: 85%;
+    height: 100%;
     overflow-y: scroll;
 }
 
@@ -9,12 +15,16 @@
     display: none;
 }
 
-.partResult{
+.singlePart{
     display: inline-block;
-    width: 33%;
+    width: 30%;
     height: 65%;
     margin-top: 2%;
     padding: 1%;
     box-sizing: border-box;
     text-align: center;
+    background-color: whitesmoke;
+    border-radius: 25px;
+    margin: 1.5%;
+    box-shadow: 5px 10px 18px #888888;
 }

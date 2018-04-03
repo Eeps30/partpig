@@ -11,9 +11,10 @@ class ImageGallery extends Component{
             mainImg:props.mainImage
         }        
 
+        this.changeList = false;
         this.handleClickImg = this.handleClickImg.bind(this);
     }
-
+  
     /**
      * Handle click for every image in the list to change the image in the main container
      * 
@@ -21,9 +22,18 @@ class ImageGallery extends Component{
      */
     handleClickImg(event){
         let src = event.target.name;
+        this.changeList = true;
         this.setState({
             mainImg:src
         });
+    }
+    
+    componentDidUpdate(){
+        if(this.state.mainImg !== this.props.mainImage && !this.changeList){
+            this.setState({
+                mainImg:this.props.mainImage
+            });
+        }
     }
 
     render(){
