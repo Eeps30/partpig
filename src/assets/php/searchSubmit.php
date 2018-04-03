@@ -1,6 +1,18 @@
 <?php
 require_once('mysqlConnect.php');
-$query =  "SELECT j.make, j.title, j.images from `jsonparts` AS j";
+if(isset($_POST['make'])){
+    if(!empty($_POST['make'])){
+        $make = $_POST['make'];
+    }
+    else{
+        $output['error'][] = 'SET THE MAKE';
+        die;
+    }
+}
+else{
+    $make = 'Toyota';
+}
+$query =  "SELECT * FROM `part` AS p WHERE p.make='$make'";
         
 $result = mysqli_query($conn, $query);
 $output = [
@@ -11,6 +23,7 @@ $output = [
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
+            $row['display'] = 'true';
             $output['data'][] = $row;
         }
     }
