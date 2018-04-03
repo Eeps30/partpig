@@ -22,7 +22,8 @@ fieldset {
 
 }
 
-.inputFields input, label { 
+
+.inputFields input, .inputFields label { 
     display: block;
     width: 10em;
     margin-right: 1em;
