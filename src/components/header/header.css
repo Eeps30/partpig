@@ -5,7 +5,7 @@ header {
     height: 5%;
     background-color: rgb(255, 255, 255);
     margin-bottom: 5px;
-    border-bottom: 1px solid rgb(175, 175, 175); 
+    box-shadow: 0 1px 4px rgba(41, 51, 57, 0.397)
 }
 
 .logo-container{
@@ -34,4 +34,10 @@ header {
     height: 100%;
     text-align: right;
     
+}
+
+.login-icon{
+    float: right;
+    height: 90%;
+    margin: .5em;
 }
