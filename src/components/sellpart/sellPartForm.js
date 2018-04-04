@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "./sellpart.css";
-import parts from '../part/partsData'
+import parts from '../part/partsData';
+import axios from  'axios';
 
 
 class SellPartForm extends Component{
@@ -27,11 +28,8 @@ class SellPartForm extends Component{
 
     handleInputChange(event) {
         const { value, name } = event.target;
-    
         const { form } = this.state;
-    
         form[name] = value;
-    
         this.setState({
             form: {...form}
         });
@@ -40,11 +38,10 @@ class SellPartForm extends Component{
     handleSubmit(event) {
         event.preventDefault();
         console.log('handleSubmit called, form values are:', this.state.form);
-        parts.push(
-            {
+        const listingFormData = {
                 "make": "",
                 "model": "",
-                "year":2015,
+                "year": 2015,
                 "title": this.state.form.partTitle,
                 "brand": this.state.form.brand,
                 "price": this.state.form.price,
@@ -57,19 +54,24 @@ class SellPartForm extends Component{
                 "images": [
                     this.state.form.firstImage
                 ],
-                "size": "",  
                 "seller": this.state.form.username,
-                "partNumber": '',
-                "display":{'brand':true,'price':true}
+                "partNumber": this.state.form.partNumber,
             }
+    }
 
-        );
+    sendToServer(){
+            const BASE_URL = "http://api.reactprototypes.com";
+            const API_KEY = "?key=testuser1234";
+            axios.post(`${BASE_URL}/todos${API_KEY}`, listingFormData).then(resp => {
+                console.log("Server Response:", resp);
+            }).catch(err => {
+                console.log("There was an error:", err.message);
+            });
     }
   
 
     render() {
         const { partTitle, partNumber, fitment, firstImage, condition, conditionBrief, username, password, brand } = this.state.form;
-
             return(
                         <form onSubmit={this.handleSubmit}>
                             <div className="section"><span>1</span>Part Details and Price</div>
@@ -82,7 +84,6 @@ class SellPartForm extends Component{
                                 </div>    
                                 <label>Fitment <input onChange={this.handleInputChange} value={fitment} name="fitment" type="text" /></label>
                             </div>
-        
                             <div className="section"><span>2</span>Pictures and Condition</div>
                             <div className="inner-wrap">
                                 <div className="pictureUpload">
@@ -92,7 +93,6 @@ class SellPartForm extends Component{
                                 <label>Condition 1-10<input onChange={this.handleInputChange} value={condition} name="condition"type="text" /></label> 
                                 <label>Condition Brief <input onChange={this.handleInputChange} value={conditionBrief} name="conditionBrief"type="text" /></label>    
                             </div>
-        
                             <div className="section"><span>3</span>Contact Information</div>
                                 <div className="inner-wrap">
                                 <label>Username<input onChange={this.handleInputChange} value={username} type="text" name="username" /></label>
