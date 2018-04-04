@@ -1,17 +1,17 @@
 import React from "react";
 import './header.css';
 import Hamburger from '../hamburger/hamburger';
-import LoginDropdown from '../loginDropdown/loginDropdown';
+import LoginIcon from '../../assets/icons/loginicon.png';
+import {Link} from 'react-router-dom';
 
 const Header = () => (
  <header>
      <div className="hamburger"><Hamburger/></div>
      <div className="logo-container">Part Pig</div>
-    <div className="user-nav">
-        <div className="login-container"><LoginDropdown/></div>
-    </div>    
+     <div className="user-nav"><Link to="/sellpart"><button id="sellPartButton">Sell Part</button></Link><Link to="/login"><img src={LoginIcon} className="login-icon"/></Link></div>
     
  </header>
 );
 
 export default Header;
+

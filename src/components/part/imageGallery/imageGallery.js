@@ -9,12 +9,12 @@ class ImageGallery extends Component{
 
         this.state = {
             mainImg:props.mainImage
-        }
-        this.imageList = props.imagesList;
+        }        
 
+        this.changeList = false;
         this.handleClickImg = this.handleClickImg.bind(this);
     }
-
+  
     /**
      * Handle click for every image in the list to change the image in the main container
      * 
@@ -22,9 +22,18 @@ class ImageGallery extends Component{
      */
     handleClickImg(event){
         let src = event.target.name;
+        this.changeList = true;
         this.setState({
             mainImg:src
         });
+    }
+    
+    componentDidUpdate(){
+        if(this.state.mainImg !== this.props.mainImage && !this.changeList){
+            this.setState({
+                mainImg:this.props.mainImage
+            });
+        }
     }
 
     render(){
@@ -34,15 +43,15 @@ class ImageGallery extends Component{
         //we control if we need the list of the images or not
         if(this.props.showList){ 
             //we go through every image in the list and create the element           
-            list = this.imageList.map((item,index)=>{
-                return <img key={index} onClick={this.handleClickImg} name = {item} src={require(`../../assets/images/${item}`)}/>        
+            list = this.props.imageList.map((item,index)=>{
+                return <img key={index} onClick={this.handleClickImg} name = {item} src={require(`../../../assets/images/${item}`)}/>        
             });
             divList = (<div className="imageList"> {list} </div>);
         }
         return(
-            <div className="imageContainer">             
+            <div className={this.props.showList ? "imageDetailsContainer":"imageContainer"}>             
                 <div className="mainImage">
-                    <img src={require(`../../assets/images/${this.state.mainImg}`)}/>
+                    <img src={require(`../../../assets/images/${this.state.mainImg}`)}/>
                 </div>
                 {divList}
             </div>

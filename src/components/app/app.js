@@ -1,35 +1,52 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './app.css';
-import Loading from '../loading/loading';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import {
     BrowserRouter as Router,
     Route,
     Link
 } from 'react-router-dom';
 import Home from '../home/home';
-import PartList from '../part/partList';
+import PartList from '../part/partList/partList';
+import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
 import Contact from '../contact/contact';
 import SellPart from '../sellpart/sellpart';
+import Login from '../login/login';
 
 
-const App = () => (
-    <Router>
-        <div className='mainContainer'>
-            <Header/>
-            <div><Link to="/partresults">Part Results</Link></div>
-            <div><Link to="/about">About Us</Link></div>
-            <Route exact path='/' component={Home}/>
-            <Route path='/partresults' component={PartList}/>
-            <Route path='/about' component={About}/>
-            <Route path='/contact' component={Contact}/>
-            <Route path='/sellpart' component={SellPart}/>
-            <Footer/>  
-        </div>
-    </Router>    
-);
+class App extends Component{
+
+    constructor(props){
+        super(props);
+
+        this.partInfo = {};
+        this.filterBrands = [];
+    }
+
+    recoverInfo(info,filters){
+        this.partInfo = info;
+        this.filters = filters;
+    }
+
+    render(){
+        return (
+            <Router>
+                <div className='mainContainer'>
+                    <Header/>            
+                    <Route exact path='/' component={Home}/>
+                    <Route path='/partresults' render={() => <PartList info={this.recoverInfo.bind(this)} filters={this.filters}/>} />
+                    <Route path='/partdetails' render={() => <PartDetails partInfo={this.partInfo} />}/>
+                    <Route path='/about' component={About}/>
+                    <Route path='/contact' component={Contact}/>
+                    <Route path='/sellpart' component={SellPart}/>
+                    <Route path='/login' component={Login}/>
+                    <Footer/>  
+                </div>
+            </Router>  
+        );
+    }  
+}
 
 export default App;
