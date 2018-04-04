@@ -8,7 +8,7 @@ const PartDetails = (props) => {
         
     return (
         <div className="partDetails">
-            <Link to="/partresults"><div>Back to results</div></Link>
+            <Link to={"/partresults/" + props.match.params.filters}><div>Back to results</div></Link>
             <ImageGallery showList={true} mainImage = {props.partInfo.images[0]} imageList = {props.partInfo.images} />
             <PartInfo partInfo={props.partInfo} isDetails={true}/>
         </div> 
