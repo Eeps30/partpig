@@ -1,18 +1,7 @@
 <?php
 require_once('mysqlConnect.php');
-if(isset($_POST['make'])){
-    if(!empty($_POST['make'])){
-        $make = $_POST['make'];
-    }
-    else{
-        $output['error'][] = 'SET THE MAKE';
-        die;
-    }
-}
-else{
-    $make = 'Toyota';
-}
-$query =  "SELECT * FROM `part` AS p";
+$ID = 4;
+$query =  "SELECT `part_data` FROM `part` AS p WHERE `id` = '$ID'";
         
 $result = mysqli_query($conn, $query);
 $output = [
@@ -24,6 +13,7 @@ if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
             $row['display'] = 'true';
+            // $output['data'][] = htmlspecialchars($row[0]);
             $output['data'][] = $row;
         }
     }
@@ -38,4 +28,6 @@ else{
 
 $json_output = json_encode($output);
 print($json_output);
+// print('******************');
+// print($output);
 ?>
