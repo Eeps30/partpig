@@ -4,6 +4,8 @@ import './partList.css';
 import parts from '../partsData'
 import {Link} from 'react-router-dom';
 import Filter from '../filter/filter';
+import BrandFilter from './../filter/brandFilter';
+// import axios from 'axios';
 
 class PartList extends Component{
 
@@ -15,7 +17,8 @@ class PartList extends Component{
         }
         this.filterBrandMethod = this.filterBrandMethod.bind(this);
         this.filterPriceMethod = this.filterPriceMethod.bind(this);
-        this.filters = (props.filters === undefined || props.filters.length === 0) ? this.initFilters(parts) : props.filters;
+        this.filters = (props.match.params.filters === undefined || props.match.params.filters.length === 0) ? this.initFilters(parts) : JSON.parse(props.match.params.filters);
+        
     }
 
     initFilters(parts){
@@ -31,15 +34,35 @@ class PartList extends Component{
             !this.containsObject(brand,brandsArray) ? brandsArray.push(brand):'';
             pricesArray.indexOf(parts[i].price)===-1 ? pricesArray.push(parts[i].price) : '';            
         };
+        const brandFilter = [brandsArray,true];
         pricesArray.sort((a,b)=>a-b);
         let pricesValues = [];
         pricesValues.push(pricesArray[0]);        
         pricesValues.push(pricesArray[pricesArray.length-1]);
         pricesfilter.push(pricesArray);
-        pricesfilter.push(pricesValues);
+        pricesfilter.push(pricesValues);  
         filters['prices'] = pricesfilter;
-        filters['brands'] = brandsArray;
+        filters['brands'] = brandFilter;
         return filters;
+    }
+
+    componentWillMount(){
+        this.filterPriceMethod(this.filters['prices'][1]);
+        this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);
+        // const url = 'http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topMovies/json';
+        // axios.get(url).then((resp) => {
+        //     console.log('Resp:', resp);
+        //     this.setState({
+        //         movies: resp.data.feed.entry
+        //     });
+        // });
+    }
+
+    componentWillUpdate(){
+        if(this.props.history.location.pathname !== this.props.location.pathname){
+            this.filterPriceMethod(this.filters['prices'][1]);
+            this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);
+        }
     }
 
     containsObject(obj, list) {        
@@ -63,17 +86,16 @@ class PartList extends Component{
                     }
                 }
             }
-        }
-        this.filters['brands'] = arrayBrands
+        }        
         this.setState({
             arrayParts:filteredParts
         });
     }
 
     filterPriceMethod(values){
-        let valArray = values.split(',');
-        const min = parseInt(valArray[0]);
-        const max = parseInt(valArray[1]);
+        
+        const min = values[0];
+        const max = values[1];
         const filteredParts = [...this.state.arrayParts];
         for (let i = 0; i < filteredParts.length; i++) {            
             if (filteredParts[i].price >= min && filteredParts[i].price <= max) {               
@@ -81,8 +103,7 @@ class PartList extends Component{
             }else{
                 filteredParts[i].display.price = false;
             }
-        }
-        this.filters['prices'][1] = [min,max];
+        }        
         this.setState({
             arrayParts:filteredParts
         });
@@ -94,15 +115,17 @@ class PartList extends Component{
         let list = visibleParts.map((function(item,index){
             return ( 
                 <div key={index} className='singlePart' onClick={()=>{this.props.info(item,this.filters)}}>
-                    <Link to="/partdetails">
+                    <Link to={"/partdetails/" + item.partNumber + '/' + JSON.stringify(this.filters)}>
                         <Part partInfo={item}/>
                     </Link>                    
                 </div>
             )           
         }).bind(this));
+
+        console.log('Part List Props:', this.props);
         return (
             <div className='partResults'>
-                <Filter filters={this.filters} filterBrandMethod = {this.filterBrandMethod} filterPriceMethod={this.filterPriceMethod}/>
+                <Filter history={this.props.history} filters={this.filters}/>
                 <div className='partList'>                    
                     {list}
                 </div>

@@ -134,7 +134,7 @@
 			span.appendChild(ins);
 			this.scale.appendChild(span);
 
-			span.style.width = i === iLen - 1 ? 0 : this.step + 'px';
+			span.style.width = i === iLen - 1 ? 0 : i === iLen - 2 ? (this.step-1) + 'px' : this.step + 'px';
 
 			if (!this.conf.labels) {
 				if (i === 0 || i === iLen - 1) ins.innerHTML = this.conf.values[i]
@@ -152,7 +152,7 @@
 		var pieces = this.slider.querySelectorAll('span');
 
 		for (var i = 0, iLen = pieces.length; i < iLen; i++)
-			pieces[i].style.width = this.step + 'px';
+			pieces[i].style.width = i === iLen - 1 ? 0 : i === iLen - 2 ? (this.step-1)+ 'px' : this.step + 'px';
 
 		return this.setValues();
 	};
@@ -172,7 +172,7 @@
 
 		window.addEventListener('resize', this.onResize.bind(this));
 
-		return this.setValues();
+		return this.setValues(true);
 	};
 
 	RS.prototype.drag = function (e) {
@@ -203,7 +203,7 @@
 			}
 			else this.values.end = index;
 
-			return this.setValues();
+			return this.setValues(true);
 		}
 	};
 
@@ -211,7 +211,7 @@
 		this.activePointer = null;
 	};
 
-	RS.prototype.setValues = function (start, end) {
+	RS.prototype.setValues = function (init,start, end) {
 		var activePointer = this.conf.range ? 'start' : 'end';
 
 		if (start && this.conf.values.indexOf(start) > -1)
@@ -244,8 +244,12 @@
 
 		this.selected.style.width = (this.values.end - this.values.start) * this.step + 'px';
 		this.selected.style.left = this.values.start * this.step + 'px';		
+		if(init){
+			return;
+		}else{
+			return this.onChange();
+		}
 		
-		return this.onChange();
 	};
 
 	RS.prototype.onClickPiece = function (e) {
