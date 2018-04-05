@@ -47,6 +47,6 @@ else{
     $output['errors'][] = 'Error in database query';
 }
 
-$json_output = json_encode($output);
+$json_output = json_encode($images);
 print($json_output);
  ?>
