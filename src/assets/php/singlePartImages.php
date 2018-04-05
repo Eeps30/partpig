@@ -9,7 +9,7 @@ $output = [
     'data' => []
 ];
 // default query
-$query =  "SELECT *  FROM `image` WHERE part_id='$part_number'";   
+$query =  "SELECT url  FROM `image` WHERE part_id='$part_number'";   
 
 if(isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])){
     if(!empty($_POST['make']) && !empty($_POST['model'])&& !empty($_POST['year'])){
@@ -33,7 +33,8 @@ $images = [];
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
-           $images[] = $row;
+            // print_r($row);
+           $images[] = $row['url'];
         }
         $output['data'][] = $images;
     }
@@ -46,6 +47,6 @@ else{
     $output['errors'][] = 'Error in database query';
 }
 
-$json_output = json_encode($output);
+$json_output = json_encode($images);
 print($json_output);
  ?>
