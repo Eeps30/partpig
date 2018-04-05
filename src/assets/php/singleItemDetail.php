@@ -2,8 +2,21 @@
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 
-$ID = 4;
-$query =  "SELECT `part_data` FROM `part` AS p WHERE `id` = '$ID'";
+$_POST['id'] = 1;
+
+$ID = $_POST['id'];
+$query =  "SELECT
+             p.description AS 'description', 
+             p.part_condition AS 'condition', 
+             a.city AS 'city', 
+             a.state_abbr AS 'state', 
+             p.seller_id AS 'seller' 
+            FROM `part` AS p 
+            JOIN `user` AS u
+                ON  p.seller_id = u.billing_address_id
+            JOIN `address` AS a
+                ON u.billing_address_id = a.id
+            WHERE p.id = 1";
         
 $result = mysqli_query($conn, $query);
 $output = [
