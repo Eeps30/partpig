@@ -1,6 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
+//basic output format, all data gets pushed into data[]
 $output = [
     'success'=> false,
     'error' => [],
@@ -9,6 +10,7 @@ $output = [
 // default query
 $query =  "SELECT p.id, p.brand, p.part_name AS title, p.id AS category, p.make, p.model, p.year, p.part_number AS partNumber, p.price_usd AS price, p.image AS images  FROM `part` AS p ";   
 
+// checks if fields are set and queries specific make/model/year
 if(isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])){
     if(!empty($_POST['make']) && !empty($_POST['model'])&& !empty($_POST['year'])){
         $make = $_POST['make'];
@@ -27,11 +29,15 @@ else{
 
         
 $result = mysqli_query($conn, $query);
+// make a display object that we later add to each search result
+$display = new stdClass();
+$display->brand = 'true';
+$display->price = 'true';
 
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
-            $row['display'] = 'true';
+            $row['display'] = $display;
             $output['data'][] = $row;
         }
     }
