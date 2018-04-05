@@ -26,7 +26,6 @@ if(isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])){
 else{
     $output['error'][] = 'Make or Model or Year unset';
 }
-
         
 $result = mysqli_query($conn, $query);
 // make a display object that we later add to each search result
@@ -54,4 +53,4 @@ else{
 
 $json_output = json_encode($output);
 print($json_output);
- ?>
+?>
