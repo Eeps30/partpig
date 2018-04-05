@@ -5,20 +5,18 @@ import parts from '../partsData'
 import {Link} from 'react-router-dom';
 import Filter from '../filter/filter';
 import BrandFilter from './../filter/brandFilter';
-// import axios from 'axios';
+import axios from 'axios';
 
 class PartList extends Component{
 
     constructor(props){
         super(props);
-
         this.state = {
-            arrayParts:parts            
+            arrayParts:[],
+            isLoading: false            
         }
         this.filterBrandMethod = this.filterBrandMethod.bind(this);
         this.filterPriceMethod = this.filterPriceMethod.bind(this);
-        this.filters = (props.match.params.filters === undefined || props.match.params.filters.length === 0) ? this.initFilters(parts) : JSON.parse(props.match.params.filters);
-        
     }
 
     initFilters(parts){
@@ -46,16 +44,22 @@ class PartList extends Component{
         return filters;
     }
 
-    componentWillMount(){
-        this.filterPriceMethod(this.filters['prices'][1]);
-        this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);
-        // const url = 'http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topMovies/json';
-        // axios.get(url).then((resp) => {
-        //     console.log('Resp:', resp);
-        //     this.setState({
-        //         movies: resp.data.feed.entry
-        //     });
-        // });
+    componentDidMount(){
+        this.setState({ isLoading: true });
+        const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';
+        var self = this;
+        axios.get(url).then((resp) => {
+                console.log('result is: ', resp.data.data);
+                this.setState({
+                    arrayParts:resp.data.data            
+                });                
+                // this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(parts) : JSON.parse(this.props.match.params.filters);
+                // this.filterPriceMethod(this.filters['prices'][1]);
+                // this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);  
+            }).catch(err => {
+                console.log('error is: ', err);
+            }
+        ); 
     }
 
     componentWillUpdate(){
@@ -111,6 +115,9 @@ class PartList extends Component{
 
     render(){
        
+        if (this.state.isLoading) {
+            return <p>Loading ...</p>;
+        }
         let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price;});
         let list = visibleParts.map((function(item,index){
             return ( 
@@ -121,11 +128,10 @@ class PartList extends Component{
                 </div>
             )           
         }).bind(this));
-
-        console.log('Part List Props:', this.props);
+       
         return (
             <div className='partResults'>
-                <Filter history={this.props.history} filters={this.filters}/>
+                {/* <Filter history={this.props.history} filters={this.filters}/> */}
                 <div className='partList'>                    
                     {list}
                 </div>
