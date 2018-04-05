@@ -1,6 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
+
 $ID = 4;
 $query =  "SELECT `part_data` FROM `part` AS p WHERE `id` = '$ID'";
         
