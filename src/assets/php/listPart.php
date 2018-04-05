@@ -11,8 +11,8 @@ $status = filter_var(sanitizeInput('For sale'), FILTER_SANITIZE_STRING);
 $brand = filter_var(sanitizeInput('testBrand'), FILTER_SANITIZE_STRING);
 $make = filter_var(sanitizeInput('testMake'), FILTER_SANITIZE_STRING);
 $model = filter_var(sanitizeInput('testModel'), FILTER_SANITIZE_STRING);
-$year = filter_var(sanitizeInput('2018'), FILTER_SANITIZE_INT);
-$seller_id = filter_var(sanitizeInput(1), FILTER_SANITIZE_INT);
+$year = filter_var(sanitizeInput('2018'), FILTER_SANITIZE_STRING);
+$seller_id = filter_var(sanitizeInput(1), FILTER_SANITIZE_STRING);
 $price_usd = sanitizeInput(999);
 $listed_date = sanitizeInput(date("Y-m-d", time()));
 
