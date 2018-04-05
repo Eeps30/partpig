@@ -8,7 +8,7 @@ $output = [
     'data' => []
 ];
 // default query
-$query =  "SELECT p.id, p.brand, p.part_name AS title, p.id AS category, p.make, p.model, p.year,                               p.part_number AS partNumber, p.price_usd AS price, i.url
+$query =  "SELECT p.id, p.brand, p.part_name AS title, p.id AS category, p.make, p.model, p.year,                               p.part_number AS partNumber, p.price_usd AS price, i.url AS images
             FROM `part` AS p 
             JOIN `image` AS i 
             ON (SELECT MIN(i.id) FROM `image` as i 
@@ -46,7 +46,7 @@ $ar = [];
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
-            $row['url'] = array($row['url']); 
+            $row['images'] = array($row['images']); 
             $row['display'] = $display;
             $row['price'] = (float)$row['price'];
             $row['year'] = (int)$row['year'];
