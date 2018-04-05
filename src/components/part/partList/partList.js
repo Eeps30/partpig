@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import Filter from '../filter/filter';
 import BrandFilter from './../filter/brandFilter';
 import axios from 'axios';
+import Loading from '../../loading/loading';
 
 class PartList extends Component{
 
@@ -30,7 +31,7 @@ class PartList extends Component{
                 checked: false
             };
             !this.containsObject(brand,brandsArray) ? brandsArray.push(brand):'';
-            pricesArray.indexOf(parts[i].price)===-1 ? pricesArray.push(parts[i].price) : '';            
+            pricesArray.indexOf(parseInt(parts[i].price))===-1 ? pricesArray.push(parseInt(parts[i].price)) : '';            
         };
         const brandFilter = [brandsArray,true];
         pricesArray.sort((a,b)=>a-b);
@@ -45,17 +46,16 @@ class PartList extends Component{
     }
 
     componentDidMount(){
-        this.setState({ isLoading: true });
-        const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';
-        var self = this;
-        axios.get(url).then((resp) => {
-                console.log('result is: ', resp.data.data);
+        const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
+        axios.get(url).then(resp=>{
+                this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
                 this.setState({
-                    arrayParts:resp.data.data            
-                });                
-                // this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(parts) : JSON.parse(this.props.match.params.filters);
-                // this.filterPriceMethod(this.filters['prices'][1]);
-                // this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);  
+                    arrayParts:resp.data.data,
+                    isLoading: true            
+                });               
+                
+                this.filterPriceMethod(this.filters['prices'][1]);
+                this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);  
             }).catch(err => {
                 console.log('error is: ', err);
             }
@@ -102,7 +102,7 @@ class PartList extends Component{
         const max = values[1];
         const filteredParts = [...this.state.arrayParts];
         for (let i = 0; i < filteredParts.length; i++) {            
-            if (filteredParts[i].price >= min && filteredParts[i].price <= max) {               
+            if (parseInt(filteredParts[i].price) >= min && parseInt(filteredParts[i].price) <= max) {               
                 filteredParts[i].display.price = true;
             }else{
                 filteredParts[i].display.price = false;
@@ -115,14 +115,14 @@ class PartList extends Component{
 
     render(){
        
-        if (this.state.isLoading) {
-            return <p>Loading ...</p>;
+        if (!this.state.isLoading) {
+            return <Loading />;
         }
         let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price;});
         let list = visibleParts.map((function(item,index){
             return ( 
-                <div key={index} className='singlePart' onClick={()=>{this.props.info(item,this.filters)}}>
-                    <Link to={"/partdetails/" + item.partNumber + '/' + JSON.stringify(this.filters)}>
+                <div key={index} className='singlePart'>
+                    <Link to={"/partdetails/" + item.id + '/' + JSON.stringify(this.filters)}>
                         <Part partInfo={item}/>
                     </Link>                    
                 </div>
@@ -131,7 +131,7 @@ class PartList extends Component{
        
         return (
             <div className='partResults'>
-                {/* <Filter history={this.props.history} filters={this.filters}/> */}
+                <Filter history={this.props.history} filters={this.filters}/>
                 <div className='partList'>                    
                     {list}
                 </div>

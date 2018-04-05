@@ -44,14 +44,14 @@ class ImageGallery extends Component{
         if(this.props.showList){ 
             //we go through every image in the list and create the element           
             list = this.props.imageList.map((item,index)=>{
-                return <img key={index} onClick={this.handleClickImg} name = {item} src={require(`../../../assets/images/${item}`)}/>        
+                return <img key={index} onClick={this.handleClickImg} name = {item} src={item}/>        
             });
             divList = (<div className="imageList"> {list} </div>);
         }
         return(
             <div className={this.props.showList ? "imageDetailsContainer":"imageContainer"}>             
                 <div className="mainImage">
-                    <img src={require(`../../../assets/images/${this.state.mainImg}`)}/>
+                    <img src={this.state.mainImg}/>
                 </div>
                 {divList}
             </div>

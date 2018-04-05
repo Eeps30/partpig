@@ -7,7 +7,7 @@ const Part = (props) => {
     
     return (
         <div className="part">
-            <ImageGallery showList={false} mainImage = {props.partInfo.images[0]} />
+            <ImageGallery showList={false} mainImage = {props.partInfo.url[0]} />
             <PartInfo partInfo={props.partInfo} isDetails={false}/>
         </div> 
     );
