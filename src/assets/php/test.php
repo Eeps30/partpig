@@ -1,13 +1,15 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
+$_POST['part_number'] = 4;
+$part_number = $_POST['part_number'];
 $output = [
     'success'=> false,
     'error' => [],
     'data' => []
 ];
 // default query
-$query =  "SELECT *  FROM `image` WHERE part_id=3";   
+$query =  "SELECT *  FROM `image` WHERE part_id='$part_number'";   
 
 if(isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])){
     if(!empty($_POST['make']) && !empty($_POST['model'])&& !empty($_POST['year'])){
