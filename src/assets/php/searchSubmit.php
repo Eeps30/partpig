@@ -8,7 +8,10 @@ $output = [
     'data' => []
 ];
 // default query
-$query =  "SELECT p.id, p.brand, p.part_name AS title, p.id AS category, p.make, p.model, p.year, p.part_number AS partNumber, p.price_usd AS price, i.url  FROM `part` AS p JOIN `image` AS i ON p.id=i.part_id";   
+$query =  "SELECT p.id, p.brand, p.part_name AS title,
+                 p.id AS category, p.make, p.model, p.year,
+                  p.part_number AS partNumber, p.price_usd AS price
+                   FROM `part` AS p";   
 
 // checks if fields are set and queries specific make/model/year
 if(isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])){
@@ -26,7 +29,6 @@ if(isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])){
 else{
     $output['error'][] = 'Make or Model or Year unset';
 }
-
         
 $result = mysqli_query($conn, $query);
 // make a display object that we later add to each search result
@@ -54,4 +56,4 @@ else{
 
 $json_output = json_encode($output);
 print($json_output);
- ?>
+?>
