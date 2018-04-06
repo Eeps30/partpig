@@ -30,7 +30,8 @@ class App extends Component{
                     <Header/>            
                     <Route exact path='/' component={Search}/>
                     <Route exact path='/partresults' component={PartList} />
-                    <Route path='/partresults/:filters' component={PartList} />
+                    <Route exact path='/partresults/:filters' component={PartList} />
+                    <Route path='/partresults/:make/:model/:year' component={PartList} />                    
                     <Route path='/partdetails/:id/:filters' component={PartDetails}/>
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>
