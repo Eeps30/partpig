@@ -2,9 +2,9 @@
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 
-$_POST['id'] = 2;
+$_GET['id'] = 2;
 
-$ID = $_POST['id'];
+$ID = $_GET['id'];
 $imgQuery =  "SELECT url  FROM `image` WHERE part_id='$ID'";
 $imgResult =  mysqli_query($conn, $imgQuery);
 
@@ -25,11 +25,21 @@ else{
 }
 
 $query =  "SELECT
+             p.id AS part_id,
+             p.brand AS brand,
+             p.part_name AS title, 
+             p.id AS category, 
+             p.make, 
+             p.model, 
+             p.year, 
+             p.part_number AS partNumber, 
+             p.price_usd AS price, 
              p.description AS 'description', 
              p.part_condition AS 'condition', 
              a.city AS 'city', 
              a.state_abbr AS 'state', 
-             p.seller_id AS 'seller' 
+             p.seller_id AS 'seller_id',
+             u.user_name AS 'seller' 
             FROM `part` AS p 
             JOIN `user` AS u
                 ON  p.seller_id = u.billing_address_id
