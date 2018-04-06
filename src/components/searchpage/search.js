@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import MakeDropDown from './makeDropdown';
-import ModelDropDown from './modelDropdown';
-import YearDropDown from './yearDropdown';
-import data from './partsList';
-import mainLogo from '../assets/images/placeholderImage.png';
-import '../assets/css/dropDown.css';
+import MakeDropDown from './dropdown/makeDropdown';
+import ModelDropDown from './dropdown/modelDropdown';
+import YearDropDown from './dropdown/yearDropdown';
+import data from './dataModel';
+import mainLogo from '../../assets/images/part1/subaruWheels2.jpg';
+import './search.css';
+import {Link} from 'react-router-dom';
 
 class DropDownContainer extends Component {
     constructor(props){
@@ -70,9 +71,10 @@ class DropDownContainer extends Component {
                             <img src={mainLogo}/>
                         </div>
                         <div className="buttonsContainer">
-                            <MakeDropDown makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                            <ModelDropDown modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
-                            <YearDropDown yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                            <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
+                            <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
+                            <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                            <Link to="/partresults"> Search </Link>                    
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import data from './partsList';
 import GenerateMakeRows from './generateMakeRows';
 
 class MakeDropDown extends Component {
@@ -10,7 +9,7 @@ class MakeDropDown extends Component {
     }
 
     makeRows(){
-        const listOfMakes = Object.keys( data.make );
+        const listOfMakes = Object.keys( this.props.data.make );
         return listOfMakes.map( (item, index) => <GenerateMakeRows key={index} callback={(event) => {this.handleChange(item)}} label={item}/>)
     }
 

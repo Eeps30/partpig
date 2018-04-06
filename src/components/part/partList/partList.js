@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Part from '../part';
 import './partList.css';
-import parts from '../partsData'
+import parts from '../partsData';
 import {Link} from 'react-router-dom';
 import Filter from '../filter/filter';
 import BrandFilter from './../filter/brandFilter';
@@ -129,8 +129,8 @@ class PartList extends Component{
             )           
         }).bind(this));
        
-        return (
-            <div className='partResults'>
+        return (               
+            <div className='partResults'>               
                 <Filter history={this.props.history} filters={this.filters}/>
                 <div className='partList'>                    
                     {list}

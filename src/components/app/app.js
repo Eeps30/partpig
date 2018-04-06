@@ -7,13 +7,14 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-import Home from '../home/home';
+
 import PartList from '../part/partList/partList';
 import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
 import Contact from '../contact/contact';
 import SellPart from '../sellpart/sellpart';
 import Login from '../login/login';
+import Search from '../searchpage/search';
 
 
 class App extends Component{
@@ -27,7 +28,7 @@ class App extends Component{
             <Router>
                 <div className='mainContainer'>
                     <Header/>            
-                    <Route exact path='/' component={Home}/>
+                    <Route exact path='/' component={Search}/>
                     <Route exact path='/partresults' component={PartList} />
                     <Route path='/partresults/:filters' component={PartList} />
                     <Route path='/partdetails/:id/:filters' component={PartDetails}/>

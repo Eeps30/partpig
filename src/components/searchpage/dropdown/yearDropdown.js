@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import data from './partsList';
 import GenerateRows from './generateMakeRows';
 
 class YearDropdown extends Component {
@@ -10,7 +9,7 @@ class YearDropdown extends Component {
     }
 
     makeRows(props){
-        const listOfYears = data.make[this.props.selectedMake].model[this.props.selectedModel].years
+        const listOfYears = this.props.data.make[this.props.selectedMake].model[this.props.selectedModel].years
         const yearsString = listOfYears.map(String);
         return yearsString.map( (item, index) => <GenerateRows key={index} callback={() => {this.handleChange(item)}} label={item}/>)
     }

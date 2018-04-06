@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import data from './partsList';
 import GenerateRows from './generateMakeRows';
 
 class ModelDropdown extends Component {
@@ -10,7 +9,7 @@ class ModelDropdown extends Component {
     }
 
     makeRows(props){
-        const listOfModels = Object.keys( data.make[this.props.selectedMake].model )
+        const listOfModels = Object.keys( this.props.data.make[this.props.selectedMake].model )
         return listOfModels.map( (item, index) => <GenerateRows key={index} callback={() => {this.handleChange(item)}} label={item}/>)
     }
 
