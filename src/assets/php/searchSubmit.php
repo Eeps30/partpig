@@ -15,15 +15,15 @@ $query =  "SELECT p.id, p.brand, p.part_name AS title, p.id AS category, p.make,
             WHERE im.part_id=p.id)";   
 
 // checks if fields are set and queries specific make/model/year
-if(isset($_POST['make']) && isset($_POST['model']) && isset($_POST['year'])){
-    if(!empty($_POST['make']) && !empty($_POST['model'])&& !empty($_POST['year'])){
-        $make = $_POST['make'];
-        $model = $_POST['model'];
-        $year = $_POST['year'];
+if(isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])){
+    if(!empty($_GET['make']) && !empty($_GET['model'])&& !empty($_GET['year'])){
+        $make = $_GET['make'];
+        $model = $_GET['model'];
+        $year = $_GET['year'];
 
         $query =  "SELECT p.id, p.brand, p.part_name AS title,
             p.id AS category, p.make, p.model, p.year,
-            p.part_number AS partNumber, p.price_usd AS price, i.url
+            p.part_number AS partNumber, p.price_usd AS price, i.url as images
         FROM `part` AS p 
         JOIN `image` AS i 
         ON (SELECT MIN(i.id) FROM `image` as i WHERE i.part_id=p.id)=i.id 
