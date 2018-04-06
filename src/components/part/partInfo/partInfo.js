@@ -10,7 +10,7 @@ const PartInfo = (props) => {
                 <hr/>                
                 <p className="productDescription">{props.partInfo.description}</p>
                 <p className="productCondition">Condition: {props.partInfo.condition}</p>
-                <p className="productLocation">Location: {props.partInfo.location}</p>
+                <p className="productLocation">Location: {props.partInfo.city + ', '+ props.partInfo.state}</p>
                 <p className="productSize">Size: {props.partInfo.size}</p>
                 <p>Selling by {props.partInfo.seller} > <a href="">Contact {props.partInfo.seller}</a></p>
                 <hr/>

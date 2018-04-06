@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 
-$ID = $_POST['id'];
+$ID = $_GET['id'];
 $imgQuery =  "SELECT url  FROM `image` WHERE part_id='$ID'";
 $imgResult =  mysqli_query($conn, $imgQuery);
 
