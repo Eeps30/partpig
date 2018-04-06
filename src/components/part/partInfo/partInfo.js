@@ -23,7 +23,7 @@ const PartInfo = (props) => {
     return (
         <div className={props.isDetails ? "productDetailsContainer":"productContainer"}>
             <span className="productBrand">{props.partInfo.brand}</span>
-            <h2 className="productTitle">{props.partInfo.title}</h2>
+            <h3 className="productTitle">{props.partInfo.title}</h3>
             <span><b>{props.partInfo.category} - {props.partInfo.make} {props.partInfo.model} {props.partInfo.year} </b></span>
             <p>Part # {props.partInfo.partNumber} </p>
             <p className="productPrice">${props.partInfo.price}</p>

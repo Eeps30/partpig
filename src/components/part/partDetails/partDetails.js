@@ -4,6 +4,7 @@ import ImageGallery from '../imageGallery/imageGallery';
 import PartInfo from '../partInfo/partInfo';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
+import axios from 'axios';
 
 class PartDetails extends Component {
         
@@ -17,17 +18,18 @@ class PartDetails extends Component {
 
     componentDidMount(){
         const id = this.props.match.params.id;
-        // const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';       
-        // axios.get(url).then(resp=>{
-        //         console.log('result is: ', resp.data.data);                
-        //         this.setState({
-        //             partInfo:resp.data.data,
-        //             isLoading: true            
-        //         }); 
-        //     }).catch(err => {
-        //         console.log('error is: ', err);
-        //     }
-        // ); 
+        const url = 'http://localhost:8000/teampartpig/src/assets/php/singleItemDetail.php';
+        const params = {id};      
+        axios.get(url,{params}).then(resp=>{
+                console.log('result is: ', resp.data.data);                
+                this.setState({
+                    partInfo:resp.data.data,
+                    isLoading: true            
+                }); 
+            }).catch(err => {
+                console.log('error is: ', err);
+            }
+        ); 
     } 
 
     render(){
