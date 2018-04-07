@@ -5,22 +5,26 @@ class MakeDropDown extends Component {
     constructor(props){
         super(props)
 
-        this.makeRows = this.makeRows.bind(this)
+        this.renderRows = this.renderRows.bind(this);
     }
 
-    makeRows(){
-        const listOfMakes = Object.keys( this.props.data.make );
-        return listOfMakes.map( (item, index) => <GenerateMakeRows key={index} callback={(event) => {this.handleChange(item)}} label={item}/>)
-    }
-
-    handleChange(label){
+    handleChildClick(label){
         this.props.makeSelect(label)
     }
 
+    renderRows(){
+        const listOfMakes = Object.keys( this.props.data.make );
+        console.log(listOfMakes);
+        const generatedRows = listOfMakes.map( (item, index) => <GenerateMakeRows key={index} callback={this.handleChildClick(item)} label={item}/>)
+        return generatedRows;
+    }
+
     render(){
+        
         return(
-            <select onChange={(event) => this.handleChange ({value: event.target.value})}>
-                {this.makeRows()}
+            <select>
+                <option onClick={this.renderRows} selected="Make" disabled="disabled">Select A Make</option>
+                {this.renderRows}
             </select>
         )
     }
