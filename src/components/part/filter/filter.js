@@ -1,27 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './filter.css'
 import PriceFilter from './priceFilter';
 import BrandFilter from './brandFilter';
+import {Link} from 'react-router-dom';
 
-class Filter extends Component{
+const Filter = (props) =>{
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-            filters: props.filters
-        }
-    }
-
-    render(){
-
-        return (
-            <div className='filter'>
-                <BrandFilter brands = {this.state.filters['brands']} filterMethod = {this.props.filterBrandMethod} />
-                <PriceFilter prices = {this.state.filters['prices']} filterMethod = {this.props.filterPriceMethod}/>                
-            </div>
-        )
-    }
+    return (
+        <div className='filter'>
+            <Link to="/"> Go Back </Link>
+            <BrandFilter history={props.history} filters = {props.filters} filterMethod = {props.filterBrandMethod} />
+            <PriceFilter history={props.history} filters = {props.filters} filterMethod = {props.filterPriceMethod}/>                
+        </div>
+    )
+    
 }
 
 export default Filter;

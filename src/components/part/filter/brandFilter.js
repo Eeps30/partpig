@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router';
 
 class BrandFilter extends Component{
 
@@ -6,9 +7,10 @@ class BrandFilter extends Component{
         super(props);
 
         this.state = {
-            brands: props.brands
+            brands: props.filters['brands'][0]
         }
 
+        this.newFilters = props.filters;
         this.checkElement = this.checkElement.bind(this);
     }
 
@@ -33,7 +35,9 @@ class BrandFilter extends Component{
         if(count===array.length){
             all = true;
         }
-        this.props.filterMethod(array,all);
+        this.newFilters['brands'][0] = array;
+        this.newFilters['brands'][1] = all;
+        this.props.history.push('/partresults/'+JSON.stringify(this.newFilters));
     }
 
     render(){

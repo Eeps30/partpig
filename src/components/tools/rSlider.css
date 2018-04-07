@@ -97,7 +97,7 @@
 .rs-container .rs-scale span ins {
     color: #333;
     display: inline-block;
-    font-size: 12px;
+    font-size: 1.2em;
     margin-top: 20px;
     text-decoration: none;
 }
@@ -105,19 +105,16 @@
     color: #999;
 }
 .rs-tooltip {
-    color: #333;
-    width: auto;
-    min-width: 60px;
-    height: 30px;
+    color: #333;    
     background: #fff;
     border: 1px solid #00969b;
     border-radius: 3px;
     position: absolute;
-    transform: translate(-50%, -35px);
+    transform: translate(-50%, -114%);
     left: 13px;
     text-align: center;
-    font-size: 13px;
-    padding: 6px 10px 0;
+    font-size: 1.2em;
+    padding: 4px 8px;
 }
 .rs-container.disabled .rs-tooltip {
     border-color: #ccc;

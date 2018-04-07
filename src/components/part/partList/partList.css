@@ -6,9 +6,10 @@
 
 .partList{
     display: inline-block;
-    width: 85%;
+    width: 83%;
     height: 100%;
     overflow-y: scroll;
+    margin-left: 2%;
 }
 
 .partList::-webkit-scrollbar {
@@ -16,9 +17,10 @@
 }
 
 .singlePart{
-    display: inline-block;
-    width: 30%;
-    height: 65%;
+    display: inline-block;    
+    vertical-align: top;
+    width: 22%;
+    height: 45%;
     margin-top: 2%;
     padding: 1%;
     box-sizing: border-box;
