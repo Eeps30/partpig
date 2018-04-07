@@ -46,8 +46,16 @@ class PartList extends Component{
     }
 
     componentDidMount(){
+
+        const {make,model,year} = this.props.match.params;
+        const params = {make,model,year};
         const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
-        axios.get(url).then(resp=>{
+        axios.get(url,{params}).then(resp=>{
+                try {
+                    this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
+                } catch (error) {
+                    console.log('error is: ', err);
+                }
                 this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
                 this.setState({
                     arrayParts:resp.data.data,
