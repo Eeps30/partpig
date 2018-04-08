@@ -41,6 +41,56 @@ let data = {
                     years: [2018, 1993, 1990]
                 }
             }
+        },
+        Subaru: {
+            model: {
+                Impreza: {
+                    years: [2005, 2008]
+                },
+                Impreza: {
+                    years: [2005, 2008]
+                }
+            }
+        },
+        Honda: {
+            model: {
+                Civic: {
+                    years: [2012, 2008]
+                },
+                Civic: {
+                    years: [2012, 2008]
+                }
+            }
+        },
+        Volkswagen: {
+            model: {
+                Jetta: {
+                    years: [1999, 1999]
+                },
+                Jetta: {
+                    years: [1999, 1999]
+                }
+            }
+        },
+        Jeep: {
+            model: {
+                Wrangler: {
+                    years: [2017]
+                },
+                Wrangler: {
+                    years: [2017,2017]
+                }
+            }
+        },       
+        Mercedes: {
+            model: {
+                    ml320: {
+                        years: [2002]
+                    },                
+                    ml320: {
+                        years: [2002,2002]
+                    }
+            }
         }
     }
 }

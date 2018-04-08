@@ -61,6 +61,10 @@ class DropDownContainer extends Component {
 
         var nextFieldToCheck = this.getEmptyData();
         console.log('field to check: ' + nextFieldToCheck);
+
+        const makeStr = this.state.make !== null ? '/' + this.state.make : '';
+        const modelStr = this.state.model !== null ? '/' + this.state.model : '';
+        const yearStr = this.state.year !== null ? '/' + this.state.year : '';
         
         return(
             <div className="pageContainer">
@@ -74,7 +78,7 @@ class DropDownContainer extends Component {
                             <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                             <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
                             <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                            <Link to="/partresults"> Search </Link>                    
+                            <Link to={"/partresults" + makeStr + modelStr + yearStr}> Search </Link>                    
                         </div>
                     </div>
                 </div>
