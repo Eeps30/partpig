@@ -4,7 +4,7 @@ require('./awsConnect.php');
 
 $sdk = new Aws\Sdk($sharedConfig);
 
-//temp for testing
+//defaults if post doesn't have user or image
 if(empty($_POST['username'])){
     $_POST['username'] = 'user1';
 }
@@ -29,11 +29,12 @@ try{
         'ACL'    => 'public-read',
         ]);
 
-        //list files in bucket
+    // list files in bucket
     //  $result =  $s3Client->listObjects([
     //      'Bucket' => 'teampartpig'
     //  ]);
-   // forEach($result->Keys as $item)
+    //     print_r($result);
+
     }
  catch (Aws\S3\Exception\S3Exception $e) {
     echo "There was an error uploading the file.\n";
@@ -43,8 +44,7 @@ try{
 $imageUrl = $result['ObjectURL'];
 echo $imageUrl;
 
-//uncomment if you need json output
-
+//if you need json output
 // $json_output = json_encode($imageUrl);
 // print($json_output);
 ?>
