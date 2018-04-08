@@ -8,7 +8,8 @@ $output = [
     'data' => []
 ];
 // default query
-$query =  "SELECT p.id, p.brand, p.part_name AS title, p.id AS category, p.make, p.model, p.year,                               p.part_number AS partNumber, p.price_usd AS price, i.url AS images
+$query =  "SELECT p.id, p.brand, p.part_name AS title, p.id AS category, p.make, p.model, p.year,                               
+                  p.part_number AS partNumber, p.price_usd AS price, i.url AS images
             FROM `part` AS p 
             JOIN `image` AS i 
             ON i.id=(SELECT MIN(im.id) FROM `image` as im 
