@@ -72,9 +72,11 @@ class DropDownContainer extends Component {
             <div className="pageContainer">
                 <div className="dropdownContainer">
                     <div className="dropdownMenu">
-                        <div className="buttonsContainer">
+                        <div className="searchBarContainer">
                             <SearchPartName/>
                             <SearchPartNumber/>
+                        </div>
+                        <div className="buttonsContainer">
                             <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                             <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
                             <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>

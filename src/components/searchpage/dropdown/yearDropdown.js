@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import GenerateRows from './generateMakeRows';
 import data from '../dataModel';
+import '../../searchpage/search.css';
 
 class YearDropdown extends Component {
     constructor(props){
@@ -25,7 +26,7 @@ class YearDropdown extends Component {
             const generatedRows = yearsString.map( (item, index) => <GenerateRows key={index} callback={() => {this.handleChange(item)}} label={item}/>)
 
             return(
-                <select onChange={(e) => {this.handleChildClick(e)}}>
+                <select className="yearDropdown" onChange={(e) => {this.handleChildClick(e)}}>
                     <option value="default" disabled="disabled">Select a Year</option>
                     {generatedRows}
                 </select>

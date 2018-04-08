@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../../searchpage/searchBars.css';
 
 class PartNameSearch extends Component {
     constructor(props){
@@ -29,7 +30,7 @@ class PartNameSearch extends Component {
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form className="searchName" onSubmit={this.handleSubmit}>
                 <label>
                     <input type="text" value={this.state.searchText} onChange={this.handleChange} placeholder='Search By Part Name'/>
                 </label>

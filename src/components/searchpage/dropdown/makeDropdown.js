@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import GenerateMakeRows from './generateMakeRows';
+import '../../searchpage/search.css';
 
 class MakeDropDown extends Component {
     constructor(props){
@@ -16,7 +17,7 @@ class MakeDropDown extends Component {
         const generatedRows = listOfMakes.map( (item, index) => <GenerateMakeRows key={index} callback={this.handleChildClick.bind(this)} label={item}/>)
         
         return(
-            <select defaultValue="default" onChange={(e)=>{this.handleChildClick(e)}}>
+            <select className="makeDropdown" defaultValue="default" onChange={(e)=>{this.handleChildClick(e)}}>
                 <option value="default" disabled="disabled">Select A Make</option>
                 {generatedRows}
             </select>

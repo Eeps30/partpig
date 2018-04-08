@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import GenerateRows from './generateMakeRows';
 import data from '../dataModel';
+import '../../searchpage/search.css';
 
 class ModelDropdown extends Component {
     constructor(props){
@@ -24,7 +25,7 @@ class ModelDropdown extends Component {
             const generatedRows = listOfModels.map( (item, index) => <GenerateRows key={index} callback={this.handleChildClick.bind(this)} label={item}/>)
 
             return(
-                <select defaultValue="default" onChange={(e) => this.handleChildClick(e)}>
+                <select className="modelDropdown" defaultValue="default" onChange={(e) => this.handleChildClick(e)}>
                     <option value="default" disabled="disabled">Select a Model</option>
                     {generatedRows}
                 </select>
