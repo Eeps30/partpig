@@ -1,33 +1,32 @@
 import React, {Component} from 'react';
 import GenerateRows from './generateMakeRows';
+import data from '../dataModel';
 
 class ModelDropdown extends Component {
     constructor(props){
         super(props)
-
-        this.makeRows = this.makeRows.bind(this)
     }
 
-    makeRows(props){
-        const listOfModels = Object.keys( this.props.data.make[this.props.selectedMake].model )
-        return listOfModels.map( (item, index) => <GenerateRows key={index} callback={() => {this.handleChange(item)}} label={item}/>)
-    }
-
-    handleChange(label){
-        this.props.modelSelect(label)
+    handleChildClick(event){
+        this.props.modelSelect(event.currentTarget.value)
     }
 
     render(props){
         if(this.props.selectedMake === null){
             return(
                 <select>
-                    <option>Model</option>
+                    <option>Select a Model</option>
                 </select>
             )
         }else if(this.props.selectedMake !== null){
+
+            const listOfModels = Object.keys( this.props.data.make[this.props.selectedMake].model );
+            const generatedRows = listOfModels.map( (item, index) => <GenerateRows key={index} callback={this.handleChildClick.bind(this)} label={item}/>)
+
             return(
-                <select onChange={(event) => this.handleChange ({value: event.target.value})}>
-                    {this.makeRows()}
+                <select defaultValue="default" onChange={(e) => this.handleChildClick(e)}>
+                    <option value="default" disabled="disabled">Select a Model</option>
+                    {generatedRows}
                 </select>
             )
         }

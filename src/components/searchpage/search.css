@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    width: 80vw;
+    width: 100vw;
     border: solid black 2px;
     margin: 0 auto;
     background-color: cadetblue;
@@ -14,13 +14,15 @@ body {
 }
 
 .dropdownContainer {
-    height: 85vh;
+    height: 90vh;
     border: solid blue 2px;
 }
 
 .dropdownMenu {
+    left: 17vw;
     position: relative;
     height: 40vh;
+    width: 65vw;
     border: solid green 2px;
     background-color: #294e4c;
     margin-top: 15vh;
@@ -41,6 +43,7 @@ body {
 }
 
 .buttonsContainer {
+    left: 12vw;
     margin-top: 12%;
     position: absolute;
     display: inline-block;

@@ -35,15 +35,14 @@ class DropDownContainer extends Component {
     }
 
     catchMakeSelect(selectedMake){
-        console.log("parent speaking", selectedMake);
-        const caughtMake = selectedMake.value
+        const caughtMake = selectedMake
         this.setState({
             make: caughtMake
         })
     }
 
     catchModelSelect(selectedModel){
-        const caughtModel = selectedModel.value
+        const caughtModel = selectedModel
         this.setState({
             model: caughtModel
         })
@@ -69,16 +68,12 @@ class DropDownContainer extends Component {
         
         return(
             <div className="pageContainer">
-                <header className="header">Part Pig</header>
                 <div className="dropdownContainer">
                     <div className="dropdownMenu">
-                        <div className="icon">
-                            <img src={mainLogo}/>
-                        </div>
                         <div className="buttonsContainer">
                             <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                            {/* <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
-                            <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/> */}
+                            <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
+                            <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                             <Link to={"/partresults" + makeStr + modelStr + yearStr}> Search </Link>                    
                         </div>
                     </div>
