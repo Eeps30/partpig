@@ -6,6 +6,8 @@ import data from './dataModel';
 import mainLogo from '../../assets/images/part1/subaruWheels2.jpg';
 import './search.css';
 import {Link} from 'react-router-dom';
+import SearchPartName from './dropdown/searchPartName';
+import SearchPartNumber from './dropdown/searchPartNumber';
 
 class DropDownContainer extends Component {
     constructor(props){
@@ -71,6 +73,8 @@ class DropDownContainer extends Component {
                 <div className="dropdownContainer">
                     <div className="dropdownMenu">
                         <div className="buttonsContainer">
+                            <SearchPartName/>
+                            <SearchPartNumber/>
                             <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                             <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
                             <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
