@@ -59,9 +59,9 @@ class SellPartForm extends Component{
     }
 
     sendToServer(){
-            const BASE_URL = "http://api.reactprototypes.com";
-            const API_KEY = "?key=testuser1234";
-            axios.post(`${BASE_URL}/todos${API_KEY}`, listingFormData).then(resp => {
+            const BASE_URL = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
+            // const API_KEY = "?key=testuser1234";
+            axios.post(BASE_URL, listingFormData).then(resp => {
                 console.log("Server Response:", resp);
             }).catch(err => {
                 console.log("There was an error:", err.message);
