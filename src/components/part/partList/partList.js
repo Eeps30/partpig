@@ -45,28 +45,36 @@ class PartList extends Component{
     }
 
     componentDidMount(){
-
-        const {make,model,year} = this.props.match.params;
-        const params = {make,model,year};
-        const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
-        axios.get(url,{params}).then(resp=>{
-                try {
+        
+        if (!this.state.isLoading) {
+            const {make,model,year} = this.props.match.params;
+            const params = {make,model,year};
+            const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
+            axios.get(url,{params}).then(resp=>{
+                    try {
+                        this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
+                    } catch (error) {
+                        console.log('error is: ', err);
+                    }
                     this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
-                } catch (error) {
+                    this.setState({
+                        arrayParts:resp.data.data,
+                        isLoading: true            
+                    });               
+                    
+                    this.filterPriceMethod(this.filters['prices'][1]);
+                    this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);  
+                    
+                    const filter = document.getElementsByClassName('filter');
+                    filter[0].classList.add("hidden");
+                    //call the component again with filters that way in the future when we change the filters
+                    //it's going to update no mount
+                    this.props.history.push('/partresults/'+JSON.stringify(this.filters));
+                }).catch(err => {
                     console.log('error is: ', err);
                 }
-                this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
-                this.setState({
-                    arrayParts:resp.data.data,
-                    isLoading: true            
-                });               
-                
-                this.filterPriceMethod(this.filters['prices'][1]);
-                this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);  
-            }).catch(err => {
-                console.log('error is: ', err);
-            }
-        ); 
+            ); 
+        }
     }
 
     componentWillUpdate(){
@@ -120,6 +128,14 @@ class PartList extends Component{
         });
     }
 
+    showFilters(){
+        const partList = document.getElementsByClassName('partList');
+        partList[0].classList.toggle("partListFilter");
+
+        const filter = document.getElementsByClassName('filter');
+        filter[0].classList.toggle("hidden");
+    }
+
     render(){
        
         if (!this.state.isLoading) {
@@ -142,6 +158,7 @@ class PartList extends Component{
                 <Filter history={this.props.history} filters={this.filters}/>
                 <div className='partList'> 
                     <div className='resultsBar'>
+                        <button className='button-link' onClick={this.showFilters}>Filters</button>
                         {list.length + ' Results'}
                     </div>                   
                     {list}

@@ -4,7 +4,13 @@
     margin-top: 4%;
     height: 100%;
     width: 15%;
+    transition: all 1s ease-in;
 }
+
+.hidden{
+    display: none;
+}
+
 
 .filterBrand{
     padding: 1%;  
