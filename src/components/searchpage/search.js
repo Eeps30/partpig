@@ -39,7 +39,9 @@ class DropDownContainer extends Component {
     catchMakeSelect(selectedMake){
         const caughtMake = selectedMake
         this.setState({
-            make: caughtMake
+            make: caughtMake,
+            model: null,
+            year: null
         })
     }
 
