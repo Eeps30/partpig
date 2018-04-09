@@ -44,7 +44,7 @@ class PartDetails extends Component {
         }
 
         return (
-            <div className="partDetails">
+            <div className="partDetails container">
                 <Link to={"/partresults/" + this.props.match.params.filters}><div>Back to results</div></Link>
                 <ImageGallery showList={true} mainImage = {this.state.partInfo.images[0]} imageList = {this.state.partInfo.images} />
                 <PartInfo partInfo={this.state.partInfo} isDetails={true}/>
