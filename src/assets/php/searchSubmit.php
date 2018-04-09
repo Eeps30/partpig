@@ -7,7 +7,7 @@ $output = [
     'error' => [],
     'data' => []
 ];
-$_GET['make']='subaru';
+// $_GET['make']='subaru';
 
 // default query
 // p.id AS category ???
