@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "./sellpart.css";
-import parts from '../part/partsData';
-import ImageUploader from '../imageUploader/imageUploader';
+// import ImageUploader from '../imageUploader/imageUploader';
 import axios from 'axios';
 
 
@@ -42,9 +41,9 @@ class SellPartForm extends Component{
         event.preventDefault();
         console.log('handleSubmit called, form values are:', this.state.form);
         const listingFormData = {
-                "make": "",
-                "model": "",
-                "year": 2015,
+                "make": this.state.form.make,
+                "model": this.state.form.model,
+                "year": this.state.form.year,
                 "partName": this.state.form.partName,
                 "brand": this.state.form.brand,
                 "price": this.state.form.price,
@@ -52,25 +51,26 @@ class SellPartForm extends Component{
                 "conditionRating": this.state.form.conditionRating,
                 "conditionDetails": this.state.form.conditionDetails,
                 "milage_used": "",
-                "purchase_date": "",
-                "category": "",
-                "description": "",
+                "category": this.state.form.category,
                 "images": [
                     this.state.form.firstImage
                 ],
                 "seller": this.state.form.username,
                 "partNumber": this.state.form.partNumber,
             }
-        validate(listingFormData);    
+            this.sendToServer(listingFormData);
+        // validate(listingFormData);    
     }
 
-    sendToServer(){      
-            const API_KEY = "";
-            const BASE_URL = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
-            axios.post(BASE_URL, listingFormData).then(resp => {
+    sendToServer(listingFormData){
+        console.log(listingFormData);
+        // const { partName, partNumber, fitment, firstImage, conditionRating, conditionDetails, username, password, brand, price, category, partYear, partMake, partModel } = listingFormData;
+        // const params = { partName, partNumber, fitment, firstImage, conditionRating, conditionDetails, username, password, brand, price, category, partYear, partMake, partModel };
+            const url = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
+            axios.post(url,{listingFormData}).then(resp=>{
                 console.log("Server Response:", resp);
             }).catch(err => {
-                console.log("There was an error:", err.message);
+                console.log("There was an error:");
             });
     }
 
@@ -91,32 +91,32 @@ class SellPartForm extends Component{
   
 
     render() {
-        const { partName, partNumber, fitment, firstImage, conditionRating, conditionDetails, username, password, brand, price, category } = this.state.form;
-            return(
+        const { partName, partNumber, fitment, firstImage, conditionRating, conditionDetails, username, password, brand, price, category, partYear, partMake, partModel } = this.state.form;
+        return(
                 <div className="sellPartForm">
                         <form onSubmit={this.handleSubmit}>
                             <div className="part-details">
                                 <h1>Part Details</h1>
                                 <div className="partName">
-                                    <label for="partName">Part Title<a className="required">*</a></label>
+                                    <label htmlFor="partName">Part Title<a className="required">*</a></label>
                                     <input onChange={this.handleInputChange} value={partName} name="partName" type="text" />
                                 </div>
                                 <div className="price">
-                                    <label for="price">Price<a className="required">*</a></label>
+                                    <label htmlFor="price">Price<a className="required">*</a></label>
                                     <input onChange={this.handleInputChange} value={price} name="price" type="text" />
                                 </div>
                                 <div className="partNumber">
-                                    <label for="partNumber">Part Number</label>
+                                    <label htmlFor="partNumber">Part Number</label>
                                     <input onChange={this.handleInputChange} value={partNumber} name="partNumber" type="text" />
                                 </div>
                                 <div className="brand">
-                                    <label for="brand">Brand</label>
+                                    <label htmlFor="brand">Brand</label>
                                     <select onChange={this.handleInputChange} value={brand} name="brand" type="text">
                                         <option value="Select Year">Select Brand</option>
                                     </select>    
                                 </div>
                                 <div className="category">
-                                    <label for="category">Category</label>
+                                    <label htmlFor="category">Category</label>
                                     <select onChange={this.handleInputChange} value={category} name="category" type="text">
                                         <option value="Select Year">Select Category</option>
                                     </select>    
@@ -125,20 +125,20 @@ class SellPartForm extends Component{
                             <div className="fitment">
                                 <h1>Vehicle Fitment</h1>    
                                 <div className="partYear">
-                                    <label for="partYear">Year</label>
-                                    <select onChange={this.handleInputChange} value={partNumber} name="partYear" type="text">
+                                    <label htmlFor="partYear">Year</label>
+                                    <select onChange={this.handleInputChange} value={partYear} name="partYear" type="text">
                                         <option value="Select Year">Select Year</option>
                                     </select>
                                 </div>
                                 <div className="partMake">
-                                    <label for="partmake">Make</label>
-                                    <select onChange={this.handleInputChange} value={partNumber} name="partMake" type="text">
+                                    <label htmlFor="partmake">Make</label>
+                                    <select onChange={this.handleInputChange} value={partMake} name="partMake" type="text">
                                         <option value="Select Make">Select Make</option>
                                     </select>
                                 </div>
                                 <div className="partModel">
-                                    <label for="partModel">Model</label>
-                                    <select onChange={this.handleInputChange} value={partNumber} name="partModel" type="text">
+                                    <label htmlFor="partModel">Model</label>
+                                    <select onChange={this.handleInputChange} value={partModel} name="partModel" type="text">
                                         <option value="Select Make">Select Make</option>
                                     </select>
                                 </div>
@@ -146,17 +146,17 @@ class SellPartForm extends Component{
                             <div className="part-condition">
                             <h1>Condition</h1>
                                 <div className="conditionRating">
-                                        <label for="conditionRating">Condition<a className="required">*</a></label>
+                                        <label htmlFor="conditionRating">Condition<a className="required">*</a></label>
                                         <input onChange={this.handleInputChange} value={conditionRating} name="conditionRating" type="text" />
                                 </div>
                                 <div className="conditionDetails">
-                                    <label for="conditionDetails">Condition Details</label>
+                                    <label htmlFor="conditionDetails">Condition Details</label>
                                     <textarea onChange={this.handleInputChange} value={conditionDetails} name="conditionDetails" type="text" />
                                 </div>
                             </div>
                             <div className="imageUpload">
                                 <h1>Pictures</h1>
-                                <ImageUploader/>
+                                {/* <ImageUploader/> */}
                             </div>                               
                             <div className="saleOptions">
                                 <h1>Pickup and Delivery</h1>
@@ -164,21 +164,21 @@ class SellPartForm extends Component{
                                     <p>Local Pickup Available</p>
                                     <input onChange={this.handleInputChange} id="localPickup" value="false" name="localPickup" type="checkbox"/>
                                     <div className="toggleButton">
-                                        <label for="localPickup"><i></i></label>
+                                        <label htmlFor="localPickup"><i></i></label>
                                     </div>
                                 </div>
                                 <div className="checkboxItem">
                                     <p>Shipping Available</p>
                                     <input onChange={this.handleInputChange} id="shippingAvailable" value="false" name="shippingAvailable" type="checkbox"/>
                                     <div className="toggleButton">
-                                        <label for="shippingAvailable"><i></i></label>
+                                        <label htmlFor="shippingAvailable"><i></i></label>
                                     </div>
                                 </div>
                                 <div className="checkboxItem">
                                     <p>Returns Accepted</p>
                                     <input onChange={this.handleInputChange} id="returnsAccepted" value="false" name="returnsAccepted" type="checkbox"/>
                                     <div className="toggleButton">
-                                        <label for="returnsAccepted"><i></i></label>
+                                        <label htmlFor="returnsAccepted"><i></i></label>
                                     </div>
                                 </div>
                             </div>
