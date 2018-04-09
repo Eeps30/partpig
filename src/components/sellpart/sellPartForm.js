@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "./sellpart.css";
-import parts from '../part/partsData';
 import axios from  'axios';
 
 

@@ -1,11 +1,11 @@
  
- a {
+ #menu a {
     text-decoration: none;
     color: #232323;
     transition: color 0.3s ease;
  }
  
- a:hover {
+ #menu a:hover {
     color: rgb(224, 34, 0);
  }
  
