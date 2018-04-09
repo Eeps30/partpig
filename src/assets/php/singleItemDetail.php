@@ -45,7 +45,6 @@ $query =  "SELECT
             JOIN `address` AS a
                 ON u.billing_address_id = a.id
             WHERE p.id = $ID";
->>>>>>> a4511dd24f8f9e942140791328fc7513110a8acf
         
 $result = mysqli_query($conn, $query);
 $output = [

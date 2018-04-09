@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
 require("mysql_conn.php");
 
 // partTitle: '',
