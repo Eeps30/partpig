@@ -7,8 +7,8 @@ const Part = (props) => {
     
     return (
         <div className="part">
-            <ImageGallery showList={false} mainImage = {props.partInfo.images[0]} />
-            <PartInfo partInfo={props.partInfo} isDetails={false}/>
+            <ImageGallery imageClass={props.imageClass} showList={false} mainImage = {props.partInfo.images[0]} />
+            <PartInfo isCart={props.isCart} removePart={props.removePart} infoClass={props.infoClass} partInfo={props.partInfo} isDetails={false}/>
         </div> 
     );
 }

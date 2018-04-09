@@ -57,6 +57,7 @@ class PartList extends Component{
                         console.log('error is: ', err);
                     }
                     this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
+                    this.props.saveFilters(this.filters);
                     this.setState({
                         arrayParts:resp.data.data,
                         isLoading: true            
@@ -146,7 +147,7 @@ class PartList extends Component{
             return ( 
                 <div key={index} className='singlePart'>
                     <Link to={"/partdetails/" + item.id + '/' + JSON.stringify(this.filters)}>
-                        <Part partInfo={item}/>
+                        <Part imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>
                     </Link>                    
                 </div>
             )           

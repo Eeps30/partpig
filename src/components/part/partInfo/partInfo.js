@@ -9,6 +9,7 @@ const PartInfo = (props) => {
     let details = '';   
     let buyButton = '';    
     let share = '';  
+    let removeButton = '';
     if(props.isDetails){
         details = (
             <div>
@@ -21,7 +22,7 @@ const PartInfo = (props) => {
         );
         buyButton = (
             <div className="addButton">                
-                <Link className='button-link' to={"/cart"}>Add to Cart</Link>
+                <button className='button-link' onClick={()=>props.addCart(props.partInfo)}>Add to Cart</button>
                 <Link className='button-link' to={"/checkout"}>Buy Now</Link>
             </div>
         );
@@ -30,16 +31,19 @@ const PartInfo = (props) => {
                 Share this <img src={email} /> <img src={fb} />
             </div>
         );
-
+    }
+    if(props.isCart){
+        removeButton = <button className='button-link' onClick={()=>props.removePart(props.partInfo)}>Remove</button>
     }
     return (
-        <div className={props.isDetails ? "productDetailsContainer":"productContainer"}>
+        <div className={props.infoClass}>
             {share}
             <span>{props.partInfo.brand}</span> <span className="partNumber">P/N: {props.partInfo.partNumber} </span>
             <h3 className="productTitle">{props.partInfo.title}</h3>
             <span><b>{props.partInfo.category} - {props.partInfo.make} {props.partInfo.model} {props.partInfo.year} </b></span>
             {buyButton}
-            <p className="productPrice">${props.partInfo.price}</p> 
+            <p className="productPrice">${props.partInfo.price} {removeButton}</p> 
+           
             {details}
         </div> 
     );

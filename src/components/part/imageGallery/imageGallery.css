@@ -17,6 +17,13 @@
     margin: 5%;
 }
 
+.imageCartContainer{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    text-align: center;
+}
+
 .imageList{    
     margin: 4% 0;
     width: 100%;
