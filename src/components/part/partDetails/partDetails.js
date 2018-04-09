@@ -36,18 +36,17 @@ class PartDetails extends Component {
 
         if (!this.state.isLoading) {
             return (
-                <div>
-                    <Link to={"/partresults/" + this.props.match.params.filters}><div>Back to results</div></Link>
+                <div>                    
                     <Loading />
                 </div>
             );
         }
 
         return (
-            <div className="partDetails">
+            <div className="partDetails container">
                 <Link to={"/partresults/" + this.props.match.params.filters}><div>Back to results</div></Link>
-                <ImageGallery showList={true} mainImage = {this.state.partInfo.images[0]} imageList = {this.state.partInfo.images} />
-                <PartInfo partInfo={this.state.partInfo} isDetails={true}/>
+                <ImageGallery imageClass='imageDetailsContainer' showList={true} mainImage = {this.state.partInfo.images[0]} imageList = {this.state.partInfo.images} />
+                <PartInfo infoClass='productDetailsContainer' partInfo={this.state.partInfo} addCart={this.props.addCart} isDetails={true}/>
             </div> 
         );
     }

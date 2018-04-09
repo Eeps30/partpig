@@ -5,6 +5,7 @@ import ImageUploader from '../imageUploader/imageUploader';
 import axios from 'axios';
 
 
+
 class SellPartForm extends Component{
 
     constructor(props){
@@ -63,10 +64,10 @@ class SellPartForm extends Component{
         validate(listingFormData);    
     }
 
-    sendToServer(){
-            const BASE_URL = "";
+    sendToServer(){      
             const API_KEY = "";
-            axios.post(`${BASE_URL}/todos${API_KEY}`, listingFormData).then(resp => {
+            const BASE_URL = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
+            axios.post(BASE_URL, listingFormData).then(resp => {
                 console.log("Server Response:", resp);
             }).catch(err => {
                 console.log("There was an error:", err.message);
