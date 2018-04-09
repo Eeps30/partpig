@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./sellpart.css";
 import parts from '../part/partsData';
 import ImageUploader from '../imageUploader/imageUploader';
-import axios from  'axios';
+import axios from 'axios';
 
 
 class SellPartForm extends Component{
@@ -15,8 +15,8 @@ class SellPartForm extends Component{
             partNumber: '',
             fitment: '',
             firstImage: '',
-            condition: '',
-            conditionBrief: '',
+            conditionRating: '',
+            conditionDetails: '',
             username: '',
             password: '',
             brand: ''
@@ -25,6 +25,7 @@ class SellPartForm extends Component{
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.validate = this.validate.bind(this);
     }      
 
     handleInputChange(event) {
@@ -59,16 +60,32 @@ class SellPartForm extends Component{
                 "seller": this.state.form.username,
                 "partNumber": this.state.form.partNumber,
             }
+        validate(listingFormData);    
     }
 
     sendToServer(){
-            const BASE_URL = "http://api.reactprototypes.com";
-            const API_KEY = "?key=testuser1234";
+            const BASE_URL = "";
+            const API_KEY = "";
             axios.post(`${BASE_URL}/todos${API_KEY}`, listingFormData).then(resp => {
                 console.log("Server Response:", resp);
             }).catch(err => {
                 console.log("There was an error:", err.message);
             });
+    }
+
+    validate(listingFormData){
+        const {partName, price} = listingFormData;
+        const errors = {};
+    
+        if(!partName){
+            console.log(errors);
+        }
+    
+        if(!price){
+            console.log(errors);
+        }
+    
+        console.log("no errors found");
     }
   
 
@@ -80,11 +97,11 @@ class SellPartForm extends Component{
                             <div className="part-details">
                                 <h1>Part Details</h1>
                                 <div className="partName">
-                                    <label for="partName">Part Title</label>
+                                    <label for="partName">Part Title<a className="required">*</a></label>
                                     <input onChange={this.handleInputChange} value={partName} name="partName" type="text" />
                                 </div>
                                 <div className="price">
-                                    <label for="price">Price</label>
+                                    <label for="price">Price<a className="required">*</a></label>
                                     <input onChange={this.handleInputChange} value={price} name="price" type="text" />
                                 </div>
                                 <div className="partNumber">
@@ -128,32 +145,44 @@ class SellPartForm extends Component{
                             <div className="part-condition">
                             <h1>Condition</h1>
                                 <div className="conditionRating">
-                                        <label for="conditionRating">Condition</label>
+                                        <label for="conditionRating">Condition<a className="required">*</a></label>
                                         <input onChange={this.handleInputChange} value={conditionRating} name="conditionRating" type="text" />
                                 </div>
                                 <div className="conditionDetails">
                                     <label for="conditionDetails">Condition Details</label>
                                     <textarea onChange={this.handleInputChange} value={conditionDetails} name="conditionDetails" type="text" />
                                 </div>
-                            </div>                               
-                            <div className="location">
-                                <h1>Location</h1>
-                                <div className="partName">
-                                    <label for="partName">Part Title</label>
-                                    <input onChange={this.handleInputChange} value={partName} name="partName" type="text" />
-                                </div>
-                                <div className="partNumber">
-                                    <label for="partNumber">Part Number</label>
-                                    <input onChange={this.handleInputChange} value={partNumber} name="partNumber" type="text" />
-                                </div>
-                                <div className="price">
-                                    <label for="price">Price</label>
-                                    <input onChange={this.handleInputChange} value={price} name="price" type="text" />
-                                </div>
                             </div>
                             <div className="imageUpload">
                                 <h1>Pictures</h1>
                                 <ImageUploader/>
+                            </div>                               
+                            <div className="saleOptions">
+                                <h1>Pickup and Delivery</h1>
+                                <div className="checkboxItem">
+                                    <p>Local Pickup Available</p>
+                                    <input onChange={this.handleInputChange} id="localPickup" value="false" name="localPickup" type="checkbox"/>
+                                    <div className="toggleButton">
+                                        <label for="localPickup"><i></i></label>
+                                    </div>
+                                </div>
+                                <div className="checkboxItem">
+                                    <p>Shipping Available</p>
+                                    <input onChange={this.handleInputChange} id="shippingAvailable" value="false" name="shippingAvailable" type="checkbox"/>
+                                    <div className="toggleButton">
+                                        <label for="shippingAvailable"><i></i></label>
+                                    </div>
+                                </div>
+                                <div className="checkboxItem">
+                                    <p>Returns Accepted</p>
+                                    <input onChange={this.handleInputChange} id="returnsAccepted" value="false" name="returnsAccepted" type="checkbox"/>
+                                    <div className="toggleButton">
+                                        <label for="returnsAccepted"><i></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="buttonContainer">
+                                <button className="postPart">List Your Part Now!</button>
                             </div>
                         </form>
                 </div>          
