@@ -12,9 +12,12 @@ import PartList from '../part/partList/partList';
 import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
 import Contact from '../contact/contact';
+import ContactSeller from '../contact/seller/contactSeller';
 import SellPart from '../sellpart/sellpart';
 import Login from '../login/login';
 import Search from '../searchpage/search';
+import Cart from '../cart/cart';
+import Checkout from '../checkout/checkout';
 
 
 class App extends Component{
@@ -35,6 +38,9 @@ class App extends Component{
                     <Route path='/partdetails/:id/:filters' component={PartDetails}/>
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>
+                    <Route path='/contactSeller' component={ContactSeller}/>
+                    <Route path='/cart' component={Cart}/>
+                    <Route path='/checkout' component={Checkout}/>
                     <Route path='/sellpart' component={SellPart}/>
                     <Route path='/login' component={Login}/>
                     <Footer/>  
