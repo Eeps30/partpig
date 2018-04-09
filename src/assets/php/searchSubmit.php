@@ -10,6 +10,7 @@ $output = [
 $_GET['make']='subaru';
 
 // default query
+// p.id AS category ???
 $query =  "SELECT p.id, 
                   p.brand, 
                   p.part_name AS title, 
@@ -22,32 +23,32 @@ $query =  "SELECT p.id,
                   i.url AS images
             FROM `part` AS p 
             JOIN `image` AS i 
-            ON i.id=
-            (
-                SELECT MIN(im.id) 
-                FROM `image` as im 
-                WHERE im.part_id=p.id
+                ON i.id=
+                (
+                    SELECT MIN(im.id) 
+                    FROM `image` as im 
+                    WHERE im.part_id=p.id
                 )";   
 
-$partsToCheck = ['make', 'model', 'year'];
+$fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
 $subQuery = [];
-forEach($partsToCheck as $value){
+
+forEach($fieldsToCheck as $value){
     if(!empty($_GET[$value])){
         $subQuery[] = " $value = '{$_GET[$value]}'";
     }
-    
 }
+
 if(count($subQuery)>0){
 	$query .= " WHERE ". implode(" AND ",$subQuery);
 }
 
-        
 $result = mysqli_query($conn, $query);
 // make a display object that we later add to each search result
 $display = new stdClass();
 $display->brand = 'true';
 $display->price = 'true';
-$ar = [];
+$ar = []; //@Brian: was $ar the old version of $row['images']? should we remove it? --Li, 04/08/18
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){

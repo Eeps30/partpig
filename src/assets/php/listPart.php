@@ -1,45 +1,45 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-require("mysql_conn.php");
-
-// partTitle: '',
-//             partNumber: '',
-//             fitment: '',
-//             firstImage: '',
-//             condition: '',
-//             conditionBrief: '',
-//             username: '',
-//             password: '',
-//             brand: ''
-
-$name = $_POST['partTitle'];
-$condition = $_POST['condition'];
-$username = $_POST['username'];
-$password =
-$query = "INSERT INTO `students` SET `name` = '$name', `course` = '$course', `grade` = '$grade'";
-
-header("Access-Control-Allow-Origin: *");
 require("mysqlConnect.php");
 require("sanitizeInput.php");
 
 //only do filter_var for email and phone
-//use array to list fields
 
-$part_name = filter_var(sanitizeInput(' 2nd test/<?\\\<Post>  '), FILTER_SANITIZE_STRING);
-$description = sanitizeInput('    ');
-$description = $description ?: 'Description was empty';
-$part_condition = filter_var(sanitizeInput('1 -- Heavily used'), FILTER_SANITIZE_STRING);
-$status = filter_var(sanitizeInput('For sale'), FILTER_SANITIZE_STRING);
-$brand = filter_var(sanitizeInput('testBrand'), FILTER_SANITIZE_STRING);
-$make = filter_var(sanitizeInput('testMake'), FILTER_SANITIZE_STRING);
-$model = filter_var(sanitizeInput('testModel'), FILTER_SANITIZE_STRING);
-$year = filter_var(sanitizeInput('2018'), FILTER_SANITIZE_STRING);
-$seller_id = filter_var(sanitizeInput(1), FILTER_SANITIZE_STRING);
-$price_usd = sanitizeInput(999);
-$listed_date = sanitizeInput(date("Y-m-d", time()));
+//hard-coded test $_POST data
+// $_POST['part_name'] = ' 2nd test/<?\\\<Post>  ';
+// $_POST['description'] = '    ';
+// $_POST['part_condition'] = '1 -- Heavily used';
+// $_POST['status'] = 'For sale';
+// $_POST['brand'] = 'testBrand';
+// $_POST['make'] = 'testMake';
+// $_POST['model'] = 'testModel';
+// $_POST['year'] = '2018';
+// $_POST['seller_id'] = 1;
+// $_POST['price_usd'] = 999;
+// $_POST['listed_date'] = date("Y-m-d", time());
+// remove above content for frontEnd testing
 
-$query = "INSERT INTO `part` 
-			SET `part_name` = '$part_name', `description` = '$description', `part_condition`='$part_condition',  `brand` = '$brand', `make`='$make', `model`='$model', `year`='$year', `seller_id`='$seller_id', `price_usd`='$price_usd', `listed_date`='$listed_date'";
+$fieldsToSanitize = ['part_name', 'description', 'part_condition', 'brand', 'make', 'model', 'year', 'seller_id', 'price_usd', 'listed_date'];
+
+$fields = [];
+forEach($fieldsToSanitize as $value){
+	 $fields[$value] = sanitizeInput($_POST[$value]);
+}
+$fields['description'] = $fields['description'] ?: 'There is no description for this part.';
+
+$query = "INSERT INTO `part` "; 
+
+$tableFields = '';
+$tableValues = '';
+forEach($fields as $key => $value){
+	$tableFields .= $key . ", ";
+	$tableValues .= "'" . $value . "', ";
+}
+
+$tableFields = "(" . substr($tableFields, 0, -2) . ")";
+$tableValues = "VALUES (" . substr($tableValues, 0, -2) . ")";
+
+$query .= $tableFields . $tableValues;
 $result = mysqli_query($conn, $query);
 $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);
