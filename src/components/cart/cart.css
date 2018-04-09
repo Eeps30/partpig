@@ -1,0 +1,39 @@
+.cartPartsContainer{
+    display: inline-block;
+    width: 60%;
+    margin: 2% 2.5%;
+    height: 90%;
+    overflow-y: auto;
+    background-color: lightsteelblue;
+    border-radius: 25px;
+}
+
+.cartPartsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.cartPart{
+    width: 45%;
+    height: 15%;
+    margin: 2%;
+    background-color: whitesmoke;
+    border-radius: 25px;
+    padding: 1%;
+}
+
+.cartTotal{
+    display: inline-block;
+    font-size: 2em;
+    width: 28%;
+    height: 90%;
+    margin: 2% 2.5%;
+    background-color: whitesmoke;
+    border-radius: 25px;
+    padding: 1%;
+    vertical-align: top;
+}
+
+.emptyMessage{
+    text-align: center;
+    margin-top: 30%;
+}

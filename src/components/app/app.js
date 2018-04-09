@@ -23,7 +23,36 @@ import Checkout from '../checkout/checkout';
 class App extends Component{
 
     constructor(props){
-        super(props);        
+        super(props);     
+        this.state = {
+            cartParts: []
+        }   
+
+        this.addPart = this.addPart.bind(this);
+        this.removePart = this.removePart.bind(this);
+        this.saveFilters = this.saveFilters.bind(this);
+        this.filters = [];
+    }
+
+    addPart(partInfo){
+        const partList = [...this.state.cartParts];
+        partList.indexOf(partInfo) === -1 ? partList.push(partInfo) : '';
+        this.setState({
+            cartParts: partList
+        });
+    }
+
+    removePart(partInfo){
+        const partList = [...this.state.cartParts];
+        const index = partList.indexOf(partInfo);
+        partList.splice(index,1);
+        this.setState({
+            cartParts: partList
+        });
+    }
+
+    saveFilters(filters){
+        this.filters = filters;
     }
 
     render(){
@@ -32,14 +61,14 @@ class App extends Component{
                 <div className='mainContainer'>
                     <Header/>            
                     <Route exact path='/' component={Search}/>
-                    <Route exact path='/partresults' component={PartList} />
-                    <Route exact path='/partresults/:filters' component={PartList} />
-                    <Route path='/partresults/:make/:model/:year' component={PartList} />                    
-                    <Route path='/partdetails/:id/:filters' component={PartDetails}/>
+                    <Route exact path='/partresults' render={props => <PartList saveFilters={this.saveFilters} {...props}/>} />
+                    <Route exact path='/partresults/:filters' render={props => <PartList saveFilters={this.saveFilters} {...props}/>} />
+                    <Route path='/partresults/:make/:model/:year' render={props => <PartList saveFilters={this.saveFilters} {...props}/>} />                    
+                    <Route path='/partdetails/:id/:filters' render={props => <PartDetails addCart={this.addPart} {...props}/>} />
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>
                     <Route path='/contactSeller' component={ContactSeller}/>
-                    <Route path='/cart' component={Cart}/>
+                    <Route path='/cart' render={props => <Cart cartParts={this.state.cartParts} removePart={this.removePart} filters={this.filters} {...props}/>}/>
                     <Route path='/checkout' component={Checkout}/>
                     <Route path='/sellpart' component={SellPart}/>
                     <Route path='/login' component={Login}/>
