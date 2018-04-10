@@ -7,6 +7,9 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 require("mysqlConnect.php");
 require("sanitizeInput.php");
 
+$entityBody = file_get_contents('php://input');
+$data = json_decode($entityBody, true);
+
 //only do filter_var for email and phone
 
 // hard-coded test $_POST data
@@ -30,7 +33,7 @@ $fieldsToSanitize = ['part_name', 'description', 'part_condition', 'brand', 'mak
 
 $fields = [];
 forEach($fieldsToSanitize as $value){
-	 $fields[$value] = sanitizeInput($_POST[$value]);
+	 $fields[$value] = sanitizeInput($data[$value]);
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
 $fields['make'] = $fields['make'] ?: 'Unknown Make';
@@ -55,7 +58,7 @@ $tableFields = "(" . substr($tableFields, 0, -2) . ")";
 $tableValues = "VALUES (" . substr($tableValues, 0, -2) . ")";
 
 $query .= $tableFields . $tableValues;
-print_r($query);
+// print_r($query);
 $result = mysqli_query($conn, $query);
 $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);
