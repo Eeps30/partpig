@@ -26,6 +26,21 @@
     margin-right: 5%;
 }
 
+.productCart{
+    display: inline-block;
+    width: 70%;
+    height: 100%;
+    font-size: 1.3em;
+    padding: 1%;
+    box-sizing: border-box;
+    text-align: left;
+    vertical-align: top;
+}
+
+.productCart button{
+    float: right;
+}
+
 .share{
     text-align: right;
     font-size: 0.75em;
@@ -60,9 +75,18 @@
 }
 
 .addButton a{
-    width: 40%;
-    text-align: center;
+    width: 44%;
     margin: 1%;
     float: right;
+    text-align: center;
 }
+
+.addButton button{
+    float: right;
+    width: 60%;
+    margin: 1%;
+    text-align: center;
+}
+
+
 
