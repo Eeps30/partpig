@@ -13,11 +13,12 @@ import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
 import Contact from '../contact/contact';
 import ContactSeller from '../contact/seller/contactSeller';
-import SellPart from '../sellpart/sellpart';
+import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
 import Search from '../searchpage/search';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
+import ListingSuccess from '../listingSuccess/listingSuccess';
 
 
 class App extends Component{
@@ -36,7 +37,9 @@ class App extends Component{
 
     addPart(partInfo){
         const partList = [...this.state.cartParts];
-        partList.indexOf(partInfo) === -1 ? partList.push(partInfo) : '';
+        partList.indexOf(partInfo) === -1 ? partList.push(partInfo) : '';    
+        const cartCount = document.getElementsByClassName('cartCount');
+        cartCount[0].textContent = partList.length;
         this.setState({
             cartParts: partList
         });
@@ -45,7 +48,9 @@ class App extends Component{
     removePart(partInfo){
         const partList = [...this.state.cartParts];
         const index = partList.indexOf(partInfo);
-        partList.splice(index,1);
+        partList.splice(index,1);       
+        const cartCount = document.getElementsByClassName('cartCount');
+        cartCount[0].textContent = partList.length;
         this.setState({
             cartParts: partList
         });
@@ -70,8 +75,9 @@ class App extends Component{
                     <Route path='/contactSeller' component={ContactSeller}/>
                     <Route path='/cart' render={props => <Cart cartParts={this.state.cartParts} removePart={this.removePart} filters={this.filters} {...props}/>}/>
                     <Route path='/checkout' component={Checkout}/>
-                    <Route path='/sellpart' component={SellPart}/>
+                    <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' component={Login}/>
+                    <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Footer/>  
                 </div>
             </Router>  
