@@ -4,7 +4,7 @@ import SellPartForm from "./sellPartForm"
 
 const SellPart = () => {
         return(
-                    <SellPartForm/>
+                <SellPartForm />
         );
     
     }      
