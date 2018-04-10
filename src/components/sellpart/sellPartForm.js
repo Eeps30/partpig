@@ -45,19 +45,19 @@ class SellPartForm extends Component{
                 "make": this.state.form.make,
                 "model": this.state.form.model,
                 "year": this.state.form.year,
-                "partName": this.state.form.partName,
+                "part_name": this.state.form.partName,
                 "brand": this.state.form.brand,
                 "price": this.state.form.price,
                 "location": "",
-                "conditionRating": this.state.form.conditionRating,
-                "conditionDetails": this.state.form.conditionDetails,
+                "part_condition": this.state.form.conditionRating,
+                "description": this.state.form.conditionDetails,
                 "milage_used": "",
                 "category": this.state.form.category,
                 "images": [
                     this.state.form.firstImage
                 ],
-                "seller": this.state.form.username,
-                "partNumber": this.state.form.partNumber,
+                "seller_id": this.state.form.username,
+                "part_number": this.state.form.partNumber,
             }
         this.sendToServer(listingFormData);
 
@@ -65,8 +65,6 @@ class SellPartForm extends Component{
 
     sendToServer(listingFormData){
         console.log(listingFormData);
-        // const { partName, partNumber, fitment, firstImage, conditionRating, conditionDetails, username, password, brand, price, category, partYear, partMake, partModel } = listingFormData;
-        // const params = { partName, partNumber, fitment, firstImage, conditionRating, conditionDetails, username, password, brand, price, category, partYear, partMake, partModel };
             const url = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
             axios.post(url,{listingFormData}).then(resp=>{
                 console.log("Server Response:", resp);
@@ -79,8 +77,8 @@ class SellPartForm extends Component{
         const {partName, price} = listingFormData;
         const errors = {};
     
-        if(!partName){
-            console.log(errors);
+        if(!listingFormData.partName){
+            console.log('Please input a part name');
         }
     
         if(!price){
