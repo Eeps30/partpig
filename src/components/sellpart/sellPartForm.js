@@ -63,7 +63,7 @@ class SellPartForm extends Component{
                 "description":  newPartData.description,
                 "milage_used": "",
                 "category":  newPartData.category,
-                "images": "",
+                "images": {imagePreviewUrl:newPartData.imagePreviewUrl, file:newPartData.file},
                 "seller_id":  newPartData.username,
                 "part_number":  newPartData.part_number,
             }
@@ -137,13 +137,18 @@ class SellPartForm extends Component{
                                 <div className="brand">
                                     <label htmlFor="brand">Brand</label>
                                     <select onChange={this.handleInputChange} value={brand} name="brand" type="text">
-                                        <option value="Select Year">Select Brand</option>
+                                        <option value="brand">Select Brand</option>
+                                        <option value="Perrin">Perrin</option>
+                                        <option value="Cosworth">Cosworth</option>
+                                        <option value="Forman">Forman</option>
                                     </select>    
                                 </div>
                                 <div className="category">
                                     <label htmlFor="category">Category</label>
                                     <select onChange={this.handleInputChange} value={category} name="category" type="text">
-                                        <option value="Select Year">Select Category</option>
+                                        <option value="category">Select Category</option>
+                                        <option value="Exhaust">Exhaust</option>
+                                        <option value="Suspension">Suspension</option>
                                     </select>    
                                 </div>
                             </div>    
@@ -152,19 +157,26 @@ class SellPartForm extends Component{
                                 <div className="partYear">
                                     <label htmlFor="year">Year</label>
                                     <select onChange={this.handleInputChange} value={year} name="year" type="text">
-                                        <option value="Select Year">Select Year</option>
+                                    <option value="year">Select Year</option>
+                                    <option value="2019">2019</option>
+                                    <option value="1904">1904</option>
                                     </select>
                                 </div>
                                 <div className="partMake">
                                     <label htmlFor="make">Make</label>
                                     <select onChange={this.handleInputChange} value={make} name="make" type="text">
-                                        <option value="Select Make">Select Make</option>
+                                        <option value="make">Select Make</option>
+                                        <option value="Subaru">Subaru</option>
+                                        <option value="Ferrari">Ferrari</option>
+                                        
                                     </select>
                                 </div>
                                 <div className="partModel">
                                     <label htmlFor="model">Model</label>
                                     <select onChange={this.handleInputChange} value={model} name="model" type="text">
-                                        <option value="Select Make">Select Make</option>
+                                        <option value="model">Select Make</option>
+                                        <option value="Impreza WRX STI">Impreza WRX STI</option>
+                                        <option value="Focus">Focus</option>
                                     </select>
                                 </div>
                             </div>
@@ -172,7 +184,14 @@ class SellPartForm extends Component{
                             <h1>Condition</h1>
                                 <div className="conditionRating">
                                         <label htmlFor="part_condition">Condition<a className="required">*</a></label>
-                                        <input onChange={this.handleInputChange} value={part_condition} name="part_condition" type="text" />
+                                        <select onChange={this.handleInputChange} value={part_condition} name="part_condition" type="text">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        
+                                    </select>
                                 </div>
                                 <div className="conditionDetails">
                                     <label htmlFor="description">Condition Details</label>
