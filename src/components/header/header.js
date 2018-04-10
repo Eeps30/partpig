@@ -16,7 +16,7 @@ const Header = (props) => (
         <Link to={"/cart"}><img src={cartIcon} className="cartIcon" /></Link>
         <Link to="/login"><img src={LoginIcon} className="login-icon"/></Link>
     </div>
-    <CartMessage partInfo={props.partInfo}/>
+    <CartMessage/>
     
  </header>
 );

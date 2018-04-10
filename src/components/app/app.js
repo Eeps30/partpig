@@ -32,13 +32,11 @@ class App extends Component{
         this.removePart = this.removePart.bind(this);
         this.saveFilters = this.saveFilters.bind(this);
         this.filters = [];
-        this.partInfo = {};
     }
 
     addPart(partInfo){
         const partList = [...this.state.cartParts];
-        partList.indexOf(partInfo) === -1 ? partList.push(partInfo) : '';
-        this.partInfo = partInfo;        
+        partList.indexOf(partInfo) === -1 ? partList.push(partInfo) : '';    
         const cartCount = document.getElementsByClassName('cartCount');
         cartCount[0].textContent = partList.length;
         this.setState({
@@ -65,7 +63,7 @@ class App extends Component{
         return (
             <Router>
                 <div className='mainContainer'>
-                    <Header partInfo = {this.partInfo}/>            
+                    <Header/>            
                     <Route exact path='/' component={Search}/>
                     <Route exact path='/partresults' render={props => <PartList saveFilters={this.saveFilters} {...props}/>} />
                     <Route exact path='/partresults/:filters' render={props => <PartList saveFilters={this.saveFilters} {...props}/>} />
