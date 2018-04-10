@@ -1,5 +1,8 @@
 <?php
-// header("Access-Control-Allow-Origin: *");
+//blunt fix, will refactor this when we upload to server
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 require("mysqlConnect.php");
 require("sanitizeInput.php");
