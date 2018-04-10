@@ -4,6 +4,16 @@ import {Link} from 'react-router-dom';
 import fb from '../../../assets/images/facebook.png';
 import email from '../../../assets/images/email.png';
 
+function addCart(props){
+    props.addCart(props.partInfo);
+    if(props.history){
+        props.history.push('/partresults/'+props.filters);
+    }
+    //Show a message to confirm we add the part to the cart
+    const cartMessage = document.getElementsByClassName('cartMessageContainer');
+    cartMessage[0].classList.add("show_block");
+}
+
 const PartInfo = (props) => {
 
     let details = '';   
@@ -22,7 +32,7 @@ const PartInfo = (props) => {
         );
         buyButton = (
             <div className="addButton">                
-                <button className='button-link' onClick={()=>props.addCart(props.partInfo)}>Add to Cart</button>
+                <button className='button-link' onClick={()=>{addCart(props)}}>Add to Cart</button>
                 <Link className='button-link' to={"/checkout"}>Buy Now</Link>
             </div>
         );
@@ -42,8 +52,7 @@ const PartInfo = (props) => {
             <h3 className="productTitle">{props.partInfo.title}</h3>
             <span><b>{props.partInfo.category} - {props.partInfo.make} {props.partInfo.model} {props.partInfo.year} </b></span>
             {buyButton}
-            <p className="productPrice">${props.partInfo.price} {removeButton}</p> 
-           
+            <p className="productPrice">${props.partInfo.price} {removeButton}</p>            
             {details}
         </div> 
     );
