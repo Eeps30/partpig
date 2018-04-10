@@ -9,38 +9,32 @@ body {
     height: 8vh;
     border: solid red 2px;
     font-size: 65px;
-    text-decoration: underline;
-}
-
-.dropdownContainer {
-    height: 90vh;
-    border: solid blue 2px;
 }
 
 .dropdownMenu {
-    border-radius: 20px;
-    left: 10vw;
+    border-radius: 10px;
+    left: 20vw;
     position: relative;
-    height: 45vh;
-    width: 80vw;
-    border: solid green 2px;
+    height: 25vh;
+    width: 60vw;
     background-color: rgb(88, 90, 94);
-    margin-top: 15vh;
+    margin-top: 20vh;
 }
 
 .buttonsContainer {
-    height: 36%;
+    height: 85%;
     width: 90%;
-    margin-left: 50px;
+    margin: auto;
 }
 
 .buttonsContainer select {
-    width: 33.33%;
+    width: 31.3%;
     height: 60px;
+    margin: 10px;
+    margin-top: 50px;
 }
 
 .searchBarContainer {
-    margin-top: 60px;
     margin-left: 50px;
     width: 90%;
     height: 30%;
@@ -50,6 +44,28 @@ body {
     height: 60px;
 }
 
+.searchButton {
+    border-radius: 10px;
+    background-color: rgb(244,67,54);
+    float: right;
+    margin-top: 40px;
+    margin-right: 50px;
+}
+
 .searchButton a {
     color: white;
+}
+
+.alternateSearch {
+    margin-top: 50px;
+    display: inline-block;
+    font-size: large;
+    color: white;
+    width: 60%;
+}
+
+.alternateSearch span {
+    margin-left: 100px;
+    margin-right: 0px;
+    text-decoration: underline;
 }
