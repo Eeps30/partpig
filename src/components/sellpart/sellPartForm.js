@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import "./sellpart.css";
-// import ImageUploader from '../imageUploader/imageUploader';
+import ImageUpload from '../imageUploader/imageUploader';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
+import ListingSuccess from "../listingSuccess/listingSuccess";
 
 
 
@@ -11,21 +13,28 @@ class SellPartForm extends Component{
         super(props);
         this.state = {
             form: {
-            partTitle: '',
-            partNumber: '',
+            part_name: '',
+            part_number: '',
             fitment: '',
-            firstImage: '',
-            conditionRating: '',
-            conditionDetails: '',
+            images: '',
+            part_condition: '',
+            description: '',
             username: '',
             password: '',
-            brand: ''
+            brand: '',
+            file: '',
+            imagePreviewUrl: '',
+            year: '',
+            make: '',
+            model: '',
+            price: ''
             }
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.validate = this.validate.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
     }      
 
     handleInputChange(event) {
@@ -38,48 +47,49 @@ class SellPartForm extends Component{
     }
 
     handleSubmit(event) {
+        const newPartData = this.state.form;
+        console.log('handle uploading-', this.state.file)
         event.preventDefault();
-        console.log('handleSubmit called, form values are:', this.state.form);
+        console.log('handleSubmit called, form values are:',  newPartData);
         const listingFormData = {
-                "make": this.state.form.make,
-                "model": this.state.form.model,
-                "year": this.state.form.year,
-                "part_name": this.state.form.partName,
-                "brand": this.state.form.brand,
-                "price": this.state.form.price,
+                "make":  newPartData.make,
+                "model":  newPartData.model,
+                "year":  newPartData.year,
+                "part_name":  newPartData.part_name,
+                "brand": newPartData.brand,
+                "price":  newPartData.price,
                 "location": "",
-                "part_condition": this.state.form.conditionRating,
-                "description": this.state.form.conditionDetails,
+                "part_condition":  newPartData.part_condition,
+                "description":  newPartData.description,
                 "milage_used": "",
-                "category": this.state.form.category,
-                "images": [
-                    this.state.form.firstImage
-                ],
-                "seller_id": this.state.form.username,
-                "part_number": this.state.form.partNumber,
+                "category":  newPartData.category,
+                "images": "",
+                "seller_id":  newPartData.username,
+                "part_number":  newPartData.part_number,
             }
             this.sendToServer(listingFormData);
         // validate(listingFormData);    
     }
 
     sendToServer(listingFormData){
-        console.log(listingFormData);
+            console.log(listingFormData);
+
             const url = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
             axios.post(url,{listingFormData}).then(resp=>{
-                console.log("Server Response:", resp);
+                console.log("Server Response:", this);
+                // this.props.history.push('/listingsuccess');
             }).catch(err => {
                 console.log("There was an error:");
+                // this.props.history.push('/listingsuccess');
             });
     }
 
     validate(listingFormData){
         const {partName, price} = listingFormData;
         const errors = {};
-    
         if(!listingFormData.partName){
             console.log('Please input a part name');
         }
-    
         if(!price){
             console.log(errors);
         }
@@ -87,25 +97,42 @@ class SellPartForm extends Component{
         console.log("no errors found");
     }
   
+    handleImageChange(e) {
+        e.preventDefault();
+    
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        
+        reader.onloadend = () => {
+            const { form } = this.state;
+            form['file'] = file;
+            form['imagePreviewUrl'] = reader.result;
+            this.setState({
+                form: {...form}
+            });         
+        }
+    
+        reader.readAsDataURL(file);
+      }
 
     render() {
-        const { partName, partNumber, fitment, firstImage, conditionRating, conditionDetails, username, password, brand, price, category, partYear, partMake, partModel } = this.state.form;
+        const { part_name, part_number, fitment, firstImage, part_condition, description, username, password, brand, price, category, year, make, model,imagePreviewUrl } = this.state.form;
         return(
                 <div className="sellPartForm">
                         <form onSubmit={this.handleSubmit}>
                             <div className="part-details">
                                 <h1>Part Details</h1>
                                 <div className="partName">
-                                    <label htmlFor="partName">Part Title<a className="required">*</a></label>
-                                    <input onChange={this.handleInputChange} value={partName} name="partName" type="text" />
+                                    <label htmlFor="part_name">Part Title<a className="required">*</a></label>
+                                    <input onChange={this.handleInputChange} value={part_name} name="part_name" type="text" />
                                 </div>
                                 <div className="price">
                                     <label htmlFor="price">Price<a className="required">*</a></label>
                                     <input onChange={this.handleInputChange} value={price} name="price" type="text" />
                                 </div>
                                 <div className="partNumber">
-                                    <label htmlFor="partNumber">Part Number</label>
-                                    <input onChange={this.handleInputChange} value={partNumber} name="partNumber" type="text" />
+                                    <label htmlFor="part_number">Part Number</label>
+                                    <input onChange={this.handleInputChange} value={part_number} name="part_number" type="text" />
                                 </div>
                                 <div className="brand">
                                     <label htmlFor="brand">Brand</label>
@@ -123,20 +150,20 @@ class SellPartForm extends Component{
                             <div className="fitment">
                                 <h1>Vehicle Fitment</h1>    
                                 <div className="partYear">
-                                    <label htmlFor="partYear">Year</label>
-                                    <select onChange={this.handleInputChange} value={partYear} name="partYear" type="text">
+                                    <label htmlFor="year">Year</label>
+                                    <select onChange={this.handleInputChange} value={year} name="year" type="text">
                                         <option value="Select Year">Select Year</option>
                                     </select>
                                 </div>
                                 <div className="partMake">
-                                    <label htmlFor="partmake">Make</label>
-                                    <select onChange={this.handleInputChange} value={partMake} name="partMake" type="text">
+                                    <label htmlFor="make">Make</label>
+                                    <select onChange={this.handleInputChange} value={make} name="make" type="text">
                                         <option value="Select Make">Select Make</option>
                                     </select>
                                 </div>
                                 <div className="partModel">
-                                    <label htmlFor="partModel">Model</label>
-                                    <select onChange={this.handleInputChange} value={partModel} name="partModel" type="text">
+                                    <label htmlFor="model">Model</label>
+                                    <select onChange={this.handleInputChange} value={model} name="model" type="text">
                                         <option value="Select Make">Select Make</option>
                                     </select>
                                 </div>
@@ -144,17 +171,17 @@ class SellPartForm extends Component{
                             <div className="part-condition">
                             <h1>Condition</h1>
                                 <div className="conditionRating">
-                                        <label htmlFor="conditionRating">Condition<a className="required">*</a></label>
-                                        <input onChange={this.handleInputChange} value={conditionRating} name="conditionRating" type="text" />
+                                        <label htmlFor="part_condition">Condition<a className="required">*</a></label>
+                                        <input onChange={this.handleInputChange} value={part_condition} name="part_condition" type="text" />
                                 </div>
                                 <div className="conditionDetails">
-                                    <label htmlFor="conditionDetails">Condition Details</label>
-                                    <textarea onChange={this.handleInputChange} value={conditionDetails} name="conditionDetails" type="text" />
+                                    <label htmlFor="description">Condition Details</label>
+                                    <textarea onChange={this.handleInputChange} value={description} name="description" type="text" />
                                 </div>
                             </div>
                             <div className="imageUpload">
                                 <h1>Pictures</h1>
-                                {/* <ImageUploader/> */}
+                                <ImageUpload imagePreviewUrl={imagePreviewUrl} handleImageChange={this.handleImageChange}/>
                             </div>                               
                             <div className="saleOptions">
                                 <h1>Pickup and Delivery</h1>
