@@ -18,35 +18,38 @@ body {
 }
 
 .dropdownMenu {
-    left: 17vw;
+    border-radius: 20px;
+    left: 10vw;
     position: relative;
-    height: 40vh;
-    width: 65vw;
+    height: 45vh;
+    width: 80vw;
     border: solid green 2px;
-    background-color: #294e4c;
+    background-color: rgb(88, 90, 94);
     margin-top: 15vh;
 }
 
 .buttonsContainer {
-    display: table;
-    table-layout: fixed;
-    border: solid yellow 2px;
-    height: 50%;
-    width: 100%;
+    height: 36%;
+    width: 90%;
+    margin-left: 50px;
 }
 
 .buttonsContainer select {
-    display: table-cell;
-    text-align: center;
-    width: 30%;
+    width: 33.33%;
+    height: 60px;
 }
 
 .searchBarContainer {
-    width: 100%;
+    margin-top: 60px;
+    margin-left: 50px;
+    width: 90%;
     height: 30%;
-    border: solid red 2px;
 }
 
-.searchBarContainer a {
-    text-decoration-color: aqua;
+.searchBarContainer > form > label > input {
+    height: 60px;
+}
+
+.searchButton a {
+    color: white;
 }

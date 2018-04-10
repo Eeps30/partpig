@@ -48,7 +48,8 @@ class DropDownContainer extends Component {
     catchModelSelect(selectedModel){
         const caughtModel = selectedModel
         this.setState({
-            model: caughtModel
+            model: caughtModel,
+            year: null
         })
     }
 
@@ -82,7 +83,9 @@ class DropDownContainer extends Component {
                             <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                             <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
                             <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                            <Link to={"/partresults" + makeStr + modelStr + yearStr}> Search </Link>                    
+                            <div className="searchButton">
+                                <Link to={"/partresults" + makeStr + modelStr + yearStr}> Search </Link>
+                            </div>                    
                         </div>
                     </div>
                 </div>
