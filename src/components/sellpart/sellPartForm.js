@@ -58,7 +58,7 @@ class SellPartForm extends Component{
                 "year":  newPartData.year,
                 "part_name":  newPartData.part_name,
                 "brand": newPartData.brand,
-                "price":  newPartData.price,
+                "price_usd":  newPartData.price,
                 "location": "",
                 "part_condition":  newPartData.part_condition,
                 "description":  newPartData.description,
@@ -78,7 +78,7 @@ class SellPartForm extends Component{
 
             const url = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
             axios.post(url,{listingFormData}).then(resp=>{
-                console.log("Server Response:", this);
+                console.log("Server Response:", resp);
                 // this.props.history.push('/listingsuccess');
             }).catch(err => {
                 console.log("There was an error:");

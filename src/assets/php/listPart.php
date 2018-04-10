@@ -8,11 +8,11 @@ require("mysqlConnect.php");
 require("sanitizeInput.php");
 
 $entityBody = file_get_contents('php://input');
-$data = json_decode($entityBody, true);
+$request_data = json_decode($entityBody, true);
 
 //only do filter_var for email and phone
 
-// hard-coded test $_POST data
+// hard-coded test $_POST data **********************************************
 
 // $_POST['part_name'] = ' 3rd test/<?\\\<Post>  ';
 // $_POST['description'] = '    ';
@@ -27,28 +27,25 @@ $data = json_decode($entityBody, true);
 // $_POST['listed_date'] = date("Y-m-d", time());
 // $_POST['part_number'] = 'part#999';
 
-// remove above content for frontEnd testing
+// remove above content for frontEnd testing *********************************
 
 $fieldsToSanitize = ['part_name', 'description', 'part_condition', 'brand', 'make', 'model', 'year', 'seller_id', 'price_usd', 'part_number'];
 
 $fields = [];
 forEach($fieldsToSanitize as $value){
-	 $fields[$value] = sanitizeInput($data[$value]);
+	 $fields[$value] = sanitizeInput($request_data['listingFormData'][$value]);
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
-$fields['make'] = $fields['make'] ?: 'Unknown Make';
-$fields['model'] = $fields['model'] ?: 'Unkown Model';
-$fields['brand'] = $fields['brand'] ?: 'Unkown Brand';
-$fields['year'] = $fields['year'] ?: 1999;
-$fields['seller_id'] = $fields['seller_id'] ?: 1;
-$fields['part_condition'] = $fields['part_condition'] ?: '1 -- Heavily used';
+$fields['part_condition'] = (int)$fields['part_condition'];
+$fields['year'] = (int)$fields['year'];
 $fields['price_usd'] = (float)$fields['price_usd'];
+$fields['seller_id'] = (int)$fields['seller_id'];
 
 
 $query = "INSERT INTO `part` "; 
-
 $tableFields = '';
 $tableValues = '';
+
 forEach($fields as $key => $value){
 	$tableFields .= $key . ", ";
 	$tableValues .= "'" . $value . "', ";
@@ -58,13 +55,12 @@ $tableFields = "(" . substr($tableFields, 0, -2) . ")";
 $tableValues = "VALUES (" . substr($tableValues, 0, -2) . ")";
 
 $query .= $tableFields . $tableValues;
-// print_r($query);
 $result = mysqli_query($conn, $query);
 $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);
 if($result){
 	$last_id = mysqli_insert_id($conn);
-	echo "New record created successfully. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id;
+	echo "New record created successfully. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
 } else {
 	echo "Error: " . mysqli_error($conn);
 }
