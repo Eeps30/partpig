@@ -10,7 +10,6 @@ class ImageUpload extends Component {
         
       let {imagePreviewUrl} = this.props;
       let $imagePreview = null;
-      console.log('url',imagePreviewUrl);
       if (imagePreviewUrl) {
         $imagePreview = (<img className="imgThumb" src={imagePreviewUrl} />);
       } else {
