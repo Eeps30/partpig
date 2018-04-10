@@ -47,6 +47,11 @@ class PartList extends Component{
     componentDidMount(){
         
         if (!this.state.isLoading) {
+            setTimeout(()=>{
+                //hide the message that confirm we add a part to the cart
+                const cartMessage = document.getElementsByClassName('cartMessageContainer');
+                cartMessage[0].classList.remove("show_block");
+            },8000);
             const {make,model,year} = this.props.match.params;
             const params = {make,model,year};
             const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
@@ -147,7 +152,7 @@ class PartList extends Component{
             return ( 
                 <div key={index} className='singlePart'>
                     <Link to={"/partdetails/" + item.id + '/' + JSON.stringify(this.filters)}>
-                        <Part imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>
+                        <Part history={this.props.history} imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>
                     </Link>                    
                 </div>
             )           

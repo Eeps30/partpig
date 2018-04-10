@@ -13,9 +13,7 @@ const Cart = (props) => {
             total += item.price;
             return ( 
                 <div key={index} className='cartPart'> 
-                    <Link to={"/partdetails/" + item.part_id + '/' + JSON.stringify(props.filters)}>               
-                      <Part isCart={true} removePart={props.removePart} imageClass='imageCartContainer' infoClass='productCart' partInfo={item}/>    
-                    </Link>                               
+                      <Part isCart={true} removePart={props.removePart} imageClass='imageCartContainer' infoClass='productCart' partInfo={item} filters={props.filters}/>  
                 </div>
             )   
         }); 
