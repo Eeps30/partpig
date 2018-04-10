@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "./sellpart.css";
 
-import ImageUploader from '../imageUploader/imageUploader';
 
 import axios from 'axios';
 
@@ -60,6 +59,8 @@ class SellPartForm extends Component{
                 "seller": this.state.form.username,
                 "partNumber": this.state.form.partNumber,
             }
+        this.sendToServer(listingFormData);
+
     }
 
     sendToServer(listingFormData){
