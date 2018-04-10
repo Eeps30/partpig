@@ -16,7 +16,7 @@ $data = json_decode($entityBody, true);
 
 // $_POST['part_name'] = ' 3rd test/<?\\\<Post>  ';
 // $_POST['description'] = '    ';
-// $_POST['part_condition'] = '1 -- Heavily used';
+// $_POST['part_condition'] = '1';
 // $_POST['status'] = 'For sale';
 // $_POST['brand'] = 'testBrand';
 // $_POST['make'] = 'testMake';
@@ -63,7 +63,8 @@ $result = mysqli_query($conn, $query);
 $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);
 if($result){
-	echo "New record created successfully. Total rows affected: ", $rows_affected .".";
+	$last_id = mysqli_insert_id($conn);
+	echo "New record created successfully. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id;
 } else {
 	echo "Error: " . mysqli_error($conn);
 }
