@@ -40,31 +40,31 @@ class SellPartForm extends Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log('handleSubmit called, form values are:', this.state.form);
         const listingFormData = {
                 "make": this.state.form.make,
                 "model": this.state.form.model,
                 "year": this.state.form.year,
                 "part_name": this.state.form.partName,
                 "brand": this.state.form.brand,
-                "price": this.state.form.price,
-                "location": "",
+                "price_usd": this.state.form.price,
+                // "location": "",
                 "part_condition": this.state.form.conditionRating,
                 "description": this.state.form.conditionDetails,
-                "milage_used": "",
-                "category": this.state.form.category,
-                "images": [
-                    this.state.form.firstImage
-                ],
+                // "milage_used": "",
+                // "category": this.state.form.category,
+                // "images": [
+                //     this.state.form.firstImage
+                // ],
                 "seller_id": this.state.form.username,
                 "part_number": this.state.form.partNumber,
             }
+        console.log('handleSubmit called, form values are:', listingFormData);
+
         this.sendToServer(listingFormData);
 
     }
 
     sendToServer(listingFormData){
-        console.log(listingFormData);
             const url = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
             axios.post(url,{listingFormData}).then(resp=>{
                 console.log("Server Response:", resp);

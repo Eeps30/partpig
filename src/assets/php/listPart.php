@@ -9,7 +9,8 @@ require("sanitizeInput.php");
 
 //only do filter_var for email and phone
 
-//hard-coded test $_POST data
+// hard-coded test $_POST data
+
 // $_POST['part_name'] = ' 3rd test/<?\\\<Post>  ';
 // $_POST['description'] = '    ';
 // $_POST['part_condition'] = '1 -- Heavily used';
@@ -21,15 +22,25 @@ require("sanitizeInput.php");
 // $_POST['seller_id'] = 1;
 // $_POST['price_usd'] = 999;
 // $_POST['listed_date'] = date("Y-m-d", time());
+// $_POST['part_number'] = 'part#999';
+
 // remove above content for frontEnd testing
 
-$fieldsToSanitize = ['part_name', 'description', 'part_condition', 'brand', 'make', 'model', 'year', 'seller_id', 'price_usd', 'listed_date'];
+$fieldsToSanitize = ['part_name', 'description', 'part_condition', 'brand', 'make', 'model', 'year', 'seller_id', 'price_usd', 'part_number'];
 
 $fields = [];
 forEach($fieldsToSanitize as $value){
 	 $fields[$value] = sanitizeInput($_POST[$value]);
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
+$fields['make'] = $fields['make'] ?: 'Unknown Make';
+$fields['model'] = $fields['model'] ?: 'Unkown Model';
+$fields['brand'] = $fields['brand'] ?: 'Unkown Brand';
+$fields['year'] = $fields['year'] ?: 1999;
+$fields['seller_id'] = $fields['seller_id'] ?: 1;
+$fields['part_condition'] = $fields['part_condition'] ?: '1 -- Heavily used';
+$fields['price_usd'] = (float)$fields['price_usd'];
+
 
 $query = "INSERT INTO `part` "; 
 
@@ -44,6 +55,7 @@ $tableFields = "(" . substr($tableFields, 0, -2) . ")";
 $tableValues = "VALUES (" . substr($tableValues, 0, -2) . ")";
 
 $query .= $tableFields . $tableValues;
+print_r($query);
 $result = mysqli_query($conn, $query);
 $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);
