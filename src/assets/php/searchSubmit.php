@@ -28,11 +28,11 @@ $query =  "SELECT p.id,
                     SELECT MIN(im.id) 
                     FROM `image` as im 
                     WHERE im.part_id=p.id
-                )";   
+                )";
 
 $fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
 $subQuery = [];
-
+$subQuery[] = "p.status ='In cart' OR p.status='For sale'";
 forEach($fieldsToCheck as $value){
     if(!empty($_GET[$value])){
         $subQuery[] = " $value = '{$_GET[$value]}'";
