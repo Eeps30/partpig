@@ -1,7 +1,7 @@
 <?php
 //blunt fix, will refactor this when we upload to server
 header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 require("mysqlConnect.php");
@@ -55,6 +55,8 @@ $tableFields = "(" . substr($tableFields, 0, -2) . ")";
 $tableValues = "VALUES (" . substr($tableValues, 0, -2) . ")";
 
 $query .= $tableFields . $tableValues;
+echo "The Query was: ".$query;
+error_log("The Query was: ".$query , 0);
 $result = mysqli_query($conn, $query);
 $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);

@@ -51,7 +51,6 @@ class SellPartForm extends Component{
         const newPartData = this.state.form;
         console.log('handle uploading-', this.state.file)
         event.preventDefault();
-        console.log('handleSubmit called, form values are:',  newPartData);
         const listingFormData = {
                 "make":  newPartData.make,
                 "model":  newPartData.model,
@@ -77,7 +76,14 @@ class SellPartForm extends Component{
     sendToServer(listingFormData){
 
             const url = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
-            axios.post(url,{listingFormData}).then(resp=>{
+            axios({
+                url: url,
+                method: 'post',
+                data: {listingFormData}, 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(resp=>{
                 console.log("Server Response:", resp);
                 // this.props.history.push('/listingsuccess');
             }).catch(err => {
