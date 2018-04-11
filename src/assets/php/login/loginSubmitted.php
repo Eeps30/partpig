@@ -1,5 +1,8 @@
 <?php
- session_start();
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+session_start();
 require_once('../mysqlConnect.php');
 if(isset($_GET['logout'])){
     if(isset($_SESSION['userinfo'])){
@@ -15,7 +18,8 @@ $output = [
     'data' => []
 ];
 
-
+$output['error'][] = 'user in server '.$_POST;
+$output['error'][] = 'password in server '.$_POST['password'];
 if(isset($_POST['user'], $_POST['password'])){
     if(empty($_POST['user']) or empty($_POST['password'])){
         $output['error'][] ='is empty!!!!';
