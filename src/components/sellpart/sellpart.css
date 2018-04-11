@@ -1,9 +1,14 @@
 .sellPartForm {
-    margin: auto;
+    margin: 2% auto;
     width: 60%;
+    height: 96%;
     background-color: rgb(236, 236, 236);
     padding: 10px 10px 10px 10px;
+    overflow-y: auto;
+}
 
+.sellPartForm::-webkit-scrollbar {
+    display: none;
 }
 
 .sellPartForm label {

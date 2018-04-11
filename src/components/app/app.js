@@ -34,14 +34,35 @@ class App extends Component{
         this.filters = [];
     }
 
+    containsObject(obj, list) {        
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].id === obj.id) {
+                return true;
+            }
+        }    
+        return false;
+    }
+
     addPart(partInfo){
         const partList = [...this.state.cartParts];
-        partList.indexOf(partInfo) === -1 ? partList.push(partInfo) : '';    
-        const cartCount = document.getElementsByClassName('cartCount');
-        cartCount[0].textContent = partList.length;
-        this.setState({
-            cartParts: partList
-        });
+        if(!this.containsObject(partInfo,partList)){
+             //Show a message to confirm we add the part to the cart
+            const cartMessage = document.getElementsByClassName('cartMessageContainer');
+            cartMessage[0].classList.add("show_block");
+            partList.push(partInfo) 
+            const cartCount = document.getElementsByClassName('cartCount');
+            cartCount[0].textContent = partList.length;
+            setTimeout(()=>{
+                //hide the message that confirm we add a part to the cart
+                const cartMessage = document.getElementsByClassName('cartMessageContainer');
+                if(cartMessage.length > 0){
+                    cartMessage[0].classList.remove("show_block");
+                }
+            },6000);
+            this.setState({
+                cartParts: partList
+            });
+        }
     }
 
     removePart(partInfo){
@@ -65,9 +86,9 @@ class App extends Component{
                 <div className='mainContainer'>
                     <Header/>            
                     <Route exact path='/' component={Search}/>
-                    <Route exact path='/partresults' render={props => <PartList saveFilters={this.saveFilters} {...props}/>} />
-                    <Route exact path='/partresults/:filters' render={props => <PartList saveFilters={this.saveFilters} {...props}/>} />
-                    <Route path='/partresults/:make/:model/:year' render={props => <PartList saveFilters={this.saveFilters} {...props}/>} />                    
+                    <Route exact path='/partresults' render={props => <PartList saveFilters={this.saveFilters}  addCart={this.addPart} {...props}/>} />
+                    <Route exact path='/partresults/:filters' render={props => <PartList saveFilters={this.saveFilters}  addCart={this.addPart} {...props}/>} />
+                    <Route path='/partresults/:make/:model/:year' render={props => <PartList saveFilters={this.saveFilters}  addCart={this.addPart} {...props}/>} />                    
                     <Route path='/partdetails/:id/:filters' render={props => <PartDetails addCart={this.addPart} {...props}/>} />
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>
