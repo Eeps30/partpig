@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
 import './imageUploader.css'
+import Dropzone from 'react-dropzone'
  
 class ImageUpload extends Component {
     constructor(props) {
       super(props);      
     }
-  
+
+    onDrop(acceptedFiles, rejectedFiles) {
+      // do stuff with files...
+    }
+      
     render() {
-        
-      let {imagePreviewUrl} = this.props;
       let $imagePreview = null;
-      if (imagePreviewUrl) {
-        $imagePreview = (<img className="imgThumb" src={imagePreviewUrl} />);
+      console.log("images:", this.props.images)
+        if (this.props.images.length > 0) {
+          console.log("images:", this.props.images)
+        $imagePreview = this.props.images.map((item, index) => {
+          
+          return <img key={index} className="imgThumb" src={item.imagePreviewUrl} />
+        })
       } else {
-        $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+        console.log('NO IMAGES');
+        $imagePreview = (<div className="previewText">Please select an Image to Upload</div>);
       }
       return (
         <div className="previewComponent">
-        
+           <Dropzone onDrop={this.onDrop.bind(this)}>
+            <p>Try dropping some files here, or click to select files to upload.</p>
+          </Dropzone>
         <input className="fileInput" 
             type="file" 
-            onChange={(e)=>this.props.handleImageChange(e)} />
-        <button className="submitButton" 
-            type="submit" 
-            onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-          
+            onChange={(e)=>this.props.handleImageChange(e)} />          
           <div className="imgPreview">
             {$imagePreview}
           </div>
