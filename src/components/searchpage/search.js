@@ -14,7 +14,6 @@ class DropDownContainer extends Component {
         super(props)
 
         this.state = {
-            active: 'first',
             make: null,
             model: null,
             year: null
@@ -22,14 +21,6 @@ class DropDownContainer extends Component {
         this.catchMakeSelect = this.catchMakeSelect.bind(this)
         this.catchModelSelect = this.catchModelSelect.bind(this)
         this.catchYearSelect = this.catchYearSelect.bind(this)
-    }
-
-    handleClick(){
-        const active = this.state.active;
-        const newActive = active === 'first' ? 'second' : 'first';
-        this.setState({
-            active: newActive
-        })
     }
 
     getEmptyData(){
@@ -42,6 +33,7 @@ class DropDownContainer extends Component {
         return false
     }
 
+    //put if checks here ..... is initial value same as new one?
     catchMakeSelect(selectedMake){
         const caughtMake = selectedMake
         this.setState({
@@ -76,28 +68,24 @@ class DropDownContainer extends Component {
         const makeStr = this.state.make !== null ? '/' + this.state.make : '';
         const modelStr = this.state.model !== null ? '/' + this.state.model : '';
         const yearStr = this.state.year !== null ? '/' + this.state.year : '';
-
-        const { active } = this.state.active;
         
         return(
-            <div className="pageContainer">
-                <div className="dropdownContainer">
-                    <div className="dropdownMenu">
-                        <div className="buttonsContainer">
-                            <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                            <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
-                            <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                            <div className="alternateSearch">
-                                <span>SEARCH BY PART NAME</span>
-                                <span>SEARCH BY VIN NUMBER</span>
+            <div>
+                <div className="pageContainer">
+                    <div className="dropdownContainer">
+                        <div className="dropdownMenu">
+                            <div className="buttonsContainer">
+                                <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
+                                <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
+                                <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                                <button className="searchButton">
+                                    <Link to={"/partresults" + makeStr + modelStr + yearStr} style={{display: 'block', height: '100%'}}> FIND PARTS </Link>
+                                </button>  
                             </div>
-                            <button className="searchButton">
-                                <Link to={"/partresults" + makeStr + modelStr + yearStr} style={{display: 'block', height: '100%'}}> FIND PARTS </Link>
-                            </button>  
                         </div>
                     </div>
+                    <footer>Team Part Pig Copyright 2018</footer>
                 </div>
-                <footer>Team Part Pig Copyright 2018</footer>
             </div>
         )
     }

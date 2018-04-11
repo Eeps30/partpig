@@ -15,8 +15,8 @@ class YearDropdown extends Component {
     render(){
         if(this.props.selectedModel === null){
             return(
-                <select>
-                    <option>Select a Year</option>
+                <select defaultValue="default" placeholder="Select a Year">
+                    <option value="default" disabled="disabled">Select a Year</option>
                 </select>
             )
         }else if(this.props.selectedModel !== null){

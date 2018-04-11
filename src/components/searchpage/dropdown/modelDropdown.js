@@ -12,6 +12,10 @@ class ModelDropdown extends Component {
         this.props.modelSelect(event.currentTarget.value)
     }
 
+    // componentWillReceiveProps(props){
+    //     render(props)
+    // }
+
     render(props){
         if(this.props.selectedMake === null){
             return(
