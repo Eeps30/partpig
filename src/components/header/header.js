@@ -12,8 +12,8 @@ const Header = (props) => (
      <div className="logo-container">Part Pig</div>
      <div className="user-nav">
         <Link className="sellPartButton" to="/sellpart"> Sell Part</Link>
-        <span className='cartCount'>0</span>
-        <Link to={"/cart"}><img src={cartIcon} className="cartIcon" /></Link>
+        
+        <Link to={"/cart"}><div className="cartDivIcon"><img src={cartIcon} className="cartIcon" /><span className='cartCount'>0</span></div></Link>
         <Link to="/login"><img src={LoginIcon} className="login-icon"/></Link>
     </div>
     <CartMessage/>

@@ -63,16 +63,21 @@ header {
     border: 2px solid #f44336;
 }
 
-.cartIcon{
+.cartDivIcon{
+    position: relative;
+    top: 23%;
+    right: 1%;
     float: right;
-    height: 100%;
-    margin: .5em;
+}
+
+.cartIcon{   
+    height: 4vmin;
 }
 
 .cartCount{
     position: absolute;
-    top: 0.7%;
-    right: 1.4%;
+    top: -5%;
+    right: 37%;
     font-size: 1em;
     font-weight: bold;
     color: black;
