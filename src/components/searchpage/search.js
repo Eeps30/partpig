@@ -14,9 +14,9 @@ class DropDownContainer extends Component {
         super(props)
 
         this.state = {
-            make: null,
-            model: null,
-            year: null
+            make: 'default',
+            model: 'default',
+            year: 'default'
         }
         this.catchMakeSelect = this.catchMakeSelect.bind(this)
         this.catchModelSelect = this.catchModelSelect.bind(this)
@@ -26,7 +26,7 @@ class DropDownContainer extends Component {
     getEmptyData(){
         let checkFields = ['make', 'model', 'year']
         for(var i=0; i < checkFields.length; i++){
-            if(this.state[checkFields[i]] === null){
+            if(this.state[checkFields[i]] === 'default'){
                 return checkFields[i];
             }
         }
@@ -35,20 +35,26 @@ class DropDownContainer extends Component {
 
     //put if checks here ..... is initial value same as new one?
     catchMakeSelect(selectedMake){
-        const caughtMake = selectedMake
+        const caughtMake = selectedMake;
+        console.log('this is the caughtmake: ', caughtMake);
         this.setState({
             make: caughtMake,
             model: null,
-            year: null
-        })
+            year: 'default'
+        });
     }
 
     catchModelSelect(selectedModel){
         const caughtModel = selectedModel
         this.setState({
             model: caughtModel,
-            year: null
-        })
+            year: 'default'
+        });
+    }
+
+    handleTestSelect(event){
+        const value = event.currentTarget.value;
+        console.log('this is the value being selected: ', value);
     }
 
     catchYearSelect(selectedYear){
@@ -84,6 +90,10 @@ class DropDownContainer extends Component {
                             </div>
                         </div>
                     </div>
+                    <select onChange={(e)=>this.handleTestSelect(e)}>
+                        <option value='default'>Yo this is default</option>
+                        <option value='teddybear'>Yo this is teddy bear</option>
+                    </select>
                     <footer>Team Part Pig Copyright 2018</footer>
                 </div>
             </div>
