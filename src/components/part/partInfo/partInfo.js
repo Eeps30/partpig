@@ -8,10 +8,7 @@ function addCart(props){
     props.addCart(props.partInfo);
     if(props.history){
         props.history.push('/partresults/'+props.filters);
-    }
-    //Show a message to confirm we add the part to the cart
-    const cartMessage = document.getElementsByClassName('cartMessageContainer');
-    cartMessage[0].classList.add("show_block");
+    }   
 }
 
 const PartInfo = (props) => {
@@ -30,12 +27,7 @@ const PartInfo = (props) => {
                 <p>Seller: {props.partInfo.seller} <Link className='button-link' to={"/contactSeller"}>Contact</Link> </p>
             </div>           
         );
-        buyButton = (
-            <div className="addButton">                
-                <button className='button-link' onClick={()=>{addCart(props)}}>Add to Cart</button>
-                <Link className='button-link' to={"/checkout"}>Buy Now</Link>
-            </div>
-        );
+        
         share = (
             <div className='share'>
                 Share this <img src={email} /> <img src={fb} />
@@ -44,6 +36,10 @@ const PartInfo = (props) => {
     }
     if(props.isCart){
         removeButton = <button className='button-link' onClick={()=>props.removePart(props.partInfo)}>Remove</button>
+    }else{
+        buyButton = (                       
+            <button className='button-link addButton' onClick={()=>{addCart(props)}}>Add to Cart</button> 
+        );
     }
     return (
         <div className={props.infoClass}>
@@ -51,8 +47,8 @@ const PartInfo = (props) => {
             <span>{props.partInfo.brand}</span> <span className="partNumber">P/N: {props.partInfo.partNumber} </span>
             <h3 className="productTitle">{props.partInfo.title}</h3>
             <span><b>{props.partInfo.category} - {props.partInfo.make} {props.partInfo.model} {props.partInfo.year} </b></span>
-            {buyButton}
-            <p className="productPrice">${props.partInfo.price} {removeButton}</p>            
+            
+            <p className="productPrice">${props.partInfo.price} {buyButton} {removeButton}</p>           
             {details}
         </div> 
     );
