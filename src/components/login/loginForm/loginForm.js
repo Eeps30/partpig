@@ -3,13 +3,13 @@ import "./loginForm.css";
 
 const LoginForm = () => (
     <div className="loginForm">
-        <h2>Login with email address</h2>
-            <form action="login.php" method="post">
-                <label>Email address</label>
-                <input type="text" id="email" name="email" placeholder="Email address"/>
+        <h2>Login with username</h2>
+            <form action="http://localhost:8000/teampartpig/src/assets/php/login/loginSubmitted.php" method="POST">
+                <label>user</label>
+                <input type="text" id="email" name="user" placeholder="user"/>
                 <label>Password</label>
-                <input type="password" id="password" name="password" placeholder="Password"/>
-                <input type="submit" value="Login"/>
+                <input type="text" id="password" name="password" placeholder="Password"/>
+                <input type="submit" value="Submit"/>
             </form>
     </div>
 );
