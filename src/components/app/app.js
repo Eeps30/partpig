@@ -99,7 +99,7 @@ class App extends Component{
                     <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
-                    <Footer/>  
+                    {/* <Footer/>   */}
                 </div>
             </Router>  
         );
