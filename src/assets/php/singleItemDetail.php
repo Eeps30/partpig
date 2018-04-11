@@ -1,4 +1,5 @@
 <?php
+
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 
@@ -54,8 +55,10 @@ $output = [
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
+
             $row['images'] = $images;
             $row['price'] = (float)$row['price'];
+
             $output['data'][] = $row;
         }
     }
@@ -70,4 +73,5 @@ else{
 
 $json_output = json_encode($output);
 print($json_output);
+
 ?>

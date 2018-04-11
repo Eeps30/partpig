@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "./sellpart.css";
+
 import ImageUpload from '../imageUploader/imageUploader';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
@@ -65,14 +66,13 @@ class SellPartForm extends Component{
         const newPartData = this.state.form;
         console.log('handle uploading-', this.state.file)
         event.preventDefault();
-        console.log('handleSubmit called, form values are:',  newPartData);
         const listingFormData = {
                 "make":  newPartData.make,
                 "model":  newPartData.model,
                 "year":  newPartData.year,
                 "part_name":  newPartData.part_name,
                 "brand": newPartData.brand,
-                "price":  newPartData.price,
+                "price_usd":  newPartData.price,
                 "location": "",
                 "part_condition":  newPartData.part_condition,
                 "description":  newPartData.description,
@@ -82,16 +82,24 @@ class SellPartForm extends Component{
                 "seller_id":  newPartData.username,
                 "part_number":  newPartData.part_number,
             }
-            this.sendToServer(listingFormData);
-        // validate(listingFormData);    
+        console.log('handleSubmit called, form values are:', listingFormData);
+
+        this.sendToServer(listingFormData);
+
     }
 
     sendToServer(listingFormData){
-            console.log(listingFormData);
 
             const url = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
-            axios.post(url,{listingFormData}).then(resp=>{
-                console.log("Server Response:", this);
+            axios({
+                url: url,
+                method: 'post',
+                data: {listingFormData}, 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(resp=>{
+                console.log("Server Response:", resp);
                 // this.props.history.push('/listingsuccess');
             }).catch(err => {
                 console.log("There was an error:");
@@ -114,6 +122,7 @@ class SellPartForm extends Component{
   
     render() {
         const { part_name, part_number, fitment, images, part_condition, description, username, password, brand, price, category, year, make, model } = this.state.form;
+
         return(
                 <div className="sellPartForm">
                         <form onSubmit={this.handleSubmit}>
