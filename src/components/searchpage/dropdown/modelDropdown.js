@@ -12,24 +12,26 @@ class ModelDropdown extends Component {
         this.props.modelSelect(event.currentTarget.value)
     }
 
-    // componentWillReceiveProps(props){
-    //     render(props)
-    // }
+    componentWillReceiveProps(nextProps){
+        if(this.props.selectedMake && nextProps.selectedMake !== this.props.selectedMake){
+            this.props.modelSelect('default');
+        }
+    }
 
-    render(props){
+    render(){
         if(this.props.selectedMake === 'default'){
             return(
                 <select className="modelDropdown" defaultValue='default' placeholder="Select a Model">
                     <option value='default' disabled="disabled">Select a Model</option>
                 </select>
             )
-        }else if(this.props.selectedMake !== null){
+        }else if(this.props.selectedMake !== ''){
             const listOfModels = Object.keys( this.props.data.make[this.props.selectedMake].model );
             const generatedRows = listOfModels.map( (item, index) => <GenerateRows key={index} callback={this.handleChildClick.bind(this)} label={item}/>)
 
             return(
-                <select className="modelDropdown" defaultValue="default" placeholder="Select a Model" onChange={(e) => this.handleChildClick(e)}>
-                    <option value={null} disabled="disabled">Select a Model</option>
+                <select className="modelDropdown" defaultValue='default' placeholder="Select a Model" value={this.props.value} onChange={(e) => this.handleChildClick(e)}>
+                    <option value='default' disabled="disabled">Select a Model</option>
                     {generatedRows}
                 </select>
             )

@@ -23,41 +23,24 @@ class DropDownContainer extends Component {
         this.catchYearSelect = this.catchYearSelect.bind(this)
     }
 
-    getEmptyData(){
-        let checkFields = ['make', 'model', 'year']
-        for(var i=0; i < checkFields.length; i++){
-            if(this.state[checkFields[i]] === 'default'){
-                return checkFields[i];
-            }
-        }
-        return false
-    }
-
     //put if checks here ..... is initial value same as new one?
     catchMakeSelect(selectedMake){
         const caughtMake = selectedMake;
-        console.log('this is the caughtmake: ', caughtMake);
         this.setState({
             make: caughtMake,
-            model: null,
-            year: 'default'
+            model: 'default'
         });
     }
 
     catchModelSelect(selectedModel){
         const caughtModel = selectedModel
         this.setState({
-            model: caughtModel,
-            year: 'default'
+            model: caughtModel
         });
     }
 
-    handleTestSelect(event){
-        const value = event.currentTarget.value;
-        console.log('this is the value being selected: ', value);
-    }
-
     catchYearSelect(selectedYear){
+        console.log(selectedYear);
         const caughtYear = selectedYear.value
         this.setState({
             year: caughtYear
@@ -68,12 +51,9 @@ class DropDownContainer extends Component {
 
         const make = this.state.make
 
-        var nextFieldToCheck = this.getEmptyData();
-        console.log('field to check: ' + nextFieldToCheck);
-
-        const makeStr = this.state.make !== null ? '/' + this.state.make : '';
-        const modelStr = this.state.model !== null ? '/' + this.state.model : '';
-        const yearStr = this.state.year !== null ? '/' + this.state.year : '';
+        const makeStr = this.state.make !== 'default' ? '/' + this.state.make : '';
+        const modelStr = this.state.model !== 'default' ? '/' + this.state.model : '';
+        const yearStr = this.state.year !== 'default' ? '/' + this.state.year : '';
         
         return(
             <div>
@@ -82,18 +62,18 @@ class DropDownContainer extends Component {
                         <div className="dropdownMenu">
                             <div className="buttonsContainer">
                                 <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                                <ModelDropDown data={data} modelSelect={this.catchModelSelect} selectedMake={this.state.make}/>
-                                <YearDropDown data={data} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                                <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                                <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                                 <button className="searchButton">
                                     <Link to={"/partresults" + makeStr + modelStr + yearStr} style={{display: 'block', height: '100%'}}> FIND PARTS </Link>
-                                </button>  
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <select onChange={(e)=>this.handleTestSelect(e)}>
+                    {/* <select onChange={(e)=>this.handleTestSelect(e)}>
                         <option value='default'>Yo this is default</option>
                         <option value='teddybear'>Yo this is teddy bear</option>
-                    </select>
+                    </select> */}
                     <footer>Team Part Pig Copyright 2018</footer>
                 </div>
             </div>
