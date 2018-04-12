@@ -33,7 +33,7 @@ $fieldsToSanitize = ['part_name', 'description', 'part_condition', 'brand', 'mak
 
 $fields = [];
 forEach($fieldsToSanitize as $value){
-	 $fields[$value] = sanitizeInput($request_data['listingFormData'][$value]);
+	 $fields[$value] = sanitizeInput($request_data[$value]);
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
 $fields['part_condition'] = (int)$fields['part_condition'];
