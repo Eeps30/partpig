@@ -34,7 +34,7 @@ class PartDetails extends Component {
 
     render(){
 
-        let linkBack = <Link to={"/userdashboard/" + this.props.match.params.filters}><div>Back to results</div></Link>;
+        let linkBack = <Link to={"/userdashboard/" + this.props.match.params.filters}><div>Back to dashboard</div></Link>;
         if(this.props.match.params.filters){
             linkBack = <Link to={"/partresults/" + this.props.match.params.filters}><div>Back to results</div></Link>;
         }
@@ -51,7 +51,7 @@ class PartDetails extends Component {
             <div className="partDetails container">
                 {linkBack}
                 <ImageGallery imageClass='imageDetailsContainer' showList={true} mainImage = {this.state.partInfo.images[0]} imageList = {this.state.partInfo.images} />
-                <PartInfo cartParts={this.props.cartParts} history={this.props.history} infoClass='productDetailsContainer' partInfo={this.state.partInfo} addCart={this.props.addCart} isDetails={true} filters={this.props.match.params.filters}/>
+                <PartInfo isDashboard={this.props.isDashboard} cartParts={this.props.cartParts} history={this.props.history} infoClass='productDetailsContainer' partInfo={this.state.partInfo} addCart={this.props.addCart} isDetails={true} filters={this.props.match.params.filters}/>
             </div> 
         );
     }
