@@ -148,7 +148,7 @@ class PartList extends Component{
         let list = visibleParts.map((function(item,index){
             return ( 
                 <div key={index} className='singlePart'>                  
-                    <Part  addCart={this.props.addCart} filters={this.filters} history={this.props.history} imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>                                      
+                    <Part cartParts={this.props.cartParts} addCart={this.props.addCart} filters={this.filters} history={this.props.history} imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>                                      
                 </div>
             )           
         }).bind(this));
