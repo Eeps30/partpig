@@ -1,24 +1,9 @@
 import React, {Component} from 'react';
-import './userparts.css';
+import './userParts.css';
 import {Link} from 'react-router-dom';
 import Loading from '../loading/loading';
 import axios from 'axios';
 
-    // let total = 0;
-    // let list = <h1 className='emptyMessage'>You don't have any item added to the cart</h1>;
-    // let checkoutButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</Link>;
-
-    // if(props.cartParts.length > 0){
-    //     list = props.cartParts.map(function(item,index){
-    //         total += item.price;
-    //         return ( 
-    //             <div key={index} className='cartPart'> 
-    //                   <Part isCart={true} removePart={props.removePart} imageClass='imageCartContainer' infoClass='productCart' partInfo={item} filters={props.filters}/>  
-    //             </div>
-    //         )   
-    //     }); 
-    //     checkoutButton = <Link className='button-link' to={"/checkout"}>Proceed to checkout</Link>;
-    // }
 
 class UserParts extends Component {
         
@@ -57,13 +42,31 @@ class UserParts extends Component {
                 </div>
             );
         }
-        let part = this.state.partInfo[0];
-        console.log("part is", part)
-            return ( 
-                <div key={part.title} className='singlePart'>                  
-                    <h1>{part.title}</h1>                                      
-                </div>
-            )           
+
+        let part = this.state.partInfo;
+        const list = part.map((item,index)=>{
+            console.log("part is", item);
+            return  (
+                <Link key={index} to={"/partdetails/" + item.id }>  
+                    <div key={index} className="singlePart">
+                        <img src={item.images}></img>
+                        <div className="brand"> {item.brand} </div> <div className="partNumber">P/N: {item.partNumber}</div>
+                        <h3 className="productTitle">{item.title}</h3>
+                        <div className="category">{item.category}</div><div className="yearMakeModel"> {item.make} {item.model} {item.year}</div>
+                        <p className="productPrice">${item.price}</p>           
+                     </div>
+                </Link>        
+                     );
+        
+        }); 
+        
+        return  (
+            <div className="userPartsList">
+                <h1>Your active listings</h1>
+                {list}
+            </div>
+        );
+                    
     }
 }
 

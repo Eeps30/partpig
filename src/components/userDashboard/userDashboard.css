@@ -1,98 +1,13 @@
-.cartPartsContainer{
-    display: inline-block;
+.userPartsContainer{
     width: 60%;
-    margin: 2% 2.5%;
-    height: 90%;
+    margin: 2% auto;
+    height: 100%;
     overflow-y: auto;
-    background-color: lightsteelblue;
-    border-radius: 25px;
+    background-color: rgb(231, 231, 231);
+    border-radius: 5px;
 }
 
-.cartPartsContainer::-webkit-scrollbar {
+.userPartsContainer::-webkit-scrollbar {
     display: none;
 }
 
-.cartPart{
-    width: 45%;
-    height: 15%;
-    margin: 2%;
-    background-color: whitesmoke;
-    border-radius: 25px;
-    padding: 1%;
-}
-
-.cartTotal{
-    display: inline-block;
-    font-size: 2em;
-    width: 28%;
-    height: 90%;
-    margin: 2% 2.5%;
-    background-color: whitesmoke;
-    border-radius: 25px;
-    padding: 1%;
-    vertical-align: top;
-}
-
-.emptyMessage{
-    text-align: center;
-    margin-top: 30%;
-}
-
-.cartMessageContainer{
-    position: absolute;
-    right: 0%;
-    top: 5.9%;
-    width: 9%;
-    height: 1%;
-    background-color: lightgrey;
-    border-radius: 0.8em;
-    -webkit-border-radius: 0.8em;
-    -moz-border-radius: 0.8em;
-    transition: all 0.5s ease-in;
-    padding: 2%;
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #193282;
-    opacity: 0;
-}
-
-.cartMessageContainer.top:before {
-    top: -21%;
-    bottom: auto;
-    left: auto;
-    right: 5%;
-    border-width: 0 1.3em 1.3em;
-}
-.cartMessageContainer:before {
-    content: "";
-    position: absolute;
-    border-style: solid;
-    border-color: lightgrey transparent;
-    display: block;
-}
-
-
-.show_block{
-    opacity: 1;
-}
-
-.disabled{
-    -moz-box-shadow:inset 0px 1px 0px 0px darkgrey;
-	-webkit-box-shadow:inset 0px 1px 0px 0px darkgrey;
-	box-shadow:inset 0px 1px 0px 0px darkgrey;	
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-	border:1px solid darkgrey;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:0.75em;
-	padding:0.5em 1em;
-	text-decoration:none;
-    text-shadow:0px 1px 0px darkgrey;
-    background-color: gray;
-    opacity: 0.7;
-    cursor: default; 
-}
