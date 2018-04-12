@@ -21,7 +21,7 @@ class YearDropdown extends Component {
     render(){
         if(this.props.selectedModel === 'default'){
             return(
-                <select className="yearDropdown" defaultValue="default" placeholder="Select a Year">
+                <select readOnly value={this.props.selectedModel} className="yearDropdown" placeholder="Select a Year">
                     <option value="default" disabled="disabled">Select a Year</option>
                 </select>
             )
@@ -31,12 +31,12 @@ class YearDropdown extends Component {
             const generatedRows = yearsString.map( (item, index) => <GenerateRows key={index} callback={() => {this.handleChange(item)}} label={item}/>)
 
             return(
-                <select className="yearDropdown" defaultValue='default' placeholder="Select a Year" value={this.props.value} onChange={(e) => {this.handleChildClick(e)}}>
+                <select readOnly placeholder="Select a Year" value={this.props.value} onChange={(e) => {this.handleChildClick(e)}}>
                     <option value="default" disabled="disabled">Select a Year</option>
                     {generatedRows}
                 </select>
             )
-        }  
+        }
     }
 }
 
