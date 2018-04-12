@@ -11,9 +11,9 @@ $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
 
 //only do filter_var for email and phone
-require_once('./dataURITest.php');
+require_once('./addSingleImageToS3.php');
 // hard-coded test $_POST data **********************************************
-
+exit();
 // $_POST['part_name'] = ' 3rd test/<?\\\<Post>  ';
 // $_POST['description'] = '    ';
 // $_POST['part_condition'] = '1';

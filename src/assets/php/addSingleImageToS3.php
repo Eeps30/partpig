@@ -6,19 +6,29 @@ $sdk = new Aws\Sdk($sharedConfig);
 
 //defaults if post doesn't have user or image
 if(empty($_POST['username'])){
-    $_POST['username'] = 'user2';
+    $_POST['username'] = 'user1';
 }
-if(empty($_POST['image'])){
-    $_POST['image'] = '../images/part2/part2a.jpg';
+if(empty($request_data['images'][0])){
+    $request_data['images'][0] = '../images/part3/part3a.jpg';
 }
 
 $day = date('Y-m-d');
-// $unixTimestamp = (new DateTime())->format('U');
 $username = $_POST['username'];
-$image = $_POST['image'];
+$image = $request_data['images'][0];
 $filePath = "images/$day/$username";
 $previousFileName = 'listedImageName';
 $fileName = $previousFileName . time();
+
+define('UPLOAD_DIR', './uploads/');
+$img = $request_data['images'][0];
+$img = str_replace('data:image/png;base64,', '', $img);
+$data = base64_decode($img);
+$file = UPLOAD_DIR.$fileName.'.png';
+$success = file_put_contents($file,$data);
+
+if(!$success){
+die('unable to save file');
+}
 
 
 
@@ -27,7 +37,7 @@ try{
     $result =  $s3Client->putObject([
         'Bucket' => 'teampartpig',
         'Key'    => "$filePath/$fileName" ,
-        'Body'   => fopen($image, 'r'),
+        'Body'   => fopen($file, 'r'),
         'ACL'    => 'public-read',
         ]);
 
@@ -44,7 +54,7 @@ try{
 
 
 $imageUrl = $result['ObjectURL'];
-echo $imageUrl;
+
 
 //if you need json output
 // $json_output = json_encode($imageUrl);
