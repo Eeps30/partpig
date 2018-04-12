@@ -10,9 +10,7 @@ $output = [
     'error' => [],
     'data' => []
 ];
-$_GET['seller_id']= 2;
 
-// p.id AS category ???
 $query =  "SELECT p.id, 
                   p.brand, 
                   p.seller_id As seller,
