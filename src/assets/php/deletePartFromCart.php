@@ -9,6 +9,8 @@ $output = [
 ];
 
 $_GET['id'] = 2;
+$_GET['buyer_id'] = 2;
+
 if(!isset($_GET['id'])){
     $output['error'][] = 'Error: user id not specified';
 }
@@ -33,4 +35,20 @@ else{
 
 $json_output = json_encode($output);
 print($json_output);
+
+$buyer_id = $_GET['buyer_id'];
+
+$query2 = "DELETE FROM `order_meta`
+           WHERE `order_meta`.`buyer_id` = '$buyer_id'
+           ";
+
+$result2 = mysqli_query($conn, $query2);
+$rows_affected = mysqli_affected_rows($conn);
+if($result2){
+    $last_id = mysqli_insert_id($conn);
+    echo "New record created successfully in order_meta. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+mysqli_close($conn);
 ?>
