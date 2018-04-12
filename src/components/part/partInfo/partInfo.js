@@ -11,6 +11,15 @@ function addCart(props){
     }   
 }
 
+function containsObject(obj, list) {        
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].id === obj.id) {
+            return true;
+        }
+    }    
+    return false;
+}
+
 const PartInfo = (props) => {
 
     let details = '';   
@@ -37,9 +46,11 @@ const PartInfo = (props) => {
     if(props.isCart){
         removeButton = <button className='button-link' onClick={()=>props.removePart(props.partInfo)}>Remove</button>
     }else{
-        buyButton = (                       
-            <button className='button-link addButton' onClick={()=>{addCart(props)}}>Add to Cart</button> 
-        );
+        if(containsObject(props.partInfo,props.cartParts)){
+            buyButton = <button className='disabled addButton'>Added</button>;            
+        }else{
+            buyButton = <button className='button-link addButton' onClick={()=>{addCart(props)}}>Add to Cart</button>;
+        }
     }
     return (
         <div className={props.infoClass}>
@@ -53,5 +64,6 @@ const PartInfo = (props) => {
         </div> 
     );
 }
+
 
 export default PartInfo;

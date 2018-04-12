@@ -13,10 +13,12 @@ class PartList extends Component{
         super(props);
         this.state = {
             arrayParts:[],
-            isLoading: false            
+            isLoading: false,
+            showFilters: false            
         }
         this.filterBrandMethod = this.filterBrandMethod.bind(this);
         this.filterPriceMethod = this.filterPriceMethod.bind(this);
+        this.handleShowFilters = this.handleShowFilters.bind(this);
     }
 
     initFilters(parts){
@@ -129,12 +131,12 @@ class PartList extends Component{
         });
     }
 
-    showFilters(){
-        const partList = document.getElementsByClassName('partList');
-        partList[0].classList.toggle("partListFilter");
+    handleShowFilters(){
 
-        const filter = document.getElementsByClassName('filter');
-        filter[0].classList.toggle("hidden");
+        let showFilters = !this.state.showFilters;
+        this.setState({
+            showFilters: showFilters
+        });
     }
 
     render(){
@@ -146,7 +148,7 @@ class PartList extends Component{
         let list = visibleParts.map((function(item,index){
             return ( 
                 <div key={index} className='singlePart'>                  
-                    <Part  addCart={this.props.addCart} filters={this.filters} history={this.props.history} imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>                                      
+                    <Part cartParts={this.props.cartParts} addCart={this.props.addCart} filters={this.filters} history={this.props.history} imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>                                      
                 </div>
             )           
         }).bind(this));
@@ -154,10 +156,10 @@ class PartList extends Component{
         return (               
             <div className='partResults container'>
                 <Link to="/"> Go Back </Link>               
-                <Filter history={this.props.history} filters={this.filters}/>
-                <div className='partList'> 
+                <Filter update={this.state.showFilters} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} history={this.props.history} filters={this.filters}/>
+                <div className={this.state.showFilters ? 'partList partListFilter' : 'partList'}> 
                     <div className='resultsBar'>
-                        <button className='button-link' onClick={this.showFilters}>Filters</button>
+                        <button className='button-link' onClick={this.handleShowFilters}>Filters</button>
                         {list.length + ' Results'}
                     </div>                   
                     {list}
