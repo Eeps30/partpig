@@ -1,0 +1,20 @@
+.userDashboard{
+    margin: 2% auto;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.userPartsContainer{
+    width: 60%;
+    margin: 2% auto;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgb(250, 250, 250);
+    border-radius: 5px;
+}
+
+.userPartsContainer::-webkit-scrollbar {
+    display: none;
+}
+

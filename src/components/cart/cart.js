@@ -7,6 +7,7 @@ const Cart = (props) => {
 
     let total = 0;
     let list = <h1 className='emptyMessage'>You don't have any item added to the cart</h1>;
+    let checkoutButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</Link>;
 
     if(props.cartParts.length > 0){
         list = props.cartParts.map(function(item,index){
@@ -17,15 +18,17 @@ const Cart = (props) => {
                 </div>
             )   
         }); 
+        checkoutButton = <Link className='button-link' to={"/checkout"}>Proceed to checkout</Link>;
     }
     return (
         <div className="container">
+            <Link to={props.filters.length === 0 ? '/partresults' : '/partresults/'+JSON.stringify(props.filters)}><div>Back to results</div></Link>
             <div className="cartPartsContainer">
                 {list}                
             </div>
             <div className='cartTotal'>
                 <p><b>Total ({list.length} items):</b> ${total}</p>
-                <Link className='button-link' to={"/checkout"}>Proceed to checkout</Link>
+                {checkoutButton}
             </div>
         </div>
     );

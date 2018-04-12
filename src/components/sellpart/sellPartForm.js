@@ -17,14 +17,12 @@ class SellPartForm extends Component{
             part_name: '',
             part_number: '',
             fitment: '',
-            images: '',
+            images: [],
             part_condition: '',
             description: '',
             username: '',
             password: '',
             brand: '',
-            file: '',
-            imagePreviewUrl: '',
             year: '',
             make: '',
             model: '',
@@ -46,6 +44,23 @@ class SellPartForm extends Component{
             form: {...form}
         });
     }
+
+    handleImageChange(e) {
+        e.preventDefault();
+    
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        
+        reader.onloadend = () => {
+            const { form } = this.state;
+            form['images'].push({imagePreviewUrl:reader.result, file:file});
+            this.setState({
+                form: {...form}
+            });         
+        }
+    
+        reader.readAsDataURL(file);
+      }
 
     handleSubmit(event) {
         const newPartData = this.state.form;
@@ -105,26 +120,8 @@ class SellPartForm extends Component{
         console.log("no errors found");
     }
   
-    handleImageChange(e) {
-        e.preventDefault();
-    
-        let reader = new FileReader();
-        let file = e.target.files[0];
-        
-        reader.onloadend = () => {
-            const { form } = this.state;
-            form['file'] = file;
-            form['imagePreviewUrl'] = reader.result;
-            this.setState({
-                form: {...form}
-            });         
-        }
-    
-        reader.readAsDataURL(file);
-      }
-
     render() {
-        const { part_name, part_number, fitment, firstImage, part_condition, description, username, password, brand, price, category, year, make, model,imagePreviewUrl } = this.state.form;
+        const { part_name, part_number, fitment, images, part_condition, description, username, password, brand, price, category, year, make, model } = this.state.form;
 
         return(
                 <div className="sellPartForm">
@@ -209,7 +206,7 @@ class SellPartForm extends Component{
                             </div>
                             <div className="imageUpload">
                                 <h1>Pictures</h1>
-                                <ImageUpload imagePreviewUrl={imagePreviewUrl} handleImageChange={this.handleImageChange}/>
+                                <ImageUpload images={images} handleImageChange={this.handleImageChange}/>
                             </div>                               
                             <div className="saleOptions">
                                 <h1>Pickup and Delivery</h1>
