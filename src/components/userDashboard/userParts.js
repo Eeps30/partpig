@@ -47,13 +47,13 @@ class UserParts extends Component {
         const list = part.map((item,index)=>{
             console.log("part is", item);
             return  (
-                <Link key={index} to={"/partdetails/" + item.id }>  
+                <Link key={index} to={"/partdetails/" + item.id + '/'}>  
                     <div key={index} className="singlePart">
                         <img src={item.images}></img>
                         <div className="brand"> {item.brand} </div> <div className="partNumber">P/N: {item.partNumber}</div>
-                        <h3 className="productTitle">{item.title}</h3>
-                        <div className="category">{item.category}</div><div className="yearMakeModel"> {item.make} {item.model} {item.year}</div>
-                        <p className="productPrice">${item.price}</p>           
+                        <div className="productTitle"><p>{item.title}</p></div>
+                        <div className="yearMakeModel"> {item.make} {item.model} {item.year}</div>
+                        <div className="price">${item.price}</div>           
                      </div>
                 </Link>        
                      );
@@ -62,7 +62,7 @@ class UserParts extends Component {
         
         return  (
             <div className="userPartsList">
-                <h1>Your active listings</h1>
+                <h2>Your active listings</h2>
                 {list}
             </div>
         );

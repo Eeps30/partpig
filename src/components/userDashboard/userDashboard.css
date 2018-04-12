@@ -1,9 +1,16 @@
+.userDashboard{
+    margin: 2% auto;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
 .userPartsContainer{
     width: 60%;
     margin: 2% auto;
     height: 100%;
     overflow-y: auto;
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(238, 238, 238);
     border-radius: 5px;
 }
 

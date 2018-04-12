@@ -9,10 +9,13 @@ import UserParts from './userParts'
 const UserDashboard = (props) => {
 
         return (
-           
+           <div className="userDashboard">
+               <h1>User Dashboard</h1>
             <div className="userPartsContainer"> 
                 <UserParts/>             
             </div>
+            </div>
+            
         );
     };
     

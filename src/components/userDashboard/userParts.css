@@ -22,10 +22,11 @@
     margin: 2% auto;
     border-radius: 5px;
     box-shadow: 0 1px 4px rgba(41,51,57,.5);
+    font-size: 1.5em;
 }
 
-.userPartsList.singlePart:hover{    
-    box-shadow: 5px 10px 18px #888888;
+.userPartsList .singlePart:hover{    
+    box-shadow: 1px 3px 3px #888888;
 }
 
 .userPartsList .singlePart img {
@@ -55,6 +56,16 @@
     font-size: 0.4em;
 }
 
+.brand {
+    float: left;
+}
 
+.userPartsList .price {
+    float: right;
+}
+
+.yearMakeModel{
+
+}
 
 
