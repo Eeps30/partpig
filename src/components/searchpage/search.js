@@ -67,7 +67,6 @@ class DropDownContainer extends Component {
                         </button>
                     </div>
                 </div>
-                <footer>Team Part Pig Copyright 2018</footer>
             </div>
         )
     }
