@@ -1,54 +1,65 @@
-/* body {
+body {
     height: 100vh;
-    width: 80vw;
+    width: 100vw;
     border: solid black 2px;
     margin: 0 auto;
-    background-color: cadetblue;
-} */
+}
 
 .header {
     height: 8vh;
     border: solid red 2px;
     font-size: 65px;
-    text-decoration: underline;
-}
-
-.dropdownContainer {
-    height: 85vh;
-    border: solid blue 2px;
 }
 
 .dropdownMenu {
+    border-radius: 10px;
+    left: 20vw;
     position: relative;
-    height: 40vh;
-    border: solid green 2px;
-    background-color: #294e4c;
-    margin-top: 15vh;
-}
-
-.icon {
-    width: 40%;
-    height: 100%;
-    border: solid 2px limegreen;
-    display: inline-block;
-}
-
-.icon img {
-    height: 20vw;
-    margin-top: 18%;
-    margin-left: 18%;
-    border: solid 2px limegreen;
+    height: 25vh;
+    width: 60vw;
+    background-color: rgb(88, 90, 94);
+    margin-top: 20vh;
 }
 
 .buttonsContainer {
-    margin-top: 12%;
-    position: absolute;
-    display: inline-block;
-    border: solid yellow 2px;
-    height: 40%;
-    width: 60%;
+    height: 85%;
+    width: 90%;
+    margin: auto;
 }
 
-.buttonsContainer div {
-    float: left;
+.buttonsContainer select {
+    width: 31.3%;
+    height: 25%;
+    margin: 1%;
+    margin-top: 5%;
+}
+
+.searchBarContainer {
+    margin-left: 50px;
+    width: 90%;
+    height: 30%;
+}
+
+.searchBarContainer > form > label > input {
+    height: 60px;
+}
+
+.searchButton {
+    border-radius: 10px;
+    background-color: rgb(244,67,54);
+    float: right;
+    margin-top: 40px;
+    margin-right: 50px;
+}
+
+.searchButton a {
+    color: white;
+}
+
+.alternateSearch {
+    margin-top: 50px;
+    display: inline-block;
+    font-size: large;
+    color: white;
+    width: 60%;
 }
