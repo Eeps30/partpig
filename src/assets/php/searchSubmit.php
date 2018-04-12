@@ -7,7 +7,6 @@ $output = [
     'error' => [],
     'data' => []
 ];
-// $_GET['make']='subaru';
 
 // default query
 // p.id AS category ???
@@ -48,7 +47,7 @@ $result = mysqli_query($conn, $query);
 $display = new stdClass();
 $display->brand = 'true';
 $display->price = 'true';
-$ar = []; //@Brian: was $ar the old version of $row['images']? should we remove it? --Li, 04/08/18
+
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
