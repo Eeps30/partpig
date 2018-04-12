@@ -23,7 +23,7 @@ body {
     box-shadow: 3px 4px;
 }
 
-.dropdownMenu {
+.outerDiv .dropdownMenu {
     border-radius: 10px;
     position: relative;
     height: 20vh;
@@ -32,12 +32,12 @@ body {
     margin: 1%;
 }
 
-.buttonsContainer {
+.dropdownMenu .buttonsContainer {
     display: inline;
     margin-left: 2%;
 }
 
-.buttonsContainer select {
+.dropdownMenu .buttonsContainer select {
     width: 25%;
     height: 30%;
     margin: 1%;
@@ -46,27 +46,21 @@ body {
     font-size: 160%;
 }
 
-.searchBarContainer {
-    margin-left: 50px;
-    width: 90%;
-    height: 30%;
-}
-
-.searchBarContainer > form > label > input {
-    height: 60px;
-}
-
-.searchButton {
-    border-radius: 10px;
+.buttonsContainer .searchButton {
+    border-radius: 5px;
     background-color: rgb(244,67,54);
     float: right;
     margin-top: 5%;
     margin-right: 4%;
     box-shadow: 2px 2px;
+    height: 25%;
+    width: 10%;
 }
 
-.searchButton a {
+.buttonsContainer .searchButton a {
     color: white;
+    font-size: 130%;
+    margin-top: 10%;
 }
 
 .alternateSearch {
