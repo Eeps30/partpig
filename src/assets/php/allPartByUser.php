@@ -1,5 +1,8 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
 $output = [
@@ -7,7 +10,7 @@ $output = [
     'error' => [],
     'data' => []
 ];
-// $_GET['make']='subaru';
+$_GET['seller_id']= 2;
 
 // p.id AS category ???
 $query =  "SELECT p.id, 
