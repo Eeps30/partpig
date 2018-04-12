@@ -1,4 +1,5 @@
 <?php
+
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 
@@ -21,7 +22,7 @@ if($imgResult){
 else{
     $output['errors'][] = 'Error in image database query';
 }
-
+// need to verify 'p.id AS category'
 $query =  "SELECT
              p.id AS part_id,
              p.brand AS brand,
@@ -44,7 +45,7 @@ $query =  "SELECT
             JOIN `address` AS a
                 ON u.billing_address_id = a.id
             WHERE p.id = $ID";
-        
+
 $result = mysqli_query($conn, $query);
 $output = [
     'success'=> false,
@@ -54,8 +55,10 @@ $output = [
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
+
             $row['images'] = $images;
             $row['price'] = (float)$row['price'];
+
             $output['data'][] = $row;
         }
     }
@@ -70,4 +73,5 @@ else{
 
 $json_output = json_encode($output);
 print($json_output);
+
 ?>

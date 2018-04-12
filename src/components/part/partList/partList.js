@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Part from '../part';
 import './partList.css';
-import parts from '../partsData';
 import {Link} from 'react-router-dom';
 import Filter from '../filter/filter';
 import BrandFilter from './../filter/brandFilter';
@@ -46,28 +45,37 @@ class PartList extends Component{
     }
 
     componentDidMount(){
-
-        const {make,model,year} = this.props.match.params;
-        const params = {make,model,year};
-        const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
-        axios.get(url,{params}).then(resp=>{
-                try {
+        
+        if (!this.state.isLoading) {           
+            const {make,model,year} = this.props.match.params;
+            const params = {make,model,year};
+            const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
+            axios.get(url,{params}).then(resp=>{
+                    try {
+                        this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
+                    } catch (error) {
+                        console.log('error is: ', err);
+                    }
                     this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
-                } catch (error) {
+                    this.props.saveFilters(this.filters);
+                    this.setState({
+                        arrayParts:resp.data.data,
+                        isLoading: true            
+                    });               
+                    
+                    this.filterPriceMethod(this.filters['prices'][1]);
+                    this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);  
+                    
+                    const filter = document.getElementsByClassName('filter');
+                    filter[0].classList.add("hidden");
+                    //call the component again with filters that way in the future when we change the filters
+                    //it's going to update no mount
+                    this.props.history.push('/partresults/'+JSON.stringify(this.filters));
+                }).catch(err => {
                     console.log('error is: ', err);
                 }
-                this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
-                this.setState({
-                    arrayParts:resp.data.data,
-                    isLoading: true            
-                });               
-                
-                this.filterPriceMethod(this.filters['prices'][1]);
-                this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);  
-            }).catch(err => {
-                console.log('error is: ', err);
-            }
-        ); 
+            ); 
+        }
     }
 
     componentWillUpdate(){
@@ -121,6 +129,14 @@ class PartList extends Component{
         });
     }
 
+    showFilters(){
+        const partList = document.getElementsByClassName('partList');
+        partList[0].classList.toggle("partListFilter");
+
+        const filter = document.getElementsByClassName('filter');
+        filter[0].classList.toggle("hidden");
+    }
+
     render(){
        
         if (!this.state.isLoading) {
@@ -129,18 +145,21 @@ class PartList extends Component{
         let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price;});
         let list = visibleParts.map((function(item,index){
             return ( 
-                <div key={index} className='singlePart'>
-                    <Link to={"/partdetails/" + item.id + '/' + JSON.stringify(this.filters)}>
-                        <Part partInfo={item}/>
-                    </Link>                    
+                <div key={index} className='singlePart'>                  
+                    <Part  addCart={this.props.addCart} filters={this.filters} history={this.props.history} imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>                                      
                 </div>
             )           
         }).bind(this));
        
         return (               
-            <div className='partResults'>               
+            <div className='partResults container'>
+                <Link to="/"> Go Back </Link>               
                 <Filter history={this.props.history} filters={this.filters}/>
-                <div className='partList'>                    
+                <div className='partList'> 
+                    <div className='resultsBar'>
+                        <button className='button-link' onClick={this.showFilters}>Filters</button>
+                        {list.length + ' Results'}
+                    </div>                   
                     {list}
                 </div>
             </div>

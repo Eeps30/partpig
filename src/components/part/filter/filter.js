@@ -7,8 +7,7 @@ import {Link} from 'react-router-dom';
 const Filter = (props) =>{
 
     return (
-        <div className='filter'>
-            <Link to="/"> Go Back </Link>
+        <div className='filter'>            
             <BrandFilter history={props.history} filters = {props.filters} filterMethod = {props.filterBrandMethod} />
             <PriceFilter history={props.history} filters = {props.filters} filterMethod = {props.filterPriceMethod}/>                
         </div>

@@ -1,4 +1,8 @@
-.partDetails{
-    height: 100%;
-    width: 100%;
+
+.partDetails > a{
+    position: absolute;
+    top: 6%;
+    left: 7%;
+    text-decoration: none;
+    font-size: 1.5em;
 }

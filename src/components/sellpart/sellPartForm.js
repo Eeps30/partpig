@@ -1,7 +1,11 @@
 import React, {Component} from "react";
 import "./sellpart.css";
-import parts from '../part/partsData';
-import axios from  'axios';
+
+import ImageUpload from '../imageUploader/imageUploader';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
+import ListingSuccess from "../listingSuccess/listingSuccess";
+
 
 
 class SellPartForm extends Component{
@@ -10,20 +14,26 @@ class SellPartForm extends Component{
         super(props);
         this.state = {
             form: {
-            partTitle: '',
-            partNumber: '',
+            part_name: '',
+            part_number: '',
             fitment: '',
-            firstImage: '',
-            condition: '',
-            conditionBrief: '',
+            images: [],
+            part_condition: '',
+            description: '',
             username: '',
             password: '',
-            brand: ''
+            brand: '',
+            year: '',
+            make: '',
+            model: '',
+            price: ''
             }
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.validate = this.validate.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
     }      
 
     handleInputChange(event) {
@@ -35,81 +45,198 @@ class SellPartForm extends Component{
         });
     }
 
+    handleImageChange(e) {
+        e.preventDefault();
+    
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        
+        reader.onloadend = () => {
+            const { form } = this.state;
+            form['images'].push({imagePreviewUrl:reader.result, file:file});
+            this.setState({
+                form: {...form}
+            });         
+        }
+    
+        reader.readAsDataURL(file);
+      }
+
     handleSubmit(event) {
+        const newPartData = this.state.form;
+        console.log('handle uploading-', this.state.file)
         event.preventDefault();
-        console.log('handleSubmit called, form values are:', this.state.form);
         const listingFormData = {
-                "make": "",
-                "model": "",
-                "year": 2015,
-                "title": this.state.form.partTitle,
-                "brand": this.state.form.brand,
-                "price": this.state.form.price,
+                "make":  newPartData.make,
+                "model":  newPartData.model,
+                "year":  newPartData.year,
+                "part_name":  newPartData.part_name,
+                "brand": newPartData.brand,
+                "price_usd":  newPartData.price,
                 "location": "",
-                "condition": this.state.form.condition,
+                "part_condition":  newPartData.part_condition,
+                "description":  newPartData.description,
                 "milage_used": "",
-                "purchase_date": "",
-                "category": "",
-                "description": "",
-                "images": [
-                    this.state.form.firstImage
-                ],
-                "seller": this.state.form.username,
-                "partNumber": this.state.form.partNumber,
+                "category":  newPartData.category,
+                "images": {imagePreviewUrl:newPartData.imagePreviewUrl, file:newPartData.file},
+                "seller_id":  newPartData.username,
+                "part_number":  newPartData.part_number,
             }
+        console.log('handleSubmit called, form values are:', listingFormData);
+
+        this.sendToServer(listingFormData);
+
     }
 
-    sendToServer(){
-            const BASE_URL = "http://api.reactprototypes.com";
-            const API_KEY = "?key=testuser1234";
-            axios.post(`${BASE_URL}/todos${API_KEY}`, listingFormData).then(resp => {
+    sendToServer(listingFormData){
+
+            const url = "http://localhost:8000/teampartpig/src/assets/php/listPart.php";
+            axios({
+                url: url,
+                method: 'post',
+                data: {listingFormData}, 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(resp=>{
                 console.log("Server Response:", resp);
+                // this.props.history.push('/listingsuccess');
             }).catch(err => {
-                console.log("There was an error:", err.message);
+                console.log("There was an error:");
+                // this.props.history.push('/listingsuccess');
             });
     }
-  
 
+    validate(listingFormData){
+        const {partName, price} = listingFormData;
+        const errors = {};
+        if(!listingFormData.partName){
+            console.log('Please input a part name');
+        }
+        if(!price){
+            console.log(errors);
+        }
+    
+        console.log("no errors found");
+    }
+  
     render() {
-        const { partTitle, partNumber, fitment, firstImage, condition, conditionBrief, username, password, brand } = this.state.form;
-            return(
+        const { part_name, part_number, fitment, images, part_condition, description, username, password, brand, price, category, year, make, model } = this.state.form;
+
+        return(
+                <div className="sellPartForm">
                         <form onSubmit={this.handleSubmit}>
-                            <div className="section"><span>1</span>Part Details and Price</div>
-                            <div className="inner-wrap">
-                                <label>Part Title<input onChange={this.handleInputChange} value={partTitle} name="partTitle" type="text" /></label>
-                                <div> 
-                                    <label>Brand<input  onChange={this.handleInputChange} value={brand} name="brand" type="text" /></label>
-                                    <label>Part Number<input  onChange={this.handleInputChange} value={partNumber} name="partNumber" type="text" /></label>                
-                                    <label>Price<input type="text" name="field4" /></label>
-                                </div>    
-                                <label>Fitment <input onChange={this.handleInputChange} value={fitment} name="fitment" type="text" /></label>
-                            </div>
-                            <div className="section"><span>2</span>Pictures and Condition</div>
-                            <div className="inner-wrap">
-                                <div className="pictureUpload">
-                                        <input type="file" onChange={this.handleInputChange} value={firstImage} name="firstImage"/>
-                                        <img id="firstImage" src="#" alt="Upload Image"/>
+                            <div className="part-details">
+                                <h1>Part Details</h1>
+                                <div className="partName">
+                                    <label htmlFor="part_name">Part Title<a className="required">*</a></label>
+                                    <input onChange={this.handleInputChange} value={part_name} name="part_name" type="text" />
                                 </div>
-                                <label>Condition 1-10<input onChange={this.handleInputChange} value={condition} name="condition"type="text" /></label> 
-                                <label>Condition Brief <input onChange={this.handleInputChange} value={conditionBrief} name="conditionBrief"type="text" /></label>    
+                                <div className="price">
+                                    <label htmlFor="price">Price<a className="required">*</a></label>
+                                    <input onChange={this.handleInputChange} value={price} name="price" type="text" />
+                                </div>
+                                <div className="partNumber">
+                                    <label htmlFor="part_number">Part Number</label>
+                                    <input onChange={this.handleInputChange} value={part_number} name="part_number" type="text" />
+                                </div>
+                                <div className="brand">
+                                    <label htmlFor="brand">Brand</label>
+                                    <select onChange={this.handleInputChange} value={brand} name="brand" type="text">
+                                        <option value="brand">Select Brand</option>
+                                        <option value="Perrin">Perrin</option>
+                                        <option value="Cosworth">Cosworth</option>
+                                        <option value="Forman">Forman</option>
+                                    </select>    
+                                </div>
+                                <div className="category">
+                                    <label htmlFor="category">Category</label>
+                                    <select onChange={this.handleInputChange} value={category} name="category" type="text">
+                                        <option value="category">Select Category</option>
+                                        <option value="Exhaust">Exhaust</option>
+                                        <option value="Suspension">Suspension</option>
+                                    </select>    
+                                </div>
+                            </div>    
+                            <div className="fitment">
+                                <h1>Vehicle Fitment</h1>    
+                                <div className="partYear">
+                                    <label htmlFor="year">Year</label>
+                                    <select onChange={this.handleInputChange} value={year} name="year" type="text">
+                                    <option value="year">Select Year</option>
+                                    <option value="2019">2019</option>
+                                    <option value="1904">1904</option>
+                                    </select>
+                                </div>
+                                <div className="partMake">
+                                    <label htmlFor="make">Make</label>
+                                    <select onChange={this.handleInputChange} value={make} name="make" type="text">
+                                        <option value="make">Select Make</option>
+                                        <option value="Subaru">Subaru</option>
+                                        <option value="Ferrari">Ferrari</option>
+                                        
+                                    </select>
+                                </div>
+                                <div className="partModel">
+                                    <label htmlFor="model">Model</label>
+                                    <select onChange={this.handleInputChange} value={model} name="model" type="text">
+                                        <option value="model">Select Make</option>
+                                        <option value="Impreza WRX STI">Impreza WRX STI</option>
+                                        <option value="Focus">Focus</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div className="section"><span>3</span>Contact Information</div>
-                                <div className="inner-wrap">
-                                <label>Username<input onChange={this.handleInputChange} value={username} type="text" name="username" /></label>
-                                <label>Password <input onChange={this.handleInputChange} value={password} type="password" name="password" /></label>
+                            <div className="part-condition">
+                            <h1>Condition</h1>
+                                <div className="conditionRating">
+                                        <label htmlFor="part_condition">Condition<a className="required">*</a></label>
+                                        <select onChange={this.handleInputChange} value={part_condition} name="part_condition" type="text">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        
+                                    </select>
+                                </div>
+                                <div className="conditionDetails">
+                                    <label htmlFor="description">Condition Details</label>
+                                    <textarea onChange={this.handleInputChange} value={description} name="description" type="text" />
+                                </div>
                             </div>
-                            {/* <div className="section"><span>4</span>Shipping and Location</div>
-                                <div className="inner-wrap">
-                                <label>Username <input type="password" name="field5" /></label>
-                                <label>Password <input type="password" name="field6" /></label>
-                            </div> */}
-                            <div className="button-section">
-                                <input type="submit" name="List Part Now!" />
-                                <span className="privacy-policy">
-                                <input type="checkbox" name="field7"/>You agree to our Terms and Conditions.
-                                </span>
+                            <div className="imageUpload">
+                                <h1>Pictures</h1>
+                                <ImageUpload images={images} handleImageChange={this.handleImageChange}/>
+                            </div>                               
+                            <div className="saleOptions">
+                                <h1>Pickup and Delivery</h1>
+                                <div className="checkboxItem">
+                                    <p>Local Pickup Available</p>
+                                    <input onChange={this.handleInputChange} id="localPickup" value="false" name="localPickup" type="checkbox"/>
+                                    <div className="toggleButton">
+                                        <label htmlFor="localPickup"><i></i></label>
+                                    </div>
+                                </div>
+                                <div className="checkboxItem">
+                                    <p>Shipping Available</p>
+                                    <input onChange={this.handleInputChange} id="shippingAvailable" value="false" name="shippingAvailable" type="checkbox"/>
+                                    <div className="toggleButton">
+                                        <label htmlFor="shippingAvailable"><i></i></label>
+                                    </div>
+                                </div>
+                                <div className="checkboxItem">
+                                    <p>Returns Accepted</p>
+                                    <input onChange={this.handleInputChange} id="returnsAccepted" value="false" name="returnsAccepted" type="checkbox"/>
+                                    <div className="toggleButton">
+                                        <label htmlFor="returnsAccepted"><i></i></label>
+                                    </div>
+                                </div>
                             </div>
-                        </form>  
+                            <div className="buttonContainer">
+                                <button className="postPart">List Your Part Now!</button>
+                            </div>
+                        </form>
+                </div>          
                 );
     
     }
