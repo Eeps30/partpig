@@ -23,12 +23,12 @@ class DropDownContainer extends Component {
         this.catchYearSelect = this.catchYearSelect.bind(this)
     }
 
-    //put if checks here ..... is initial value same as new one?
     catchMakeSelect(selectedMake){
         const caughtMake = selectedMake;
         this.setState({
             make: caughtMake,
-            model: 'default'
+            model: 'default',
+            year: 'default'
         });
     }
 
@@ -56,26 +56,18 @@ class DropDownContainer extends Component {
         const yearStr = this.state.year !== 'default' ? '/' + this.state.year : '';
         
         return(
-            <div>
-                <div className="pageContainer">
-                    <div className="dropdownContainer">
-                        <div className="dropdownMenu">
-                            <div className="buttonsContainer">
-                                <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                                <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                                <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                                <button className="searchButton">
-                                    <Link to={"/partresults" + makeStr + modelStr + yearStr} style={{display: 'block', height: '100%'}}> FIND PARTS </Link>
-                                </button>
-                            </div>
-                        </div>
+            <div className="outerDiv">
+                <div className="dropdownMenu">
+                    <div className="buttonsContainer">
+                        <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
+                        <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <button className="searchButton">
+                            <Link to={"/partresults" + makeStr + modelStr + yearStr} style={{display: 'block', height: '100%'}}> FIND PARTS </Link>
+                        </button>
                     </div>
-                    {/* <select onChange={(e)=>this.handleTestSelect(e)}>
-                        <option value='default'>Yo this is default</option>
-                        <option value='teddybear'>Yo this is teddy bear</option>
-                    </select> */}
-                    <footer>Team Part Pig Copyright 2018</footer>
                 </div>
+                <footer>Team Part Pig Copyright 2018</footer>
             </div>
         )
     }

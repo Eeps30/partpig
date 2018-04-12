@@ -3,6 +3,8 @@ body {
     width: 100vw;
     border: solid black 2px;
     margin: 0 auto;
+    background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
+    background-color: #616161;
 }
 
 .header {
@@ -11,27 +13,37 @@ body {
     font-size: 65px;
 }
 
+.outerDiv {
+    border: solid black 1px;
+    width: 77.5%;
+    border-radius: 10px;
+    margin-left: 10.5%;
+    margin-top: 15%;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 4px;
+}
+
 .dropdownMenu {
     border-radius: 10px;
-    left: 20vw;
     position: relative;
-    height: 25vh;
-    width: 60vw;
-    background-color: rgb(88, 90, 94);
-    margin-top: 20vh;
+    height: 20vh;
+    width: 76vw;
+    background-color: rgb(255, 69, 69);
+    margin: 1%;
 }
 
 .buttonsContainer {
-    height: 85%;
-    width: 90%;
-    margin: auto;
+    display: inline;
+    margin-left: 2%;
 }
 
 .buttonsContainer select {
-    width: 31.3%;
-    height: 25%;
+    width: 25%;
+    height: 30%;
     margin: 1%;
     margin-top: 5%;
+    background: #d4d4d4;
+    font-size: 160%;
 }
 
 .searchBarContainer {
@@ -48,8 +60,9 @@ body {
     border-radius: 10px;
     background-color: rgb(244,67,54);
     float: right;
-    margin-top: 40px;
-    margin-right: 50px;
+    margin-top: 5%;
+    margin-right: 4%;
+    box-shadow: 2px 2px;
 }
 
 .searchButton a {
