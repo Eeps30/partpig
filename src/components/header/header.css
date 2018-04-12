@@ -1,0 +1,84 @@
+header {
+    display: table;
+    color: black;
+    width: 100%;
+    height: 5%;
+    margin-left: 0;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 5px;
+    box-shadow: 0 1px 4px rgba(41, 51, 57, 0.397)
+}
+
+.logo-container{
+    width: 50%;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 3vh;
+    color: rgb(32, 32, 32);
+}
+
+.user-nav{
+    width: 25%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 2vh;
+    height: 4vh;
+    align-content: right;
+}
+
+.hamburger{
+    width: 25%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 2vh;
+    height: 100%;
+    text-align: right;
+    
+}
+
+.login-icon{
+    float: right;
+    height: 90%;
+    margin: .5em;
+}
+
+
+.sellPartButton {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer; 
+    background-color: #f44336;
+    color: white;
+}
+
+.sellPartButton:hover{
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+}
+
+.cartDivIcon{
+    position: relative;
+    top: 23%;
+    right: 1%;
+    float: right;
+}
+
+.cartIcon{   
+    height: 4vmin;
+}
+
+.cartCount{
+    position: absolute;
+    top: -5%;
+    right: 37%;
+    font-size: 1em;
+    font-weight: bold;
+    color: black;
+}

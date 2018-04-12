@@ -1,0 +1,54 @@
+/* body {
+    height: 100vh;
+    width: 80vw;
+    border: solid black 2px;
+    margin: 0 auto;
+    background-color: cadetblue;
+} */
+
+.header {
+    height: 8vh;
+    border: solid red 2px;
+    font-size: 65px;
+    text-decoration: underline;
+}
+
+.dropdownContainer {
+    height: 85vh;
+    border: solid blue 2px;
+}
+
+.dropdownMenu {
+    position: relative;
+    height: 40vh;
+    border: solid green 2px;
+    background-color: #294e4c;
+    margin-top: 15vh;
+}
+
+.icon {
+    width: 40%;
+    height: 100%;
+    border: solid 2px limegreen;
+    display: inline-block;
+}
+
+.icon img {
+    height: 20vw;
+    margin-top: 18%;
+    margin-left: 18%;
+    border: solid 2px limegreen;
+}
+
+.buttonsContainer {
+    margin-top: 12%;
+    position: absolute;
+    display: inline-block;
+    border: solid yellow 2px;
+    height: 40%;
+    width: 60%;
+}
+
+.buttonsContainer div {
+    float: left;
+}
