@@ -17,14 +17,16 @@ $query =  "SELECT p.id,
                   p.brand, 
                   p.seller_id As seller,
                   p.part_name AS title, 
-                  p.id AS category, 
+                  c.name AS category, 
                   p.make, 
                   p.model, 
                   p.year,                               
                   p.part_number AS partNumber, 
                   p.price_usd AS price, 
                   i.url AS images
-            FROM `part` AS p 
+            FROM `part` AS p
+            JOIN `category` AS c
+                ON p.category_id = c.id 
             JOIN `image` AS i 
                 ON i.id= (
                     SELECT MIN(im.id) 

@@ -10,18 +10,19 @@ $output = [
 // $_GET['make']='subaru';
 
 // default query
-// p.id AS category ???
 $query =  "SELECT p.id, 
                   p.brand, 
                   p.part_name AS title, 
-                  p.id AS category, 
+                  c.name AS category, 
                   p.make, 
                   p.model, 
                   p.year,                               
                   p.part_number AS partNumber, 
                   p.price_usd AS price, 
                   i.url AS images
-            FROM `part` AS p 
+            FROM `part` AS p
+            JOIN `category` AS c
+                ON p.category_id = c.id 
             JOIN `image` AS i 
                 ON i.id=
                 (
