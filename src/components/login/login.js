@@ -4,10 +4,10 @@ import RegisterForm from "./registerForm/registerForm";
 import SocialLogin from "./socialLogin/socialLogin";
 import "./login.css";
 
-const Login = () => (
+const Login = (props) => (
             <div className="login-container">
                <SocialLogin/> 
-               <LoginForm/>
+               <LoginForm {...props}/>
                <RegisterForm/>
             </div>
         );
