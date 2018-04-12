@@ -34,7 +34,7 @@ class PartDetails extends Component {
 
     render(){
 
-        let linkBack = '';
+        let linkBack = <Link to={"/userdashboard/" + this.props.match.params.filters}><div>Back to results</div></Link>;
         if(this.props.match.params.filters){
             linkBack = <Link to={"/partresults/" + this.props.match.params.filters}><div>Back to results</div></Link>;
         }

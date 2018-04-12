@@ -19,6 +19,7 @@ import Search from '../searchpage/search';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
 import ListingSuccess from '../listingSuccess/listingSuccess';
+import UserDashboard from '../userDashboard/userDashboard';
 
 
 class App extends Component{
@@ -106,6 +107,7 @@ class App extends Component{
                     <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
+                    <Route path='/userdashboard' component={UserDashboard}/>
                     {/* <Footer/>   */}
                 </div>
             </Router>  
