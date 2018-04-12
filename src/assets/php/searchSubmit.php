@@ -7,7 +7,6 @@ $output = [
     'error' => [],
     'data' => []
 ];
-// $_GET['make']='subaru';
 
 // default query
 // p.id AS category ???
@@ -28,11 +27,11 @@ $query =  "SELECT p.id,
                     SELECT MIN(im.id) 
                     FROM `image` as im 
                     WHERE im.part_id=p.id
-                )";   
+                )";
 
 $fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
 $subQuery = [];
-
+$subQuery[] = "p.status ='In cart' OR p.status='For sale'";
 forEach($fieldsToCheck as $value){
     if(!empty($_GET[$value])){
         $subQuery[] = " $value = '{$_GET[$value]}'";
@@ -48,7 +47,7 @@ $result = mysqli_query($conn, $query);
 $display = new stdClass();
 $display->brand = 'true';
 $display->price = 'true';
-$ar = []; //@Brian: was $ar the old version of $row['images']? should we remove it? --Li, 04/08/18
+
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
