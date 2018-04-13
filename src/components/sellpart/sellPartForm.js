@@ -93,7 +93,7 @@ class SellPartForm extends Component{
 
     sendToServer(listingFormData){
 
-            const url = "http://localhost:8000/teampartpig/src/assets/php/imageUpload/listPart.php";
+            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
 
             axios({
                 url: url,
