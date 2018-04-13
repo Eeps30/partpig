@@ -1,26 +1,25 @@
 import React, {Component} from 'react';
 import GenerateMakeRows from './generateMakeRows';
+import '../../searchpage/search.css';
 
 class MakeDropDown extends Component {
     constructor(props){
         super(props)
-
-        this.makeRows = this.makeRows.bind(this)
     }
 
-    makeRows(){
-        const listOfMakes = Object.keys( this.props.data.make );
-        return listOfMakes.map( (item, index) => <GenerateMakeRows key={index} callback={(event) => {this.handleChange(item)}} label={item}/>)
-    }
-
-    handleChange(label){
-        this.props.makeSelect(label)
+    handleChildClick(event){
+        this.props.makeSelect(event.currentTarget.value)
     }
 
     render(){
+
+        const listOfMakes = Object.keys( this.props.data.make );
+        const generatedRows = listOfMakes.map( (item, index) => <GenerateMakeRows key={index} callback={this.handleChildClick.bind(this)} label={item}/>)
+        
         return(
-            <select onChange={(event) => this.handleChange ({value: event.target.value})}>
-                {this.makeRows()}
+            <select className="makeDropdown" defaultValue="default" onChange={(e)=>{this.handleChildClick(e)}}>
+                <option value="default" disabled="disabled">Select A Make</option>
+                {generatedRows}
             </select>
         )
     }

@@ -8,12 +8,14 @@ const Part = (props) => {
         
     return (
         <div className="part">
-            <Link to={"/partdetails/" + props.partInfo.id + '/' + JSON.stringify(props.filters)}>  
+            <Link to={"/partdetails/" + props.partInfo.id + '/false' }>  
                 <ImageGallery imageClass={props.imageClass} showList={false} mainImage = {props.partInfo.images[0]} />
             </Link>  
-            <PartInfo {...props} isDetails={false}/>
+            <PartInfo fromDashboard={false} {...props} isDetails={false}/>
         </div> 
     );
 }
 
 export default Part;
+
+

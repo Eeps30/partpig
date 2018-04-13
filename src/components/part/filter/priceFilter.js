@@ -29,18 +29,36 @@ class PriceFilter extends Component{
         });     
     }
 
+    componentDidUpdate(){
+        if(this.props.update){
+            var parent = document.getElementById("priceFilterDiv");
+            var child = document.getElementsByClassName("rs-container")[0];
+            parent.removeChild(child);
+            const slider = new rSlider({
+                target: '#slider',
+                values: this.state.prices[0],
+                range: true,
+                tooltip: true,
+                scale: true,
+                labels: false,
+                set: this.state.prices[1],
+                onChange: this.filterPrices
+            });  
+        }
+    }
+
     filterPrices(values){        
         let valArray = values.split(',');
         const min = parseInt(valArray[0]);
         const max = parseInt(valArray[1]);
         this.newFilters['prices'][1] = [min,max];
-        this.props.history.push('/partresults/'+JSON.stringify(this.newFilters));
+        this.props.history.push('/partresults/filters/'+JSON.stringify(this.newFilters));
     }
 
-    render(){              
+    render(){            
         
         return (            
-            <div>                
+            <div id='priceFilterDiv'>                
                 <h2>Price</h2>
                 <hr/>
                 <br/>

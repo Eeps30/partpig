@@ -10,6 +10,7 @@ const Hamburger = () => (
         <span></span>
         <ul id="menu">
           <Link to="/"><li>Home</li></Link>
+          <Link to="/dashboard"><li>User Dashboard</li></Link>
           <Link to="/partresults"><li>Part Results</li></Link>
           <Link to="/sellpart"><li>Sell a Part</li></Link>
           <Link to="/about"><li>About us</li></Link>

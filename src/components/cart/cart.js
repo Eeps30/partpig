@@ -22,6 +22,7 @@ const Cart = (props) => {
     }
     return (
         <div className="container">
+            <Link to={props.urlBack}><div>Back to results</div></Link>
             <div className="cartPartsContainer">
                 {list}                
             </div>
