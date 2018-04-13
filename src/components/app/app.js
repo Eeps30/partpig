@@ -66,7 +66,7 @@ class App extends Component{
                 if(cartMessage.length > 0){
                     cartMessage[0].classList.remove("show_block");
                 }
-            },5000);
+            },3000);
             this.setState({
                 cartParts: partList
             });

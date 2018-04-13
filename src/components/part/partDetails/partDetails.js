@@ -39,7 +39,7 @@ class PartDetails extends Component {
 
         let linkBack = <Link to={this.props.urlBack}><div>Back to results</div></Link>;
         if(this.props.match.params.fromDashboard == 'true'){
-            linkBack = <Link to={"/userdashboard/"}><div>Back to dashboard</div></Link>;
+            linkBack = <Link to={"/dashboard/activeparts"}><div>Back to dashboard</div></Link>;
         }
 
         if (!this.state.isLoading) {

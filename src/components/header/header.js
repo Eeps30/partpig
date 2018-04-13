@@ -10,10 +10,10 @@ const Header = (props) => (
  <header>
      <div className="hamburger"><Hamburger/></div>     
      <div className="logo-container">Part Pig</div>
-     <div className="user-nav">
-        <Link className="sellPartButton" to="/sellpart"> Sell Part</Link>        
+     <div className="user-nav">             
         <Link to={"/cart"}><div className="cartDivIcon"><img src={cartIcon} className="cartIcon" /><span className='cartCount'>0</span></div></Link>
         <Link to="/login"><img src={LoginIcon} className="login-icon"/></Link>
+        <Link className="sellPartButton" to="/sellpart"> Sell Part</Link>   
     </div>
     <CartMessage/>
     

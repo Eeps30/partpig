@@ -19,6 +19,16 @@
     margin: 10px 10px;
 }
 
+.sellPartForm select {
+    width: 100%;
+    padding: 2.5% 2%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1.4em;
+}
+
 .sellPartForm input {
     width: 100%;
     font-size: 30px;
