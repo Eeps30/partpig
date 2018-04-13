@@ -1,11 +1,11 @@
-body {
+/* body {
     height: 100vh;
     width: 100vw;
     border: solid black 2px;
     margin: 0 auto;
     background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
     background-color: #616161;
-}
+} */
 
 .header {
     height: 8vh;
