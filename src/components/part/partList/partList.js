@@ -56,7 +56,7 @@ class PartList extends Component{
                     try {
                         this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
                     } catch (error) {
-                        console.log('error is: ', err);
+                        console.log('error is: ', error);
                     }
                     this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
                     this.props.saveFilters(this.filters);
