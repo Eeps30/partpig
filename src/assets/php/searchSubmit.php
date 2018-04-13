@@ -29,7 +29,7 @@ $query =  "SELECT p.id,
                     FROM `image` as im 
                     WHERE im.part_id=p.id
                 )";
-// unset($_GET['year']);
+
 $fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
 $subQuery = [];
 
@@ -50,6 +50,7 @@ $result = mysqli_query($conn, $query);
 $display = new stdClass();
 $display->brand = 'true';
 $display->price = 'true';
+
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
