@@ -24,7 +24,7 @@ class PartInfo extends Component {
     addCart(){
         this.props.addCart(this.state.partInfo);
         if(this.props.history){
-            this.props.history.push(this.props.filters.length === 0 ? '/partresults' : '/partresults/'+JSON.stringify(this.props.filters));
+            this.props.history.push(this.props.urlBack);
         }   
     }
     

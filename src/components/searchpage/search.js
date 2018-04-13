@@ -51,9 +51,9 @@ class DropDownContainer extends Component {
 
         const make = this.state.make
 
-        const makeStr = this.state.make !== 'default' ? '/' + this.state.make : '';
-        const modelStr = this.state.model !== 'default' ? '/' + this.state.model : '';
-        const yearStr = this.state.year !== 'default' ? '/' + this.state.year : '';
+        const makeStr = this.state.make !== 'default' ? '/make/' + this.state.make : '';
+        const modelStr = this.state.model !== 'default' ? '/model/' + this.state.model : '';
+        const yearStr = this.state.year !== 'default' ? '/year/' + this.state.year : '';
         
         return(
             <div className="outerDiv">
