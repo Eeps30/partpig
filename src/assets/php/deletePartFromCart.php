@@ -37,15 +37,17 @@ $json_output = json_encode($output);
 print($json_output);
 
 $buyer_id = $_GET['user_id'];
+$part_id = $_GET['part_id'];
 
-$query2 = "DELETE FROM `order_meta`
-           WHERE `order_meta`.`buyer_id` = '$buyer_id'
+$query2 = "DELETE FROM `shoppingcart`
+           WHERE `shoppingcart`.`buyer_id` = '$buyer_id'
+           AND `shoppingcart`.`part_id` = '$part_id';
            ";
 
 $result2 = mysqli_query($conn, $query2);
 $rows_affected = mysqli_affected_rows($conn);
 if($result2){
-    echo "Successfully removed records from table order_meta. Total rows affected: ", $rows_affected .".";
+    echo "Successfully removed records from table shoppingcart. Total rows affected: ", $rows_affected .".";
 } else {
     echo "Error: " . mysqli_error($conn);
 }
