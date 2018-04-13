@@ -56,10 +56,10 @@ class PartList extends Component{
                     try {
                         this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
                     } catch (error) {
-                        console.log('error is: ', err);
+                        console.log('error is: ', error);
                     }
                     this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
-                    this.props.saveFilters(this.filters);
+                   
                     this.setState({
                         arrayParts:resp.data.data,
                         isLoading: true            
@@ -72,7 +72,9 @@ class PartList extends Component{
                     filter[0].classList.add("hidden");
                     //call the component again with filters that way in the future when we change the filters
                     //it's going to update no mount
-                    this.props.history.push('/partresults/'+JSON.stringify(this.filters));
+                    this.props.saveUrlBack(this.props.match.url+'/filters/'+JSON.stringify(this.filters));
+                    const url = this.props.match.url[this.props.match.url.length] === '/' ? this.props.match.url : this.props.match.url + '/';
+                    this.props.history.push(this.props.match.url+'/filters/'+JSON.stringify(this.filters));
                 }).catch(err => {
                     console.log('error is: ', err);
                 }
@@ -80,7 +82,8 @@ class PartList extends Component{
         }
     }
 
-    componentWillUpdate(){
+    componentWillUpdate(){        
+        this.props.saveUrlBack(this.props.match.url);
         if(this.props.history.location.pathname !== this.props.location.pathname){
             this.filterPriceMethod(this.filters['prices'][1]);
             this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);

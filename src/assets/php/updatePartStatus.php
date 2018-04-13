@@ -2,11 +2,13 @@
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
+
 $output = [
     'success'=> false,
     'error' => [],
     'data' => []
 ];
+
 if(!isset($_GET['id'])){
     $id = '2';
     $output['error'][] = 'id empty, adding default of 2';
@@ -34,4 +36,5 @@ else{
 
 $json_output = json_encode($output);
 print($json_output);
+
 ?>
