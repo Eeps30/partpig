@@ -27,6 +27,11 @@ require_once('./addSingleImageToS3.php');
 // $_POST['listed_date'] = date("Y-m-d", time());
 // $_POST['part_number'] = 'part#999';
 
+
+//temp until category is working
+$request_data['category_id'] = 4;
+
+
 // remove above content for frontEnd testing *********************************
 
 $fieldsToSanitize = ['part_name', 'description', 'category_id', 'part_condition', 'brand', 'make', 'model', 'year', 'seller_id', 'price_usd', 'part_number'];
@@ -55,19 +60,24 @@ $tableFields = "(" . substr($tableFields, 0, -2) . ")";
 $tableValues = "VALUES (" . substr($tableValues, 0, -2) . ")";
 
 $query .= $tableFields . $tableValues;
-echo "The Query was: ".$query;
-error_log("The Query was: ".$query , 0);
+// echo "The Query was: ".$query;
+// error_log("The Query was: ".$query , 0);
 $result = mysqli_query($conn, $query);
 if($result){
-	$identity = $last_id = mysqli_insert_id($conn);
-	$imgQuery = "INSERT INTO `image` (`id`, `name`, `url`, `alt`, `part_id`) VALUES (NULL, NULL, '$imageUrl', NULL, '$identity');";
-	$imgResult = mysqli_query($conn, $query);
+	$last_id = mysqli_insert_id($conn);
+	echo "last Id was $last_id";
+	$imgQuery = "INSERT INTO `image` (`id`, `name`, `url`, `alt`, `part_id`) VALUES (NULL, NULL, '$imageUrl', NULL, '$last_id');";
+	$imgResult = mysqli_query($conn, $imgQuery);
+	echo "The Query was: ".$imgQuery ."result was" .$imgResult;
+	if(!$imgResult){
+		die("image couldn't upload to image table");
+	}
 }
 
 
 $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);
-if($result){
+if($result && $imgResult){
 	$last_id = mysqli_insert_id($conn);
 	echo "New record created successfully. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
 } else {
