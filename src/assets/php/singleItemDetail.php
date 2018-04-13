@@ -24,7 +24,7 @@ else{
 }
 // need to verify 'p.id AS category'
 $query =  "SELECT
-             p.id AS part_id,
+             p.id,
              p.brand AS brand,
              p.part_name AS title, 
              p.id AS category, 
