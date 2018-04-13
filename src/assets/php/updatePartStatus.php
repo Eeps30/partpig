@@ -3,36 +3,32 @@ header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
 
-$entityBody = file_get_contents('php://input');
-$request_data = json_decode($entityBody, true);
-$_GET = $request_data['objName'];
-
 $output = [
     'success'=> false,
     'error' => [],
     'data' => []
 ];
 
-$_GET['part_id'] = 2;
-$_GET['user_id'] =2;
-
-if(!isset($_GET['part_id'])){
-    $output['error'][] = 'Error: user id not specified';
+if(!isset($_GET['id'])){
+    $id = '2';
+    $output['error'][] = 'id empty, adding default of 2';
 }
 else{
-    $part_id = $_GET['part_id'];  
+    $id = $_GET['id'];  
+}
+if(!isset($_GET['status'])){
+    $status = 'In cart';
+    $output['error'][] = "status empty, adding defaults of $status";
+}
+else{
+    $status = $_GET['status'];
 }
 
-$status = 'incart';
-
-$query1 = "UPDATE `part` 
-           SET `status` = '$status' 
-           WHERE `part`.`id` = '$part_id'"; 
-
-$result1 = mysqli_query($conn, $query1);
-if($result1){
+$query = "UPDATE `part` SET `status` = '$status' WHERE `part`.`id` = $id"; 
+$result = mysqli_query($conn, $query);
+if($result){
     $output['success'] = true;
-    $output['data'][] = "part '$part_id' status updated to $status";
+    $output['data'] = "part $id status updated to $status";
 }
 else{
     $output['error'][] = 'Error in database query, probably problem with enum letters';
@@ -41,26 +37,4 @@ else{
 $json_output = json_encode($output);
 print($json_output);
 
-$buyer_id = $_GET['user_id'];
-$part_id = $_GET['part_id'];
-$count = 2;
-$price = 55;
-$order_status = 'Order received';
-$shipping_charge = 9.99;
-
-$query2 = "INSERT INTO `shoppingcart`
-           (buyer_id, part_id, count, price, tax, status, shipping_charge)
-           Values (
-             '$buyer_id', '$part_id', '$count', '$price', ('$count'*'$price'*0.075), '$order_status', '$shipping_charge'
-           )";
-
-$result2 = mysqli_query($conn, $query2);
-$rows_affected = mysqli_affected_rows($conn);
-if($result2){
-    $last_id = mysqli_insert_id($conn);
-    echo "New record created successfully in shoppingcart. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
-} else {
-    echo "Error: " . mysqli_error($conn);
-}
-mysqli_close($conn);
 ?>
