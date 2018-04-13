@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './userParts.css';
 import {Link} from 'react-router-dom';
-import Loading from '../loading/loading';
+import Loading from '../../loading/loading';
 import axios from 'axios';
 
 
@@ -61,10 +61,12 @@ class UserParts extends Component {
         }); 
         
         return  (
-            <div className="userPartsList">
-                <h2>Your active listings</h2>
-                {list}
-            </div>
+            <div className="userPartsContainer">     
+                <div className="userPartsList">
+                    <h2>Your active listings</h2>
+                    {list}
+                </div>
+            </div>        
         );
                     
     }

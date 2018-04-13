@@ -107,7 +107,7 @@ class App extends Component{
                     <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
-                    <Route path='/userdashboard' component={UserDashboard}/>
+                    <Route path='/dashboard' component={UserDashboard}/>
                     {/* <Footer/>   */}
                 </div>
             </Router>  
