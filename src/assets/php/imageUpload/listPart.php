@@ -4,14 +4,14 @@ header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
-require("mysqlConnect.php");
-require("sanitizeInput.php");
+require("../mysqlConnect.php");
+require("../sanitizeInput.php");
 
 $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
 
 //only do filter_var for email and phone
-require_once('./imageUpload/addSingleImageToS3.php');
+require_once('./addSingleImageToS3.php');
 // hard-coded test $_POST data **********************************************
 
 // $_POST['part_name'] = ' 3rd test/<?\\\<Post>  ';
@@ -34,6 +34,13 @@ $request_data['seller_id'] = 2;
 
 
 // remove above content for frontEnd testing *********************************
+$output = [
+    'success'=> false,
+    'error' => [],
+    'data' => []
+];
+
+
 
 $fieldsToSanitize = ['part_name', 'description', 'category_id', 'part_condition', 'brand', 'make', 'model', 'year', 'seller_id', 'price_usd', 'part_number'];
 
@@ -66,10 +73,12 @@ $query .= $tableFields . $tableValues;
 $result = mysqli_query($conn, $query);
 if($result){
 	$last_id = mysqli_insert_id($conn);
-	echo "last Id was $last_id";
 	$imgQuery = "INSERT INTO `image` (`id`, `name`, `url`, `alt`, `part_id`) VALUES (NULL, NULL, '$imageUrl', NULL, '$last_id');";
 	$imgResult = mysqli_query($conn, $imgQuery);
-	echo "The Query was: ".$imgQuery ."result was" .$imgResult;
+	
+	
+	$output['data'][] = "last Id was $last_id";
+	$output['data'][] = "The Query was: ".$imgQuery ." result was" .$imgResult;
 	if(!$imgResult){
 		die("image couldn't upload to image table");
 	}
@@ -80,9 +89,14 @@ $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);
 if($result && $imgResult){
 	$last_id = mysqli_insert_id($conn);
-	echo "New record created successfully. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
+	$output['data'][] = "New record created successfully. Total rows affected: ". $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
+	$output['success'] = true;
 } else {
-	echo "Error: " . mysqli_error($conn);
+	$output['error'][] = "Error: " . mysqli_error($conn);
 }
+
+$json_output = json_encode($output);
+print($json_output);
+
 mysqli_close($conn);
 ?>

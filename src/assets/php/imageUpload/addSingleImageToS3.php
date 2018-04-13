@@ -1,11 +1,11 @@
 <?php
-require './vendor/autoload.php';
-require('./imageUpload/awsConnect.php');
+require '../vendor/autoload.php';
+require('./awsConnect.php');
 
 $sdk = new Aws\Sdk($sharedConfig);
 
-
-function handleDifferentImageTypes($imageURI){
+//
+function prepImageTypesAndExtForDecoding($imageURI){
     global $ext;
     if(preg_match('/data:image\/png/', $imageURI)){
         $imageURI = str_replace('data:image/png;base64,', '', $imageURI);
@@ -34,6 +34,7 @@ if(empty($request_data['images'][0])){
     die('please upload an image');
 }
 
+
 $day = date('Y-m-d');
 $username = $_POST['username'];
 $image = $request_data['images'][0];
@@ -46,11 +47,13 @@ $previousFileName = 'AWS_IMG_';
 //compose the name with prev name and time ex: AWS_IMG_1523578198
 $fileName = $previousFileName . time();
 
-define('UPLOAD_DIR', './imageUpload/tempUploads/');
+//decode image and save it locally
+define('UPLOAD_DIR', './tempUploads/');
 $img = $request_data['images'][0];
+
 $ext = '';
 
-$img = handleDifferentImageTypes($img);
+$img = prepImageTypesAndExtForDecoding($img);
 $data = base64_decode($img);
 $tempFilePath = UPLOAD_DIR.$fileName.$ext;
 $success = file_put_contents($tempFilePath,$data);
@@ -58,8 +61,6 @@ $success = file_put_contents($tempFilePath,$data);
 if(!$success){
 die('unable to save file');
 }
-
- $fileContents = file_get_contents("$tempFilePath");
 
 $s3Client = $sdk->createS3();
 try{
@@ -81,11 +82,9 @@ try{
     echo "There was an error uploading the file.\n";
 }
 
-require_once('./imageUpload/deleteFileFromTemp.php');
+//delete image from local storage
+require_once('./deleteFileFromTemp.php');
+
+//save AWS response to upload in database
 $imageUrl = $result['ObjectURL'];
-
-
-//if you need json output
-// $json_output = json_encode($imageUrl);
-// print($json_output);
 ?>
