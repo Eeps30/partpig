@@ -32,6 +32,8 @@ class App extends Component{
 
         this.addPart = this.addPart.bind(this);
         this.removePart = this.removePart.bind(this);
+        this.removeListing = this.removeListing.bind(this);
+        this.saveFilters = this.saveFilters.bind(this);
         this.saveUrlBack = this.saveUrlBack.bind(this);
         this.setUserData = this.setUserData.bind(this);
         this.urlBack = '';
@@ -84,6 +86,13 @@ class App extends Component{
         });
     }
 
+
+    removeListing(partInfo){
+        console.log("removed part")
+    }
+
+    saveFilters(filters){
+        this.filters = filters;
     saveUrlBack(urlBack){
         this.urlBack = urlBack;
     }

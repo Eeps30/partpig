@@ -12,17 +12,16 @@ class UserParts extends Component {
         this.state = {
             partInfo:{},
             isLoading: false,  
-            seller_id: 2          
+            seller_id: 3          
         }
     }
 
     componentDidMount(){
         // const id = this.props.match.params.id;
         const seller_id = this.state.seller_id;
-        const url = 'http://localhost:8000/teampartpig/src/assets/php/allPartByUser.php';
+        const url = 'http://localhost:8000/teampartpig/src/assets/php/allPartBySeller.php';
         const params = {seller_id};      
-        axios.get(url,{params}).then(resp=>{
-                console.log('result is: ', resp);                
+        axios.get(url,{params}).then(resp=>{               
                 this.setState({
                     partInfo:resp.data.data,
                     isLoading: true           
@@ -33,7 +32,7 @@ class UserParts extends Component {
         ); 
     } 
 
-        render(){
+    render(){
 
         if (!this.state.isLoading) {
             return (
@@ -45,15 +44,17 @@ class UserParts extends Component {
 
         let part = this.state.partInfo;
         const list = part.map((item,index)=>{
-            console.log("part is", item);
             return  (
                 <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
                     <div key={index} className="singlePart">
-                        <img src={item.images}></img>
-                        <div className="brand"> {item.brand} </div> <div className="partNumber">P/N: {item.partNumber}</div>
-                        <div className="productTitle"><p>{item.title}</p></div>
-                        <div className="yearMakeModel"> {item.make} {item.model} {item.year}</div>
-                        <div className="price">${item.price}</div>           
+                        <img className="mainImage" src={item.images}></img>
+                        <div className="listingId">{item.id}</div>
+                        <div className="partNumber">{item.partNumber}</div>
+                        <div className="brand"> {item.brand} </div>
+                        <div className="partName">{item.title}</div>
+                        <div className="fitment"> {item.make} {item.model} {item.year}</div>
+                        <div className="price">${parseFloat(item.price)}</div>
+                        <button className='removeListing' onClick={()=>removeListing()}>Remove Listing</button>           
                      </div>
                 </Link>        
                      );
@@ -61,9 +62,18 @@ class UserParts extends Component {
         }); 
         
         return  (
-            <div className="userPartsContainer">     
+            <div className="userPartsContainer"> 
+            <h2>Your active listings</h2>    
                 <div className="userPartsList">
-                    <h2>Your active listings</h2>
+                    <div className="listingColumns">
+                        <div className="mainImage">Main Image</div>
+                        <div className="listingId">Listing Id</div>
+                        <div className="partNumber">Part Number</div>
+                        <div className="brand">Brand</div>
+                        <div className="partName">Part Name</div>
+                        <div className="fitment">Fitment</div>
+                        <div className="price">Price</div>
+                    </div>
                     {list}
                 </div>
             </div>        
