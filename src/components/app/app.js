@@ -93,6 +93,7 @@ class App extends Component{
 
     saveFilters(filters){
         this.filters = filters;
+    }
     saveUrlBack(urlBack){
         this.urlBack = urlBack;
     }
