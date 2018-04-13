@@ -52,7 +52,7 @@ class PriceFilter extends Component{
         const min = parseInt(valArray[0]);
         const max = parseInt(valArray[1]);
         this.newFilters['prices'][1] = [min,max];
-        this.props.history.push('/partresults/'+JSON.stringify(this.newFilters));
+        this.props.history.push('/partresults/filters/'+JSON.stringify(this.newFilters));
     }
 
     render(){            
