@@ -1,8 +1,16 @@
 .userPartsList {
     margin: .5% auto;
-    text-align: center;
     width: 100%;
     height: 100%;
+}
+
+.singlePart .removeListing{
+    position: absolute;
+    color: white;
+    float: right;
+    bottom: 1%;
+    right: 1%;
+    background-color: red;
 }
 
 .userPartsList::-webkit-scrollbar {
@@ -10,60 +18,84 @@
 }
 
 .userPartsList .singlePart{
-    display: inline-block;    
-    vertical-align: top;
-    width: 80%;
+    position: relative;  
+    vertical-align: middle;
+    width: 100%;
     height: 10%;
-    padding: 1%;
     box-sizing: border-box;
     background-color: white;
     margin: 1% auto;
     border-radius: 2px;
     box-shadow: 0 1px 4px rgba(41,51,57,.5);
     font-size: 1.5em;
+    padding: 0;
 }
 
 .userPartsList .singlePart:hover{    
     box-shadow: 1px 3px 3px #888888;
 }
+.listingColumns div {
+    font-size: 1.5vmin;
+}
 
-.userPartsList .singlePart img {
+.mainImage .singlePart img{
+    min-width: 50%;
+    max-height: auto;
+}
+
+.listingColumns {
+    height: 2%;
+    width: 100%;
+    border-bottom: 2px solid #888888;
+}
+
+.userPartsList .mainImage{
+    margin: 0;
+    width: 10%;
+    height: 100%;
     float: left;
     display: inline-block;
-    height: 100%;
+
 }
 
-.userPartsList .partNumber{
-    float: right;
-}
-
-.userPartsList .productTitle{
-    margin-top: 1px;
-    margin-bottom: 1px;
-}
-
-.userPartsList .productPrice{
-    color:darkblue;
-    font-size: 1.5em;
-}
-
-.userPartsList .addButton {
-    float: right;
-    width: 40%;
-    text-align: center;
-    font-size: 0.4em;
-}
-
-.brand {
+.userPartsList .brand{
     float: left;
+    display: inline-block;
+    width: 10%;
 }
 
-.userPartsList .price {
+.userPartsList .partName {
+    float: left;
+    display: inline-block;
+    width: 20%;
+}
+
+.userPartsList .fitment{
+    float: left;
+    display: inline-block;
+    width: 20%;
+}
+
+.userPartsList .category{
+    float: left;
+    display: inline-block;
+    width: 10%;
+}
+
+.userPartsList .listingId {
+    float: left;
+    display: inline-block;
+    width: 10%;
+}
+
+.userPartsList .partNumber {
+    float: left;
+    display: inline-block;
+    width: 15%;
+}
+
+.userPartsList .price{
     float: right;
+    display: inline-block;
+    width: 10%;
 }
-
-.yearMakeModel{
-
-}
-
-

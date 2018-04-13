@@ -32,6 +32,7 @@ class App extends Component{
 
         this.addPart = this.addPart.bind(this);
         this.removePart = this.removePart.bind(this);
+        this.removeListing = this.removeListing.bind(this);
         this.saveFilters = this.saveFilters.bind(this);
         this.setUserData = this.setUserData.bind(this);
         this.filters = [];
@@ -82,6 +83,10 @@ class App extends Component{
         this.setState({
             cartParts: partList
         });
+    }
+
+    removeListing(partInfo){
+        console.log("removed part")
     }
 
     saveFilters(filters){
