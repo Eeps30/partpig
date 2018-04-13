@@ -44,8 +44,8 @@ let data = {
         },
         Subaru: {
             model: {
-                Impreza: {
-                    years: [2005, 2008]
+                "Impreza WRX STI": {
+                    years: [2005, 2008, 2015]
                 },
                 Impreza: {
                     years: [2005, 2008]

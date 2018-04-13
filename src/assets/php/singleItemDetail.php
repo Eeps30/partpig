@@ -10,7 +10,6 @@ $imgResult =  mysqli_query($conn, $imgQuery);
 if($imgResult){
     if(mysqli_num_rows($imgResult)> 0){
         while($row = mysqli_fetch_assoc($imgResult)){
-            // print_r($row);
            $images[] = $row['url'];
         }
     }
@@ -22,12 +21,12 @@ if($imgResult){
 else{
     $output['errors'][] = 'Error in image database query';
 }
-// need to verify 'p.id AS category'
+
 $query =  "SELECT
-             p.id AS part_id,
+             p.id,
              p.brand AS brand,
              p.part_name AS title, 
-             p.id AS category, 
+             c.name AS category, 
              p.make, 
              p.model, 
              p.year, 
@@ -39,7 +38,9 @@ $query =  "SELECT
              a.state_abbr AS 'state', 
              p.seller_id AS 'seller_id',
              u.user_name AS 'seller' 
-            FROM `part` AS p 
+            FROM `part` AS p
+            JOIN `category` AS c
+                ON p.category_id = c.id 
             JOIN `user` AS u
                 ON  p.seller_id = u.billing_address_id
             JOIN `address` AS a

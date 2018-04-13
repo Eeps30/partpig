@@ -74,8 +74,3 @@ body {
     height: 98%;
     width: 20%;
 }
-.footer {
-    border: solid 2px;
-    grid-row: 24/26;
-    grid-column: 1/21;
-}

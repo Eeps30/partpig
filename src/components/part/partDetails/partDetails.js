@@ -13,7 +13,7 @@ class PartDetails extends Component {
         this.state = {
             partInfo:{},
             isLoading: false            
-        }
+        }          
     }
 
     componentDidMount(){
@@ -26,6 +26,9 @@ class PartDetails extends Component {
                     partInfo:resp.data.data[0],
                     isLoading: true            
                 }); 
+                if(this.props.match.params.fromDashboard=='true'){
+                    this.oldPartInfo = resp.data.data[0];
+                }
             }).catch(err => {
                 console.log('error is: ', err);
             }
@@ -34,9 +37,9 @@ class PartDetails extends Component {
 
     render(){
 
-        let linkBack = <Link to={"/userdashboard/" + this.props.match.params.filters}><div>Back to results</div></Link>;
-        if(this.props.match.params.filters){
-            linkBack = <Link to={"/partresults/" + this.props.match.params.filters}><div>Back to results</div></Link>;
+        let linkBack = <Link to={this.props.urlBack}><div>Back to results</div></Link>;
+        if(this.props.match.params.fromDashboard == 'true'){
+            linkBack = <Link to={"/dashboard/activeparts"}><div>Back to dashboard</div></Link>;
         }
 
         if (!this.state.isLoading) {
@@ -51,7 +54,7 @@ class PartDetails extends Component {
             <div className="partDetails container">
                 {linkBack}
                 <ImageGallery imageClass='imageDetailsContainer' showList={true} mainImage = {this.state.partInfo.images[0]} imageList = {this.state.partInfo.images} />
-                <PartInfo cartParts={this.props.cartParts} history={this.props.history} infoClass='productDetailsContainer' partInfo={this.state.partInfo} addCart={this.props.addCart} isDetails={true} filters={this.props.match.params.filters}/>
+                <PartInfo fromDashboard={this.props.match.params.fromDashboard} {...this.props} infoClass='productDetailsContainer' partInfo={this.state.partInfo}  isDetails={true} />
             </div> 
         );
     }
