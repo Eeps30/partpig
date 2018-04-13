@@ -29,7 +29,7 @@ $query =  "SELECT p.id,
                     FROM `image` as im 
                     WHERE im.part_id=p.id
                 )";
-$_GET['year'] = 2008;
+// unset($_GET['year']);
 $fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
 $subQuery = [];
 $subQuery[] = "(p.status ='available' OR p.status='incart')";
