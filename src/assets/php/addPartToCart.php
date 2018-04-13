@@ -2,6 +2,11 @@
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
+
+$entityBody = file_get_contents('php://input');
+$request_data = json_decode($entityBody, true);
+$_GET = $request_data['objName'];
+
 $output = [
     'success'=> false,
     'error' => [],
