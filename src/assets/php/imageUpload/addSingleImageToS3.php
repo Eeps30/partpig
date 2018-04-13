@@ -8,17 +8,14 @@ $sdk = new Aws\Sdk($sharedConfig);
 function handleDifferentImageTypes($imageURI){
     global $ext;
     if(preg_match('/data:image\/png/', $imageURI)){
-        echo "match png";   
         $imageURI = str_replace('data:image/png;base64,', '', $imageURI);
         $ext = 'png';
        }
     else if(preg_match('/data:image\/jpeg/', $imageURI)){
-        echo "match jpeg";  
         $imageURI = str_replace('data:image/jpeg;base64,', '', $imageURI); 
         $ext = 'jpeg';
     }
     else if(preg_match('/data:image\/jpg/', $imageURI)){
-        echo "match jpg";  
         $imageURI = str_replace('data:image/jpg;base64,', '', $imageURI); 
         $ext = 'jpg';
     }
@@ -31,7 +28,7 @@ function handleDifferentImageTypes($imageURI){
 
 //defaults if post doesn't have user or image
 if(empty($_POST['username'])){
-    $_POST['username'] = 'user1';
+    $_POST['username'] = 'user2';
 }
 if(empty($request_data['images'][0])){
     die('please upload an image');
@@ -40,8 +37,13 @@ if(empty($request_data['images'][0])){
 $day = date('Y-m-d');
 $username = $_POST['username'];
 $image = $request_data['images'][0];
+
+// compose the file directory path ex: images/2018-4-12/user1/
 $filePath = "images/$day/$username";
-$previousFileName = 'listedImageName';
+//grab listed file name later, this is a placeholder
+$previousFileName = 'AWS_IMG_';
+
+//compose the name with prev name and time ex: AWS_IMG_1523578198
 $fileName = $previousFileName . time();
 
 define('UPLOAD_DIR', './imageUpload/tempUploads/');
