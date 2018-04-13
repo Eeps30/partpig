@@ -64,8 +64,9 @@ class SellPartForm extends Component{
 
     handleSubmit(event) {
         const newPartData = this.state.form;
-        console.log('handle uploading-', this.state.file)
+        console.log('handle uploading-', this.state.file, this.state.form)
         event.preventDefault();
+        // console.log('my image file object', newPartData.images[0].imagePreviewUrl);
         const listingFormData = {
                 "make":  newPartData.make,
                 "model":  newPartData.model,
@@ -78,7 +79,9 @@ class SellPartForm extends Component{
                 "description":  newPartData.description,
                 "milage_used": "",
                 "category":  newPartData.category,
-                "images": {imagePreviewUrl:newPartData.imagePreviewUrl, file:newPartData.file},
+                "images": [
+                    newPartData.images[0].imagePreviewUrl
+                ],
                 "seller_id":  newPartData.username,
                 "part_number":  newPartData.part_number,
             }
@@ -90,11 +93,12 @@ class SellPartForm extends Component{
 
     sendToServer(listingFormData){
 
-            const url = "http://localhost:8000/teampartpig/src/assets/php/sellPart.php";
+            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
+
             axios({
                 url: url,
                 method: 'post',
-                data: {listingFormData}, 
+                data: listingFormData, 
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
