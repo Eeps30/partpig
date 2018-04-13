@@ -32,7 +32,7 @@ $query =  "SELECT p.id,
 
 $fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
 $subQuery = [];
-$subQuery[] = "p.status ='In cart' OR p.status='For sale'";
+$subQuery[] = "p.status ='incart' OR p.status='available'";
 forEach($fieldsToCheck as $value){
     if(!empty($_GET[$value])){
         $subQuery[] = " $value = '{$_GET[$value]}'";

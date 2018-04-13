@@ -8,21 +8,21 @@ $output = [
     'data' => []
 ];
 
-$_GET['id'] = 2;
-$_GET['buyer_id'] =2;
+$_GET['part_id'] = 2;
+$_GET['user_id'] =2;
 
-if(!isset($_GET['id'])){
+if(!isset($_GET['part_id'])){
     $output['error'][] = 'Error: user id not specified';
 }
 else{
-    $part_id = $_GET['id'];  
+    $part_id = $_GET['part_id'];  
 }
 
 $status = 'incart';
 
 $query1 = "UPDATE `part` 
            SET `status` = '$status' 
-           WHERE `part`.`id` = $part_id"; 
+           WHERE `part`.`id` = '$part_id'"; 
 
 $result1 = mysqli_query($conn, $query1);
 if($result1){
@@ -36,7 +36,7 @@ else{
 $json_output = json_encode($output);
 print($json_output);
 
-$buyer_id = $_GET['buyer_id'];
+$buyer_id = $_GET['user_id'];
 $count = 2;
 $price = 55;
 $order_status = 'Order received';
