@@ -63,7 +63,7 @@ class DropDownContainer extends Component {
                         <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <button className="searchButton">
-                            <Link to={"/partresults" + makeStr + modelStr + yearStr} style={{display: 'block', height: '100%'}}> FIND PARTS </Link>
+                            <Link to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
                         </button>
                     </div>
                 </div>

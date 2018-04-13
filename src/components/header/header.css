@@ -76,9 +76,9 @@ header {
 
 .cartCount{
     position: absolute;
-    top: -5%;
-    right: 37%;
-    font-size: 1em;
+    top: -6%;
+    right: 34%;
+    font-size: 0.9em;
     font-weight: bold;
     color: #bc3315;
 }
