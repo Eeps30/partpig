@@ -1,54 +1,72 @@
 /* body {
     height: 100vh;
-    width: 80vw;
+    width: 100vw;
     border: solid black 2px;
     margin: 0 auto;
-    background-color: cadetblue;
+    background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
+    background-color: #616161;
 } */
 
 .header {
     height: 8vh;
     border: solid red 2px;
     font-size: 65px;
-    text-decoration: underline;
 }
 
-.dropdownContainer {
-    height: 85vh;
-    border: solid blue 2px;
+.outerDiv {
+    border: solid black 1px;
+    width: 77.5%;
+    border-radius: 10px;
+    margin-left: 10.5%;
+    margin-top: 15%;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 4px;
 }
 
-.dropdownMenu {
+.outerDiv .dropdownMenu {
+    border-radius: 10px;
     position: relative;
-    height: 40vh;
-    border: solid green 2px;
-    background-color: #294e4c;
-    margin-top: 15vh;
+    height: 20vh;
+    width: 76vw;
+    background-color: rgb(255, 69, 69);
+    margin: 1%;
 }
 
-.icon {
-    width: 40%;
-    height: 100%;
-    border: solid 2px limegreen;
+.dropdownMenu .buttonsContainer {
+    display: inline;
+    margin-left: 2%;
+}
+
+.dropdownMenu .buttonsContainer select {
+    width: 25%;
+    height: 30%;
+    margin: 1%;
+    margin-top: 5%;
+    background: #d4d4d4;
+    font-size: 160%;
+}
+
+.buttonsContainer .searchButton {
+    border-radius: 5px;
+    background-color: rgb(244,67,54);
+    float: right;
+    margin-top: 5%;
+    margin-right: 4%;
+    box-shadow: 2px 2px;
+    height: 25%;
+    width: 10%;
+}
+
+.buttonsContainer .searchButton a {
+    color: white;
+    font-size: 130%;
+    margin-top: 10%;
+}
+
+.alternateSearch {
+    margin-top: 50px;
     display: inline-block;
-}
-
-.icon img {
-    height: 20vw;
-    margin-top: 18%;
-    margin-left: 18%;
-    border: solid 2px limegreen;
-}
-
-.buttonsContainer {
-    margin-top: 12%;
-    position: absolute;
-    display: inline-block;
-    border: solid yellow 2px;
-    height: 40%;
+    font-size: large;
+    color: white;
     width: 60%;
-}
-
-.buttonsContainer div {
-    float: left;
 }

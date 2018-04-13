@@ -97,8 +97,7 @@ class App extends Component{
                     <Route exact path='/partresults' render={props => <PartList cartParts={this.state.cartParts} saveFilters={this.saveFilters}  addCart={this.addPart} {...props}/>} />
                     <Route exact path='/partresults/:filters' render={props => <PartList cartParts={this.state.cartParts} saveFilters={this.saveFilters}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/:make/:model/:year' render={props => <PartList cartParts={this.state.cartParts} saveFilters={this.saveFilters}  addCart={this.addPart} {...props}/>} />                    
-                    <Route path='/partdetails/:id/:filters' render={props => <PartDetails cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />
-                    <Route exact path='/partdetails/:id' render={props => <PartDetails isDashboard={true} {...props}/>} />
+                    <Route path='/partdetails/:id/:fromDashboard' render={props => <PartDetails filters={this.filters} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                    
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>
                     <Route path='/contactSeller' component={ContactSeller}/>

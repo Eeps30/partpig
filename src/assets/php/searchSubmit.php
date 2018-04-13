@@ -7,21 +7,21 @@ $output = [
     'error' => [],
     'data' => []
 ];
-// $_GET['make']='subaru';
 
 // default query
-// p.id AS category ???
 $query =  "SELECT p.id, 
                   p.brand, 
                   p.part_name AS title, 
-                  p.id AS category, 
+                  c.name AS category, 
                   p.make, 
                   p.model, 
                   p.year,                               
                   p.part_number AS partNumber, 
                   p.price_usd AS price, 
                   i.url AS images
-            FROM `part` AS p 
+            FROM `part` AS p
+            JOIN `category` AS c
+                ON p.category_id = c.id 
             JOIN `image` AS i 
                 ON i.id=
                 (
@@ -32,7 +32,7 @@ $query =  "SELECT p.id,
 
 $fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
 $subQuery = [];
-$subQuery[] = "p.status ='In cart' OR p.status='For sale'";
+$subQuery[] = "p.status ='available' OR p.status='incart'";
 forEach($fieldsToCheck as $value){
     if(!empty($_GET[$value])){
         $subQuery[] = " $value = '{$_GET[$value]}'";
@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $query);
 $display = new stdClass();
 $display->brand = 'true';
 $display->price = 'true';
-$ar = []; //@Brian: was $ar the old version of $row['images']? should we remove it? --Li, 04/08/18
+
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){

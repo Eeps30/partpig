@@ -47,7 +47,7 @@ class UserParts extends Component {
         const list = part.map((item,index)=>{
             console.log("part is", item);
             return  (
-                <Link key={index} to={"/partdetails/" + item.id}>  
+                <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
                     <div key={index} className="singlePart">
                         <img src={item.images}></img>
                         <div className="brand"> {item.brand} </div> <div className="partNumber">P/N: {item.partNumber}</div>
