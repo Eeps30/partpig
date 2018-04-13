@@ -13,7 +13,7 @@ $request_data = json_decode($entityBody, true);
 //only do filter_var for email and phone
 require_once('./addSingleImageToS3.php');
 // hard-coded test $_POST data **********************************************
-exit();
+
 // $_POST['part_name'] = ' 3rd test/<?\\\<Post>  ';
 // $_POST['description'] = '    ';
 // $_POST['part_condition'] = '1';
@@ -29,7 +29,7 @@ exit();
 
 // remove above content for frontEnd testing *********************************
 
-$fieldsToSanitize = ['part_name', 'description', 'part_condition', 'brand', 'make', 'model', 'year', 'seller_id', 'price_usd', 'part_number'];
+$fieldsToSanitize = ['part_name', 'description', 'category_id', 'part_condition', 'brand', 'make', 'model', 'year', 'seller_id', 'price_usd', 'part_number'];
 
 $fields = [];
 forEach($fieldsToSanitize as $value){
@@ -37,10 +37,10 @@ forEach($fieldsToSanitize as $value){
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
 $fields['part_condition'] = (int)$fields['part_condition'];
+$fields['category_id'] = $fields['category_id'] ?: 1;
 $fields['year'] = (int)$fields['year'];
 $fields['price_usd'] = (float)$fields['price_usd'];
 $fields['seller_id'] = (int)$fields['seller_id'];
-
 
 $query = "INSERT INTO `part` "; 
 $tableFields = '';
@@ -58,6 +58,13 @@ $query .= $tableFields . $tableValues;
 echo "The Query was: ".$query;
 error_log("The Query was: ".$query , 0);
 $result = mysqli_query($conn, $query);
+if($result){
+	$identity = $last_id = mysqli_insert_id($conn);
+	$imgQuery = "INSERT INTO `image` (`id`, `name`, `url`, `alt`, `part_id`) VALUES (NULL, NULL, '$imageUrl', NULL, '$identity');";
+	$imgResult = mysqli_query($conn, $query);
+}
+
+
 $rows_affected = mysqli_affected_rows($conn);
 $data = json_encode($result);
 if($result){

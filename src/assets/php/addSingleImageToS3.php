@@ -9,7 +9,7 @@ if(empty($_POST['username'])){
     $_POST['username'] = 'user1';
 }
 if(empty($request_data['images'][0])){
-    $request_data['images'][0] = '../images/part3/part3a.jpg';
+    die('please upload an image');
 }
 
 $day = date('Y-m-d');
