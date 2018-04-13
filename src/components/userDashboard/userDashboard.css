@@ -1,16 +1,24 @@
 .userDashboard{
-    margin: 2% auto;
     text-align: center;
     width: 100%;
     height: 100%;
 }
 
+.dashboardHeader{
+    width: 100%;
+    color: white;
+    background-color: rgb(32, 32, 32);
+}
+
+.dashboardHeader h2{
+    margin: 0;
+}
+
 .userPartsContainer{
     width: 60%;
-    margin: 2% auto;
+    margin: .5% auto;
     height: 100%;
     overflow-y: auto;
-    background-color: rgb(250, 250, 250);
     border-radius: 5px;
 }
 
@@ -18,3 +26,42 @@
     display: none;
 }
 
+.dashboardTabs {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+}
+
+.dashboardTabs .tabButton {
+    border: 2px solid grey;
+    color: black;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.dashboardTabs .tabButton:hover {
+    background-color: #ddd;
+}
+
+.userDashboard .tabContent {
+    width: 100%;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+#userParts{
+    width: 100%;
+    height: 100%;
+}
+
+.userDashboard .tabContent{
+    width: 100%;
+    height: 100%;
+}

@@ -45,6 +45,8 @@ const PartInfo = (props) => {
     }
     if(props.isCart){
         removeButton = <button className='button-link' onClick={()=>props.removePart(props.partInfo)}>Remove</button>
+    }else if(props.isDashboard){
+
     }else{
         if(containsObject(props.partInfo,props.cartParts)){
             buyButton = <button className='disabled addButton'>Added</button>;            

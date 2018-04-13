@@ -98,7 +98,7 @@ class App extends Component{
                     <Route exact path='/partresults/:filters' render={props => <PartList cartParts={this.state.cartParts} saveFilters={this.saveFilters}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/:make/:model/:year' render={props => <PartList cartParts={this.state.cartParts} saveFilters={this.saveFilters}  addCart={this.addPart} {...props}/>} />                    
                     <Route path='/partdetails/:id/:filters' render={props => <PartDetails cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />
-                    <Route exact path='/partdetails/:id' render={props => <PartDetails addCart={this.addPart} {...props}/>} />
+                    <Route exact path='/partdetails/:id' render={props => <PartDetails isDashboard={true} {...props}/>} />
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>
                     <Route path='/contactSeller' component={ContactSeller}/>
@@ -107,7 +107,7 @@ class App extends Component{
                     <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
-                    <Route path='/userdashboard' component={UserDashboard}/>
+                    <Route path='/dashboard' component={UserDashboard}/>
                     {/* <Footer/>   */}
                 </div>
             </Router>  
