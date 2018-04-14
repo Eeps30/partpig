@@ -23,7 +23,7 @@ else{
 }
 
 $query =  "SELECT
-             p.id AS part_id,
+             p.id,
              p.brand AS brand,
              p.part_name AS title, 
              c.name AS category, 

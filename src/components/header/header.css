@@ -1,11 +1,11 @@
 header {
     display: table;
-    color: black;
+    color: rgb(238, 75, 0);
     width: 100%;
     height: 5%;
     margin-left: 0;
     background-color: rgb(255, 255, 255);
-    margin-bottom: 5px;
+    margin-bottom: 0;
     box-shadow: 0 1px 4px rgba(41, 51, 57, 0.397)
 }
 
@@ -15,7 +15,7 @@ header {
     display: table-cell;
     vertical-align: middle;
     font-size: 3vh;
-    color: rgb(32, 32, 32);
+    color: rgb(238, 75, 0);
 }
 
 .user-nav{
@@ -43,18 +43,20 @@ header {
     margin: .5em;
 }
 
-
 .sellPartButton {
+    float: right;
     border: none;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer; 
+    font-size: 0.7em;
     background-color: #f44336;
     color: white;
+    padding: 1%;
+    height: 80%;
+    border-radius: 5px;
+    margin: 1%;
+    padding: 3% 2%;
+    border: 2px solid #f44336;
 }
 
 .sellPartButton:hover{
@@ -76,9 +78,9 @@ header {
 
 .cartCount{
     position: absolute;
-    top: -5%;
-    right: 37%;
-    font-size: 1em;
+    top: -6%;
+    right: 34%;
+    font-size: 0.9em;
     font-weight: bold;
-    color: black;
+    color: #bc3315;
 }

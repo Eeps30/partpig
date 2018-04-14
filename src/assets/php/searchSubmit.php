@@ -29,26 +29,27 @@ $query =  "SELECT p.id,
                     FROM `image` as im 
                     WHERE im.part_id=p.id
                 )";
-
+// unset($_GET['year']);
 $fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
 $subQuery = [];
-$subQuery[] = "p.status ='incart' OR p.status='available'";
+
+$subQuery[] = "(p.status ='available' OR p.status='incart')";
+
 forEach($fieldsToCheck as $value){
     if(!empty($_GET[$value])){
-        $subQuery[] = " $value = '{$_GET[$value]}'";
+        $subQuery[] = " $value LIKE '{$_GET[$value]}%'";
     }
 }
 
-if(count($subQuery)>0){
+// if(count($subQuery)>0){
 	$query .= " WHERE ". implode(" AND ",$subQuery);
-}
+// }
 
 $result = mysqli_query($conn, $query);
 // make a display object that we later add to each search result
 $display = new stdClass();
 $display->brand = 'true';
 $display->price = 'true';
-
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
