@@ -68,7 +68,7 @@ header {
 .cartDivIcon{
     position: relative;
     top: 23%;
-    right: 1%;
+    right: -1%;
     float: right;
 }
 
