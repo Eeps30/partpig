@@ -3,8 +3,7 @@ import './partInfo.css';
 import {Link} from 'react-router-dom';
 import fb from '../../../assets/images/facebook.png';
 import email from '../../../assets/images/email.png';
-
-
+import axios from 'axios';
 
 class PartInfo extends Component {
 
@@ -79,15 +78,29 @@ class PartInfo extends Component {
 
     savePartInfo(){
         //axios call to update the part  
-        this.setState({
-            editable:false
-        });    
-        this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],false);
+        const url = "http://localhost:8000/teampartpig/src/assets/php/editPartDetails.php";
+
+        axios({
+            url: url,
+            method: 'post',
+            data: this.state.partInfo, 
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(resp=>{
+            this.setState({
+                editable:false
+            });    
+            this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],false);
+        }).catch(err => {
+            console.log("There was an error:");
+        });
+        
         console.log('partInfo:',this.state.partInfo);
     }
 
     componentDidUpdate(){
-        if(this.state.partInfo !== this.props.partInfo){
+        if(this.state.partInfo !== this.props.partInfo && !this.state.editable){
             this.setState({
                 partInfo:this.props.partInfo
             });
@@ -128,7 +141,7 @@ class PartInfo extends Component {
                 <div>
                     <hr/>                
                     <p className="productDescription"><span id='description'>{this.state.partInfo.description}</span></p>
-                    <p className="productCondition">Condition: {this.state.partInfo.condition}</p>
+                    <p className="productCondition">Condition: {this.state.partInfo.part_condition}</p>
                     <p className="productLocation">Location: {this.state.partInfo.city + ', '+ this.state.partInfo.state}</p>               
                     <p>Seller: {this.state.partInfo.seller} {/*<Link className='button-link' to={"/contactSeller"}>Contact</Link>*/} {editableUsebutton}{cancelButton}</p>
                     {messageEditable}
@@ -146,11 +159,11 @@ class PartInfo extends Component {
         return (
             <div className={this.props.infoClass}>
                 {share}
-                <span id='brand'>{this.state.partInfo.brand}</span> <span id='partNumber' className="partNumber">{this.state.partInfo.partNumber} </span><span className="partNumber">P/N:</span>
-                <h3 className="productTitle"><span id='title'>{this.state.partInfo.title}</span></h3>
+                <span id='brand'>{this.state.partInfo.brand}</span> <span id='part_number' className="partNumber">{this.state.partInfo.part_number} </span><span className="partNumber">P/N:</span>
+                <h3 className="productTitle"><span id='part_name'>{this.state.partInfo.part_name}</span></h3>
                 <span><b>{this.state.partInfo.category} - {this.state.partInfo.make} {this.state.partInfo.model} {this.state.partInfo.year} </b></span>
                 
-                <p className="productPrice"><span>$</span><span id='price'>{this.state.partInfo.price}</span> {multiUsebutton}</p>          
+                <p className="productPrice"><span>$</span><span id='price_usd'>{this.state.partInfo.price_usd}</span> {multiUsebutton}</p>          
                 {details}
             </div> 
         );
