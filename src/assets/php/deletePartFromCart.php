@@ -2,9 +2,11 @@
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
+
 // $entityBody = file_get_contents('php://input');
 // $request_data = json_decode($entityBody, true);
 // $_GET = $request_data['objName'];
+
 
 $output = [
     'success'=> false,
@@ -39,17 +41,25 @@ $output = [
 // print($json_output);
 
 $buyer_id = $_GET['user_id'];
+
+
+$query2 = "DELETE FROM `order_meta`
+           WHERE `order_meta`.`buyer_id` = '$buyer_id'";
+
 $part_id = $_GET['part_id'];
 
 $query2 = "DELETE FROM `shoppingcart`
            WHERE `shoppingcart`.`buyer_id` = '$buyer_id'
            AND `shoppingcart`.`part_id` = '$part_id';
+
            ";
 
 $result2 = mysqli_query($conn, $query2);
 $rows_affected = mysqli_affected_rows($conn);
 if($result2){
+
     echo "Successfully removed records from table shoppingcart. Total rows affected: ", $rows_affected .".";
+
 } else {
     echo "Error: " . mysqli_error($conn);
 }
