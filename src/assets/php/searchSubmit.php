@@ -11,13 +11,13 @@ $output = [
 // default query
 $query =  "SELECT p.id, 
                   p.brand, 
-                  p.part_name AS title, 
+                  p.part_name, 
                   c.name AS category, 
                   p.make, 
                   p.model, 
                   p.year,                               
-                  p.part_number AS partNumber, 
-                  p.price_usd AS price, 
+                  p.part_number, 
+                  p.price_usd, 
                   i.url AS images
             FROM `part` AS p
             JOIN `category` AS c
@@ -49,14 +49,14 @@ $result = mysqli_query($conn, $query);
 // make a display object that we later add to each search result
 $display = new stdClass();
 $display->brand = 'true';
-$display->price = 'true';
+$display->price_usd = 'true';
 
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
             $row['images'] = array($row['images']); 
             $row['display'] = $display;
-            $row['price'] = (float)$row['price'];
+            $row['price_usd'] = (float)$row['price_usd'];
             $row['year'] = (int)$row['year'];
             $output['data'][] = $row;
         }
