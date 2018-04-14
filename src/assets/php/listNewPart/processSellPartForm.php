@@ -30,7 +30,6 @@ require_once('./addSingleImageToS3.php');
 
 //temp until category is working
 $request_data['category_id'] = 4;
-$request_data['seller_id'] = 2;
 
 
 // remove above content for frontEnd testing *********************************

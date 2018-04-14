@@ -12,6 +12,7 @@ class SellPartForm extends Component{
 
     constructor(props){
         super(props);
+        const userId = localStorage.getItem('user');
         this.state = {
             form: {
             part_name: '',
@@ -20,7 +21,7 @@ class SellPartForm extends Component{
             images: [],
             part_condition: '',
             description: '',
-            username: '',
+            userId: userId,
             password: '',
             brand: '',
             year: '',
@@ -82,7 +83,7 @@ class SellPartForm extends Component{
                 "images": [
                     newPartData.images[0].imagePreviewUrl
                 ],
-                "seller_id":  newPartData.username,
+                "seller_id":  newPartData.userId,
                 "part_number":  newPartData.part_number,
             }
         console.log('handleSubmit called, form values are:', listingFormData);
