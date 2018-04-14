@@ -37,7 +37,7 @@ class BrandFilter extends Component{
         }
         this.newFilters['brands'][0] = array;
         this.newFilters['brands'][1] = all;
-        this.props.history.push('/partresults/'+JSON.stringify(this.newFilters));
+        this.props.history.push('/partresults/filters/'+JSON.stringify(this.newFilters));
     }
 
     render(){

@@ -18,7 +18,7 @@
 
 .imageCartContainer{
     display: inline-block;
-    width: 30%;
+    width: 15%;
     height: 100%;
     text-align: center;
 }
@@ -45,5 +45,5 @@
 .mainImage img{
     width: 100%;
     height: 100%;
-    border-radius: 25px;
+    border-radius: 15px;
 }

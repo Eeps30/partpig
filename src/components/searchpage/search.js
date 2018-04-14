@@ -42,7 +42,7 @@ class DropDownContainer extends Component {
 
     catchYearSelect(selectedYear){
         console.log(selectedYear);
-        const caughtYear = selectedYear.value
+        const caughtYear = selectedYear
         this.setState({
             year: caughtYear
         })
@@ -57,9 +57,9 @@ class DropDownContainer extends Component {
 
         const make = this.state.make
 
-        const makeStr = this.state.make !== 'default' ? '/' + this.state.make : '';
-        const modelStr = this.state.model !== 'default' ? '/' + this.state.model : '';
-        const yearStr = this.state.year !== 'default' ? '/' + this.state.year : '';
+        const makeStr = this.state.make !== 'default' ? '/make/' + this.state.make : '';
+        const modelStr = this.state.model !== 'default' ? '/model/' + this.state.model : '';
+        const yearStr = this.state.year !== 'default' ? '/year/' + this.state.year : '';
         
         return(
             <div className="outerDiv">
@@ -73,6 +73,8 @@ class DropDownContainer extends Component {
                         <SearchPartName/>
                         <button onClick={this.handleSearchClick} className="searchButton">
                             <Link to={"/partresults" + makeStr + modelStr + yearStr} style={{display: 'block', height: '100%'}}> FIND PARTS </Link>
+                        <button onClick={this.handleSearchClick} className="searchButton">
+                            <Link to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
                         </button>
                     </div>
                 </div>

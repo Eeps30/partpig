@@ -22,13 +22,19 @@ const Cart = (props) => {
     }
     return (
         <div className="container">
-            <Link to={props.filters.length === 0 ? '/partresults' : '/partresults/'+JSON.stringify(props.filters)}><div>Back to results</div></Link>
+            <Link to={props.urlBack}><div>Back to results</div></Link>
             <div className="cartPartsContainer">
                 {list}                
             </div>
             <div className='cartTotal'>
-                <p><b>Total ({list.length} items):</b> ${total}</p>
-                {checkoutButton}
+                <div className="cartTitle"><b>SUBTOTAL ({list.length} items)</b> ${total}</div>
+                <div className="cartData">
+                    <p>TAX: <span>$0.00</span></p>
+                    <hr/>
+                    <p>TOTAL:  <span>${total}</span></p>
+                    <hr/>
+                    {checkoutButton}
+                </div>
             </div>
         </div>
     );
