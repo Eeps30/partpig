@@ -1,6 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-require_once('mysqlConnect.php');
+require_once('../mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
 
 $output = [
@@ -10,12 +10,18 @@ $output = [
 ];
 
 if(!isset($_GET['id'])){
-    $id = '2';
     $output['error'][] = 'id empty, adding default of 2';
+    die('no ID given');
+}
+$id = $_GET['id']; 
+$id = json_decode($id, TRUE);
+if(count($id) === 1){
+    $subQuery = $id[0];  
 }
 else{
-    $id = $_GET['id'];  
+    $subQuery = implode(" , ",$id); 
 }
+
 if(!isset($_GET['status'])){
     $status = 'incheckout';
     $output['error'][] = "status empty, adding defaults of $status";
@@ -23,18 +29,17 @@ if(!isset($_GET['status'])){
 else{
     $status = $_GET['status'];
 }
+$query = "UPDATE `part` SET `status` = '$status' WHERE `id` IN ($subQuery)"; 
 
+$output['data'][] = "Query was $query";
 
-$subQuery= [];
-
-$query = "UPDATE `part` SET `status` = '$status' WHERE `part`.`id` IN(".implode(',',$subQuery[]) .")"; 
 $result = mysqli_query($conn, $query);
 if($result){
     $output['success'] = true;
-    $output['data'] = "part $id status updated to $status";
+    $output['data'] = "part $subQuery status's updated to $status";
 }
 else{
-    $output['error'][] = 'Error in database query, probably problem with enum letters';
+    $output['error'][] = 'Error in database query';
 }
 
 $json_output = json_encode($output);
