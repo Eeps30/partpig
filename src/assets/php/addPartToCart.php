@@ -23,23 +23,23 @@ else{
     $part_id = $_GET['part_id'];  
 }
 
-$status = 'incart';
+// $status = 'incart';
 
-$query1 = "UPDATE `part` 
-           SET `status` = '$status' 
-           WHERE `part`.`id` = '$part_id'"; 
+// $query1 = "UPDATE `part` 
+//            SET `status` = '$status' 
+//            WHERE `part`.`id` = '$part_id'"; 
 
-$result1 = mysqli_query($conn, $query1);
-if($result1){
-    $output['success'] = true;
-    $output['data'][] = "part '$part_id' status updated to $status";
-}
-else{
-    $output['error'][] = 'Error in database query, probably problem with enum letters';
-}
+// $result1 = mysqli_query($conn, $query1);
+// if($result1){
+//     $output['success'] = true;
+//     $output['data'][] = "part '$part_id' status updated to $status";
+// }
+// else{
+//     $output['error'][] = 'Error in database query, probably problem with enum letters';
+// }
 
-$json_output = json_encode($output);
-print($json_output);
+// $json_output = json_encode($output);
+// print($json_output);
 
 $buyer_id = $_GET['user_id'];
 $part_id = $_GET['part_id'];
