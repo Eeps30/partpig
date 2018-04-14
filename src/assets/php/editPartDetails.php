@@ -1,7 +1,8 @@
 <?php
-
 header("Access-Control-Allow-Origin: *");
-// require_once('mysqlConnect.php');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+require_once('mysqlConnect.php');
 require("sanitizeInput.php");
 $output = [
     'success'=> false,
