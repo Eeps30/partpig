@@ -86,6 +86,14 @@ class PartInfo extends Component {
         console.log('partInfo:',this.state.partInfo);
     }
 
+    componentDidUpdate(){
+        if(this.state.partInfo !== this.props.partInfo){
+            this.setState({
+                partInfo:this.props.partInfo
+            });
+        }
+    }
+
     render(){
         let details = '';     
         let share = '';  

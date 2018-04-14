@@ -20,6 +20,7 @@ import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
 import ListingSuccess from '../listingSuccess/listingSuccess';
 import UserDashboard from '../userDashboard/userDashboard';
+import axios from 'axios';
 
 
 class App extends Component{
@@ -37,11 +38,11 @@ class App extends Component{
         this.saveUrlBack = this.saveUrlBack.bind(this);
         this.setUserData = this.setUserData.bind(this);
         this.urlBack = '';
-        this.user = '';
+        this.user = null;
     }
 
     setUserData(data){
-        this.user=data[0].user_name;
+        this.user=data[0];
     }
 
     containsObject(obj, list) {        
@@ -54,9 +55,29 @@ class App extends Component{
     }
 
     addPart(partInfo){
+
+        if(this.user !== null){
+            
+            const params = {
+                part_id: parseInt(partInfo.id),
+                user_id: parseInt(this.user.id)
+            };
+            const url = 'http://localhost:8000/teampartpig/src/assets/php/addPartToCart.php';        
+            axios.get(url,{params}).then(resp=>{
+                this.addPartToCart(partInfo);
+            }).catch(err => {
+                console.log('error is: ', err);
+            });
+        
+        }else{
+            this.addPartToCart(partInfo);
+        }        
+    }
+
+    addPartToCart(partInfo){
         const partList = [...this.state.cartParts];
         if(!this.containsObject(partInfo,partList)){
-             //Show a message to confirm we add the part to the cart
+            //Show a message to confirm we add the part to the cart
             const cartMessage = document.getElementsByClassName('cartMessageContainer');
             cartMessage[0].classList.add("show_block");
             partList.push(partInfo) 
@@ -76,16 +97,38 @@ class App extends Component{
     }
 
     removePart(partInfo){
+
+        if(this.user !== null){
+            
+            const params = {
+                part_id: parseInt(partInfo.id),
+                user_id: parseInt(this.user.id)
+            };
+            const url = 'http://localhost:8000/teampartpig/src/assets/php/deletePartFromCart.php';        
+            axios.get(url,{params}).then(resp=>{
+                this.removePartFromCart(partInfo);
+            }).catch(err => {
+                console.log('error is: ', err);
+            });
+        }else{
+            this.removePartFromCart(partInfo);
+        }
+        
+    }
+
+    removePartFromCart(partInfo){
         const partList = [...this.state.cartParts];
-        const index = partList.indexOf(partInfo);
-        partList.splice(index,1);       
+        for(let i=0;i<partList.length;i++){
+            if(partList[i].id === partInfo.id){
+                partList.splice(i,1);
+            }
+        }               
         const cartCount = document.getElementsByClassName('cartCount');
         cartCount[0].textContent = partList.length;
         this.setState({
             cartParts: partList
         });
     }
-
 
     removeListing(partInfo){
         console.log("removed part")

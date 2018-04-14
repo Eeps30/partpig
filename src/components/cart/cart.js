@@ -27,8 +27,14 @@ const Cart = (props) => {
                 {list}                
             </div>
             <div className='cartTotal'>
-                <p><b>Total ({list.length} items):</b> ${total}</p>
-                {checkoutButton}
+                <div className="cartTitle"><b>SUBTOTAL ({list.length} items)</b> ${total}</div>
+                <div className="cartData">
+                    <p>TAX: <span>$0.00</span></p>
+                    <hr/>
+                    <p>TOTAL:  <span>${total}</span></p>
+                    <hr/>
+                    {checkoutButton}
+                </div>
             </div>
         </div>
     );
