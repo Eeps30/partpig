@@ -11,7 +11,9 @@ $output = [
 
 if(!isset($_GET['id'])){
     $id = '84';
+
     $output['error'][] = "id empty, adding default of $id";
+
 }
 else{
     $id = $_GET['id'];  

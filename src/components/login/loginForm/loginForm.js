@@ -28,7 +28,7 @@ class LoginForm extends Component {
         }).then(resp=>{
             if(resp.data.success){
                 this.props.setUserData(resp.data.data);
-                this.props.history.push('/');
+                this.props.history.push('/dashboard');
             }
         }).catch(err => {
             console.log('error is: ', err);

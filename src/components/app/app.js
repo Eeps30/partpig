@@ -42,7 +42,11 @@ class App extends Component{
     }
 
     setUserData(data){
-        this.user=data[0];
+        if(data && data[0]){
+            this.user=data[0];
+            localStorage.setItem('user',data[0].id);
+            //axios call to get all the parts in the cart for this user
+        }
     }
 
     containsObject(obj, list) {        
@@ -149,7 +153,7 @@ class App extends Component{
                     <Route exact path='/' component={Search}/>
                     <Route exact path='/partresults' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
-                    <Route exact path='/partresults/make/:make/model/:model/year/:year' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
+                    <Route path='/partresults/make/:make/model/:model/year/:year' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
                     <Route path='/partresults/make/:make/model/:model/year/:year/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />                   
                     <Route path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                    
                     <Route path='/about' component={About}/>
