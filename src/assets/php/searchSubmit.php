@@ -37,7 +37,7 @@ $subQuery[] = "(p.status ='available' OR p.status='incart')";
 
 forEach($fieldsToCheck as $value){
     if(!empty($_GET[$value])){
-        $subQuery[] = " $value LIKE '{$_GET[$value]}%'";
+        $subQuery[] = " $value = '{$_GET[$value]}'";
     }
 }
 
