@@ -2,6 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
 require_once('mysqlConnect.php');
 require("sanitizeInput.php");
 $output = [
@@ -28,17 +29,16 @@ forEach($fieldsToSanitize as $value){
 }
 
 forEach($fields as $key => $value){
-	$subQuery[] = "$key = $value";
+	$subQuery[] = "$key = '$value'";
 }
 if(count($subQuery) < 1){
     die('no fields to edit');
 }
-$query =  "UPDATE `part` as p
-            SET " . implode(",",$subQuery) . 
+$query =  "UPDATE `part` as p SET " . implode(" , ",$subQuery) . 
             " WHERE p.id = $ID";
 
 
-            $output['data'][] = "request data is " . $request_data;
+            // $output['data'][] = "request data is " . $request_data;
             $output['data'][] = "subquery is " . implode(",",$subQuery);
             $output['data'][] = "query is $query";
             
