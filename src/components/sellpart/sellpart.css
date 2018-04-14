@@ -4,6 +4,7 @@
     height: 96%;
     padding: 10px 10px 10px 10px;
     overflow-y: auto;
+    background-color: white;
 }
 
 .sellPartForm::-webkit-scrollbar {

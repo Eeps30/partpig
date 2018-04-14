@@ -54,7 +54,7 @@ class UserParts extends Component {
                         <div className="partName">{item.title}</div>
                         <div className="fitment"> {item.make} {item.model} {item.year}</div>
                         <div className="price">${parseFloat(item.price)}</div>
-                        <button className='removeListing' onClick={()=>removeListing()}>Remove Listing</button>           
+                        
                      </div>
                 </Link>        
                      );
