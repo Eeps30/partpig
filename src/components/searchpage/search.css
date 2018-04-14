@@ -1,0 +1,73 @@
+/* body {
+    height: 100vh;
+    width: 100vw;
+    border: solid black 2px;
+    margin: 0 auto;
+    background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
+    background-color: #616161;
+} 
+
+.header {
+    height: 8vh;
+    border: solid red 2px;
+    font-size: 65px;
+}*/
+
+.outerDiv {
+    border: solid black 1px;
+    width: 70%;
+    height: 25%;
+    border-radius: 10px;
+    margin: auto;
+    position: relative;
+    top: 45%;
+    transform: translate(0,-50%);
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 4px;
+    padding: 0.5%;
+}
+
+.outerDiv .dropdownMenu {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 69, 69);
+}
+
+.buttonsContainer{
+    position: relative;
+    top: 40%;
+    transform: translate(0,-50%);
+    width: 100%;
+    height: 30%;
+}
+
+.buttonsContainer select {    
+    width: 21%;
+    height: 100%;
+    margin: 2%;
+    background: #d4d4d4;
+    font-size: 2em;
+}
+
+.buttonsContainer .searchButton {    
+    border-radius: 5px;
+    background-color: rgb(244,67,54);
+    box-shadow: 2px 2px;
+    font-size: 2em;
+    height: 100%;
+    width: 20%;
+}
+
+.buttonsContainer .searchButton a {
+    color: white;
+    text-decoration: none;
+}
+
+.alternateSearch {
+    margin-top: 50px;
+    display: inline-block;
+    font-size: large;
+    color: white;
+    width: 60%;
+}

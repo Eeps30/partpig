@@ -1,0 +1,29 @@
+.filter{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 4%;
+    height: 100%;
+    width: 15%;
+    transition: all 1s ease-in;
+}
+
+.hidden{
+    display: none;
+}
+
+
+.filterBrand{
+    padding: 1%;  
+}
+
+.filterBrand div{
+    display: inline-block;
+    vertical-align: middle;  
+    margin: 0.5% 1%; 
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
+
+
