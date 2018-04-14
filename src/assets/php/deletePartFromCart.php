@@ -2,9 +2,9 @@
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
-$entityBody = file_get_contents('php://input');
-$request_data = json_decode($entityBody, true);
-$_GET = $request_data['objName'];
+// $entityBody = file_get_contents('php://input');
+// $request_data = json_decode($entityBody, true);
+// $_GET = $request_data['objName'];
 
 $output = [
     'success'=> false,
@@ -12,8 +12,6 @@ $output = [
     'data' => []
 ];
 
-$_GET['part_id'] = 2;
-$_GET['user_id'] = 2;
 
 // if(!isset($_GET['part_id'])){
 //     $output['error'][] = 'Error: user id not specified';
