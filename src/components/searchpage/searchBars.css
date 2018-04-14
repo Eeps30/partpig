@@ -1,9 +1,12 @@
-.searchNumber {
-    float: right;
-    width: 48%;
+.searchName {
+    width: 54%;
+    display: inline-block;
+    margin-left: 13%;
+    margin-top: 3%;
 }
 
-.searchName {
-    float:left;
-    width: 48%;
+.searchName input {
+    font-size: 270%;
+    width: 75%;
+    background-color: #d4d4d4;
 }
