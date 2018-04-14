@@ -21,7 +21,6 @@ class DropDownContainer extends Component {
         this.catchMakeSelect = this.catchMakeSelect.bind(this)
         this.catchModelSelect = this.catchModelSelect.bind(this)
         this.catchYearSelect = this.catchYearSelect.bind(this)
-        this.handleSearchClick = this.handleSearchClick.bind(this)
     }
 
     catchMakeSelect(selectedMake){
@@ -48,11 +47,6 @@ class DropDownContainer extends Component {
         })
     }
 
-    handleSearchClick(){
-        //axios call here for sending make model year to the database
-        console.log('hello');
-    }
-
     render(){
 
         const make = this.state.make
@@ -68,12 +62,7 @@ class DropDownContainer extends Component {
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                         <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                    </div>
-                    <div className="searchBarContainer">
-                        <SearchPartName/>
-                        <button onClick={this.handleSearchClick} className="searchButton">
-                            <Link to={"/partresults" + makeStr + modelStr + yearStr} style={{display: 'block', height: '100%'}}> FIND PARTS </Link>
-                        <button onClick={this.handleSearchClick} className="searchButton">
+                        <button className="searchButton">
                             <Link to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
                         </button>
                     </div>
