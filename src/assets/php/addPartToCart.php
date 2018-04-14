@@ -3,14 +3,17 @@ header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
 
+
+// $entityBody = file_get_contents('php://input');
+// $request_data = json_decode($entityBody, true);
+// $_GET = $request_data['objName'];
+
 $output = [
     'success'=> false,
     'error' => [],
     'data' => []
 ];
 
-$_GET['part_id'] = 2;
-$_GET['user_id'] =2;
 
 if(!isset($_GET['part_id'])){
     $output['error'][] = 'Error: user id not specified';
@@ -45,6 +48,7 @@ $count = 2;
 $price = 55;
 $order_status = 'Order received';
 $shipping_charge = 9.99;
+error_log('buyer_id: '.$buyer_id);
 
 $query2 = "INSERT INTO `shoppingcart`
            (buyer_id, part_id, count, price, tax, status, shipping_charge)
