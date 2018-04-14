@@ -17,7 +17,7 @@ else{
     $id = $_GET['id'];  
 }
 if(!isset($_GET['status'])){
-    $status = 'In cart';
+    $status = 'draft';
     $output['error'][] = "status empty, adding defaults of $status";
 }
 else{
