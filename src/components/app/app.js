@@ -42,7 +42,11 @@ class App extends Component{
     }
 
     setUserData(data){
-        this.user=data[0];
+        if(data && data[0]){
+            this.user=data[0];
+            localStorage.setItem('user',data[0].id);
+            //axios call to get all the parts in the cart for this user
+        }
     }
 
     containsObject(obj, list) {        
