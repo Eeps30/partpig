@@ -12,7 +12,8 @@ class PartInfo extends Component {
 
         this.state = {
             partInfo:props.partInfo,
-            editable: false
+            editable: false,
+            updated: false
         }
         this.oldPartInfo = props.partInfo; 
         this.editField = this.editField.bind(this);
@@ -87,11 +88,15 @@ class PartInfo extends Component {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }).then(resp=>{
+        }).then(resp=>{     
+            this.oldPartInfo = this.state.partInfo;
+            // this.props.history.push('/partdetails/'+this.state.partInfo.id+'/true');                   
             this.setState({
-                editable:false
-            });    
+                editable:false,
+                updated: true
+            });     
             this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],false);
+            
         }).catch(err => {
             console.log("There was an error:");
         });
@@ -100,7 +105,7 @@ class PartInfo extends Component {
     }
 
     componentDidUpdate(){
-        if(this.state.partInfo !== this.props.partInfo && !this.state.editable){
+        if(this.state.partInfo !== this.props.partInfo && !this.state.editable && !this.state.updated){
             this.setState({
                 partInfo:this.props.partInfo
             });
