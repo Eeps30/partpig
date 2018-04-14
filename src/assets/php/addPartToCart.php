@@ -3,6 +3,7 @@ header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
 
+
 // $entityBody = file_get_contents('php://input');
 // $request_data = json_decode($entityBody, true);
 // $_GET = $request_data['objName'];
@@ -20,6 +21,7 @@ if(!isset($_GET['part_id'])){
 else{
     $part_id = $_GET['part_id'];  
 }
+
 
 // $status = 'incart';
 
@@ -41,6 +43,7 @@ else{
 
 $buyer_id = $_GET['user_id'];
 $part_id = $_GET['part_id'];
+
 $count = 2;
 $price = 55;
 $order_status = 'Order received';
@@ -55,6 +58,7 @@ $query2 = "INSERT INTO `shoppingcart`
 
 $result2 = mysqli_query($conn, $query2);
 $rows_affected = mysqli_affected_rows($conn);
+
 if($result2){
     $last_id = mysqli_insert_id($conn);
     echo "New record created successfully in shoppingcart. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
