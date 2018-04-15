@@ -47,16 +47,17 @@ if(isset($_GET['keyword'])){
     OR `year` LIKE '%$keyword%'
     OR `price_usd` LIKE '%$keyword%'";
 }
-else if(isset($_GET['make']) || isset($_GET['model']) || isset($_GET['year'])){
+// if(isset($_GET['make']) || isset($_GET['model']) || isset($_GET['year']))
+else{
     forEach($fieldsToCheck as $value){
         if(!empty($_GET[$value])){
             $subQuery[] = " $value = '{$_GET[$value]}'";
         }
     }
 }
-else{
-    die('no field to check');
-}
+// else{
+//     die('no field to check');
+// }
 
 $query .=  implode(" AND ",$subQuery);
     
