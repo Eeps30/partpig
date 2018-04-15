@@ -12,7 +12,7 @@ class UserParts extends Component {
         this.state = {
             partInfo:{},
             isLoading: false,  
-            seller_id: 3          
+            seller_id: props.userId          
         }
     }
 
@@ -49,9 +49,9 @@ class UserParts extends Component {
                     <div key={index} className="singlePart">
                         <img className="mainImage" src={item.images}></img>
                         <div className="listingId">{item.id}</div>
-                        <div className="partNumber">{item.partNumber}</div>
+                        <div className="partNumber">{item.part_number}</div>
                         <div className="brand"> {item.brand} </div>
-                        <div className="partName">{item.title}</div>
+                        <div className="partName">{item.part_name}</div>
                         <div className="fitment"> {item.make} {item.model} {item.year}</div>
                         <div className="price">${parseFloat(item.price)}</div>
                         

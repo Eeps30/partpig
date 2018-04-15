@@ -24,16 +24,16 @@ else{
 
 $query =  "SELECT
              p.id,
-             p.brand AS brand,
-             p.part_name AS title, 
+             p.brand,
+             p.part_name, 
              c.name AS category, 
              p.make, 
              p.model, 
              p.year, 
-             p.part_number AS partNumber, 
-             p.price_usd AS price, 
-             p.description AS 'description', 
-             p.part_condition AS 'condition', 
+             p.part_number, 
+             p.price_usd, 
+             p.description, 
+             p.part_condition, 
              a.city AS 'city', 
              a.state_abbr AS 'state', 
              p.seller_id AS 'seller_id',
@@ -58,7 +58,7 @@ if($result){
         while($row = mysqli_fetch_assoc($result)){
 
             $row['images'] = $images;
-            $row['price'] = (float)$row['price'];
+            $row['price_usd'] = (float)$row['price_usd'];
 
             $output['data'][] = $row;
         }

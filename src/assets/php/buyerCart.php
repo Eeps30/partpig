@@ -1,8 +1,5 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
-header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
-
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
 $output = [
@@ -11,9 +8,15 @@ $output = [
     'data' => []
 ];
 
-$query =  "SELECT p.id, 
+$user_id = $_GET['user_id'];
+
+//hard coded for testing =========
+// $user_id = 3;
+//==========
+
+$query =  "SELECT s.buyer_id,
+                  p.id, 
                   p.brand, 
-                  p.seller_id As seller,
                   p.part_name, 
                   c.name AS category, 
                   p.make, 
@@ -22,23 +25,31 @@ $query =  "SELECT p.id,
                   p.part_number, 
                   p.price_usd, 
                   i.url AS images
-            FROM `part` AS p
+            FROM `shoppingcart` AS s
+            JOIN `part` AS p
+                ON s.buyer_id = $user_id AND s.part_id = p.id
             JOIN `category` AS c
                 ON p.category_id = c.id 
             JOIN `image` AS i 
-                ON i.id= (
+                ON i.id=
+                (
                     SELECT MIN(im.id) 
                     FROM `image` as im 
                     WHERE im.part_id=p.id
-                ) 
-                AND p.seller_id = '{$_GET['seller_id']}'";   
+                )";
 
 $result = mysqli_query($conn, $query);
-// make a display object that we later add to each search result
+$display = new stdClass();
+$display->brand = 'true';
+$display->price = 'true';
 
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
+            $row['images'] = array($row['images']); 
+            $row['display'] = $display;
+            $row['price_usd'] = (float)$row['price_usd'];
+            $row['year'] = (int)$row['year'];
             $output['data'][] = $row;
         }
     }

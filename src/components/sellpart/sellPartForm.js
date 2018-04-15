@@ -87,14 +87,14 @@ class SellPartForm extends Component{
         reader.readAsDataURL(file);
       }
 
-    
     sendToServer(listingFormData){
 
-            const url = "http://localhost:8000/teampartpig/src/assets/php/sellPart.php";
+            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
+
             axios({
                 url: url,
                 method: 'post',
-                data: {listingFormData}, 
+                data: listingFormData, 
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }

@@ -32,7 +32,7 @@ class PartList extends Component{
                 checked: false
             };
             !this.containsObject(brand,brandsArray) ? brandsArray.push(brand):'';
-            pricesArray.indexOf(parseInt(parts[i].price))===-1 ? pricesArray.push(parseInt(parts[i].price)) : '';            
+            pricesArray.indexOf(parseInt(parts[i].price_usd))===-1 ? pricesArray.push(parseInt(parts[i].price_usd)) : '';            
         };
         const brandFilter = [brandsArray,true];
         pricesArray.sort((a,b)=>a-b);
@@ -123,10 +123,10 @@ class PartList extends Component{
         const max = values[1];
         const filteredParts = [...this.state.arrayParts];
         for (let i = 0; i < filteredParts.length; i++) {            
-            if (parseInt(filteredParts[i].price) >= min && parseInt(filteredParts[i].price) <= max) {               
-                filteredParts[i].display.price = true;
+            if (parseInt(filteredParts[i].price_usd) >= min && parseInt(filteredParts[i].price_usd) <= max) {               
+                filteredParts[i].display.price_usd = true;
             }else{
-                filteredParts[i].display.price = false;
+                filteredParts[i].display.price_usd = false;
             }
         }        
         this.setState({
@@ -147,7 +147,7 @@ class PartList extends Component{
         if (!this.state.isLoading) {
             return <Loading />;
         }
-        let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price;});
+        let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price_usd;});
         let list = visibleParts.map((function(item,index){
             return ( 
                 <div key={index} className='singlePart'>                  
@@ -158,7 +158,7 @@ class PartList extends Component{
        
         return (               
             <div className='partResults container'>
-                <Link to="/"> Go Back </Link>               
+                <Link   className='button-link' to="/"> Go Back </Link>               
                 <Filter update={this.state.showFilters} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} history={this.props.history} filters={this.filters}/>
                 <div className={this.state.showFilters ? 'partList partListFilter' : 'partList'}> 
                     <div className='resultsBar'>

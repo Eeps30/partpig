@@ -23,6 +23,8 @@ $query =  "SELECT p.id,
                   p.price_usd, 
                   i.url AS images
             FROM `part` AS p
+            JOIN `shoppingcart` AS s
+                ON p.
             JOIN `category` AS c
                 ON p.category_id = c.id 
             JOIN `image` AS i 
@@ -31,7 +33,7 @@ $query =  "SELECT p.id,
                     FROM `image` as im 
                     WHERE im.part_id=p.id
                 ) 
-                AND p.seller_id = '{$_GET['seller_id']}'";   
+                AND s.buyer_id = '{$_GET['user_id']}'";   
 
 $result = mysqli_query($conn, $query);
 // make a display object that we later add to each search result
