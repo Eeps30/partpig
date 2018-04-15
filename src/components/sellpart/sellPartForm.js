@@ -6,10 +6,12 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import ListingSuccess from "../listingSuccess/listingSuccess";
 import InputField from "./inputField";
+import InputDropdown from "./inputDropdown";
 import {connect} from 'react-redux';
 import {formError, signUp} from '../../actions';
 import requiredFields from './formData'
-
+import inputDropdown from "./inputDropdown";
+import YearMakeModelSelect from './yearMakeModelSelect'
 
 class SellPartForm extends Component{
     handleSellPartSubmit(event){
@@ -152,8 +154,11 @@ class SellPartForm extends Component{
             placeholder: "Manufacture Part Number",
             className: "partNumber",
             required: "false"
-        },
+        }
     
+    ]
+
+    const dropdownInputs = [
         {
             label: "Brand",
             htmlFor: "brand",
@@ -161,9 +166,33 @@ class SellPartForm extends Component{
             type: "text",
             placeholder: "Brand",
             className: "brand",
-            required: "false"
+            required: "false",
+            options: [
+                {name: "Perrin", value: "Perrin"},
+                {name: "Forman", value: "Forman"},
+                {name: "Cosworth", value: "Cosworth"},
+                {name: "KillerB", value: "Killer B"},
+                {name: "Volk", value: "Volk"}
+            ]
         },
-    
+
+        {
+            label: "Condition",
+            htmlFor: "condition",
+            name: "condition",
+            type: "text",
+            placeholder: "Choose Condition",
+            className: "condition",
+            required: "false",
+            options: [
+                {name: 1, value: 1},
+                {name: 2, value: 2},
+                {name: 3, value: 3},
+                {name: 4, value: 4},
+                {name: 5, value: 5}
+            ]
+        }
+
     ]
     
 
@@ -172,7 +201,13 @@ class SellPartForm extends Component{
     const fields = formInputs.map((inputObj,index) => {
         return <InputField key={index} {...inputObj} value={values[inputObj.name] || ''}/>
     });
-    
+
+    const dropDowns = dropdownInputs.map((inputObj,index) => {
+        return <InputDropdown key={index} {...inputObj} value={''}/>
+    });
+   
+
+
 
 
         return(
@@ -181,6 +216,8 @@ class SellPartForm extends Component{
                             <div className="part-details">
                                 <h1>Part Details</h1>
                                 {fields}
+                                {dropDowns}
+                                <YearMakeModelSelect/>                                
                             </div> 
                             <div className="buttonContainer">
                                 <button className="postPart">List Your Part Now!</button>
