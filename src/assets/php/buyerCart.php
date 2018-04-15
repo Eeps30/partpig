@@ -8,8 +8,14 @@ $output = [
     'data' => []
 ];
 
-// default query
-$query =  "SELECT p.id, 
+$user_id = $_GET['user_id'];
+
+//hard coded for testing =========
+// $user_id = 3;
+//==========
+
+$query =  "SELECT s.buyer_id,
+                  p.id AS part_id, 
                   p.brand, 
                   p.part_name AS title, 
                   c.name AS category, 
@@ -19,7 +25,9 @@ $query =  "SELECT p.id,
                   p.part_number AS partNumber, 
                   p.price_usd AS price, 
                   i.url AS images
-            FROM `part` AS p
+            FROM `shoppingcart` AS s
+            JOIN `part` AS p
+                ON s.buyer_id = $user_id AND s.part_id = p.id
             JOIN `category` AS c
                 ON p.category_id = c.id 
             JOIN `image` AS i 
@@ -30,23 +38,7 @@ $query =  "SELECT p.id,
                     WHERE im.part_id=p.id
                 )";
 
-// $fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
-// $subQuery = [];
-
-// $subQuery[] = "(p.status ='available' OR p.status='incart')";
-
-// forEach($fieldsToCheck as $value){
-//     if(!empty($_GET[$value])){
-//         $subQuery[] = " $value = '{$_GET[$value]}'";
-//     }
-// }
-
-// // if(count($subQuery)>0){
-// 	$query .= " WHERE ". implode(" AND ",$subQuery);
-// // }
-
 $result = mysqli_query($conn, $query);
-// make a display object that we later add to each search result
 $display = new stdClass();
 $display->brand = 'true';
 $display->price = 'true';

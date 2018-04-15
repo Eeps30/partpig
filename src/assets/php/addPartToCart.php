@@ -21,15 +21,15 @@ $buyer_id = (int)$_GET['user_id'];
 $part_id = (int)$_GET['part_id'];
 
 $count = 1;
-$price = 55;
+
 $order_status = 'Order received';
 $shipping_charge = 9.99;
 error_log('buyer_id: '.$buyer_id);
 
 $query = "INSERT INTO `shoppingcart`
-           (buyer_id, part_id, count, price, tax, status, shipping_charge)
+           (buyer_id, part_id, count, status, shipping_charge)
            Values (
-             '$buyer_id', '$part_id', '$count', '$price', ('$count'*'$price'*0.075), '$order_status', '$shipping_charge'
+             '$buyer_id', '$part_id', '$count', '$order_status', '$shipping_charge'
            )";
 
 $result = mysqli_query($conn, $query);
