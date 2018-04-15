@@ -160,7 +160,7 @@ class App extends Component{
                     <Route path='/contact' component={Contact}/>
                     <Route path='/contactSeller' component={ContactSeller}/>
                     <Route path='/cart' render={props => <Cart cartParts={this.state.cartParts} removePart={this.removePart} urlBack={this.urlBack} {...props}/>}/>
-                    <Route path='/checkout' component={Checkout}/>
+                    <Route path='/checkout' render={props => <Checkout cartParts={this.state.cartParts} {...props}/>}/>
                     <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
