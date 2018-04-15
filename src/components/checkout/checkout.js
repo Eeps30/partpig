@@ -23,7 +23,7 @@ class Checkout extends  Component {
         return (
             <div className='container'>
                 <div className='formCheckoutContainer'>
-                    <h1>Checkout</h1>
+                    <span>Checkout</span>
                     <hr/>
                 </div>
                 <div className='checkoutTotal'>

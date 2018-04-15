@@ -1,10 +1,15 @@
 .formCheckoutContainer{
     display: inline-block;
     width: 60%;
-    margin: 2.5% 1%;
-    padding: 1%;
+    margin: 0 1%;
+    padding: 0 1%;
     box-sizing: border-box;
     font-size: 2em;
+}
+
+.formCheckoutContainer span{
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .checkOutPart span{
