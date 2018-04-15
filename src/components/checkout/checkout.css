@@ -36,10 +36,26 @@
     display: inline-block;
     font-size: 2em;
     width: 35%;
-    height: 70%;
+    min-height: 70%;
     margin: 2% 1%;
     background-color: white;
     border: 1px solid;
     padding: 0;
     vertical-align: top;
+}
+
+.form-group{
+    display: inline-block;
+    width: 30%;
+    margin: 1%;
+    font-size: 1.1em;
+}
+
+.form-group label{
+    display: block;
+}
+
+.form-group input{
+    font-size: 1.1em;
+    width: 100%;
 }
