@@ -15,7 +15,7 @@ $buyer_id = (int)$_GET['user_id'];
 $query = "DELETE FROM `order_meta`
            WHERE `order_meta`.`buyer_id` = '$buyer_id'";
 
-$part_id = $_GET['part_id'];
+$part_id = (int)$_GET['part_id'];
 
 $query = "DELETE FROM `shoppingcart`
            WHERE `shoppingcart`.`buyer_id` = '$buyer_id'

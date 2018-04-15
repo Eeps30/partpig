@@ -24,7 +24,6 @@ $count = 1;
 
 $order_status = 'Order received';
 $shipping_charge = 9.99;
-error_log('buyer_id: '.$buyer_id);
 
 $query = "INSERT INTO `shoppingcart`
            (buyer_id, part_id, count, status, shipping_charge)
