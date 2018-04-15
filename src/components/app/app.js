@@ -39,6 +39,10 @@ class App extends Component{
         this.setUserData = this.setUserData.bind(this);
         this.urlBack = '';
         this.user = null;
+        const userId = localStorage.getItem('user');
+        if(userId){
+            this.getPartsFromCartByUserId(userId);
+        }
     }
 
     setUserData(data){
@@ -46,7 +50,24 @@ class App extends Component{
             this.user=data[0];
             localStorage.setItem('user',data[0].id);
             //axios call to get all the parts in the cart for this user
+           this.getPartsFromCartByUserId(data[0].id);
         }
+    }
+
+    getPartsFromCartByUserId(userId){
+        const params = {               
+            user_id: parseInt(userId)
+        };
+        this.removeAllPartsFromCart(this.state.cartParts);
+        const url = 'http://localhost:8000/teampartpig/src/assets/php/buyerCart.php';        
+        axios.get(url,{params}).then(resp=>{
+             resp.data.data.map((item ,index)=>{
+                this.addPart(item);
+             });
+           
+        }).catch(err => {
+            console.log('error is: ', err);
+        });
     }
 
     containsObject(obj, list) {        
@@ -98,6 +119,12 @@ class App extends Component{
                 cartParts: partList
             });
         }
+    }
+
+    removeAllPartsFromCart(partArray){
+        partArray.map((item ,index)=>{
+            this.removePartFromCart(item);
+         });
     }
 
     removePart(partInfo){

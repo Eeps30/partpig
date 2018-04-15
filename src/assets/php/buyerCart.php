@@ -15,15 +15,15 @@ $user_id = $_GET['user_id'];
 //==========
 
 $query =  "SELECT s.buyer_id,
-                  p.id AS part_id, 
+                  p.id, 
                   p.brand, 
-                  p.part_name AS title, 
+                  p.part_name, 
                   c.name AS category, 
                   p.make, 
                   p.model, 
                   p.year,                               
-                  p.part_number AS partNumber, 
-                  p.price_usd AS price, 
+                  p.part_number, 
+                  p.price_usd, 
                   i.url AS images
             FROM `shoppingcart` AS s
             JOIN `part` AS p
@@ -48,7 +48,7 @@ if($result){
         while($row = mysqli_fetch_assoc($result)){
             $row['images'] = array($row['images']); 
             $row['display'] = $display;
-            $row['price'] = (float)$row['price'];
+            $row['price_usd'] = (float)$row['price_usd'];
             $row['year'] = (int)$row['year'];
             $output['data'][] = $row;
         }
