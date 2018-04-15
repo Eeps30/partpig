@@ -54,10 +54,8 @@ class Checkout extends  Component {
         if(this.props.cartParts.length > 0){
             listParts = this.props.cartParts.map(function(item,index){
                 total += item.price_usd;
-                return ( 
-                    <div key={index} className='checkOutPart'> 
-                          <p>{item.part_name}<span>${item.price_usd}</span></p>
-                    </div>
+                return (                     
+                    <li key={index} className='checkOutPart'>{item.part_name}<span>${item.price_usd}</span></li>                    
                 )   
             }); 
         }
@@ -67,12 +65,18 @@ class Checkout extends  Component {
                 <div className='formCheckoutContainer'>
                     <span>Checkout</span>
                     <hr/>
-                    {fields}
+                    <div className='shippingAddress'>                        
+                        <span>Shipping Address</span>
+                        <hr/>
+                        {fields}
+                    </div>                    
                 </div>
                 <div className='checkoutTotal'>
                     <div className="cartTitle"><b>CART SUMARY: ({listParts.length} items)</b> </div>
                     <div className="checkoutList">
-                        {listParts}
+                        <ul>
+                            {listParts}
+                        </ul>
                         <Link className='button-link' to={"/cart"}>EDIT CART</Link>
                     </div>
                     <hr/>
@@ -82,6 +86,9 @@ class Checkout extends  Component {
                         <p>TAX: <span>$0.00</span></p>                   
                         <p>TOTAL:  <span>${total}</span></p> 
                     </div>
+                    <div>
+                        <Link className='button-link' to={"/"}>Complete Purchase</Link>
+                    </div>                   
                 </div>
             </div>
         );
