@@ -16,7 +16,8 @@ $user_id = $_GET['user_id'];
 
 $query =  "SELECT u.id AS user_id,
                   u.user_name, 
-                  u.first_name, 
+                  u.first_name,
+                  u.middle_name, 
                   u.last_name, 
                   u.email,
                   u.phone_number,
