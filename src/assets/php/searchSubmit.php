@@ -28,23 +28,38 @@ $query =  "SELECT p.id,
                     SELECT MIN(im.id) 
                     FROM `image` as im 
                     WHERE im.part_id=p.id
-                )";
+                )
+            WHERE ";
 
-$fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
-$subQuery = [];
+$fieldsToCheck = ['make', 'model', 'year'];  
 
 $subQuery[] = "(p.status ='available' OR p.status='incart')";
 
-forEach($fieldsToCheck as $value){
-    if(!empty($_GET[$value])){
-        $subQuery[] = " $value = '{$_GET[$value]}'";
+if(isset($_GET['keyword'])){
+    $keyword = $_GET['keyword'];
+
+    $subQuery[] = "`brand` LIKE '%$keyword%'
+    OR `part_name` LIKE '%$keyword%'  
+    OR `make` LIKE '%$keyword%' 
+    OR `model` LIKE '%$keyword%'
+    OR `description` LIKE '%$keyword%'
+    OR `part_number` LIKE '%$keyword%'
+    OR `year` LIKE '%$keyword%'
+    OR `price_usd` LIKE '%$keyword%'";
+}
+else if(isset($_GET['make']) || isset($_GET['model']) || isset($_GET['year'])){
+    forEach($fieldsToCheck as $value){
+        if(!empty($_GET[$value])){
+            $subQuery[] = " $value = '{$_GET[$value]}'";
+        }
     }
 }
+else{
+    die('no field to check');
+}
 
-// if(count($subQuery)>0){
-	$query .= " WHERE ". implode(" AND ",$subQuery);
-// }
-
+$query .=  implode(" AND ",$subQuery);
+    
 $result = mysqli_query($conn, $query);
 // make a display object that we later add to each search result
 $display = new stdClass();
