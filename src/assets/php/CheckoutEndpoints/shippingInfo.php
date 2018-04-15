@@ -11,7 +11,7 @@ $output = [
 $user_id = $_GET['user_id'];
 
 //hard coded for testing =========
-$user_id = 3;
+// $user_id = 3;
 //==========
 
 $query =  "SELECT u.id AS user_id,
