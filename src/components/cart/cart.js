@@ -17,7 +17,7 @@ const Cart = (props) => {
 
     if(props.cartParts.length > 0){
         list = props.cartParts.map(function(item,index){
-            total += item.price;
+            total += item.price_usd;
             return ( 
                 <div key={index} className='cartPart'> 
                       <Part isCart={true} removePart={props.removePart} imageClass='imageCartContainer' infoClass='productCart' partInfo={item} filters={props.filters}/>  
