@@ -1,0 +1,11 @@
+.contactContainer {
+    border: black 2px solid;
+    width: 90vw;
+    height: 100vh;
+    margin: auto;
+}
+
+.images {
+    height: 60%;
+    border: solid green 2px;
+}

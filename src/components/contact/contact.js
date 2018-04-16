@@ -1,9 +1,29 @@
-import React from "react";
+import React, {Component} from 'react';
+import contact from './contactInfo';
+import contactCSS from './contact.css';
 
-const Contact = () => (
-        <div>
-            <h1>This is the contact us page</h1>
-        </div>    
-);
+class ContactPage extends Component {
+    constructor(props){
+        super(props)
+    }
 
-export default Contact
+    render(){
+
+        const contactElements = contact.map((item, index) => {
+            return <div className="user">{item.name},{item.role},{item.github},{item.linkedin}</div>
+        })
+
+        return(
+            <div className="contactContainer">
+                <div className="images">
+                    Images
+                </div>
+                <div className="infoContainer">
+                    {contactElements}
+                </div>
+            </div>
+        )
+    }
+}
+
+export default ContactPage
