@@ -63,7 +63,7 @@ class App extends Component{
         const url = 'http://localhost:8000/teampartpig/src/assets/php/buyerCart.php';        
         axios.get(url,{params}).then(resp=>{
              resp.data.data.map((item ,index)=>{
-                this.addPart(item,true);
+                this.addPartToCart(item,true);
              });           
         }).catch(err => {
             console.log('error is: ', err);
