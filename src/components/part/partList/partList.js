@@ -158,7 +158,7 @@ class PartList extends Component{
                         <button className='button-link' onClick={this.handleShowFilters}>Filters</button>
                         {visibleParts.length + ' Results'}
                     </div>                   
-                    <Pagination {...this.props} allParts={visibleParts} />
+                    <Pagination {...this.props} allParts={visibleParts} showFilters={this.state.showFilters} />
                 </div>
             </div>
         );

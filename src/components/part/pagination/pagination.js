@@ -75,7 +75,7 @@ class Pagination extends Component {
         let list = this.state.currentParts.map((function(item,index){
             return ( 
                 <div key={index} className='singlePart'>                  
-                    <Part cartParts={this.props.cartParts} addCart={this.props.addCart} history={this.props.history} imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>                                      
+                    <Part cartParts={this.props.cartParts} addCart={this.props.addCart} history={this.props.history} imageClass={this.props.showFilters ? 'imageContainer imageContainerFilter' : 'imageContainer'} infoClass='productContainer' partInfo={item}/>                                      
                 </div>
             )           
         }).bind(this));
