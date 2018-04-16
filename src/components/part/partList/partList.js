@@ -19,6 +19,7 @@ class PartList extends Component{
         }
         this.filterBrandMethod = this.filterBrandMethod.bind(this);
         this.filterPriceMethod = this.filterPriceMethod.bind(this);
+        this.filterCategoryMethod = this.filterCategoryMethod.bind(this);
         this.handleShowFilters = this.handleShowFilters.bind(this);
         this.sortPartArray = this.sortPartArray.bind(this);
     }
@@ -27,14 +28,20 @@ class PartList extends Component{
         let filters = {};
         let pricesArray = [];
         let pricesfilter = [];
-        let brandsArray = [];
+        let brandsArray = [];        
+        let categoriesArray = [];
         for (let i = 0; i < parts.length; i++) {        
             const brand = {
                 text: parts[i].brand,
                 checked: false
             };
             !this.containsObject(brand,brandsArray) ? brandsArray.push(brand):'';
-            pricesArray.indexOf(parseInt(parts[i].price_usd))===-1 ? pricesArray.push(parseInt(parts[i].price_usd)) : '';            
+            pricesArray.indexOf(parseInt(parts[i].price_usd))===-1 ? pricesArray.push(parseInt(parts[i].price_usd)) : '';   
+            const category = {
+                text: parts[i].category,
+                checked: false
+            }         
+            !this.containsObject(category,categoriesArray) ? categoriesArray.push(category):'';
         };
         const brandFilter = [brandsArray,true];
         pricesArray.sort((a,b)=>a-b);
@@ -43,8 +50,10 @@ class PartList extends Component{
         pricesValues.push(pricesArray[pricesArray.length-1]);
         pricesfilter.push(pricesArray);
         pricesfilter.push(pricesValues);  
+        const categoryFilter = [categoriesArray,true];
         filters['prices'] = pricesfilter;
-        filters['brands'] = brandFilter;
+        filters['brands'] = brandFilter;        
+        filters['categories'] = categoryFilter;
         return filters;
     }
 
@@ -69,7 +78,8 @@ class PartList extends Component{
                     });               
                     
                     this.filterPriceMethod(this.filters['prices'][1]);
-                    this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);  
+                    this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);
+                    this.filterCategoryMethod(this.filters['categories'][0],this.filters['categories'][1]);  
                     
                     const filter = document.getElementsByClassName('filter');
                     filter[0].classList.add("hidden");
@@ -90,6 +100,7 @@ class PartList extends Component{
         if(this.props.history.location.pathname !== this.props.location.pathname){
             this.filterPriceMethod(this.filters['prices'][1]);
             this.filterBrandMethod(this.filters['brands'][0],this.filters['brands'][1]);
+            this.filterCategoryMethod(this.filters['categories'][0],this.filters['categories'][1]);
         }
     }
 
@@ -111,6 +122,24 @@ class PartList extends Component{
                         filteredParts[i].display.brand = true;
                     }else{
                         filteredParts[i].display.brand = false;
+                    }
+                }
+            }
+        }        
+        this.setState({
+            arrayParts:filteredParts
+        });
+    }
+
+    filterCategoryMethod(arrayCategories,all){
+        const filteredParts = [...this.state.arrayParts];
+        for (let i = 0; i < filteredParts.length; i++) {
+            for(let j = 0; j < arrayCategories.length; j++){
+                if (filteredParts[i].category === arrayCategories[j].text) {
+                    if(all || arrayCategories[j].checked){
+                        filteredParts[i].display.category = true;
+                    }else{
+                        filteredParts[i].display.category = false;
                     }
                 }
             }
@@ -158,7 +187,7 @@ class PartList extends Component{
         if (!this.state.isLoading) {
             return <Loading />;
         }
-        let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price_usd;});
+        let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price_usd && part.display.category;});
               
         return (               
             <div className='partResults container'>
