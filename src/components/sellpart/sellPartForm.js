@@ -80,9 +80,7 @@ class SellPartForm extends Component{
                 "description":  newPartData.description,
                 "milage_used": "",
                 "category":  newPartData.category,
-                "images": [
-                    newPartData.images[0].imagePreviewUrl
-                ],
+                "images": newPartData.images,
                 "seller_id":  newPartData.userId,
                 "part_number":  newPartData.part_number,
             }
