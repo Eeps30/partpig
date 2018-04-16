@@ -9,51 +9,22 @@ $output = [
     'data' => []
 ];
 
-// $_GET['part_id'] = 2;
-// $_GET['user_id'] = 2;
+$buyer_id = (int)$_GET['user_id'];
 
-// if(!isset($_GET['part_id'])){
-//     $output['error'][] = 'Error: user id not specified';
-// }
-// else{
-//     $part_id = $_GET['part_id'];  
-// }
-
-// $status = 'available';
-
-// $query = "UPDATE `part` 
-//           SET `status` = '$status' 
-//           WHERE `part`.`id` = $part_id"; 
-
-// $result = mysqli_query($conn, $query);
-// if($result){
-//     $output['success'] = true;
-//     $output['data'] = "part '$part_id' status updated to $status";
-// }
-// else{
-//     $output['error'][] = 'Error in database query, probably problem with enum letters';
-// }
-
-// $json_output = json_encode($output);
-// print($json_output);
-
-$buyer_id = $_GET['user_id'];
-
-
-$query2 = "DELETE FROM `order_meta`
+$query = "DELETE FROM `order_meta`
            WHERE `order_meta`.`buyer_id` = '$buyer_id'";
 
-$part_id = $_GET['part_id'];
+$part_id = (int)$_GET['part_id'];
 
-$query2 = "DELETE FROM `shoppingcart`
+$query = "DELETE FROM `shoppingcart`
            WHERE `shoppingcart`.`buyer_id` = '$buyer_id'
            AND `shoppingcart`.`part_id` = '$part_id';
 
            ";
 
-$result2 = mysqli_query($conn, $query2);
+$result = mysqli_query($conn, $query);
 $rows_affected = mysqli_affected_rows($conn);
-if($result2){
+if($result){
 
     echo "Successfully removed records from table shoppingcart. Total rows affected: ", $rows_affected .".";
 

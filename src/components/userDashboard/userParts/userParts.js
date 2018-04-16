@@ -3,6 +3,7 @@ import './userParts.css';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
 import axios from 'axios';
+import UpdatePartStatus from "./updatePartStatus"
 
 
 class UserParts extends Component {
@@ -11,8 +12,9 @@ class UserParts extends Component {
         super(props);
         this.state = {
             partInfo:{},
-            isLoading: false,  
-            seller_id: 3          
+            isLoading: false,
+            seller_id: 2 
+            // seller_id: props.userId          
         }
     }
 
@@ -44,22 +46,29 @@ class UserParts extends Component {
 
         let part = this.state.partInfo;
         const list = part.map((item,index)=>{
+            if(item.status === "available"){
+            let id = item.id;
+            let status = item.status;
             return  (
-                <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
+                // <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
                     <div key={index} className="singlePart">
                         <img className="mainImage" src={item.images}></img>
                         <div className="listingId">{item.id}</div>
-                        <div className="partNumber">{item.partNumber}</div>
+                        <div className="partNumber">{item.part_number}</div>
                         <div className="brand"> {item.brand} </div>
-                        <div className="partName">{item.title}</div>
+                        <div className="partName">{item.part_name}</div>
                         <div className="fitment"> {item.make} {item.model} {item.year}</div>
-                        <div className="price">${parseFloat(item.price)}</div>
-                        <button className='removeListing' onClick={()=>removeListing()}>Remove Listing</button>           
-                     </div>
-                </Link>        
+                        <div className="price">${parseFloat(item.usd_price)}</div>
+                        <div className="statusUpdateContainer">
+                        <Link key={index} to={"/partdetails/" + item.id+'/true'}><button className="editPart">Edit Part</button></Link> 
+                        <UpdatePartStatus id = {id} status = {status}/></div>       
+                    </div>         
                      );
-        
-        }); 
+                    } else {
+                        return
+                    }                    
+        });
+
         
         return  (
             <div className="userPartsContainer"> 

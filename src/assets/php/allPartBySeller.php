@@ -12,15 +12,16 @@ $output = [
 ];
 
 $query =  "SELECT p.id, 
-                  p.brand, 
+                  p.brand,
+                  p.status, 
                   p.seller_id As seller,
-                  p.part_name AS title, 
+                  p.part_name, 
                   c.name AS category, 
                   p.make, 
                   p.model, 
                   p.year,                               
-                  p.part_number AS partNumber, 
-                  p.price_usd AS price, 
+                  p.part_number, 
+                  p.price_usd, 
                   i.url AS images
             FROM `part` AS p
             JOIN `category` AS c

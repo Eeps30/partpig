@@ -10,14 +10,16 @@ $output = [
 ];
 
 if(!isset($_GET['id'])){
-    $id = '2';
-    $output['error'][] = 'id empty, adding default of 2';
+    $id = '84';
+
+    $output['error'][] = "id empty, adding default of $id";
+
 }
 else{
     $id = $_GET['id'];  
 }
 if(!isset($_GET['status'])){
-    $status = 'In cart';
+    $status = 'draft';
     $output['error'][] = "status empty, adding defaults of $status";
 }
 else{
