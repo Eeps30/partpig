@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "./sellpart.css";
-
 import ImageUpload from '../imageUploader/imageUploader';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
@@ -13,26 +12,25 @@ import requiredFields from './formData'
 import inputDropdown from "./inputDropdown";
 import YearMakeModelSelect from './yearMakeModelSelect'
 
+
 class SellPartForm extends Component{
     handleSellPartSubmit(event){
         event.preventDefault();
         const inputs = this.props.values;
         // console.log('my image file object', newPartData.images[0].imagePreviewUrl);
         const listingFormData = {
-                // "make":  inputs.make,
-                // "model":  inputs.model,
-                // "year":  inputs.year,
+                "make":  inputs.make,
+                "model":  inputs.model,
+                "year":  inputs.year,
                 "part_name": inputs.part_name,
                 "brand": inputs.brand,
                 "price_usd":  inputs.price,
                 // "location": "",
-                // "part_condition":  inputs.part_condition,
-                // "description":  inputs.description,
+                "part_condition":  inputs.part_condition,
+                "description":  inputs.description,
                 // "milage_used": "",
-                // "category":  inputs.category,
-                // "images": [
-                //     inputs.images[0].imagePreviewUrl
-                // ],
+                "category":  inputs.category,
+                "images": [],
                 // "seller_id": inputs.userId,
                 "part_number": inputs.part_number,
             }
@@ -154,11 +152,7 @@ class SellPartForm extends Component{
             placeholder: "Manufacture Part Number",
             className: "partNumber",
             required: "false"
-        }
-    
-    ]
-
-    const dropdownInputs = [
+        },
         {
             label: "Brand",
             htmlFor: "brand",
@@ -167,35 +161,31 @@ class SellPartForm extends Component{
             placeholder: "Brand",
             className: "brand",
             required: "false",
-            options: [
-                {name: "Perrin", value: "Perrin"},
-                {name: "Forman", value: "Forman"},
-                {name: "Cosworth", value: "Cosworth"},
-                {name: "KillerB", value: "Killer B"},
-                {name: "Volk", value: "Volk"}
-            ]
-        },
+        }
+    
+    ]
 
+    const dropdownInputs = [
         {
             label: "Condition",
             htmlFor: "condition",
             name: "condition",
             type: "text",
             placeholder: "Choose Condition",
-            className: "condition",
+            className: "conditionRating",
             required: "false",
             options: [
-                {name: 1, value: 1},
-                {name: 2, value: 2},
-                {name: 3, value: 3},
-                {name: 4, value: 4},
-                {name: 5, value: 5}
+                {name: "1 - Poor", value: 1},
+                {name: "2 - Fair", value: 2},
+                {name: "3 - Good", value: 3},
+                {name: "4 - Great", value: 4},
+                {name: "5 - New", value: 5}
             ]
         }
 
     ]
     
-
+    console.log(this.props.imgArray)
     const {values, errors} = this.props;
 
     const fields = formInputs.map((inputObj,index) => {
@@ -212,15 +202,24 @@ class SellPartForm extends Component{
 
         return(
                 <div className="sellPartForm">
+                 <h1 className="sellPartTitle">List a part for sale!</h1>
                         <form onSubmit={this.handleSellPartSubmit.bind(this)}>
                             <div className="part-details">
-                                <h1>Part Details</h1>
+                                <h1>Required Part Details</h1>
                                 {fields}
                                 {dropDowns}
-                                <YearMakeModelSelect/>                                
+                            </div>
+                            <div>    
+                                <h1>What model does this part fit?</h1>
+                                <YearMakeModelSelect/>
+                                                           
                             </div> 
+                            <div>
+                            <h1>Upload Images</h1>
+                                <ImageUpload/>
+                             </div>   
                             <div className="buttonContainer">
-                                <button className="postPart">List Your Part Now!</button>
+                                <button className="postPart">List Part</button>
                             </div>
                         </form>
                 </div>          
