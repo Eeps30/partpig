@@ -20,8 +20,8 @@ body {
     border-radius: 10px;
     margin: auto;
     position: relative;
-    top: 25%;
-    background-color: rgba(0, 0, 0, 0.25);
+    top: 23%;
+    background-color: rgba(62, 62, 62, 0.25);
     box-shadow: 3px 4px;
     padding: 0.5%;
 }
@@ -30,7 +30,7 @@ body {
     border-radius: 10px;
     height: 100%;
     width: 100%;
-    background-color: rgb(255, 69, 69);
+    background-color: #F44336;
 }
 
 .buttonsContainer{
@@ -59,18 +59,18 @@ body {
 
 .searchBarContainer a {
     padding: 5px;
-    padding-top: 15px;
-    font-size: 25px;
-    padding-left: 45px;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 2vh;
     background-color: rgb(111, 111, 111);
-    color: #efefef;
+    color: #000000;
     text-decoration: none;
     border: solid black 2px;
     border-radius: 5px;
     display: inline-block;
-    margin-top: 1%;
     height: 15%;
-    width: 13%;
+    box-shadow: 2px 2px;
 }
 
 .searchBarContainer {
