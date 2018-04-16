@@ -1,9 +1,11 @@
 .sellPartForm {
     margin: 2% auto;
     width: 60%;
-    height: 96%;
     padding: 10px 10px 10px 10px;
     overflow-y: auto;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(41,51,57,.5)
 }
 
 .sellPartForm::-webkit-scrollbar {

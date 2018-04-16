@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Part from '../part';
 import './partList.css';
 import {Link} from 'react-router-dom';
 import Filter from '../filter/filter';
 import BrandFilter from './../filter/brandFilter';
 import axios from 'axios';
 import Loading from '../../loading/loading';
+import Pagination from './../pagination/pagination';
+import Sorter from './../sorter/sorter';
 
 class PartList extends Component{
 
@@ -19,6 +20,7 @@ class PartList extends Component{
         this.filterBrandMethod = this.filterBrandMethod.bind(this);
         this.filterPriceMethod = this.filterPriceMethod.bind(this);
         this.handleShowFilters = this.handleShowFilters.bind(this);
+        this.sortPartArray = this.sortPartArray.bind(this);
     }
 
     initFilters(parts){
@@ -62,8 +64,9 @@ class PartList extends Component{
                     }
                     this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
                    
+                    const partArraySorterByPrice = resp.data.data.sort((a,b)=> a.price_usd - b.price_usd);
                     this.setState({
-                        arrayParts:resp.data.data,
+                        arrayParts:partArraySorterByPrice,
                         isLoading: true            
                     });               
                     
@@ -136,6 +139,14 @@ class PartList extends Component{
         });
     }
 
+    sortPartArray(method){
+        let sortArrayParts = [...this.state.arrayParts];
+        sortArrayParts.sort(method);
+        this.setState({
+            arrayParts: sortArrayParts
+        });
+    }
+
     handleShowFilters(){
 
         let showFilters = !this.state.showFilters;
@@ -150,24 +161,18 @@ class PartList extends Component{
             return <Loading />;
         }
         let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price_usd;});
-        let list = visibleParts.map((function(item,index){
-            return ( 
-                <div key={index} className='singlePart'>                  
-                    <Part cartParts={this.props.cartParts} addCart={this.props.addCart} filters={this.filters} history={this.props.history} imageClass='imageContainer' infoClass='productContainer' partInfo={item}/>                                      
-                </div>
-            )           
-        }).bind(this));
-       
+              
         return (               
             <div className='partResults container'>
-                <Link   className='button-link' to="/"> Go Back </Link>               
+                <Link className='button-link' to="/"> Go Back </Link>               
                 <Filter update={this.state.showFilters} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} history={this.props.history} filters={this.filters}/>
                 <div className={this.state.showFilters ? 'partList partListFilter' : 'partList'}> 
                     <div className='resultsBar'>
                         <button className='button-link' onClick={this.handleShowFilters}>Filters</button>
-                        {list.length + ' Results'}
+                        {visibleParts.length + ' Results'}
+                        <Sorter sortPartArray={this.sortPartArray} />
                     </div>                   
-                    {list}
+                    <Pagination {...this.props} allParts={visibleParts} showFilters={this.state.showFilters} />
                 </div>
             </div>
         );

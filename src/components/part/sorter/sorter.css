@@ -1,0 +1,9 @@
+.sorterContainer{
+    float: right;
+    width: 21%;
+}
+
+.sorterContainer select{
+    padding: 3%;
+    box-sizing: content-box;
+}
