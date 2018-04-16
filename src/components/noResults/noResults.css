@@ -1,0 +1,6 @@
+.noResultsContainer {
+    width: 100%;
+    background-image: url("./partpigbackground.jpg");
+    background: no-repeat;
+    background-size: cover;
+}

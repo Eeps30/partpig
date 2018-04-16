@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import './userHistory.css';
+import './noResults.css';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
-import axios from 'axios';
-import NoResults from '../../noResults/noResults'
 
 
-class UserHistory extends Component {
+class NoResults extends Component {
         
     constructor(props){
         super(props);
@@ -62,9 +59,9 @@ class UserHistory extends Component {
         // }); 
         
         return  (
-            <div className="userPartsContainer">     
+            <div className="noResultsContainer">     
                 <div className="userPartsList">
-                    <NoResults/>
+                    <h2>Your History</h2>
                 </div>
             </div>     
         );
@@ -72,4 +69,4 @@ class UserHistory extends Component {
     }
 }
 
-export default UserHistory
+export default NoResults
