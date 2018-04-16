@@ -151,7 +151,7 @@ class PartList extends Component{
               
         return (               
             <div className='partResults container'>
-                <Link   className='button-link' to="/"> Go Back </Link>               
+                <Link className='button-link' to="/"> Go Back </Link>               
                 <Filter update={this.state.showFilters} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} history={this.props.history} filters={this.filters}/>
                 <div className={this.state.showFilters ? 'partList partListFilter' : 'partList'}> 
                     <div className='resultsBar'>
