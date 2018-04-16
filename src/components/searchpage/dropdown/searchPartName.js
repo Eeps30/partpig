@@ -24,10 +24,6 @@ class PartNameSearch extends Component {
         event.preventDefault();
     }
 
-    // getResults(){
-    //     //this is a call to the database or partsList to return search results
-    // }
-
     render(){
         return(
             <form className="searchName" onSubmit={this.handleSubmit}>

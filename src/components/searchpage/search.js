@@ -7,6 +7,7 @@ import './search.css';
 import {Link} from 'react-router-dom';
 import SearchPartName from './dropdown/searchPartName';
 import SearchPartNumber from './dropdown/searchPartNumber';
+import PartNameSearch from './dropdown/searchPartName';
 
 class DropDownContainer extends Component {
     constructor(props){
@@ -61,9 +62,10 @@ class DropDownContainer extends Component {
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                         <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                        <button className="searchButton">
-                            <Link to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
-                        </button>
+                    </div>
+                    <div className="searchBarContainer">
+                        <PartNameSearch/>
+                        <Link to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
                     </div>
                 </div>
             </div>
