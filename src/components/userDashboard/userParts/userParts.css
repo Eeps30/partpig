@@ -4,13 +4,25 @@
     height: 100%;
 }
 
-.singlePart .removeListing{
+.statusUpdateContainer {
     position: absolute;
-    color: white;
+    color: rgb(0, 0, 0);
     float: right;
-    bottom: 1%;
-    right: 1%;
-    background-color: red;
+    bottom: 0%;
+    right: 0%;
+    width: 40%;
+}
+
+.statusUpdateContainer div{
+    float: right;
+    bottom: 0%;
+    right: 0%;
+}
+
+.statusUpdateContainer h3 {
+  display: inline-block;
+  bottom: 0%;
+  right: 0%;
 }
 
 .userPartsList::-webkit-scrollbar {

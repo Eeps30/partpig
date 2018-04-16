@@ -15,7 +15,7 @@ class InputDropdown extends Component {
         return (
             <div className={className}>
                 <label htmlFor="">{label}</label>
-                <select onChange={handleInputChange} value={value} name={name} type={type} placeholder={placeholder}>
+                <select onChange={this.handleInputChange} value={value} name={name} type={type} placeholder={placeholder}>
                     {dropDownOptions}        
                 </select>
             </div>
