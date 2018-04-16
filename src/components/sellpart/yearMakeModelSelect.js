@@ -6,6 +6,7 @@ import data from '../searchpage/dataModel';
 import {Link} from 'react-router-dom';
 import SearchPartName from '../searchpage/dropdown/searchPartName';
 import SearchPartNumber from '../searchpage/dropdown/searchPartNumber';
+import './yearMakeModelSelect.css';
 
 class YearMakeModelSelect extends Component {
     constructor(props){
@@ -54,9 +55,9 @@ class YearMakeModelSelect extends Component {
         
         return(
             <div className="yearMakeModel">
-                        <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                        <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                        <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <MakeDropDown className="makeDropdown" data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
+                        <ModelDropDown className="modelDropdown" data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <YearDropDown className="yearDropdown" data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
             </div>
         )
     }

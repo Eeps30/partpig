@@ -11,11 +11,16 @@ header {
 
 .logo-container{
     width: 50%;
+    height: 100%;
     text-align: center;
     display: table-cell;
     vertical-align: middle;
     font-size: 3vh;
     color: rgb(238, 75, 0);
+}
+
+.mainLogo {
+    height: 50px;
 }
 
 .user-nav{
