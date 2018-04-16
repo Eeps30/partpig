@@ -3,7 +3,6 @@ import MakeDropDown from './dropdown/makeDropdown';
 import ModelDropDown from './dropdown/modelDropdown';
 import YearDropDown from './dropdown/yearDropdown';
 import data from './dataModel';
-import mainLogo from '../../assets/images/part1/subaruWheels2.jpg';
 import './search.css';
 import {Link} from 'react-router-dom';
 import SearchPartName from './dropdown/searchPartName';
