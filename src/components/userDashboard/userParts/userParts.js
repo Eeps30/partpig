@@ -58,7 +58,7 @@ class UserParts extends Component {
                         <div className="brand"> {item.brand} </div>
                         <div className="partName">{item.part_name}</div>
                         <div className="fitment"> {item.make} {item.model} {item.year}</div>
-                        <div className="price">${parseFloat(item.usd_price)}</div>
+                        <div className="price">${parseFloat(item.price_usd)}</div>
                         <div className="statusUpdateContainer"><UpdatePartStatus id = {id} status = {status}/></div> 
                      </div>
                 // </Link>        
