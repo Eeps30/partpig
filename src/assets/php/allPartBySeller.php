@@ -12,7 +12,8 @@ $output = [
 ];
 
 $query =  "SELECT p.id, 
-                  p.brand, 
+                  p.brand,
+                  p.status, 
                   p.seller_id As seller,
                   p.part_name, 
                   c.name AS category, 

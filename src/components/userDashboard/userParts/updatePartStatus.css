@@ -1,0 +1,21 @@
+.statusUpdateDropdown {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    float: right;
+    bottom: 1%;
+    right: 1%;
+    font-size: 1rem;
+}
+
+
+.statusUpdateDropdown .changeStatus{
+   display:  inline-block;
+}
+
+.cancelButton{
+    background-color: rgb(255, 72, 72);
+}
+
+.confirmButton {
+    background-color: rgb(0, 235, 0)
+}
