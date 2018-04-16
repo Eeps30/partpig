@@ -18,7 +18,7 @@ class Pagination extends Component {
 
     componentWillReceiveProps(newProps){    
         
-        if(this.props.allParts.length !== newProps.allParts.length){
+        if(this.props.allParts !== newProps.allParts){
             const allParts = newProps.allParts;
             const numPages = Math.ceil(allParts.length / this.partsPerPage);
             const currentParts = allParts.slice(this.partsPerPage*this.state.currentPage,(this.partsPerPage)+(this.partsPerPage*this.state.currentPage));
