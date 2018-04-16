@@ -89,8 +89,7 @@ class PartInfo extends Component {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then(resp=>{     
-            this.oldPartInfo = this.state.partInfo;
-            // this.props.history.push('/partdetails/'+this.state.partInfo.id+'/true');                   
+            this.oldPartInfo = this.state.partInfo;                  
             this.setState({
                 editable:false,
                 updated: true
@@ -126,7 +125,7 @@ class PartInfo extends Component {
             if(this.state.editable){
                 editableUsebutton = <button className='button-link editButton' onClick={this.savePartInfo.bind(this)}>Save</button>;
                 cancelButton = <button className='button-link editButton' onClick={this.resetPartInfo}>Cancel</button>;
-                messageEditable = <span className='editMessage'>Click in the elements on grey to edit them</span>
+                messageEditable = <span className='editMessage'>Click in the elements on blue to edit them</span>
             }else{
                 editableUsebutton = <button className='button-link editButton' onClick={()=>{
                     this.setState({editable: true});
@@ -148,7 +147,7 @@ class PartInfo extends Component {
                     <p className="productDescription"><span id='description'>{this.state.partInfo.description}</span></p>
                     <p className="productCondition">Condition: {this.state.partInfo.part_condition}</p>
                     <p className="productLocation">Location: {this.state.partInfo.city + ', '+ this.state.partInfo.state}</p>               
-                    <p>Seller: {this.state.partInfo.seller} {/*<Link className='button-link' to={"/contactSeller"}>Contact</Link>*/} {editableUsebutton}{cancelButton}</p>
+                    <p>Seller: {this.state.partInfo.seller} {editableUsebutton}{cancelButton}</p>
                     {messageEditable}
                 </div>           
             );
