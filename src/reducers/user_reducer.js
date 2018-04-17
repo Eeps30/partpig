@@ -5,6 +5,7 @@ const DEFAULT_STATE = {
     errors: []
 };
 
+//check the code below
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type){
         case types.INPUT_CHANGE:
