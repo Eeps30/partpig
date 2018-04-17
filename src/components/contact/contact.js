@@ -35,7 +35,11 @@ class ContactPage extends Component {
         return(
             <div className="contactContainer">
                 <div className="images">
-                    Images
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>                    
                 </div>
                 <div className="infoContainer">
                     {contactElements}
