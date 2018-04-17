@@ -17,16 +17,16 @@ class Checkout extends  Component {
             shippingAddress:{},
             sameAddress: false
         }
-
+        this.userId = localStorage.getItem('user');
         this.handleInputChange = this.handleInputChange.bind(this);
     }
     
     componentDidMount(){
-        const userId = localStorage.getItem('user');
-        if(userId){
+        this.userId = localStorage.getItem('user');
+        if(this.userId){
             //Shiping Address
             const params = {             
-                user_id: parseInt(userId),
+                user_id: parseInt(this.userId),
                 addressType: 'shipping'
             };
             const url = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/getAddressInfo.php';        
@@ -36,7 +36,7 @@ class Checkout extends  Component {
                 }); 
                 //billing Address     
                 const params = {             
-                    user_id: parseInt(userId),
+                    user_id: parseInt(this.userId),
                     addressType: 'billing'
                 };
                 const url = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/getAddressInfo.php';        
@@ -120,6 +120,31 @@ class Checkout extends  Component {
         });
     }
 
+    completePurchase(){
+        if(this.userId){
+            let partsId = [];
+            if(this.props.cartParts.length > 0){
+                partsId = this.props.cartParts.map(function(item,index){                
+                    return item.id
+                }); 
+            }
+            const params = {             
+                status: 'sold',
+                buyer_id: this.userId,
+                id:JSON.stringify(partsId)
+            };
+            const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';        
+            axios.get(urlStatus,{params}).then(resp=>{
+                if(resp.data.success){
+                    this.props.removeAllPartsFromCart(this.props.cartParts);
+                    this.props.history.push('/checkoutComplete/'+resp.data.data.order_number);
+                }
+            }).catch(err => {
+                console.log('error is: ', err);
+            });   
+        } 
+    }
+
     render(){
 
         if (!this.state.isLoading) {
@@ -183,7 +208,7 @@ class Checkout extends  Component {
                         <p>TOTAL:  <span>${total}</span></p> 
                     </div>
                     <div>
-                        <Link className='button-link' to={"/"}>Complete Purchase</Link>
+                        <button onClick={this.completePurchase.bind(this)} className='button-link' to={"/"}>Complete Purchase</button>
                     </div>                   
                 </div>
             </div>
