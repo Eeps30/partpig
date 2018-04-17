@@ -136,6 +136,7 @@ class Checkout extends  Component {
             const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';        
             axios.get(urlStatus,{params}).then(resp=>{
                 if(resp.data.success){
+                    this.props.removeAllPartsFromCart(this.props.cartParts);
                     this.props.history.push('/checkoutComplete/'+resp.data.data.order_number);
                 }
             }).catch(err => {
