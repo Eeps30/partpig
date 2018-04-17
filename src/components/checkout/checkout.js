@@ -15,6 +15,8 @@ class Checkout extends  Component {
             isLoading: false,
             userInfo:{}
         }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
     
     componentDidMount(){
@@ -36,7 +38,35 @@ class Checkout extends  Component {
             this.setState({  
                 isLoading: true
             }); 
-        }       
+        }   
+       
+        //Change the status of the parts in the cart to incheckout
+        let partsId = [];
+        if(this.props.cartParts.length > 0){
+            partsId = this.props.cartParts.map(function(item,index){                
+                return item.id
+            }); 
+        }
+        const paramsStatus = {             
+            status: 'incheckout',
+            id:partsId
+        };
+        const url = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';        
+        axios.get(url,{paramsStatus}).then(resp=>{
+            console.log(resp.data);
+        }).catch(err => {
+            console.log('error is: ', err);
+        });    
+    }
+
+    handleInputChange(event){
+        const {value,name} = event.target;
+        const newUserInfo = {...this.state.userInfo};
+        newUserInfo[name] = value;
+        this.setState({
+            userInfo:newUserInfo
+        });
+        
     }
 
     render(){
@@ -48,7 +78,7 @@ class Checkout extends  Component {
         let listParts = [];
 
         const fields = inputs.map(((field, index) => {                    
-            return <Field key={index} {...field} value={this.state.userInfo[field.name] || ''}/>
+            return <Field key={index} {...field} handleInputChange={this.handleInputChange} value={this.state.userInfo[field.name] || ''}/>
         }).bind(this));
 
         if(this.props.cartParts.length > 0){
@@ -69,7 +99,12 @@ class Checkout extends  Component {
                         <span>Shipping Address</span>
                         <hr/>
                         {fields}
-                    </div>                    
+                    </div> 
+                    <div className='shippingAddress'>                        
+                        <span>Billing Address</span>
+                        <hr/>
+                        {fields}
+                    </div>                   
                 </div>
                 <div className='checkoutTotal'>
                     <div className="cartTitle"><b>CART SUMARY: ({listParts.length} items)</b> </div>

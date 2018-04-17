@@ -83,6 +83,11 @@
     width: 100%;
 }
 
+.form-group select{
+    font-size: 1.1em;
+    width: 100%;
+}
+
 .shippingAddress{
     width: 95%;
     margin: 4% auto;
