@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+
 import '../userParts/userParts.css';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
 import axios from 'axios';
 import UpdatePartStatus from "../userParts/updatePartStatus"
+import './userDrafts.css';
 
 
 class UserDrafts extends Component {
@@ -51,7 +53,7 @@ class UserDrafts extends Component {
             let id = item.id;
             let status = item.status;
             return  (
-                // <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
+                
                     <div key={index} className="singlePart">
                         <img className="mainImage" src={item.images}></img>
                         <div className="listingId">{item.id}</div>
@@ -59,10 +61,12 @@ class UserDrafts extends Component {
                         <div className="brand"> {item.brand} </div>
                         <div className="partName">{item.part_name}</div>
                         <div className="fitment"> {item.make} {item.model} {item.year}</div>
-                        <div className="price">${parseFloat(item.price_usd)}</div>
-                        <div className="statusUpdateContainer"><UpdatePartStatus id = {id} status = {status}/></div> 
+                        <div className="price">${parseFloat(item.usd_price)}</div>
+                        <div className="statusUpdateContainer">
+                        <Link key={index} to={"/partdetails/" + item.id+'/true'}><button className="editPart">Edit Part</button></Link> 
+                        <UpdatePartStatus id = {id} status = {status}/></div> 
                      </div>
-                // </Link>        
+                            
                      );
                     } else {
                         return

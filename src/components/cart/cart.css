@@ -90,6 +90,7 @@
     font-weight: bold;
     color: #193282;
     opacity: 0;
+    z-index: -1;
 }
 
 .cartMessageContainer.top:before {
@@ -110,6 +111,7 @@
 
 .show_block{
     opacity: 1;
+    z-index: 1;
 }
 
 

@@ -66,6 +66,7 @@ $result = mysqli_query($conn, $query);
 $display = new stdClass();
 $display->brand = 'true';
 $display->price_usd = 'true';
+$display->category = 'true';
 
 if($result){
     if(mysqli_num_rows($result)> 0){
