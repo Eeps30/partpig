@@ -1,8 +1,8 @@
 <?php
 //this file is being required by multipleStatusUpdates.php
-
-$orderQuery = "INSERT INTO `order_details` (`buyer_id`, `seller_id`, `part_id`, `cost`, `status`) 
-               SELECT $buyer_id, p.seller_id, p.id, p.price_usd,  'Transaction complete' 
+$uniqid = uniqid();
+$orderQuery = "INSERT INTO `order_details` (`order_tracker`, `buyer_id`, `seller_id`, `part_id`, `cost`, `status`) 
+               SELECT '$uniqid', '$buyer_id', p.seller_id, p.id, p.price_usd,  'Transaction complete' 
                FROM `part` AS p
                WHERE p.id
                IN (" . implode(" , ", $id) . ")";
@@ -14,6 +14,7 @@ if(!$orderResult){
 }
 else{
     $output['data'][] = "transaction processed for " . implode(" , ", $id);
+    $output['data']['order_number'] = $uniqid;
 }
 
 $cartQuery = "DELETE FROM `shoppingcart` WHERE buyer_id='$buyer_id'";
