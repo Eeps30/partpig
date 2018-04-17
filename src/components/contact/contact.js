@@ -10,7 +10,12 @@ class ContactPage extends Component {
     render(){
 
         const contactElements = contact.map((item, index) => {
-            return <div className="user">{item.name},{item.role},{item.github},{item.linkedin}</div>
+            return ( <div className="user">
+                        <div>{item.name}</div>
+                        <div>{item.role}</div>
+                        <div>{item.github}</div>
+                        <div>{item.linkedin}</div>
+                    </div>)
         })
 
         return(
