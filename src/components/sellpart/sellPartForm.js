@@ -105,7 +105,8 @@ class SellPartForm extends Component{
             });
     }
 
-    formValidation(listingFormData){ event.preventDefault();
+    formValidation(listingFormData){ 
+        event.preventDefault();
 
         const {email, password, confirmPassword} = this.props.values;
         const errors = [];
@@ -123,105 +124,99 @@ class SellPartForm extends Component{
     }
   
     render() {
-    const formInputs = [
-        {
-            label: "Part Title",
-            htmlFor: "part_name",
-            name: "part_name",
-            type: "text",
-            placeholder: "Enter a part title",
-            className: "partName",
-            required: "true"
-        },
-    
-        {
-            label: "Price",
-            htmlFor: "price",
-            name: "price",
-            type: "text",
-            placeholder: "$",
-            className: "price",
-            required: "true"
-        },
-    
-        {
-            label: "Part Number",
-            htmlFor: "part_number",
-            name: "part_number",
-            type: "text",
-            placeholder: "Manufacture Part Number",
-            className: "partNumber",
-            required: "false"
-        },
-        {
-            label: "Brand",
-            htmlFor: "brand",
-            name: "brand",
-            type: "text",
-            placeholder: "Brand",
-            className: "brand",
-            required: "false",
-        }
-    
-    ]
+        const formInputs = [
+            {
+                label: "Part Title",
+                htmlFor: "part_name",
+                name: "part_name",
+                type: "text",
+                placeholder: "Enter a part title",
+                className: "partName",
+                required: "true"
+            },
+        
+            {
+                label: "Price",
+                htmlFor: "price",
+                name: "price",
+                type: "text",
+                placeholder: "$",
+                className: "price",
+                required: "true"
+            },
+        
+            {
+                label: "Part Number",
+                htmlFor: "part_number",
+                name: "part_number",
+                type: "text",
+                placeholder: "Manufacture Part Number",
+                className: "partNumber",
+                required: "false"
+            },
+            {
+                label: "Brand",
+                htmlFor: "brand",
+                name: "brand",
+                type: "text",
+                placeholder: "Brand",
+                className: "brand",
+                required: "false",
+            }
+        ];
 
-    const dropdownInputs = [
-        {
-            label: "Condition",
-            htmlFor: "condition",
-            name: "condition",
-            type: "text",
-            placeholder: "Choose Condition",
-            className: "conditionRating",
-            required: "false",
-            options: [
-                {name: "1 - Poor", value: 1},
-                {name: "2 - Fair", value: 2},
-                {name: "3 - Good", value: 3},
-                {name: "4 - Great", value: 4},
-                {name: "5 - New", value: 5}
-            ]
-        }
+        const dropdownInputs = [
+            {
+                label: "Condition",
+                htmlFor: "condition",
+                name: "condition",
+                type: "text",
+                placeholder: "Choose Condition",
+                className: "conditionRating",
+                required: "false",
+                options: [
+                    {name: "1 - Poor", value: 1},
+                    {name: "2 - Fair", value: 2},
+                    {name: "3 - Good", value: 3},
+                    {name: "4 - Great", value: 4},
+                    {name: "5 - New", value: 5}
+                ]
+            }
+        ];
+        
+        // console.log(this.props.imgArray)
+        const {values, errors} = this.props;
 
-    ]
-    
-    console.log(this.props.imgArray)
-    const {values, errors} = this.props;
+        const fields = formInputs.map((inputObj,index) => {
+            return <InputField key={index} {...inputObj} value={values[inputObj.name] || ''}/>
+        });
 
-    const fields = formInputs.map((inputObj,index) => {
-        return <InputField key={index} {...inputObj} value={values[inputObj.name] || ''}/>
-    });
-
-    const dropDowns = dropdownInputs.map((inputObj,index) => {
-        return <InputDropdown key={index} {...inputObj} value={''}/>
-    });
-   
-
-
-
+        const dropDowns = dropdownInputs.map((inputObj,index) => {
+            return <InputDropdown key={index} {...inputObj} value={''}/>
+        });
 
         return(
                 <div className="sellPartForm">
-                 <h1 className="sellPartTitle">List a part for sale!</h1>
-                        <form onSubmit={this.handleSellPartSubmit.bind(this)}>
-                            <div className="part-details">
-                                <h1>Required Part Details</h1>
-                                {fields}
-                                {dropDowns}
-                            </div>
-                            <div>    
-                                <h1>What model does this part fit?</h1>
-                                <YearMakeModelSelect/>
-                                                           
-                            </div> 
-                            <div>
-                            <h1>Upload Images</h1>
-                                <ImageUpload/>
-                             </div>   
-                            <div className="buttonContainer">
-                                <button className="postPart">List Part</button>
-                            </div>
-                        </form>
+                    <h1 className="sellPartTitle">List a part for sale!</h1>
+                    <form onSubmit={this.handleSellPartSubmit.bind(this)}>
+                        <div className="part-details">
+                            <h1>Required Part Details</h1>
+                            {fields}
+                            {dropDowns}
+                        </div>
+                        <div>    
+                            <h1>What model does this part fit?</h1>
+                            <YearMakeModelSelect/>
+                                                       
+                        </div> 
+                        <div>
+                        <h1>Upload Images</h1>
+                            <ImageUpload/>
+                         </div>   
+                        <div className="buttonContainer">
+                            <button className="postPart">List Part</button>
+                        </div>
+                    </form>
                 </div>          
                 );
     
