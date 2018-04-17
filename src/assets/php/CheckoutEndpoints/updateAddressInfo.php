@@ -21,6 +21,10 @@ $shipping = $request_data['shipping'];
 $billing = $request_data['billing'];
 
 foreach($request_data as $key => $val){
+    $subquery = [];
+    foreach($val as $item => $itemValue){
+    $subquery[] = "`address`.$item = '{$itemValue['company_name']}'";
+    }
     $query = "UPDATE `address`
         SET `address`.`company_name` = '{$val['company_name']}',
         `address`.`street_address` = '{$val['street_address']}',
