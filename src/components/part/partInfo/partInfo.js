@@ -22,7 +22,7 @@ class PartInfo extends Component {
     }
 
     addCart(){
-        this.props.addCart(this.state.partInfo);
+        this.props.addCart(this.state.partInfo,false);
         if(this.props.history){
             this.props.history.push(this.props.urlBack);
         }   

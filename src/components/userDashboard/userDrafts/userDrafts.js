@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+
 import '../userParts/userParts.css';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
 import axios from 'axios';
 import UpdatePartStatus from "../userParts/updatePartStatus"
+import './userDrafts.css';
 
 
 class UserDrafts extends Component {

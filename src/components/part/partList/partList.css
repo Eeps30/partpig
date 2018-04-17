@@ -17,7 +17,8 @@
 .resultsBar{
     padding: 1% 2.5% 1% 2.5%;
     font-size: 2em;
-    background-color: darkgrey;
+    background-color: black;
+    color: whitesmoke;
     margin-top: 1%;
 }
 
