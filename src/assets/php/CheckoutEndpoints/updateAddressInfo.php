@@ -11,7 +11,6 @@ $output = [
 
 $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
-print_r($request_data);
 
 if(!isset($request_data['user_id'], $request_data['shipping'], $request_data['billing'])){
     die('send a user_id, shipping and billing address');
