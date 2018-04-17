@@ -30,7 +30,6 @@
     padding: 1%;
     border-style: groove;
 	font-family: Verdana, Geneva, sans-serif;
-    background-color: #E7EAE3;
     box-sizing: border-box;
 }
 .contactForm button{
@@ -39,7 +38,7 @@
 	font-size: 2.2rem;
 }
 .contactForm input[type=text]:focus, .contactForm input[type=email]:focus, .contactForm textarea:focus{
-    border: .1em solid #9C9D99;
+    border: .2em solid #9C9D99;
     background-color: #FFF;
 }
 .contactForm textarea.message{
