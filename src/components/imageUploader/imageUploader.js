@@ -20,7 +20,7 @@ class ImageUpload extends Component {
       let imagesToUpload = this.state.images.map((item,index)=>{
       console.log(item);
       return (<div key={index} className="imgThumbContainer">
-                <img className="imgThumb" key={index} name = {item} src={item.preview}/>
+                <img className="imgThumb" name = {item} src={item.preview}/>
                 <button className="removeImg">X</button>
               </div>);        
       });
