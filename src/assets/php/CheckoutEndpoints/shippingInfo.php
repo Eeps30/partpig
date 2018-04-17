@@ -8,7 +8,13 @@ $output = [
     'data' => []
 ];
 
+if(!isset($_GET['user_id'], $_GET['addressType'])){
+    die('need a user id and addressType');
+}
+
 $user_id = $_GET['user_id'];
+$addressType = $_GET['addressType'];
+
 
 //hard coded for testing =========
 // $user_id = 3;
@@ -31,7 +37,7 @@ $query =  "SELECT u.id AS user_id,
                   a.country
             FROM `user` AS u
             JOIN `address` AS a
-                ON u.id = $user_id AND u.shipping_address_id = a.id
+                ON u.id = $user_id AND u." . $addressType . "_address_id = a.id
             ";
 
 $result = mysqli_query($conn, $query);
