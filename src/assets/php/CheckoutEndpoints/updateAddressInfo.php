@@ -13,10 +13,10 @@ $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
 
 if(!isset($request_data['user_id'], $request_data['shipping'], $request_data['billing'])){
-    die('send a shipping and billing address');
+    die('send a user_id, shipping and billing address');
 }
 
-die('not finished yet');
+
 
 $query = "UPDATE `part` SET `status` = '$status' WHERE `id` IN (" .  implode(" , ",$id) . ")"; 
 
