@@ -1,32 +1,22 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 require_once('../mysqlConnect.php');
-//basic output format, all data gets pushed into data[]
 
+//basic output format, all data gets pushed into data[]
 $output = [
     'success'=> false,
     'error' => [],
     'data' => []
 ];
 
+$entityBody = file_get_contents('php://input');
+$request_data = json_decode($entityBody, true);
 
-if(!isset($_GET['id'], $_GET['status'])){
-    print_r($_GET);
-    die('id and status required');
+if(!isset($request_data['user_id'], $request_data['shipping'], $request_data['billing'])){
+    die('send a shipping and billing address');
 }
 
-$id = $_GET['id']; 
-$id = json_decode($id, TRUE);
-$status = $_GET['status'];
-
-
-if($status === 'sold'){
-    if(!isset($_GET['buyer_id'])){
-        die("buyer_id required");
-    }
-    $buyer_id = $_GET['buyer_id'];
-    require('handleOrderAndCart.php');
-}
+die('not finished yet');
 
 $query = "UPDATE `part` SET `status` = '$status' WHERE `id` IN (" .  implode(" , ",$id) . ")"; 
 

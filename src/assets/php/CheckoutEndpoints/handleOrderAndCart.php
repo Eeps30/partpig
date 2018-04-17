@@ -16,4 +16,12 @@ else{
     $output['data'][] = "transaction processed for " . implode(" , ", $id);
 }
 
+$cartQuery = "DELETE FROM `shoppingcart` WHERE buyer_id='$buyer_id'";
+$cartResult = mysqli_query($conn, $cartQuery);
+if(!$cartResult){
+    die('could not update cart');
+}
+else{
+    $output['data'][] = "cart updated for buyer with id of " . $buyer_id;
+}
 ?>
