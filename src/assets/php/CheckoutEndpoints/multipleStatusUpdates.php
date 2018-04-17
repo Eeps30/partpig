@@ -11,6 +11,7 @@ $output = [
 
 
 if(!isset($_GET['id'], $_GET['status'])){
+    print_r($_GET);
     die('id and status required');
 }
 
