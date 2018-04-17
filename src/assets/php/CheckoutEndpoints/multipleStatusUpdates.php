@@ -9,34 +9,31 @@ $output = [
     'data' => []
 ];
 
-if(!isset($_GET['id'])){
-    $output['error'][] = 'id empty, adding default of 2';
-    die('no ID given');
+
+if(!isset($_GET['id'], $_GET['status'])){
+    die('id and status required');
 }
+
 $id = $_GET['id']; 
 $id = json_decode($id, TRUE);
-if(count($id) === 1){
-    $subQuery = $id[0];  
-}
-else{
-    $subQuery = implode(" , ",$id); 
+$status = $_GET['status'];
+
+
+if($status === 'sold'){
+    if(!isset($_GET['buyer_id'])){
+        die("buyer_id required");
+    }
+    $buyer_id = $_GET['buyer_id'];
+    require_once('updateOrderDetails.php');
 }
 
-if(!isset($_GET['status'])){
-    $status = 'incheckout';
-    $output['error'][] = "status empty, adding defaults of $status";
-}
-else{
-    $status = $_GET['status'];
-}
-$query = "UPDATE `part` SET `status` = '$status' WHERE `id` IN ($subQuery)"; 
+$query = "UPDATE `part` SET `status` = '$status' WHERE `id` IN (" .  implode(" , ",$id) . ")"; 
 
-$output['data'][] = "Query was $query";
 
 $result = mysqli_query($conn, $query);
 if($result){
     $output['success'] = true;
-    $output['data'] = "part $subQuery status's updated to $status";
+    $output['data'][] = "part" . implode(" , ",$id). "status's updated to $status";
 }
 else{
     $output['error'][] = 'Error in database query';
