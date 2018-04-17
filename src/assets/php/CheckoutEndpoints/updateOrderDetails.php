@@ -10,7 +10,7 @@ $orderQuery = "INSERT INTO `order_details` (`buyer_id`, `seller_id`, `part_id`, 
 
 $orderResult = mysqli_query($conn, $orderQuery);
 if(!$orderResult){
-    die('could not process transction');
+    die('could not process transaction');
 }
 else{
     $output['data'][] = "transaction processed for " . implode(" , ", $id);

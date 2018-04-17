@@ -24,7 +24,7 @@ if($status === 'sold'){
         die("buyer_id required");
     }
     $buyer_id = $_GET['buyer_id'];
-    require_once('updateOrderDetails.php');
+    require('updateOrderDetails.php');
 }
 
 $query = "UPDATE `part` SET `status` = '$status' WHERE `id` IN (" .  implode(" , ",$id) . ")"; 
