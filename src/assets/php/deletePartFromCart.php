@@ -11,7 +11,6 @@ $output = [
 
 $buyer_id = (int)$_GET['user_id'];
 
-
 $query = "DELETE FROM `order_meta`
            WHERE `order_meta`.`buyer_id` = '$buyer_id'";
 

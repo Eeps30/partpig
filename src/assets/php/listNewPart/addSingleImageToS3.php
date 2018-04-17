@@ -31,7 +31,7 @@ if(empty($_POST['username'])){
     $_POST['username'] = 'user2';
 }
 if(empty($request_data['images'][0])){
-    die('please upload an image');
+    die('Data not sent to database. Please upload an image');
 }
 
 

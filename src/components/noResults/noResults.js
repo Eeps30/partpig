@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import './userHistory.css';
+import './noResults.css';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
-import axios from 'axios';
-import NoResults from '../../noResults/noResults'
 
 
-class UserHistory extends Component {
+class NoResults extends Component {
         
     constructor(props){
         super(props);
@@ -62,14 +59,26 @@ class UserHistory extends Component {
         // }); 
         
         return  (
-            <div className="userPartsContainer">     
-                <div className="userPartsList">
-                    <NoResults/>
+            <div className="noResultsContainer">
+            <h1>No results found :(</h1> 
+                <h3>We are very sad we couldn't locate the part you are searching for. 
+                    <p>The Part Pig community is rapidly growing so please check back soon!</p>
+                        </h3> 
+                <div className="noResultsMessage"> 
+                <h2>You still have options!</h2>               
                 </div>
+                <div className="noResultsMessage">
+                    <div className="searchAgain">Search Again </div>   
+                    <p></p>
+                    <div className="searchAgain">Find me parts!</div>
+                    <p></p>
+                    <div className="searchAgain">Give us feedback</div>                     
+                </div>
+                
             </div>     
         );
                     
     }
 }
 
-export default UserHistory
+export default NoResults

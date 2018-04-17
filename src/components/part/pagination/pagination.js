@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './pagination.css';
 import Part from '../part';
+import NoResults from '../../noResults/noResults';
 
 class Pagination extends Component {
         
@@ -71,8 +72,12 @@ class Pagination extends Component {
     }
 
     render(){
+        let list = "";
+        if(this.state.currentParts.length === 0){
+            list = <NoResults/>
+        };
         
-        let list = this.state.currentParts.map((function(item,index){
+        list = this.state.currentParts.map((function(item,index){
             return ( 
                 <div key={index} className='singlePart'>                  
                     <Part cartParts={this.props.cartParts} addCart={this.props.addCart} history={this.props.history} imageClass={this.props.showFilters ? 'imageContainer imageContainerFilter' : 'imageContainer'} infoClass='productContainer' partInfo={item}/>                                      

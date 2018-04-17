@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import './userParts.css';
+import './activeParts.css';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
 import axios from 'axios';
 import UpdatePartStatus from "./updatePartStatus"
 
 
-class UserParts extends Component {
+class ActiveParts extends Component {
         
     constructor(props){
         super(props);
@@ -91,4 +91,4 @@ class UserParts extends Component {
     }
 }
 
-export default UserParts
+export default ActiveParts
