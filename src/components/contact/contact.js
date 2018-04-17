@@ -6,7 +6,7 @@ const Contact = () => (
             <div className="contact-us">
             	<h1>CONTACT US</h1>
             </div>
-            <div className='contactContainer'>
+            <div className='container'>
 				<div className="contact-header">
 				    <h3>Have a question? Drop us a line!</h3>
 				    <h3>Please submit your inquiry through the contact form.</h3>
@@ -29,13 +29,13 @@ const Contact = () => (
 				        <label>Message:</label>
 				        <textarea className="message" placeholder="Enter your message here"></textarea>
 				    </div>
-				    <button type="button" className="submit">Submit Your Message</button>
+				    <button type="button" className="button-link">Submit Your Message</button>
 				</form>
 			</div>
 			<div className="modal-overlay"></div>
 			<div className="modal">
-			    <div className="close">X</div>
-			    <label>P</label>
+			    <div className="close"></div>
+			    <label></label>
 			</div>
         </div>    
 );
