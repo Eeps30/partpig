@@ -10,23 +10,24 @@ class Field extends Component{
         const style={width};
 
         const statesList = states.map((item,index)=>{ 
-            return <option key={index} value={item[1]} selected={value === item[1] ? 'selected' : ''}>{item[0]}</option>
+            return <option key={index} value={item[1]}>{item[0]}</option>
         });
 
         let field = '';
         if(type==='select'){
-            field=(<select name={name} onChange={handleInputChange}>
+            field=(<select name={name} onChange={handleInputChange} defaultValue={value}>
                         {statesList}  
                     </select>
             );
         }else{
-            field = <input disabled={disabled} onChange={handleInputChange} value={value} name={name} type={type} placeholder={placeholder}/>;
+            field = <input className="form-control" disabled={disabled} onChange={handleInputChange} value={value} name={name} type={type} placeholder={placeholder}/>;             
         }    
 
         return (            
             <div className='form-group' style={style}>
                 <label>{label}</label>
-                {field}            
+                {field}   
+                <div className="form-control-border"></div>                         
             </div>                                
         )
     }
