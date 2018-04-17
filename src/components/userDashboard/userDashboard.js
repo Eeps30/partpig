@@ -34,15 +34,16 @@ class UserDashboard extends Component {
             <div className="userDashboard">
                 <div className="dashboardHeader"><h2>User Dashboard</h2></div>  
                 <div className="dashboardTabs">
+                <Link className="tabLinks" to="/dashboard"><div className="tabButton">Main</div></Link>
                     <Link className="tabLinks" to="/dashboard/activeparts"><div className="tabButton">Active</div></Link>
                     <Link className="tabLinks" to="/dashboard/partdrafts" ><div className="tabButton">Drafts</div></Link>
                     <Link className="tabLinks" to="/dashboard/watchlist" ><div className="tabButton">Watching</div></Link>
                     <Link className="tabLinks" to="/dashboard/searchhistory" ><div className="tabButton">History</div></Link>
-                    <Link className="tabLinks" to="/dashboard/accountsettings" ><div className="tabButton">Settings</div></Link>  
-                   
+                    <Link className="tabLinks" to="/dashboard/accountsettings" ><div className="tabButton">Settings</div></Link>
                 </div>                   
+               
                 <div className="tabContent">
-                
+                    <Route exact path='/dashboard' component={UserHome}/>
                     <Route path='/dashboard/activeparts' render={props => <ActiveParts userId={this.state.seller_id} {...props}/>}/>
                     <Route path='/dashboard/partdrafts' component={UserDrafts}/>
                     <Route path='/dashboard/searchhistory' component={UserHistory}/>

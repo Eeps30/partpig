@@ -14,50 +14,8 @@ class NoResults extends Component {
         }
     }
 
-    // componentDidMount(){
-    //     // const id = this.props.match.params.id;
-    //     const seller_id = this.state.seller_id;
-    //     const url = 'http://localhost:8000/teampartpig/src/assets/php/allPartByUser.php';
-    //     const params = {seller_id};      
-    //     axios.get(url,{params}).then(resp=>{
-    //             console.log('result is: ', resp);                
-    //             this.setState({
-    //                 partInfo:resp.data.data,
-    //                 isLoading: true           
-    //             }); 
-    //         }).catch(err => {
-    //             console.log('error is: ', err);
-    //         }
-    //     ); 
-    // } 
-
         render(){
 
-        // if (!this.state.isLoading) {
-        //     return (
-        //         <div>                    
-        //             <Loading />
-        //         </div>
-        //     );
-        // }
-
-        // let part = this.state.partInfo;
-        // const list = part.map((item,index)=>{
-        //     console.log("part is", item);
-        //     return  (
-        //         <Link key={index} to={"/partdetails/" + item.id}>  
-        //             <div key={index} className="singlePart">
-        //                 <img src={item.images}></img>
-        //                 <div className="brand"> {item.brand} </div> <div className="partNumber">P/N: {item.partNumber}</div>
-        //                 <div className="productTitle"><p>{item.title}</p></div>
-        //                 <div className="yearMakeModel"> {item.make} {item.model} {item.year}</div>
-        //                 <div className="price">${item.price}</div>           
-        //              </div>
-        //         </Link>        
-        //              );
-        
-        // }); 
-        
         return  (
             <div className="noResultsContainer">
             <h1>No results found :(</h1> 
@@ -68,11 +26,11 @@ class NoResults extends Component {
                 <h2>You still have options!</h2>               
                 </div>
                 <div className="noResultsMessage">
-                    <div className="searchAgain">Search Again </div>   
+                    <Link to={"/"}><div className="searchAgain">Search Again </div></Link>   
+                    {/* <p></p>
+                    <Link to={"/"}><div className="searchAgain">Have us find your part</div></Link> */}
                     <p></p>
-                    <div className="searchAgain">Find me parts!</div>
-                    <p></p>
-                    <div className="searchAgain">Give us feedback</div>                     
+                    <Link to={"/contact"}> <div className="searchAgain">Send us your feedback</div></Link>                     
                 </div>
                 
             </div>     

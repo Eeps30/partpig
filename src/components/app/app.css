@@ -7,6 +7,9 @@ html {
     height: 100vh;
     
 }
+a {
+	text-decoration: none;
+}
 
 body {
     position: relative;    
