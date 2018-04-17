@@ -13,7 +13,6 @@
 .images {
     box-sizing: border-box;
     height: 60%;
-    border: solid green 2px;
 }
 
 .infoContainer {
@@ -24,7 +23,6 @@
 .infoContainer .users {
     box-sizing: border-box;
     float: left;
-    border: solid red 1px;
     height: 100%;
     width: 20%;
     text-overflow: ellipsis;
