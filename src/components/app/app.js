@@ -21,6 +21,7 @@ import Checkout from '../checkout/checkout';
 import ListingSuccess from '../listingSuccess/listingSuccess';
 import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
+import CheckoutComplete from './../checkout/checkoutComplete';
 
 
 class App extends Component{
@@ -196,6 +197,7 @@ class App extends Component{
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Route path='/dashboard' component={UserDashboard}/>
+                    <Route path='/checkoutComplete/:orderNumber' component={CheckoutComplete}/>
                     {/* <Footer/>   */}
                 </div>
             </Router>  

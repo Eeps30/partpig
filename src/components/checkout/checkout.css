@@ -116,7 +116,7 @@
     left: 50%;
     right: 50%;
     bottom: 0;
-    background: #f9966f;
+    background: #d0451b;
     height: 3px;
     -webkit-transition-property: left, right;
     transition-property: left, right;
@@ -133,5 +133,19 @@
   }
   
   .has-error .form-control + .form-control-border {
-    background: #ff4e4e;
+    background: #d0451b;
+  }
+
+  .orderCompleted{
+    text-align: center;
+    font-size: 1.7em;
+    padding: 5%;
+  }
+
+  .orderCompleted a{
+    margin-top: 2%;
+  }
+
+  .orderNumber{
+      color: #d0451b;
   }
