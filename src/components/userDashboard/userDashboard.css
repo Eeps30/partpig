@@ -8,10 +8,12 @@
     width: 100%;
     color: white;
     background-color: rgb(32, 32, 32);
+    height: 5vh;
+    font-size: 2rem;
 }
 
 .dashboardHeader h2{
-    margin: 0;
+    line-height: 5vh;
 }
 
 .userPartsContainer{
@@ -47,6 +49,10 @@
 
 .dashboardTabs .tabButton:hover {
     background-color: #ddd;
+}
+.tabButton.selected {
+    color: #999;
+    background-image: linear-gradient(to bottom, #ddd, #fff);
 }
 
 .userDashboard .tabContent {
