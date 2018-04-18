@@ -11,6 +11,7 @@ $output = [
 
 
 if(!isset($_GET['id'], $_GET['status'])){
+    print_r($_GET);
     die('id and status required');
 }
 
@@ -24,7 +25,7 @@ if($status === 'sold'){
         die("buyer_id required");
     }
     $buyer_id = $_GET['buyer_id'];
-    require('updateOrderDetails.php');
+    require('handleOrderAndCart.php');
 }
 
 $query = "UPDATE `part` SET `status` = '$status' WHERE `id` IN (" .  implode(" , ",$id) . ")"; 
