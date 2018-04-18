@@ -231,3 +231,4 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps, {formError, signUp})(SellPartForm);
+
