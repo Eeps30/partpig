@@ -3,36 +3,36 @@ import './imageUploader.css'
 import Dropzone from 'react-dropzone'
  
 class ImageUpload extends Component {
-
-  constructor() {
-    super()
-    this.state = { files: [] }
+  constructor(props) {
+    super(props);
+    this.state = { images: [] };
   }
 
   onDrop(files) {
+    const newState = this.state.images.push(files);
     this.setState({
-      files
+      images: newState
     });
-    console.log(this.state.files)
+    // console.log(this.state.images);
   }
 
   render() {
-     let images = this.state.files.map((item,index)=>{
-       console.log(item)
-      return <div className="imgThumbContainer"><img className="imgThumb" key={index} name = {item} src={item.preview}/><button className="removeImg">X</button></div>        
-  });
-    return (
-
-      
-      <section>
-        <div className="imageUploadContainer">
-          <Dropzone imgArray={this.state.files} className="dropZone" onDrop={this.onDrop.bind(this)}>
-          </Dropzone>
-                    {images}
-        </div>
-      </section>
-    );
-  }
+      let imagesToUpload = this.state.images.map((item,index)=>{
+      console.log(item);
+      return (<div key={index} className="imgThumbContainer">
+                <img className="imgThumb" name = {item} src={item.preview}/>
+                <button className="removeImg">X</button>
+              </div>);        
+      });
+      return (
+        <section>
+          <div className="imageUploadContainer">
+            <Dropzone imgarray={this.state.images} className="dropZone" onDrop={this.onDrop.bind(this)} />
+            {imagesToUpload}
+          </div>
+        </section>
+      );
+    }
 }
 
 
