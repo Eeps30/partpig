@@ -33,7 +33,7 @@ class UserHome extends Component {
                         Saved Drafts 
                     </div>
                 </Link>
-                <Link>
+                <Link to={"/dashboard/activeparts"}>
                     <div className="statContainer">
                         Sold Parts 
                     </div>
