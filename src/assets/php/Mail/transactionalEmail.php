@@ -15,6 +15,13 @@ $output = [
 $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
 
+$receipt = false;
+if(isset($request_data['receipt'])){
+    unset($request_data['receipt']);
+    $receipt = true;
+}
+
+
 $requiredFields = ['name', 'email', 'body', 'subject'];
 foreach($request_data as $key => $value){
     if(in_array($key, $requiredFields)){
@@ -25,17 +32,26 @@ foreach($request_data as $key => $value){
     }
 }
 
-// using SendGrid's PHP Library
-// https://github.com/sendgrid/sendgrid-php
-// If you are using Composer (recommended)
 
 require '../vendor/autoload.php';
-// If you are not using Composer
-// require("path/to/sendgrid-php/sendgrid-php.php");
-$from = new SendGrid\Email("$name", "$email");
-// $subject = "is an auto variable
-$to = new SendGrid\Email("PartPig Automated Contact", "$destination");
-$content = new SendGrid\Content("text/plain", "$body");
+
+$senderName = $name;
+$destinationName = "Part Pig Feedback";
+$senderEmail = $email;
+$destinationEmail = $partPigEmail;
+
+if($receipt){
+    $senderName = "Part Pig";
+    $destinationName = $name;
+    $senderEmail = $partPigEmail;
+    $destinationEmail = $email;
+}
+
+
+    $from = new SendGrid\Email("$senderName", "$senderEmail");
+    $to = new SendGrid\Email("$destinationName", "$destinationEmail");
+
+$content = new SendGrid\Content("text/html", "$body");
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 // getenv('SENDGRID_API_KEY');
 $sg = new \SendGrid($apiKey);
