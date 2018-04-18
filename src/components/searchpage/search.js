@@ -16,7 +16,8 @@ class DropDownContainer extends Component {
         this.state = {
             make: 'default',
             model: 'default',
-            year: 'default'
+            year: 'default',
+            searchText:''
         }
         this.catchMakeSelect = this.catchMakeSelect.bind(this)
         this.catchModelSelect = this.catchModelSelect.bind(this)
@@ -47,6 +48,12 @@ class DropDownContainer extends Component {
         })
     }
 
+    handleChange(event){
+        this.setState({
+            searchText: event.target.value
+        })
+    }
+
     render(){
 
         const make = this.state.make
@@ -58,15 +65,17 @@ class DropDownContainer extends Component {
         return(
             <div className="outerDiv">
                 <div className="dropdownMenu">
+                    <div className="searchBarContainer">
+                        <div>
+                            <input type="text" value={this.state.searchText} onChange={this.handleChange} placeholder='Search By Part Name'/> 
+                            <Link className='button-link' to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
+                        </div>                        
+                    </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                         <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                    </div>
-                    <div className="searchBarContainer">
-                        <PartNameSearch/>
-                        <Link to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         )
