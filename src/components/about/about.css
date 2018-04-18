@@ -1,0 +1,84 @@
+.mainContainer {
+    box-sizing: border-box;
+}
+
+.contactContainer {
+    border: black 2px solid;
+    width: 90vw;
+    height: 100vh;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.images {
+    box-sizing: border-box;
+    height: 60%;
+}
+
+.images div {
+    box-sizing: border-box;
+    float: left;
+    height: 100%;
+    width: 20%;
+}
+
+.infoContainer {
+    height: 40%;
+    box-sizing: border-box;
+}
+
+.infoContainer .users {
+    box-sizing: border-box;
+    float: left;
+    height: 100%;
+    width: 20%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.userHeadshot {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 50%;
+    margin-top: 25%;
+}
+
+.userName {
+    text-decoration: underline;
+    height: 10%;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 10%;
+}
+
+.userRole {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.contactIcons {
+    margin-top: 10%;
+}
+
+.contactIcons img {
+    max-width: 40%;
+}
+
+.githubLink img {
+    margin-left: 50%;
+}
+
+.githubLink {
+    width: 50%;
+    float: left;
+}
+
+.linkedInLink img {
+    margin-left: 10%;
+}
+
+.linkedInLink {
+    width: 50%;
+}
