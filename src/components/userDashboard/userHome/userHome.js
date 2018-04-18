@@ -29,15 +29,16 @@ class UserHome extends Component {
                     </div>
                 </Link>
                 <Link to={"/dashboard/partdrafts"}>
-                <div className="statContainer">
-                    Saved Drafts 
-                </div>
+                    <div className="statContainer">
+                        Saved Drafts 
+                    </div>
                 </Link>
+                <Link>
                     <div className="statContainer">
                         Sold Parts 
                     </div>
-
-                </div>     
+                </Link>
+            </div>     
         );
                     
     }

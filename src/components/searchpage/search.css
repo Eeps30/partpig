@@ -14,15 +14,15 @@
 } */
 
 .outerDiv {
-    border: solid black 1px;
+    /* border: solid black 1px; */
     width: 70%;
     height: 25%;
     border-radius: 10px;
     margin: auto;
     position: relative;
     top: 23%;
-    background-color: rgba(62, 62, 62, 0.25);
-    box-shadow: 3px 4px;
+    /* background-color: rgba(62, 62, 62, 0.25);
+    box-shadow: 3px 4px; */
     padding: 0.5%;
 }
 
@@ -30,7 +30,7 @@
     border-radius: 10px;
     height: 100%;
     width: 100%;
-    background-color: #ff5346;
+    background-color: #2a2a2a;
 }
 
 .buttonsContainer{
@@ -66,7 +66,6 @@
     background-color: rgb(111, 111, 111);
     color: #000000;
     text-decoration: none;
-    border: solid black 2px;
     border-radius: 5px;
     display: inline-block;
     height: 15%;
