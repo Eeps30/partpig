@@ -205,6 +205,26 @@ class Checkout extends  Component {
             }).catch(err => {
                 console.log('error is: ', err);
             });
+
+            const emailUrl = "http://localhost:8000/teampartpig/src/assets/php/Mail/transactionalEmail.php";
+            const emailData = {
+                name:"testName",
+                email:"testemail@e.e",
+                body: "testbody",
+                subject:"testsubj"
+            };
+            axios({
+                url: emailUrl,
+                method: 'post',
+                data: emailData, 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(resp=>{
+                console.log("Server email Response:", resp);                
+            }).catch(err => {
+                console.log("There was an error:", err);
+            });
         } 
     }
 

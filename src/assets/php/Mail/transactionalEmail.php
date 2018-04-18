@@ -1,5 +1,8 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
 require("mailDetails.php");
 
 
@@ -30,7 +33,7 @@ require '../vendor/autoload.php';
 // If you are not using Composer
 // require("path/to/sendgrid-php/sendgrid-php.php");
 $from = new SendGrid\Email("$name", "$email");
-// $subject = "Sending with SendGrid is Fun";
+// $subject = "is an auto variable
 $to = new SendGrid\Email("PartPig Automated Contact", "$destination");
 $content = new SendGrid\Content("text/plain", "$body");
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
@@ -38,8 +41,21 @@ $mail = new SendGrid\Mail($from, $subject, $to, $content);
 $sg = new \SendGrid($apiKey);
 
 $response = $sg->client->mail()->send()->post($mail);
-print_r($response);
-echo $response->statusCode();
-print_r($response->headers());
-echo $response->body();
+$status = $response->statusCode();
+if($status === 202){
+    $output['success'] = true;
+    $output['data'][] = "email sent";
+}
+else{
+    $output['success'] = false;
+    $output['error'][] = "status code: $status is incorrect";
+    $output['error'][] = "email not sent";
+    
+}
+
+$json_output = json_encode($output);
+print($json_output);
+
+// print_r($response->headers());
+// echo $response->body();
 
