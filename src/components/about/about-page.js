@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import contact from './contactInfo';
-import contactCSS from './contact.css';
+import React, {Component} from 'react'
+import contact from './about-info'
+import contactCSS from './about.css'
 import githubIcon from '../../assets/images/contact-icons/github-icon.png'
 import linkedinIcon from '../../assets/images/contact-icons/linkedIn-icon.png'
 import headshot from '../../assets/images/contact-icons/headshot.png'
