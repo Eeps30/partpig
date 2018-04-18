@@ -19,22 +19,22 @@ $user_id = $request_data['user_id'];
 unset($request_data['user_id']);
 $shipping = $request_data['shipping'];
 $billing = $request_data['billing'];
-
+$addressFieldsToCheck = ['company_name', 'street_address', 'apt_suite', 'city', 'state', 'state_abbr', 'zipcode'];
 foreach($request_data as $key => $val){
+    $subquery = [];
+    foreach($val as $item => $itemValue){
+        if(in_array($item, $addressFieldsToCheck)){
+            $subquery[] = "`address`.$item = '$itemValue'";
+        }
+    }
     $query = "UPDATE `address`
-        SET `address`.`company_name` = '{$val['company_name']}',
-        `address`.`street_address` = '{$val['street_address']}',
-        `address`.`apt_suite` = '{$val['apt_suite']}',
-        `address`.`city` = '{$val['city']}',
-        `address`.`state` = '{$val['state']}',
-        `address`.`state_abbr` = '{$val['state_abbr']}',
-        `address`.`zipcode` = '{$val['zipcode']}'
+        SET " . implode(' , ', $subquery) . "
         WHERE `address`.`id` =(
         SELECT u." . $key ."_address_id
         FROM `user` AS u
         WHERE u.id = $user_id
         )";
-
+        
         $result = mysqli_query($conn, $query);
         if($result){
             $output['success'] = true;
@@ -44,10 +44,9 @@ foreach($request_data as $key => $val){
             $output['success'] = false;
             $output['error'][] = 'Error in database query';
         }
+        unset($subquery);
 }
-
 
 $json_output = json_encode($output);
 print($json_output);
-
 ?>

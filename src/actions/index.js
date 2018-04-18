@@ -1,5 +1,5 @@
 import types from './types';
-import axios from 'axios';
+// import axios from 'axios';
 
 export function handleInputChange(event){
     const {name, value} = event.target;
@@ -11,12 +11,12 @@ export function handleInputChange(event){
 
 }
 
-export function defineInput(name){
-    return{
-        type: types.DEFINE_INPUT,
-        name
-    };
-}
+// export function defineInput(name){
+//     return{
+//         type: types.DEFINE_INPUT,
+//         name
+//     };
+// }
 
 export function formError(error){
     return {

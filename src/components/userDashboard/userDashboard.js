@@ -3,6 +3,7 @@ import './userDashboard.css';
 import Loading from '../loading/loading';
 import axios from 'axios';
 import UserParts from './userParts/userParts';
+import ActiveParts from './userParts/userParts';
 import UserHistory from './userHistory/userHistory';
 import UserSettings from './userSettings/userSettings';
 import UserDrafts from './userDrafts/userDrafts';
@@ -40,8 +41,10 @@ class UserDashboard extends Component {
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/searchhistory" >History</NavLink>
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/accountsettings" >Settings</NavLink>  
                 </div>                   
+               
                 <div className="tabContent">
-                    <Route path='/dashboard/activeparts' render={props => <UserParts userId={this.state.seller_id} {...props}/>}/>
+                    <Route exact path='/dashboard' component={UserHome}/>
+                    <Route path='/dashboard/activeparts' render={props => <ActiveParts userId={this.state.seller_id} {...props}/>}/>
                     <Route path='/dashboard/partdrafts' component={UserDrafts}/>
                     <Route path='/dashboard/searchhistory' component={UserHistory}/>
                     <Route path='/dashboard/watchlist' component={WatchList}/>

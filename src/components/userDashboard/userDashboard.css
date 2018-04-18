@@ -13,6 +13,7 @@
 }
 
 .dashboardHeader h2{
+    font-size: 4rem;
     line-height: 5vmin;
 }
 
@@ -33,7 +34,7 @@
     height: 5vmin;
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #ffffff;
+    background-color: #fff;
 }
 
 .dashboardTabs .tabLinks {
@@ -49,13 +50,14 @@
     background-color: #ddd;
 }
 .tabLinks.selected {
-    background-image: linear-gradient(to bottom, #ddd, #fff);
+    background-image: linear-gradient(to bottom, #ddd, #d0451b);
 }
+
 .userDashboard .tabContent {
     width: 100%;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
+    /*padding: 6px 12px;*/
+    /*border: 1px solid #ccc;*/
+    /*border-top: none;*/
 }
 
 #userParts{
@@ -63,7 +65,7 @@
     height: 100%;
 }
 
-.userDashboard .tabContent{
-    width: 100%;
-    height: 100%;
+.userDashboard .tabContent h2{
+    font-size: 2rem;
+    text-transform: uppercase;
 }
