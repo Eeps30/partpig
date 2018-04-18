@@ -23,22 +23,18 @@ $billing = $request_data['billing'];
 foreach($request_data as $key => $val){
     $subquery = [];
     foreach($val as $item => $itemValue){
-    $subquery[] = "`address`.$item = '{$itemValue['company_name']}'";
+    $subquery[] = "`address`.$item = '$itemValue'";
     }
     $query = "UPDATE `address`
-        SET `address`.`company_name` = '{$val['company_name']}',
-        `address`.`street_address` = '{$val['street_address']}',
-        `address`.`apt_suite` = '{$val['apt_suite']}',
-        `address`.`city` = '{$val['city']}',
-        `address`.`state` = '{$val['state']}',
-        `address`.`state_abbr` = '{$val['state_abbr']}',
-        `address`.`zipcode` = '{$val['zipcode']}'
+        SET " . implode(' , ', $subquery) . "
         WHERE `address`.`id` =(
         SELECT u." . $key ."_address_id
         FROM `user` AS u
         WHERE u.id = $user_id
         )";
+        
 
+        
         $result = mysqli_query($conn, $query);
         if($result){
             $output['success'] = true;
@@ -48,6 +44,7 @@ foreach($request_data as $key => $val){
             $output['success'] = false;
             $output['error'][] = 'Error in database query';
         }
+        unset($subquery);
 }
 
 
