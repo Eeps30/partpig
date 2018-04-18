@@ -19,11 +19,13 @@ $user_id = $request_data['user_id'];
 unset($request_data['user_id']);
 $shipping = $request_data['shipping'];
 $billing = $request_data['billing'];
-
+$addressFieldsToCheck = ['company_name', 'street_address', 'apt_suite', 'city', 'state', 'state_abbr', 'zipcode'];
 foreach($request_data as $key => $val){
     $subquery = [];
     foreach($val as $item => $itemValue){
-    $subquery[] = "`address`.$item = '$itemValue'";
+        if(in_array($item, $addressFieldsToCheck)){
+            $subquery[] = "`address`.$item = '$itemValue'";
+        }
     }
     $query = "UPDATE `address`
         SET " . implode(' , ', $subquery) . "
@@ -32,8 +34,6 @@ foreach($request_data as $key => $val){
         FROM `user` AS u
         WHERE u.id = $user_id
         )";
-        
-
         
         $result = mysqli_query($conn, $query);
         if($result){
@@ -47,8 +47,6 @@ foreach($request_data as $key => $val){
         unset($subquery);
 }
 
-
 $json_output = json_encode($output);
 print($json_output);
-
 ?>
