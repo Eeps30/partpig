@@ -15,10 +15,15 @@ class Checkout extends  Component {
             isLoading: false,
             billingAddress:{},
             shippingAddress:{},
-            sameAddress: false
+            sameAddress: false,
+            shippingErrors:{},            
+            billingErrors:{},
+            shippingPrice:14.99,
+            total:0
         }
         this.userId = localStorage.getItem('user');
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleShippingInputChange = this.handleShippingInputChange.bind(this);
+        this.handleBillingInputChange = this.handleBillingInputChange.bind(this);
     }
     
     componentDidMount(){
@@ -82,14 +87,22 @@ class Checkout extends  Component {
         return address1.street_address === address2.street_address && address1.city === address2.city && address1.state === address2.state && address1.zipcode === address2.zipcode
     }
 
-    handleInputChange(event){
+    handleShippingInputChange(event){
         const {value,name} = event.target;
         const newUserInfo = {...this.state.shippingAddress};
         newUserInfo[name] = value;
         this.setState({
             shippingAddress:newUserInfo
-        });
-        
+        });        
+    }
+
+    handleBillingInputChange(event){
+        const {value,name} = event.target;
+        const newUserInfo = {...this.state.billingAddress};
+        newUserInfo[name] = value;
+        this.setState({
+            billingAddress:newUserInfo
+        });        
     }
 
     backToCart(){
@@ -145,52 +158,100 @@ class Checkout extends  Component {
         } 
     }
 
+    shippinghandleOnBlur(event){
+        const {name,value,placeholder,required} = event.target;
+        const newShippingErrors = {...this.state.shippingErrors};
+        if(value ==='' && required){           
+            newShippingErrors[name] = placeholder + ' is requiered';           
+        }else{
+            delete newShippingErrors[name];            
+        }
+        this.setState({
+            shippingErrors:newShippingErrors
+        });
+    }
+
+    billinghandleOnBlur(event){
+        const {name,value,placeholder,required} = event.target;
+        const newBillingErrors = {...this.state.billingErrors};
+        if(value ==='' && required){           
+            newBillingErrors[name] = placeholder + ' is requiered';           
+        }else{
+            delete newBillingErrors[name];            
+        }
+        this.setState({
+            billingErrors:newBillingErrors
+        });
+    }
+
+    handleShippingMethodClick(event){
+        this.setState({
+            shippingPrice: event.target.value
+        })
+    }
+
     render(){
 
         if (!this.state.isLoading) {
             return <Loading />;
         }
-        let total = 0;
+        let subtotal = 0;
         let listParts = [];
 
         const shipingFields = inputs.map(((field, index) => {                    
-            return <Field key={index} {...field} handleInputChange={this.handleInputChange} value={this.state.shippingAddress[field.name] || ''}/>
+            return <Field key={index} {...field} error={this.state.shippingErrors[field.name]} handleOnBlur={this.shippinghandleOnBlur.bind(this)} handleInputChange={this.handleShippingInputChange} value={this.state.shippingAddress[field.name] || ''}/>
         }).bind(this));
 
         let billingFields = '';
         if(!this.state.sameAddress){
             billingFields = inputs.map(((field, index) => {                    
-                return <Field key={index} {...field} handleInputChange={this.handleInputChange} value={this.state.billingAddress[field.name] || ''}/>
+                return <Field key={index} {...field} error={this.state.billingErrors[field.name]} handleInputChange={this.handleBillingInputChange} handleOnBlur={this.billinghandleOnBlur.bind(this)} value={this.state.billingAddress[field.name] || ''}/>
             }).bind(this));
         }        
 
         if(this.props.cartParts.length > 0){
             listParts = this.props.cartParts.map(function(item,index){
-                total += item.price_usd;
+                subtotal += item.price_usd;
                 return (                     
                     <li key={index} className='checkOutPart'>{item.part_name}<span>${item.price_usd}</span></li>                    
                 )   
             }); 
         }
 
+        let checkoutButton = <button onClick={this.completePurchase.bind(this)} className='button-link'>Complete Purchase</button>
+        if(!(Object.keys(this.state.shippingErrors).length === 0) || !(Object.keys(this.state.billingErrors).length === 0)){
+            checkoutButton = <button onClick={e => e.preventDefault()} className='disabled'>Complete Purchase</button>;
+        }
+        
         return (
             <div className='container'>
                 <div className='formCheckoutContainer'>
                     <span>Checkout</span>
                     <hr/>
-                    <div className='shippingAddress'>                        
+                    <form className='shippingAddress'>                        
                         <span>Shipping Address</span>
                         <hr/>
                         {shipingFields}
-                    </div> 
-                    <div className='shippingAddress'>                        
+                    </form> 
+                    <form className='shippingAddress'>                        
                         <span>Billing Address</span>
                         <hr/>
                         <div className='checkbox'>
                             <input type="checkbox" checked={this.state.sameAddress} onChange={this.handleCheckbox.bind(this)} name="sameAddress" />My billing address is the same as my shipping address
                         </div>                        
                         {billingFields}
-                    </div>                   
+                    </form>    
+                    <div className='shippingAddress'>
+                        <span>Shipping Method</span>
+                        <hr/>
+                        <p>Choose your shipping option
+                            <select onChange={this.handleShippingMethodClick.bind(this)}>
+                                <option value={14.99}>Standard (3 days): $14.99</option>
+                                <option value={19.99}>Express (2 days): $19.99</option>
+                                <option value={29.99}>Premium (1 day): $29.99</option>
+                            </select> 
+                        </p>
+                    </div>               
                 </div>
                 <div className='checkoutTotal'>
                     <div className="cartTitle"><b>CART SUMARY: ({listParts.length} items)</b> </div>
@@ -198,17 +259,17 @@ class Checkout extends  Component {
                         <ul>
                             {listParts}
                         </ul>
-                        <button onClick={this.backToCart.bind(this)} className='button-link'>EDIT CART</button>
+                        <button onClick={this.backToCart.bind(this)} className='button-link'>Go Back</button>
                     </div>
                     <hr/>
                     <div className="cartData">
-                        <p>SUBTOTAL:  <span>${total}</span></p> 
-                        <p>SHIPPING:  <span>$0.00</span></p> 
+                        <p>SUBTOTAL:  <span>${subtotal}</span></p> 
+                        <p>SHIPPING:  <span>${this.state.shippingPrice}</span></p> 
                         <p>TAX: <span>$0.00</span></p>                   
-                        <p>TOTAL:  <span>${total}</span></p> 
+                        <p>TOTAL:  <span>${this.state.total}</span></p> 
                     </div>
                     <div>
-                        <button onClick={this.completePurchase.bind(this)} className='button-link' to={"/"}>Complete Purchase</button>
+                        {checkoutButton}
                     </div>                   
                 </div>
             </div>
