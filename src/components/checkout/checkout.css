@@ -83,13 +83,15 @@
 }
 
 .form-group input{
-    font-size: 1.1em;
+    font-size: 1.2em;
     width: 100%;
+    padding: 1%;
 }
 
 .form-group select{
-    font-size: 1.1em;
+    font-size: 1.2em;
     width: 100%;
+    padding: 2%;
 }
 
 .shippingAddress{
@@ -169,6 +171,13 @@
 
   .has-error .form-control + .form-control-border {
     background: #d0451b;
+  }
+
+  .textarea{  
+    width: 100%;    
+    resize:none;
+    padding:1%;
+    box-sizing:border-box;    
   }
 
   .orderCompleted{

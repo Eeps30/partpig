@@ -1,4 +1,4 @@
-.sellPartForm {
+.sellPartContainer {
     margin: 2% auto;
     width: 60%;
     overflow-y: auto;
@@ -7,12 +7,7 @@
     box-shadow: 0 1px 4px rgba(41,51,57,.5)
 }
 
-.buttonContainer .postPart button {
-    background-color: orangered;
-    color: white
-}
-
-.sellPartForm .sellPartTitle{
+.sellPartContainer .sellPartTitle{
     text-align: center;
     font-size: 3rem;
     color: white;
@@ -22,139 +17,20 @@
     left: 0;
 }
 
-.sellPartForm::-webkit-scrollbar {
-    display: none;
-}
-
-.sellPartForm label {
-    display:block;
-    font-size: 20px;
-}
-
-.sellPartForm div {
-    margin: 10px 10px;
-}
-
-.sellPartForm select {
-    width: 100%;
-    padding: 2.5% 2%;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 1.4em;
-}
-
-.sellPartForm input {
-    width: 100%;
-    font-size: 30px;
-}
-
-.sellPartForm .brand {
-    display: inline-block;
-    width: 20%;
-}
-
-.sellPartForm .partName {
-    display: inline-block;
-    width: 75%;
-}
-
-.sellPartForm .partNumber {
-    float: left;
-    display: inline-block;
-    width: 25%;
-}
-
-.sellPartForm .price {
-    display: inline-block;
-    width: 15%;
-}
-
-.sellPartForm .conditionRating {
-    display: inline-block;
-    width: 30%;
-    font-size: 1.4em;
-}
-
-.sellPartForm .conditionDetails {
-    display: inline-block;
-    width: 90%;
-}
-
-.sellPartForm .imageUpload {
-    width: 90%;
-    height: 50%;
-    margin: 30px 30px;
-}
-
-.sellPartForm .part-details {
-    width: 100%;
-   
-}
-
-.sellPartForm .fitment {
-    width: 100%;
-    margin: 30px 30px;
-   
-}
-
-.sellPartForm .part-condition {
-    width: 100%;
-    margin: 30px 30px;
-}
-
-.sellPartForm .location {
-    width: 100%;
-    margin: 30px 30px;
-}
-
-
-.conditionDetails textarea {
-    width: 100%;
-    height: 100px;
-}
-
-.sellPartForm .brand {
-    display: inline-block;
-    width: 30%;
-}
-
-.sellPartForm .category {
-    display: inline-block;
-    width: 30%;
-}
-
-
-.sellPartForm .partYear {
-    display: inline-block;
-    width: 30%;
-}
-
-.sellPartForm .partMake {
-    display: inline-block;
-    width: 30%;
-}
-
-.sellPartForm .partModel {
-    display: inline-block;
-    width: 30%;
-}
-
 .buttonContainer {
-    margin: 0 auto;
+    margin: 2% auto;
     width: 100%;
-    text-align: center;
+    text-align: center;    
+    font-size: 1.7em;
 }
 
-button .postPart {
-    color: red;
+.sellPartForm{
+    padding: 1%;
 }
 
-.sellPartForm .required {
-    color: red;
+.makeModelYearContainer{
+    font-size: 1.3em;
 }
-
 
 /* IOS Toggle Icon */
 
@@ -181,6 +57,11 @@ button .postPart {
 
 .checkboxItem input[type="checkbox"] {
 	display: none;	
+}
+
+.partDetailsSellForm{
+    width: 100%;
+    font-size: 1.3em;
 }
 
 .toggleButton {

@@ -28,10 +28,6 @@ require_once('./addSingleImageToS3.php');
 // $_POST['part_number'] = 'part#999';
 
 
-//temp until category is working
-$request_data['category_id'] = 4;
-
-
 // remove above content for frontEnd testing *********************************
 $output = [
     'success'=> false,
@@ -49,7 +45,7 @@ forEach($fieldsToSanitize as $value){
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
 $fields['part_condition'] = (int)$fields['part_condition'];
-$fields['category_id'] = $fields['category_id'] ?: 1;
+$fields['category_id'] = (int)$fields['category_id'] ?: 1;
 $fields['year'] = (int)$fields['year'];
 $fields['price_usd'] = (float)$fields['price_usd'];
 $fields['seller_id'] = (int)$fields['seller_id'];

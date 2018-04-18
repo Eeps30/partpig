@@ -1,108 +1,106 @@
 import React, {Component} from "react";
 import "./sellpart.css";
+import "./yearMakeModelSelect.css";
 import ImageUpload from '../imageUploader/imageUploader';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Field from '../tools/field';
 import ListingSuccess from "../listingSuccess/listingSuccess";
-import InputField from "./inputField";
-import InputDropdown from "./inputDropdown";
-import {connect} from 'react-redux';
-import {formError, signUp} from '../../actions';
-import requiredFields from './formData'
-import inputDropdown from "./inputDropdown";
-import YearMakeModelSelect from './yearMakeModelSelect'
+import formInputs from './formData';
+import MakeDropDown from '../searchpage/dropdown/makeDropdown';
+import ModelDropDown from '../searchpage/dropdown/modelDropdown';
+import YearDropDown from '../searchpage/dropdown/yearDropdown';
+import data from '../searchpage/dataModel';
 
 
 class SellPartForm extends Component{
+    
+    constructor(props){
+        super(props);
+
+        this.userId = localStorage.getItem('user');
+        this.state = { 
+            isLoading: false,
+            part:{
+                "make": 'default',
+                "model": 'default',
+                "year": 'default',
+                "part_name": '',
+                "brand": '',
+                "price_usd": 0,
+                "part_condition": '1',
+                "description": '',
+                "category": 1,
+                "images": [],
+                "part_number": '',
+                "seller_id": this.userId
+            },            
+            partErrors:{}
+        }
+        this.catchMakeSelect = this.catchMakeSelect.bind(this);
+        this.catchModelSelect = this.catchModelSelect.bind(this);
+        this.catchYearSelect = this.catchYearSelect.bind(this);
+    }
+    
     handleSellPartSubmit(event){
         event.preventDefault();
-        const inputs = this.props.values;
-        // console.log('my image file object', newPartData.images[0].imagePreviewUrl);
-        const listingFormData = {
-                "make":  inputs.make,
-                "model":  inputs.model,
-                "year":  inputs.year,
-                "part_name": inputs.part_name,
-                "brand": inputs.brand,
-                "price_usd":  inputs.price,
-                // "location": "",
-                "part_condition":  inputs.part_condition,
-                "description":  inputs.description,
-                // "milage_used": "",
-                "category":  inputs.category,
-                "images": [],
-                // "seller_id": inputs.userId,
-                "part_number": inputs.part_number,
+        const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
+
+        axios({
+            url: url,
+            method: 'post',
+            data: this.state.part, 
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
-        console.log('handleSubmit called, form values are:', listingFormData);
-        this.inputValidation(listingFormData);
-       
+        }).then(resp=>{
+            console.log("Server Response:", resp);
+            // this.props.history.push('/listingsuccess');
+        }).catch(err => {
+            console.log("There was an error:");
+            // this.props.history.push('/listingsuccess');
+        });
     }
 
-    inputValidation(listingFormData){     
-        event.preventDefault();   
-        const {part_name, price_usd, part_number, brand} = listingFormData;
-        const errors = [];
-
-        if(!part_name){
-            errors.push('Please enter a valid part name');
-        }
-
-        if(!price_usd){
-            errors.push('Please enter a valid price')
-        }
-
-        if(!part_number){
-            errors.push('Enter a part number');
-        }
-        if(!brand){
-            errors.push('Enter a brand');
-        }        
-
-        this.props.formError(errors);
-
-        if(errors.length === 0){
-            this.sendToServer(listingFormData);
-        }
-        console.log(errors)
-     
-    }
-
-    handleImageChange(e) {
-        e.preventDefault();
-    
-        let reader = new FileReader();
-        let file = e.target.files[0];
+    handleImageChange(files) {
         
-        reader.onloadend = () => {
-            const { form } = this.state;
-            form['images'].push({imagePreviewUrl:reader.result, file:file});
+        for(let i=0; i < files.length; i++){
+            let reader = new FileReader();            
+            let file = files[i];
+        
+            reader.onloadend = () => {
+                const { part } = this.state;
+                part['images'].push({imagePreviewUrl:reader.result, file:file});
+                this.setState({
+                    part: {...part}
+                });         
+            }
+        
+            reader.readAsDataURL(file);            
+        }        
+    }
+
+    deleteImageChange(event) {
+        
+        const element = event.target;
+                    
+        const { part } = this.state;
+        const index = this.containsImage(element,part.images);
+        if(index !== -1){
+            part['images'].splice(index,1);
             this.setState({
-                form: {...form}
-            });         
-        }
-    
-        reader.readAsDataURL(file);
-      }
-
-    sendToServer(listingFormData){
-
-            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
-
-            axios({
-                url: url,
-                method: 'post',
-                data: listingFormData, 
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(resp=>{
-                console.log("Server Response:", resp);
-                // this.props.history.push('/listingsuccess');
-            }).catch(err => {
-                console.log("There was an error:");
-                // this.props.history.push('/listingsuccess');
+                part: {...part}
             });
+        }       
+    }
+
+    containsImage(obj, list) {        
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].imagePreviewUrl === obj.name) {
+                return i;
+            }
+        }    
+        return -1;
     }
 
     formValidation(listingFormData){ 
@@ -123,111 +121,93 @@ class SellPartForm extends Component{
         
     }
   
+    handlePartInputChange(event){
+        const {value,name} = event.target;
+        const newPart = {...this.state.part};
+        newPart[name] = value;
+        this.setState({
+            part:newPart
+        });  
+    }
+
+    partHandleOnBlur(){
+        const {name,value,placeholder,required} = event.target;
+        const newPartErrors = {...this.state.partErrors};
+        if(value ==='' && required){           
+            newPartErrors[name] = placeholder + ' is requiered';           
+        }else{
+            delete newPartErrors[name];            
+        }
+        this.setState({
+            partErrors:newPartErrors
+        });
+    }
+
+    catchMakeSelect(selectedMake){
+        const caughtMake = selectedMake;
+        const newPart = {...this.state.part};
+        newPart['make'] = caughtMake;
+        this.setState({
+            part: newPart
+        });
+    }
+
+    catchModelSelect(selectedModel){
+        const caughtModel = selectedModel
+        const newPart = {...this.state.part};
+        newPart['model'] = caughtModel;
+        this.setState({
+            part: newPart
+        });        
+    }
+
+    catchYearSelect(selectedYear){        
+        const caughtYear = selectedYear
+        const newPart = {...this.state.part};
+        newPart['year'] = caughtYear;
+        this.setState({
+            part: newPart
+        });  
+    }
+
     render() {
-        const formInputs = [
-            {
-                label: "Part Title",
-                htmlFor: "part_name",
-                name: "part_name",
-                type: "text",
-                placeholder: "Enter a part title",
-                className: "partName",
-                required: "true"
-            },
         
-            {
-                label: "Price",
-                htmlFor: "price",
-                name: "price",
-                type: "text",
-                placeholder: "$",
-                className: "price",
-                required: "true"
-            },
-        
-            {
-                label: "Part Number",
-                htmlFor: "part_number",
-                name: "part_number",
-                type: "text",
-                placeholder: "Manufacture Part Number",
-                className: "partNumber",
-                required: "false"
-            },
-            {
-                label: "Brand",
-                htmlFor: "brand",
-                name: "brand",
-                type: "text",
-                placeholder: "Brand",
-                className: "brand",
-                required: "false",
-            }
-        ];
-
-        const dropdownInputs = [
-            {
-                label: "Condition",
-                htmlFor: "condition",
-                name: "condition",
-                type: "text",
-                placeholder: "Choose Condition",
-                className: "conditionRating",
-                required: "false",
-                options: [
-                    {name: "1 - Poor", value: 1},
-                    {name: "2 - Fair", value: 2},
-                    {name: "3 - Good", value: 3},
-                    {name: "4 - Great", value: 4},
-                    {name: "5 - New", value: 5}
-                ]
-            }
-        ];
-        
-        // console.log(this.props.imgArray)
-        const {values, errors} = this.props;
-
-        const fields = formInputs.map((inputObj,index) => {
-            return <InputField key={index} {...inputObj} value={values[inputObj.name] || ''}/>
+        const fields = formInputs.map((field,index) => {
+            return <Field key={index} {...field} error={this.state.partErrors[field.name]} handleOnBlur={this.partHandleOnBlur.bind(this)} handleInputChange={this.handlePartInputChange.bind(this)} value={this.state.part[field.name] || ''}/>
         });
 
-        const dropDowns = dropdownInputs.map((inputObj,index) => {
-            return <InputDropdown key={index} {...inputObj} value={''}/>
-        });
-
+        let listPartButton = <button type='button' onClick={this.handleSellPartSubmit.bind(this)} className="button-link">List Part</button>
+        if(!(Object.keys(this.state.partErrors).length === 0)){
+            listPartButton = <button onClick={e => e.preventDefault()} className='disabled'>List Part</button>;
+        }
         return(
-                <div className="sellPartForm">
-                    <h1 className="sellPartTitle">List a part for sale!</h1>
-                    <form onSubmit={this.handleSellPartSubmit.bind(this)}>
-                        <div className="part-details">
-                            <h1>Required Part Details</h1>
-                            {fields}
-                            {dropDowns}
-                        </div>
-                        <div>    
-                            <h1>What model does this part fit?</h1>
-                            <YearMakeModelSelect/>
-                                                       
-                        </div> 
-                        <div>
-                        <h1>Upload Images</h1>
-                            <ImageUpload/>
-                         </div>   
-                        <div className="buttonContainer">
-                            <button className="postPart">List Part</button>
-                        </div>
-                    </form>
-                </div>          
-                );
+            <div className="sellPartContainer">
+                <h1 className="sellPartTitle">List a part for sale!</h1>
+                <form className="sellPartForm">
+                    <div className="partDetailsSellForm">
+                        <h1>Part Details</h1>
+                        {fields}
+                    </div>
+                    <div className='makeModelYearContainer'>    
+                        <h1>What model does this part fit?</h1>
+                        <div className="yearMakeModel">
+                            <MakeDropDown className="makeDropdown" data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.part.make}/>
+                            <ModelDropDown className="modelDropdown" data={data} value={this.state.part.model} modelSelect={this.catchModelSelect} selectedMake={this.state.part.make} selectedModel={this.state.part.model}/>
+                            <YearDropDown className="yearDropdown" data={data} value={this.state.part.year} yearSelect={this.catchYearSelect} selectedMake={this.state.part.make} selectedModel={this.state.part.model}/>
+                        </div>                                                       
+                    </div> 
+                    <div>
+                    <h1>Upload Images</h1>
+                        <ImageUpload images={this.state.part.images} handleImageChange={this.handleImageChange.bind(this)} deleteImage={this.deleteImageChange.bind(this)}/>
+                        </div>   
+                    <div className="buttonContainer">
+                        {listPartButton}
+                    </div>
+                </form>
+            </div>          
+        );
     
     }
-}    
+}   
 
-function mapStateToProps(state){
-    return{
-        values: state.form.values,
-        errors: state.form.errors
-    }
-}
-
-export default connect(mapStateToProps, {formError, signUp})(SellPartForm);
+export default SellPartForm;
