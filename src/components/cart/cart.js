@@ -6,6 +6,7 @@ import emptyCart from '../../assets/images/cartEmpty.png'
 
 const Cart = (props) => {
 
+    const userId = localStorage.getItem('user');
     let total = 0;
     let list = (<div className='emptyMessage'>
                     <img src={emptyCart}/>
@@ -14,6 +15,14 @@ const Cart = (props) => {
                 </div>
                 );
     let checkoutButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</Link>;
+
+    function checkIfUserIsLogin(){
+        if(userId){
+            props.history.push('/checkout');
+        }else{
+            props.history.push('/login');
+        }
+    }
 
     if(props.cartParts.length > 0){
         list = props.cartParts.map(function(item,index){
@@ -24,7 +33,7 @@ const Cart = (props) => {
                 </div>
             )   
         }); 
-        checkoutButton = <Link className='button-link' to={"/checkout"}>Proceed to checkout</Link>;
+        checkoutButton = <button onClick={checkIfUserIsLogin.bind(this)} className='button-link'>Proceed to checkout</button>;
     }
     return (
         <div className="container">

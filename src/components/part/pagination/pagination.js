@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './pagination.css';
 import Part from '../part';
+import NoResults from '../../noResults/noResults';
 
 class Pagination extends Component {
         
@@ -18,7 +19,7 @@ class Pagination extends Component {
 
     componentWillReceiveProps(newProps){    
         
-        if(this.props.allParts.length !== newProps.allParts.length){
+        if(this.props.allParts !== newProps.allParts){
             const allParts = newProps.allParts;
             const numPages = Math.ceil(allParts.length / this.partsPerPage);
             const currentParts = allParts.slice(this.partsPerPage*this.state.currentPage,(this.partsPerPage)+(this.partsPerPage*this.state.currentPage));
@@ -71,8 +72,12 @@ class Pagination extends Component {
     }
 
     render(){
+        let list = "";
+        if(this.state.currentParts.length === 0){
+            list = <NoResults/>
+        };
         
-        let list = this.state.currentParts.map((function(item,index){
+        list = this.state.currentParts.map((function(item,index){
             return ( 
                 <div key={index} className='singlePart'>                  
                     <Part cartParts={this.props.cartParts} addCart={this.props.addCart} history={this.props.history} imageClass={this.props.showFilters ? 'imageContainer imageContainerFilter' : 'imageContainer'} infoClass='productContainer' partInfo={item}/>                                      

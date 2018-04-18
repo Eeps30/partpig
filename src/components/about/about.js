@@ -1,10 +1,10 @@
 import React from 'react';
-
+import AboutPage from './about-page';
 
 const About = () => (
 
             <div>
-               <h1>This is the about us page</h1>
+               <AboutPage/>
             </div>
         );
 

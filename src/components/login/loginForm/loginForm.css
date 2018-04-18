@@ -38,3 +38,7 @@
 .loginForm input[type=submit]:hover {
     background-color: #45a049;
 }
+
+.loginForm label {
+    float: left;
+}
