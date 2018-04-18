@@ -11,7 +11,8 @@ import WatchList from './watchList/watchList';
 import {
     BrowserRouter as Router,
     Route,
-    Link
+    Link,
+    NavLink
 } from 'react-router-dom';
 
 
@@ -33,11 +34,11 @@ class UserDashboard extends Component {
             <div className="userDashboard">
                 <div className="dashboardHeader"><h2>User Dashboard</h2></div>  
                 <div className="dashboardTabs">
-                    <Link className="tabLinks" to="/dashboard/activeparts"><div className="tabButton">Active</div></Link>
-                    <Link className="tabLinks" to="/dashboard/partdrafts" ><div className="tabButton">Drafts</div></Link>
-                    <Link className="tabLinks" to="/dashboard/watchlist" ><div className="tabButton">Watching</div></Link>
-                    <Link className="tabLinks" to="/dashboard/searchhistory" ><div className="tabButton">History</div></Link>
-                    <Link className="tabLinks" to="/dashboard/accountsettings" ><div className="tabButton">Settings</div></Link>  
+                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/activeparts">Active</NavLink>
+                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/partdrafts" >Drafts</NavLink>
+                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/watchlist" >Watching</NavLink>
+                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/searchhistory" >History</NavLink>
+                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/accountsettings" >Settings</NavLink>  
                 </div>                   
                 <div className="tabContent">
                     <Route path='/dashboard/activeparts' render={props => <UserParts userId={this.state.seller_id} {...props}/>}/>
