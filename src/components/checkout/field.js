@@ -5,7 +5,7 @@ class Field extends Component{
 
     render(){
 
-        const {width, label, type, placeholder, name, value, disabled, handleInputChange} = this.props;
+        const {width, label, type, placeholder, name, value, disabled, handleInputChange, handleOnBlur, error, required} = this.props;
 
         const style={width};
 
@@ -20,14 +20,15 @@ class Field extends Component{
                     </select>
             );
         }else{
-            field = <input className="form-control" disabled={disabled} onChange={handleInputChange} value={value} name={name} type={type} placeholder={placeholder}/>;             
+            field = <input onBlur={handleOnBlur} className="form-control" disabled={disabled} onChange={handleInputChange} value={value} name={name} type={type} placeholder={placeholder} required={required}/>;             
         }    
 
         return (            
             <div className='form-group' style={style}>
                 <label>{label}</label>
                 {field}   
-                <div className="form-control-border"></div>                         
+                <div className="form-control-border"></div> 
+                <div className="help-block with-errors">{error}</div>                        
             </div>                                
         )
     }

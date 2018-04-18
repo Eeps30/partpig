@@ -5,7 +5,8 @@ const inputs = [
         placeholder:'First Name',
         name:'first_name',
         width: '31%',
-        disabled: false
+        disabled: false,
+        required: true
     },
     {
         label:'Middle Name',
@@ -13,7 +14,8 @@ const inputs = [
         placeholder:'Middle Name',
         name:'middle_name',
         width: '31%',
-        disabled: false
+        disabled: false,
+        required: false
     },
     {
         label:'Last Name',
@@ -21,7 +23,8 @@ const inputs = [
         placeholder:'Last Name',
         name:'last_name',
         width: '31%',
-        disabled: false
+        disabled: false,
+        required: true
     },
     {
         label:'Address',
@@ -29,7 +32,8 @@ const inputs = [
         placeholder:'Address',
         name:'street_address',
         width: '48%',
-        disabled: false
+        disabled: false,
+        required: true
     },
     {
         label:'Apt/Unit',
@@ -37,7 +41,8 @@ const inputs = [
         placeholder:'Apt/Unit (Optional)',
         name:'apt_suite',
         width: '28%',
-        disabled: false
+        disabled: false,
+        required: false
     },
     {
         label:'Country',
@@ -45,7 +50,8 @@ const inputs = [
         placeholder:'Country',
         name:'country',
         width: '17%',
-        disabled: true
+        disabled: true,
+        required: true
     },
     {
         label:'Zip Code',
@@ -53,7 +59,8 @@ const inputs = [
         placeholder:'Zip Code',
         name:'zipcode',
         width: '34%',
-        disabled: false
+        disabled: false,
+        required: true
     },
     {
         label:'City',
@@ -61,7 +68,8 @@ const inputs = [
         placeholder:'City',
         name:'city',
         width: '34%',
-        disabled: false
+        disabled: false,
+        required: true
     },
     {
         label:'State',
@@ -69,7 +77,8 @@ const inputs = [
         placeholder:'State',
         name:'state_abbr',
         width: '26%',
-        disabled: false
+        disabled: false,
+        required: true
     },
     {
         label:'Phone Number',
@@ -77,7 +86,8 @@ const inputs = [
         placeholder:'Phone Number',
         name:'phone_number',
         width: '48%',
-        disabled: false
+        disabled: false,
+        required: false
     },
     {
         label:'Email Address',
@@ -85,7 +95,8 @@ const inputs = [
         placeholder:'Email Address',
         name:'email',
         width: '48%',
-        disabled: false
+        disabled: false,
+        required: true
     },
 ]
 
