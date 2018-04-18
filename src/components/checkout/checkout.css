@@ -103,6 +103,16 @@
     font-weight: bold;
 }
 
+.shippingAddress > p{    
+    font-size: 1.1em;
+    margin-bottom: 10%;
+}
+
+.shippingAddress > p select{    
+    font-size: 1.1em;
+    margin-left: 5%;
+}
+
 .shippingAddress > hr{    
     border: 0;
     height: 2px;
@@ -132,6 +142,31 @@
     z-index: 1;
   }
   
+  .form-group .help-block {
+    position: absolute;
+    display: inline-block;
+    padding: 0px 5px;
+    font-size: 0.6em;
+    line-height: 1.5em;
+    margin: -2px 0 0 10px;
+    color: #fff;
+    background: #ff4e4e;
+  }
+  
+  .form-group .help-block:after {
+    content: " ";
+    position: absolute;
+    left: 5px;
+    bottom: 100%;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #ff4e4e;
+    border-right: 10px solid transparent;
+  }
+  .form-group .help-block:empty {
+    display: none;
+  }
+
   .has-error .form-control + .form-control-border {
     background: #d0451b;
   }
