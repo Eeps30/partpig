@@ -29,7 +29,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.images)
     return (
       <div className="homeMainContainer">
         <div className="scrollingBackground">
