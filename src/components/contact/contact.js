@@ -1,52 +1,43 @@
-import React, {Component} from 'react';
-import contact from './contactInfo';
-import contactCSS from './contact.css';
-import githubIcon from '../../assets/images/contact-icons/github-icon.png'
-import linkedinIcon from '../../assets/images/contact-icons/linkedIn-icon.png'
-import headshot from '../../assets/images/contact-icons/headshot.png'
+import React from "react";
+import './contact.css';
 
-class AboutPage extends Component {
-    constructor(props){
-        super(props)
-    }
-
-    render(){
-
-        const contactElements = contact.map((item, index) => {
-            return (
-                <div className="users" key={index}>
-                    <div>
-                        <img className="userHeadshot" src={headshot}/>
-                    </div>
-                    <div className="userName">{item.name}</div>
-                    <div className="userRole">{item.role}</div>
-                        <div className="contactIcons">
-                            <div className="githubLink">
-                                <a href={`${item.github}`}><img src={githubIcon}/></a>
-                            </div>
-                            <div className="linkedInLink">
-                                <a href={`${item.linkedin}`}><img src={linkedinIcon}/></a>
-                            </div>
-                        </div>
-                </div>
-            )
-        })
-
-        return(
-            <div className="contactContainer">
-                <div className="images">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>                    
-                </div>
-                <div className="infoContainer">
-                    {contactElements}
-                </div>
+const Contact = () => (
+        <div>
+            <div className="contact-us">
+            	<h1>CONTACT US</h1>
             </div>
-        )
-    }
-}
+            <div className='container contactContainer'>
+				<div className="contact-header">
+				    <h3>Have a question? Drop us a line!</h3>
+				    <h3>Please submit your inquiry through the contact form.</h3>
+				    <h3>We are committed to providing you the best part-purchasing experience!</h3>
+				</div>
+				<form className="contactForm">
+				    <div className="input-container">
+				        <label htmlFor='name'>Name:</label>
+				        <input type="text" className="name" placeholder="First Name, Last Name"/>
+				    </div>
+				    <div className="input-container">
+				        <label>Email:</label>
+				        <input type="text" className="email" placeholder="Enter your email address here"/>
+				    </div>
+				    <div className="input-container">
+				        <label>Subject:</label>
+				        <input type="text" className="subject" placeholder="Enter a subject"/>
+				    </div>
+				    <div className="input-container">
+				        <label>Message:</label>
+				        <textarea className="message" placeholder="Enter your message here"></textarea>
+				    </div>
+				    <button type="button" className="button-link">Submit Your Message</button>
+				</form>
+			</div>
+			<div className="modal-overlay"></div>
+			<div className="modal">
+			    <div className="close"></div>
+			    <label></label>
+			</div>
+        </div>    
+);
 
-export default AboutPage
+export default Contact

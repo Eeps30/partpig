@@ -115,7 +115,7 @@ class UpdatePartStatus extends Component {
                             {cancelButton}
                         </div>
                     )
-                    case "remove":
+                    case "deleted":
                         return (
                         <div>    
                             <h3>Are you sure you want to remove your listing?</h3>
@@ -134,11 +134,8 @@ class UpdatePartStatus extends Component {
                         <label className="changeStatus" htmlFor="status">Status: </label>
                         <select onChange={this.statusChange} value={this.state.status} name="status" type="text">
                         <option value="available">Active</option>
-                        <option value="sold">Sold</option>
-                        <option value="shipped">Shipped</option>
                         <option value="draft">Draft</option>
-                        <option value="unavailable">Unavailable</option>
-                        <option value="remove">Remove Listing</option>          
+                        <option value="deleted">Remove Listing</option>          
                     </select>
             </div>
                  );    

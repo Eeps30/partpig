@@ -21,6 +21,7 @@ import Checkout from '../checkout/checkout';
 import ListingSuccess from '../listingSuccess/listingSuccess';
 import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
+import CheckoutComplete from './../checkout/checkoutComplete';
 
 
 class App extends Component{
@@ -37,6 +38,7 @@ class App extends Component{
         this.saveFilters = this.saveFilters.bind(this);
         this.saveUrlBack = this.saveUrlBack.bind(this);
         this.setUserData = this.setUserData.bind(this);
+        this.removeAllPartsFromCart = this.removeAllPartsFromCart.bind(this);
         this.urlBack = '';
         this.user = null;
         this.userId = localStorage.getItem('user');
@@ -191,11 +193,12 @@ class App extends Component{
                     <Route path='/contact' component={ContactPage}/>
                     <Route path='/contactSeller' component={ContactSeller}/>
                     <Route path='/cart' render={props => <Cart cartParts={this.state.cartParts} removePart={this.removePart} urlBack={this.urlBack} {...props}/>}/>
-                    <Route path='/checkout' render={props => <Checkout cartParts={this.state.cartParts} {...props}/>}/>
+                    <Route path='/checkout' render={props => <Checkout removeAllPartsFromCart={this.removeAllPartsFromCart} cartParts={this.state.cartParts} {...props}/>}/>
                     <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Route path='/dashboard' component={UserDashboard}/>
+                    <Route path='/checkoutComplete/:orderNumber' component={CheckoutComplete}/>
                     {/* <Footer/>   */}
                 </div>
             </Router>  
