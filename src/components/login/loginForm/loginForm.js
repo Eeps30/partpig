@@ -40,7 +40,7 @@ class LoginForm extends Component {
             <div className="loginForm">
                 <h2>Login with username</h2>
                     <form onSubmit={this.handleSubmit}>
-                        <label>user</label>
+                        <label>Username</label>
                         <input type="text" id="user" name="user" placeholder="user"/>
                         <label>Password</label>
                         <input type="text" id="password" name="password" placeholder="Password"/>

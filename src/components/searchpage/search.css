@@ -11,19 +11,18 @@
     height: 8vh;
     border: solid red 2px;
     font-size: 65px;
-}*/
+} */
 
 .outerDiv {
-    border: solid black 1px;
+    /* border: solid black 1px; */
     width: 70%;
     height: 25%;
     border-radius: 10px;
     margin: auto;
     position: relative;
-    top: 45%;
-    transform: translate(0,-50%);
-    background-color: rgba(0, 0, 0, 0.25);
-    box-shadow: 3px 4px;
+    top: 23%;
+    /* background-color: rgba(62, 62, 62, 0.25);
+    box-shadow: 3px 4px; */
     padding: 0.5%;
 }
 
@@ -31,43 +30,59 @@
     border-radius: 10px;
     height: 100%;
     width: 100%;
-    background-color: rgb(255, 69, 69);
+    background-color: #2a2a2a;
 }
 
 .buttonsContainer{
-    position: relative;
-    top: 40%;
-    transform: translate(0,-50%);
     width: 100%;
-    height: 30%;
+    height: 50%;
 }
 
 .buttonsContainer select {    
-    width: 21%;
-    height: 100%;
+    width: 28.3%;
+    height: 50%;
     margin: 2%;
     background: #d4d4d4;
     font-size: 2em;
 }
 
-.buttonsContainer .searchButton {    
+.searchBarContainer .searchButton {    
     border-radius: 5px;
-    background-color: rgb(244,67,54);
+    background-color: rgb(111, 111, 111);
     box-shadow: 2px 2px;
     font-size: 2em;
-    height: 100%;
+    height: 23%;
     width: 20%;
+    margin-left: 10%;
+    margin-top: 1%;
 }
 
-.buttonsContainer .searchButton a {
-    color: white;
+.searchBarContainer a {
+    padding: 5px;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 2vh;
+    background-color: rgb(211,211,211);
+    color: #000000;
     text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    height: 15%;
+    box-shadow: 2px 2px;
 }
 
-.alternateSearch {
-    margin-top: 50px;
-    display: inline-block;
-    font-size: large;
-    color: white;
-    width: 60%;
+.searchBarContainer {
+    height: 100%;
+}
+
+.searchBarContainer .searchName {
+    margin-top: 1%;
+    float: left;
+    width: 47%;
+    margin-left: 15%;
+}
+
+.searchName label input {
+    font-size: 330%;
 }

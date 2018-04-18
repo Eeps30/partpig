@@ -6,7 +6,7 @@ import "./login.css";
 
 const Login = (props) => (
             <div className="login-container">
-               <SocialLogin/> 
+               {/* <SocialLogin/>  */}
                <LoginForm {...props}/>
                <RegisterForm/>
             </div>
