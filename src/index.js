@@ -5,7 +5,6 @@ import types from "./actions/types";
 import rootReducer from './reducers';
 import {createStore, applyMiddleware} from "redux";
 
-
 import App from './components/app/app';
 
 const store = createStore(rootReducer, {}, applyMiddleware());
