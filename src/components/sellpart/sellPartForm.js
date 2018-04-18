@@ -30,7 +30,7 @@ class SellPartForm extends Component{
                 "price_usd": 0,
                 "part_condition": '1',
                 "description": '',
-                "category": 1,
+                "category_id": 1,
                 "images": [],
                 "part_number": '',
                 "seller_id": this.userId
