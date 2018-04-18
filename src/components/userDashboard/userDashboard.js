@@ -10,14 +10,14 @@ import UserDrafts from './userDrafts/userDrafts';
 import UserHome from './userHome/userHome';
 import WatchList from './watchList/watchList';
 import {
-    BrowserRouter as Router,
+    BrowserRouter as Router,    
     Route,
-    Link,
+    Link,    
     NavLink
-} from 'react-router-dom';
+} from 'react-router-dom';    
 
 
-class UserDashboard extends Component {
+class UserDashboard extends Component {    
         
     constructor(props){
         super(props);
@@ -44,7 +44,7 @@ class UserDashboard extends Component {
                
                 <div className="tabContent">
                     <Route exact path='/dashboard' component={UserHome}/>
-                    <Route path='/dashboard/activeparts' render={props => <ActiveParts userId={this.state.seller_id} {...props}/>}/>
+                    <Route path='/dashboard/activeparts' render={props => <ActiveParts {...props} userId={this.state.seller_id} />}/>
                     <Route path='/dashboard/partdrafts' component={UserDrafts}/>
                     <Route path='/dashboard/searchhistory' component={UserHistory}/>
                     <Route path='/dashboard/watchlist' component={WatchList}/>
