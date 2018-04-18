@@ -130,7 +130,9 @@ class SellPartForm extends Component{
         });  
     }
 
-    partHandleOnBlur(){
+    partHandleOnBlur(event){
+
+        const elements = document.querySelector("require=true");
         const {name,value,placeholder,required} = event.target;
         const newPartErrors = {...this.state.partErrors};
         if(value ==='' && required){           
@@ -170,6 +172,13 @@ class SellPartForm extends Component{
         });  
     }
 
+    validateFields(){
+        return(this.state.part.images.length > 0 
+            && this.state.part.year !== 'default'
+            && this.state.part.part_name !== ''
+            && this.state.part.price_usd > 0);        
+    }
+
     render() {
         
         const fields = formInputs.map((field,index) => {
@@ -177,7 +186,7 @@ class SellPartForm extends Component{
         });
 
         let listPartButton = <button type='button' onClick={this.handleSellPartSubmit.bind(this)} className="button-link">List Part</button>
-        if(!(Object.keys(this.state.partErrors).length === 0)){
+        if(!this.validateFields()){
             listPartButton = <button onClick={e => e.preventDefault()} className='disabled'>List Part</button>;
         }
         return(
@@ -189,7 +198,7 @@ class SellPartForm extends Component{
                         {fields}
                     </div>
                     <div className='makeModelYearContainer'>    
-                        <h1>What model does this part fit?</h1>
+                        <h1>What model does this part fit? *</h1>
                         <div className="yearMakeModel">
                             <MakeDropDown className="makeDropdown" data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.part.make}/>
                             <ModelDropDown className="modelDropdown" data={data} value={this.state.part.model} modelSelect={this.catchModelSelect} selectedMake={this.state.part.make} selectedModel={this.state.part.model}/>
@@ -197,7 +206,7 @@ class SellPartForm extends Component{
                         </div>                                                       
                     </div> 
                     <div>
-                    <h1>Upload Images</h1>
+                    <h1>Upload Images *</h1>
                         <ImageUpload images={this.state.part.images} handleImageChange={this.handleImageChange.bind(this)} deleteImage={this.deleteImageChange.bind(this)}/>
                         </div>   
                     <div className="buttonContainer">

@@ -25,7 +25,7 @@ class Field extends Component{
 
         return (            
             <div className='form-group' style={style}>
-                <label>{label}</label>
+                <label>{label}{required ? ' *' : ''}</label>
                 {field}   
                 <div className="form-control-border"></div> 
                 <div className="help-block with-errors">{error}</div>                        
