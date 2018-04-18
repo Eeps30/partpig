@@ -7,7 +7,6 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-
 import PartList from '../part/partList/partList';
 import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
@@ -15,7 +14,7 @@ import Contact from '../contact/contact';
 import ContactSeller from '../contact/seller/contactSeller';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
-import Search from '../searchpage/search';
+import Home from '../home/home';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
 import ListingSuccess from '../listingSuccess/listingSuccess';
@@ -23,14 +22,15 @@ import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
 
-
 class App extends Component{
 
     constructor(props){
         super(props);     
         this.state = {
             cartParts: []
-        }   
+        }
+        this.images = ['part1.jpg','part2.jpg','part3.jpg','part4.jpg','part5.jpg','part6.jpg','part7.jpg','part8.jpg','part9.jpg','part10.jpg','part11.jpg','part12.jpg','part13.jpg','part14.jpg','part15.jpg','part16.jpg','part17.jpg','part18.jpg','part19.jpg','part20.jpg','part21.jpg','part22.jpg','part23.jpg','part24.jpg','part25.jpg','part26.jpg','part27.jpg','part28.jpg','part29.jpg','part30.jpg'];
+
 
         this.addPart = this.addPart.bind(this);
         this.removePart = this.removePart.bind(this);
@@ -183,7 +183,7 @@ class App extends Component{
             <Router>
                 <div className='mainContainer'>
                     <Header/>            
-                    <Route exact path='/' component={Search}/>
+                    <Route exact path='/' component={ ()=>  <Home images={this.images} />}/>
                     <Route exact path='/partresults' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/make/:make/model/:model/year/:year' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
