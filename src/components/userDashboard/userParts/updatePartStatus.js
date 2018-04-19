@@ -131,7 +131,7 @@ class UpdatePartStatus extends Component {
 
         return  (
             <div className="statusUpdateDropdown">
-                        <select onChange={this.statusChange} value={this.state.status} name="status" type="text">
+                    <select onChange={this.statusChange} value={this.state.status} name="status" type="text">
                         <option value="available">Active</option>
                         <option value="draft">Draft</option>
                         <option value="deleted">Remove Listing</option>          
