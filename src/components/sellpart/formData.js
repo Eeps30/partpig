@@ -49,7 +49,7 @@ const inputs = [
         label:'Category',
         type:'select',
         placeholder:'Category',
-        name:'category',
+        name:'category_id',
         width: '23%',
         disabled: false,
         required: true,
