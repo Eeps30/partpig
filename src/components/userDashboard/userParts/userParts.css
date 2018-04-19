@@ -90,6 +90,7 @@
     margin: 0;
     width: 10%;
     height: 15vmin;
+    height: auto;
     padding: 0;
     /*float: left;*/
 }
@@ -133,14 +134,27 @@
     width: 80%;
     text-align: center;
     line-height: normal;
-    font-size: 1.5rem;
-    padding: 1rem;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+}
+
+.statusUpdateContainer div{
+    float: right;
+    bottom: 0%;
+    right: 0%;
+}
+.statusUpdateContainer h3 {
+  display: inline-block;
+  bottom: 0%;
+  right: 0%;
 }
 
 .alignMiddle {
     vertical-align: middle;
     line-height: normal;  
 }
+
+
 /*.userPartsList .category{
     float: left;
     display: inline-block;
