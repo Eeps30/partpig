@@ -27,10 +27,10 @@ const Header = (props) => {
         <header>
             <div className="hamburger"><Hamburger userId={props.userId}/></div>     
             <div className="logo-container"><img className="mainLogo" src={ppLogo}/></div>
-            <div className="user-nav">
-                {logIcon}            
-                <Link to={"/cart"}><div className="cartDivIcon"><img src={cartIcon} className="cartIcon" /><span className='cartCount'>0</span></div></Link>       
-                {sellPartIcon}   
+            <div className="user-nav"> 
+                {sellPartIcon}                            
+                <div className="cartDivIcon"><Link to={"/cart"}><img src={cartIcon} className="cartIcon" /><span className='cartCount'>0</span></Link></div>                 
+                {logIcon}  
             </div>
             <CartMessage/>    
         </header>
