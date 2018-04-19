@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 // import inputs from './fieldsData';
 
+import contact_pig from '../../assets/images/AndrewPartPig.jpg'
 
 // import React from "react";
 import './contact.css';
@@ -38,6 +39,7 @@ class Contact extends Component {
 						<h3>Have a question? Drop us a line!</h3>
 						<h3>Please submit your inquiry through the contact form.</h3>
 						<h3>We are committed to providing you the best part-purchasing experience!</h3>
+						{/* <img className="contact_image" src={contact_pig} alt=""/> */}
 					</div>
 					<form className="contactForm" onSubmit={e => this.handleSubmit(e)}>
 						<div className="input-container">
