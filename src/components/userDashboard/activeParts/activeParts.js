@@ -49,24 +49,24 @@ class ActiveParts extends Component {
             if(item.status === "available"){
             let id = item.id;
             let status = item.status;
-            return  (
+            return (
                 // <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
-                    <div key={index} className="singlePart">
-                        <img className="mainImage" src={item.images}></img>
-                        <div className="listingId">{item.id}</div>
-                        <div className="partNumber">{item.part_number}</div>
-                        <div className="brand"> {item.brand} </div>
-                        <div className="partName">{item.part_name}</div>
-                        <div className="fitment"> {item.make} {item.model} {item.year}</div>
-                        <div className="price">${parseFloat(item.price_usd)}</div>
-                        <div className="statusUpdateContainer">
-                        <Link key={index} to={"/partdetails/" + item.id+'/true'}><button className="editPart">Edit Part</button></Link> 
-                        <UpdatePartStatus id = {id} status = {status}/></div>       
-                    </div>         
-                     );
-                    } else {
-                        return
-                    }                    
+                <div key={index} className="singlePart">
+                    <img className="mainImage" src={item.images}></img>
+                    <div className="listingId">{item.id}</div>
+                    <div className="partNumber">{item.part_number}</div>
+                    <div className="brand"> {item.brand} </div>
+                    <div className="partName">{item.part_name}</div>
+                    <div className="fitment"> {item.make} {item.model} {item.year}</div>
+                    <div className="price">${parseFloat(item.price_usd)}</div>
+                    <div className="statusUpdateContainer">
+                    <Link key={index} to={"/partdetails/" + item.id+'/true'}><button className="button-link editPart">Edit Part</button></Link> 
+                    <UpdatePartStatus id = {id} status = {status}/></div>       
+                </div>         
+                 );
+            } else {
+                return
+            }                    
         });
 
         

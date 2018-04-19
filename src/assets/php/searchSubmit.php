@@ -35,20 +35,17 @@ $fieldsToCheck = ['make', 'model', 'year'];
 
 $subQuery[] = "(p.status ='available' OR p.status='incart')";
 
-if(isset($_GET['keyword'])){
+if(!empty($_GET['keyword'])){
     $keyword = $_GET['keyword'];
 
-    $subQuery[] = "`brand` LIKE '%$keyword%'
+    $subQuery[] = "(`brand` LIKE '%$keyword%'
     OR `part_name` LIKE '%$keyword%'  
     OR `make` LIKE '%$keyword%' 
     OR `model` LIKE '%$keyword%'
     OR `description` LIKE '%$keyword%'
-    OR `part_number` LIKE '%$keyword%'
-    OR `year` LIKE '%$keyword%'
-    OR `price_usd` LIKE '%$keyword%'";
+    OR `part_number` LIKE '%$keyword%')";
 }
-// if(isset($_GET['make']) || isset($_GET['model']) || isset($_GET['year']))
-else{
+if(isset($_GET['make']) || isset($_GET['model']) || isset($_GET['year'])){
     forEach($fieldsToCheck as $value){
         if(!empty($_GET[$value])){
             $subQuery[] = " $value = '{$_GET[$value]}'";
@@ -56,11 +53,12 @@ else{
     }
 }
 // else{
-//     die('no field to check');
-// }
-
-$query .=  implode(" AND ",$subQuery);
+    //     die('no field to check');
+    // }
     
+    $query .=  implode(" AND ",$subQuery);
+    
+    $output['error'][] = $query;
 $result = mysqli_query($conn, $query);
 // make a display object that we later add to each search result
 $display = new stdClass();
