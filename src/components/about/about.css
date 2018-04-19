@@ -1,0 +1,98 @@
+.mainContainer {
+    box-sizing: border-box;
+}
+
+.contactContainer {
+    width: 90vw;
+    height: 100vh;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.images {
+    box-sizing: border-box;
+    height: 60%;
+}
+
+.images > div {
+    box-sizing: border-box;
+    float: left;
+    height: 100%;
+    width: 20%;
+}
+
+.infoContainer {
+    height: 40%;
+    box-sizing: border-box;
+}
+
+.infoContainer .users {
+    box-sizing: border-box;
+    float: left;
+    height: 100%;
+    width: 20%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 3%;
+}
+
+.userHeadshot {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 50%;
+    margin-top: 25%;
+}
+
+.userName {
+    text-decoration: underline;
+    height: 10%;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 10%;
+}
+
+.userRole {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.contactIcons {
+    margin-top: 10%;
+}
+
+.contactIcons img {
+    max-width: 40%;
+}
+
+.githubLink img {
+    margin-left: 50%;
+}
+
+.githubLink {
+    width: 50%;
+    float: left;
+}
+
+.linkedInLink img {
+    margin-left: 10%;
+}
+
+.linkedInLink {
+    width: 50%;
+}
+
+.bobbleBody1 > img {
+    margin-left: 15%;
+    margin-top: 40%;
+    width: 70%;
+}
+
+/* @keyframes bobble {
+    0% {transform: translate(6px, 10px) rotate(1deg);}
+    25% {transform: translate(-1px, -2px) rotate(-2deg);}
+    50% {transform: translate(-2px, -3px) rotate(-3deg);}
+    75% {transform: translate(2px, 2px) rotate(-1deg);}
+    100% {transform: translate(6px, 10px) rotate(1deg);}
+} */

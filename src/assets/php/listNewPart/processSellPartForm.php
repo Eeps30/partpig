@@ -11,9 +11,8 @@ $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
 
 //only do filter_var for email and phone
-require_once('./addSingleImageToS3.php');
+require_once('./addImagesToS3.php');
 // hard-coded test $_POST data **********************************************
-
 // $_POST['part_name'] = ' 3rd test/<?\\\<Post>  ';
 // $_POST['description'] = '    ';
 // $_POST['part_condition'] = '1';
@@ -26,10 +25,6 @@ require_once('./addSingleImageToS3.php');
 // $_POST['price_usd'] = 999;
 // $_POST['listed_date'] = date("Y-m-d", time());
 // $_POST['part_number'] = 'part#999';
-
-
-//temp until category is working
-$request_data['category_id'] = 4;
 
 
 // remove above content for frontEnd testing *********************************
@@ -48,8 +43,8 @@ forEach($fieldsToSanitize as $value){
 	 $fields[$value] = sanitizeInput($request_data[$value]);
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
-$fields['part_condition'] = (int)$fields['part_condition'];
-$fields['category_id'] = $fields['category_id'] ?: 1;
+$fields['part_condition'] = (int)$fields['part_condition'] ?: 1;
+$fields['category_id'] = (int)$fields['category_id'] ?: 8;
 $fields['year'] = (int)$fields['year'];
 $fields['price_usd'] = (float)$fields['price_usd'];
 $fields['seller_id'] = (int)$fields['seller_id'];
@@ -72,9 +67,15 @@ $query .= $tableFields . $tableValues;
 $result = mysqli_query($conn, $query);
 if($result){
 	$last_id = mysqli_insert_id($conn);
-	$imgQuery = "INSERT INTO `image` (`id`, `name`, `url`, `alt`, `part_id`) VALUES (NULL, NULL, '$imageUrl', NULL, '$last_id');";
-	$imgResult = mysqli_query($conn, $imgQuery);
+	$imgSubQuery = [];
 	
+	foreach($imageUrl as $image){
+		$imgSubQuery[] = "(NULL, NULL, '$image', NULL, '$last_id')";
+	}
+	
+	$imgQuery = "INSERT INTO `image` (`id`, `name`, `url`, `alt`, `part_id`) VALUES " . implode(" , ", $imgSubQuery);
+
+	$imgResult = mysqli_query($conn, $imgQuery);
 	
 	$output['data'][] = "last Id was $last_id";
 	$output['data'][] = "The Query was: ".$imgQuery ." result was" .$imgResult;

@@ -10,7 +10,7 @@ import {
 import PartList from '../part/partList/partList';
 import PartDetails from '../part/partDetails/partDetails';
 import About from '../about/about';
-import Contact from '../contact/contact';
+import ContactPage from '../contact/contact';
 import ContactSeller from '../contact/seller/contactSeller';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
@@ -194,7 +194,7 @@ class App extends Component{
                     <Route path='/partresults/make/:make/model/:model/year/:year/part_name/:name/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
                     <Route path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                    
                     <Route path='/about' component={About}/>
-                    <Route path='/contact' component={Contact}/>
+                    <Route path='/contact' component={ContactPage}/>
                     <Route path='/contactSeller' component={ContactSeller}/>
                     <Route path='/cart' render={props => <Cart cartParts={this.state.cartParts} removePart={this.removePart} urlBack={this.urlBack} {...props}/>}/>
                     <Route path='/checkout' render={props => <Checkout removeAllPartsFromCart={this.removeAllPartsFromCart} cartParts={this.state.cartParts} {...props}/>}/>
