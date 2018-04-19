@@ -4,6 +4,7 @@ header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 require_once('mysqlConnect.php');
+
 //basic output format, all data gets pushed into data[]
 $output = [
     'success'=> false,
@@ -36,7 +37,6 @@ $query =  "SELECT p.id,
                 AND s.buyer_id = '{$_GET['user_id']}'";   
 
 $result = mysqli_query($conn, $query);
-// make a display object that we later add to each search result
 
 if($result){
     if(mysqli_num_rows($result)> 0){

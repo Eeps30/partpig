@@ -15,11 +15,6 @@ if(!isset($_GET['user_id'], $_GET['addressType'])){
 $user_id = $_GET['user_id'];
 $addressType = $_GET['addressType'];
 
-
-//hard coded for testing =========
-// $user_id = 3;
-//==========
-
 $query =  "SELECT u.id AS user_id,
                   u.user_name, 
                   u.first_name,
