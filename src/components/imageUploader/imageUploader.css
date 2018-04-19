@@ -47,6 +47,10 @@
     box-sizing: border-box;
 }
 
+.imageSection .help-block{
+    font-size: 1.1em;
+}
+
 .removeImg {
     position: absolute;
     right: 0;

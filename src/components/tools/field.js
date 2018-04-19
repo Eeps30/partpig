@@ -28,7 +28,7 @@ class Field extends Component{
                 <label>{label}{required ? ' *' : ''}</label>
                 {field}   
                 <div className="form-control-border"></div> 
-                <div className="help-block with-errors">{error}</div>                        
+                <div className="help-block">{error}</div>                        
             </div>                                
         )
     }

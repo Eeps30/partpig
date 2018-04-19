@@ -44,7 +44,7 @@ class SellPartForm extends Component{
     
     handleSellPartSubmit(event){
         event.preventDefault();
-        if(validateFields()){
+        if(this.validateFields()){
             const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
 
             axios({
@@ -56,15 +56,17 @@ class SellPartForm extends Component{
                 }
             }).then(resp=>{
                 console.log("Server Response:", resp);
-                // this.props.history.push('/listingsuccess');
+                this.props.history.push('/dashboard/activeparts');
             }).catch(err => {
                 console.log("There was an error:");
-                // this.props.history.push('/listingsuccess');
             });
         }
     }
 
     handleImageChange(files) {
+        
+        const newPartErrors = {...this.state.partErrors};       
+        delete newPartErrors['images'];            
         
         for(let i=0; i < files.length; i++){
             let reader = new FileReader();            
@@ -74,7 +76,8 @@ class SellPartForm extends Component{
                 const { part } = this.state;
                 part['images'].push({imagePreviewUrl:reader.result, file:file});
                 this.setState({
-                    part: {...part}
+                    part: {...part},
+                    partErrors:newPartErrors
                 });         
             }
         
@@ -89,9 +92,16 @@ class SellPartForm extends Component{
         const { part } = this.state;
         const index = this.containsImage(element,part.images);
         if(index !== -1){
+            const newPartErrors = {...this.state.partErrors};
+            if(this.state.part.images.length <= 1){
+                newPartErrors['images'] = 'You need to add at least one image';           
+             }else{
+                 delete newPartErrors['images'];            
+             }
             part['images'].splice(index,1);
             this.setState({
-                part: {...part}
+                part: {...part},
+                partErrors:newPartErrors
             });
         }       
     }
@@ -105,24 +115,6 @@ class SellPartForm extends Component{
         return -1;
     }
 
-    formValidation(listingFormData){ 
-        event.preventDefault();
-
-        const {email, password, confirmPassword} = this.props.values;
-        const errors = [];
-
-        if(!part_name){
-            errors.push('Please enter a part name');
-        }
-
-        this.props.formError(errors);
-
-        if(errors.length === 0){
-            this.props.signUp({email, password});
-        }
-        
-    }
-  
     handlePartInputChange(event){
         const {value,name} = event.target;
         const newPart = {...this.state.part};
@@ -168,35 +160,38 @@ class SellPartForm extends Component{
         const caughtYear = selectedYear
         const newPart = {...this.state.part};
         newPart['year'] = caughtYear;
+        const newPartErrors = {...this.state.partErrors};
+        delete newPartErrors['year']; 
         this.setState({
-            part: newPart
+            part: newPart,
+            partErrors:newPartErrors
         });  
     }
 
     validateFields(){
         const newPartErrors = {...this.state.partErrors};
-        if(this.state.part.images.length > 0){
+        if(this.state.part.images.length === 0){
            newPartErrors['images'] = 'You need to add at least one image';           
         }else{
             delete newPartErrors['images'];            
         }
         
-        if(this.state.part.year !== 'default'){
+        if(this.state.part.year === 'default'){
             newPartErrors['year'] = 'You need to choose make, model and year';           
         }else{
             delete newPartErrors['year'];            
         }
         
-        if(this.state.part.part_name !== ''){
+        if(this.state.part.part_name === ''){
             newPartErrors['part_name'] = 'Part name is requiered';           
         }else{
             delete newPartErrors['part_name'];            
         }
 
-        if(this.state.part.price_usd > 0){
-            newPartErrors['part_name'] = 'Price is requiered';           
+        if(this.state.part.price_usd === 0){
+            newPartErrors['price_usd'] = 'Price is requiered';           
         }else{
-            delete newPartErrors['part_name'];            
+            delete newPartErrors['price_usd'];            
         }              
         
         this.setState({
@@ -212,6 +207,7 @@ class SellPartForm extends Component{
             return <Field key={index} {...field} error={this.state.partErrors[field.name]} handleOnBlur={this.partHandleOnBlur.bind(this)} handleInputChange={this.handlePartInputChange.bind(this)} value={this.state.part[field.name] || ''}/>
         });
         
+        
         return(
             <div className="sellPartContainer">
                 <h1 className="sellPartTitle">List a part for sale!</h1>
@@ -225,13 +221,14 @@ class SellPartForm extends Component{
                         <div className="yearMakeModel">
                             <MakeDropDown className="makeDropdown" data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.part.make}/>
                             <ModelDropDown className="modelDropdown" data={data} value={this.state.part.model} modelSelect={this.catchModelSelect} selectedMake={this.state.part.make} selectedModel={this.state.part.model}/>
-                            <YearDropDown className="yearDropdown" data={data} value={this.state.part.year} yearSelect={this.catchYearSelect} selectedMake={this.state.part.make} selectedModel={this.state.part.model}/>
-                        </div>                                                       
+                            <YearDropDown className="yearDropdown" data={data} value={this.state.part.year} yearSelect={this.catchYearSelect} selectedMake={this.state.part.make} selectedModel={this.state.part.model}/>                            
+                        </div> 
+                        <div className="help-block">{this.state.partErrors['year']}</div>                                                      
                     </div> 
                     <div>
-                    <h1>Upload Images *</h1>
-                        <ImageUpload images={this.state.part.images} handleImageChange={this.handleImageChange.bind(this)} deleteImage={this.deleteImageChange.bind(this)}/>
-                        </div>   
+                        <h1>Upload Images *</h1>
+                        <ImageUpload error={this.state.partErrors['images']} images={this.state.part.images} handleImageChange={this.handleImageChange.bind(this)} deleteImage={this.deleteImageChange.bind(this)}/>
+                    </div>   
                     <div className="buttonContainer">
                         <button type='button' onClick={this.handleSellPartSubmit.bind(this)} className="button-link">List Part</button>
                     </div>

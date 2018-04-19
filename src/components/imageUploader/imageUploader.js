@@ -18,17 +18,17 @@ class ImageUpload extends Component {
                 </div>);        
       });
       return (
-        <section>
+        <section className="imageSection">
           <div className="imageUploadContainer">
             <Dropzone imgarray={this.props.images} className="dropZone" onDrop={this.props.handleImageChange} 
               accept="image/jpeg, image/png">
                 <p>Drop or Click to upload your images</p>
-            </Dropzone>
+            </Dropzone>             
             <div className='displayImages'>
               {imagesToUpload}
-            </div>
-            
+            </div>            
           </div>
+          <div className="help-block">{this.props.error}</div>  
         </section>
       );
     }
