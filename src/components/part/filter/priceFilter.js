@@ -55,7 +55,9 @@ class PriceFilter extends Component{
             const min = parseInt(valArray[0]);
             const max = parseInt(valArray[1]);
             this.newFilters['prices'][1] = [min,max];
-            this.props.history.push('/partresults/filters/'+JSON.stringify(this.newFilters));
+            let index = this.props.match.url.indexOf('/filters');
+            let url = index === -1 ? this.props.match.url : this.props.match.url.substring(0,index);
+            this.props.history.push(url+'/filters/'+JSON.stringify(this.newFilters));
         }
     }
 

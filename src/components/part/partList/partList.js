@@ -60,8 +60,8 @@ class PartList extends Component{
     componentDidMount(){
         
         if (!this.state.isLoading) {           
-            const {make,model,year} = this.props.match.params;
-            const params = {make,model,year};
+            const {make,model,year,keyword} = this.props.match.params;
+            const params = {make,model,year,keyword};
             const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
             axios.get(url,{params}).then(resp=>{
                     try {
@@ -199,7 +199,7 @@ class PartList extends Component{
                         {visibleParts.length + ' Results'}
                         <Sorter sortPartArray={this.sortPartArray} />
                     </div>              
-                <Filter update={this.state.showFilters} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} history={this.props.history} filters={this.filters}/>
+                <Filter update={this.state.showFilters} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} {...this.props} filters={this.filters}/>
                 <div className={this.state.showFilters ? 'partList partListFilter' : 'partList'}>                                      
                     <Pagination {...this.props} allParts={visibleParts} showFilters={this.state.showFilters} />
                 </div>
