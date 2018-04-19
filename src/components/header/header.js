@@ -26,7 +26,9 @@ const Header = (props) => {
     return (
         <header>
             <div className="hamburger"><Hamburger userId={props.userId}/></div>     
-            <div className="logo-container"><img className="mainLogo" src={ppLogo}/></div>
+            <div className="logo-container">
+                <img className="mainLogo" src={ppLogo}/>
+            </div>
             <div className="user-nav"> 
                 {sellPartIcon}                            
                 <div className="cartDivIcon"><Link to={"/cart"}><img src={cartIcon} className="cartIcon" /><span className='cartCount'>0</span></Link></div>                 

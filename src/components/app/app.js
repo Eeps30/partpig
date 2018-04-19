@@ -64,7 +64,6 @@ class App extends Component{
         const params = {               
             user_id: parseInt(userId)
         };
-        this.removeAllPartsFromCart(this.state.cartParts);
         const url = 'http://localhost:8000/teampartpig/src/assets/php/buyerCart.php';        
         axios.get(url,{params}).then(resp=>{
              resp.data.data.map((item ,index)=>{

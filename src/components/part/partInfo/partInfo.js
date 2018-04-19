@@ -103,6 +103,15 @@ class PartInfo extends Component {
         console.log('partInfo:',this.state.partInfo);
     }
 
+    componentDidMount(){
+        if(this.props.fromDashboard=='true'){
+            this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],true);
+            this.setState({
+                editable:true           
+            });
+        }
+    }
+
     componentDidUpdate(){
         if(this.state.partInfo !== this.props.partInfo && !this.state.editable && !this.state.updated){
             this.setState({
@@ -162,7 +171,7 @@ class PartInfo extends Component {
 
         return (
             <div className={this.props.infoClass}>
-                {share}
+                {/* {share} */}
                 <span id='brand'>{this.state.partInfo.brand}</span> <span id='part_number' className="partNumber">{this.state.partInfo.part_number} </span><span className="partNumber">P/N:</span>
                 <h3 className="productTitle"><span id='part_name'>{this.state.partInfo.part_name}</span></h3>
                 <span><b>{this.state.partInfo.category} - {this.state.partInfo.make} {this.state.partInfo.model} {this.state.partInfo.year} </b></span>

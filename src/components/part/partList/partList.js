@@ -194,12 +194,17 @@ class PartList extends Component{
             return <Loading />;
         }
         let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price_usd && part.display.category;});
-              
+            
+        let buttonFilter = <button className='button-link' onClick={this.handleShowFilters}>Filters</button>;
+        if(this.state.arrayParts.length <= 1){
+            buttonFilter = <button  onClick={e => e.preventDefault()} className='disabled'>Filters</button>;
+        }
+
         return (               
             <div className='partResults container'>
                 <Link className='button-link' to="/"> Go Back </Link>  
                 <div className='resultsBar'>
-                        <button className='button-link' onClick={this.handleShowFilters}>Filters</button>
+                        {buttonFilter}
                         {visibleParts.length + ' Results'}
                         <Sorter sortPartArray={this.sortPartArray} />
                     </div>              

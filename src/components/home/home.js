@@ -39,7 +39,7 @@ class Home extends Component {
           <ContentColumn shiftRate={.9} displaySize={7} images={this.randomizeArray(this.state.images)} />
           <ContentColumn shiftRate={.7} displaySize={7} images={this.randomizeArray(this.state.images)} />
           <ContentColumn shiftRate={.8} displaySize={7} images={this.randomizeArray(this.state.images)} />
-            <div className="shadow">
+            <div className="shadow">                     
               <div id="welcomeMessage">The fastest growing car part marketplace</div>
               <Search/>
             </div>

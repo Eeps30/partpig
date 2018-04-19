@@ -43,8 +43,8 @@ class LoginForm extends Component {
                         <label>Username</label>
                         <input type="text" id="user" name="user" placeholder="user"/>
                         <label>Password</label>
-                        <input type="text" id="password" name="password" placeholder="Password"/>
-                        <input type="submit" value="Submit"/>
+                        <input type="password" id="password" name="password" placeholder="Password"/>
+                        <input type="submit" value="Sign In"/>
                     </form>
             </div>
         );
