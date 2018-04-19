@@ -43,7 +43,7 @@ forEach($fieldsToSanitize as $value){
 	 $fields[$value] = sanitizeInput($request_data[$value]);
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
-$fields['part_condition'] = (int)$fields['part_condition'];
+$fields['part_condition'] = (int)$fields['part_condition'] ?: 1;
 $fields['category_id'] = (int)$fields['category_id'] ?: 8;
 $fields['year'] = (int)$fields['year'];
 $fields['price_usd'] = (float)$fields['price_usd'];

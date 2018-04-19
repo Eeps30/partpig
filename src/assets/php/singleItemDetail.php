@@ -33,12 +33,14 @@ $query =  "SELECT
              p.part_number, 
              p.price_usd, 
              p.description, 
-             p.part_condition, 
+             co.part_condition, 
              a.city AS 'city', 
              a.state_abbr AS 'state', 
              p.seller_id AS 'seller_id',
              u.user_name AS 'seller' 
             FROM `part` AS p
+            JOIN `condition` AS co
+                ON p.part_condition = co.id
             JOIN `category` AS c
                 ON p.category_id = c.id 
             JOIN `user` AS u

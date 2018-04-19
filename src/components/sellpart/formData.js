@@ -43,7 +43,7 @@ const inputs = [
         width: '22%',
         disabled: false,
         required: true,
-        list: [['1','1'],['2','2'],['3','3'],['4','4'],['5','5']]
+        list: [['acceptable','1'],['good','2'],['very good','3'],['like new','4'],['new','5']]
     },
     {
         label:'Category',
