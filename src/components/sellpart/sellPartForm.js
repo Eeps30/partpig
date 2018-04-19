@@ -183,13 +183,13 @@ class SellPartForm extends Component{
         }
         
         if(this.state.part.part_name === ''){
-            newPartErrors['part_name'] = 'Part name is requiered';           
+            newPartErrors['part_name'] = 'Part name is required';           
         }else{
             delete newPartErrors['part_name'];            
         }
 
         if(this.state.part.price_usd === 0){
-            newPartErrors['price_usd'] = 'Price is requiered';           
+            newPartErrors['price_usd'] = 'Price is required';           
         }else{
             delete newPartErrors['price_usd'];            
         }              
@@ -225,7 +225,7 @@ class SellPartForm extends Component{
                         </div> 
                         <div className="help-block">{this.state.partErrors['year']}</div>                                                      
                     </div> 
-                    <div>
+                    <div className='uploadImages'>
                         <h1>Upload Images *</h1>
                         <ImageUpload error={this.state.partErrors['images']} images={this.state.part.images} handleImageChange={this.handleImageChange.bind(this)} deleteImage={this.deleteImageChange.bind(this)}/>
                     </div>   

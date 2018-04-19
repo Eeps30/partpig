@@ -35,7 +35,7 @@
     border-radius: 10px;
     background-color: lightgray;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.7em;
     padding: 5% 1%;
     border: 0.3em dashed darkslategray;
     vertical-align: top;
@@ -48,7 +48,7 @@
 }
 
 .imageSection .help-block{
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 
 .removeImg {

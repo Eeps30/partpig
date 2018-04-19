@@ -17,6 +17,10 @@
     left: 0;
 }
 
+.sellPartContainer .help-block{
+    font-size: 1.2em;
+}
+
 .buttonContainer {
     margin: 2% auto;
     width: 100%;
@@ -32,6 +36,13 @@
     font-size: 1.3em;
 }
 
+.makeModelYearContainer .help-block{
+    font-size: 1.2em;
+}
+
+.uploadImages{
+    font-size: 1.3em;
+}
 /* IOS Toggle Icon */
 
 
