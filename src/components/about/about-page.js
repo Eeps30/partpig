@@ -64,7 +64,7 @@ class AboutPage extends Component {
         }
 
         return(
-            <div className="contactContainer">
+            <div className="aboutUsContainer">
                 <div className="images">
                     <div>
                         <div className="bobbleBody1" style={bobbleBodyStyle2}>

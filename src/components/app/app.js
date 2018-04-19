@@ -212,7 +212,7 @@ class App extends Component{
                     <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Route path='/dashboard' component={UserDashboard}/>
                     <Route path='/checkoutComplete/:orderNumber' component={CheckoutComplete}/>
-                    {/* <Footer/>   */}
+                    <Footer/> 
                 </div>
             </Router>  
         );
