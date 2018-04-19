@@ -3,7 +3,7 @@ import './userHistory.css';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
 import axios from 'axios';
-
+import construction from '../../../assets/images/webConstruction.jpg';
 
 class UserHistory extends Component {
         
@@ -64,7 +64,7 @@ class UserHistory extends Component {
             <div className="userPartsContainer">     
                 <div className="userPartsList">
                 <h1>YOUR HISTORY</h1>
-                <h1>This page is still under construction</h1>
+                <img src={construction} alt=""/>
                 </div>
             </div>     
         );
