@@ -5,31 +5,30 @@ import Dropzone from 'react-dropzone'
 class ImageUpload extends Component {
   constructor(props) {
     super(props);
-    this.state = { images: [] };
-  }
-
-  onDrop(files) {
-    const newState = this.state.images.push(files);
-    this.setState({
-      images: newState
-    });
-    // console.log(this.state.images);
+    this.state = { 
+      images: props.images
+    };
   }
 
   render() {
-      let imagesToUpload = this.state.images.map((item,index)=>{
-      console.log(item);
-      return (<div key={index} className="imgThumbContainer">
-                <img className="imgThumb" name = {item} src={item.preview}/>
-                <button className="removeImg">X</button>
-              </div>);        
+      let imagesToUpload = this.props.images.map((item,index)=>{      
+        return (<div key={index} className="imgThumbContainer">
+                  <img className="imgThumb" name = {item} src={item.imagePreviewUrl}/>
+                  <button onClick={this.props.deleteImage} type='button' name = {item.imagePreviewUrl} className="removeImg">X</button>
+                </div>);        
       });
       return (
-        <section>
+        <section className="imageSection">
           <div className="imageUploadContainer">
-            <Dropzone imgarray={this.state.images} className="dropZone" onDrop={this.onDrop.bind(this)} />
-            {imagesToUpload}
+            <Dropzone imgarray={this.props.images} className="dropZone" onDrop={this.props.handleImageChange} 
+              accept="image/jpeg, image/png">
+                <p>Drop or Click to upload your images</p>
+            </Dropzone>             
+            <div className='displayImages'>
+              {imagesToUpload}
+            </div>            
           </div>
+          <div className="help-block">{this.props.error}</div>  
         </section>
       );
     }

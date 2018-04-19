@@ -1,15 +1,11 @@
 .imgThumbContainer {
     position: relative;
     display: inline-block;
-    margin: auto; 
-    min-width: 20%;
-    max-width: 20%;
-    max-height: 100%;
-    min-height: 100%;
+    margin: 0 0.4%;
+    width: 5vw;
+    height: 4vw;
     border: 1px solid black;
-    outline-style: solid;
-    outline-color: rgb(0, 0, 0);
-    outline-width: thin;
+    vertical-align: top;
 }
 
 .imgThumb {
@@ -21,23 +17,38 @@
     max-height: 100%;
 }
 
+.displayImages{
+    width: 76%;
+    height: 20vh;
+    overflow-y: auto;
+    display: inline-block;
+}
+
 .fileInput{
     width: 25%;
     height: 40px;
 }
 
 .dropZone {
-    left: 0;
-    top: 0;
-    height: 100%;
     width: 20%;
     display: inline-block;
-    background-color: rgb(202, 202, 202);
+    border-radius: 10px;
+    background-color: lightgray;
+    text-align: center;
+    font-size: 2em;
+    padding: 5% 1%;
+    border: 0.3em dashed darkslategray;
+    vertical-align: top;
 }
 
 .imageUploadContainer{
-    height: 200px;
     width: 100%;
+    padding: 1%;
+    box-sizing: border-box;
+}
+
+.imageSection .help-block{
+    font-size: 1.1em;
 }
 
 .removeImg {

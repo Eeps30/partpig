@@ -4,10 +4,9 @@
 }
 
 .yearMakeModel select{
-        margin: 1%;
-        width: 30%;
-        height: 10%;
-        display: inline-block;
-        font-size: 3rem;
-
+    margin: 1%;
+    width: 31%;
+    display: inline-block;
+    font-size: 1.2em;
+    padding: 1%;
 }

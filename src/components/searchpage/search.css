@@ -1,41 +1,30 @@
-/* body {
-    height: 100vh;
-    width: 100vw;
-    border: solid black 2px;
-    margin: 0 auto;
-    background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
-    background-color: #616161;
-} 
-
-.header {
-    height: 8vh;
-    border: solid red 2px;
-    font-size: 65px;
-} */
-
 .outerDiv {
     /* border: solid black 1px; */
-    width: 70%;
-    height: 25%;
+    width: 50%;
+    height: 35%;
     border-radius: 10px;
     margin: auto;
     position: relative;
     top: 23%;
     /* background-color: rgba(62, 62, 62, 0.25);
     box-shadow: 3px 4px; */
-    padding: 0.5%;
+    padding: 0.5%;    
+    background-color: #d0451b;
 }
 
-.outerDiv .dropdownMenu {
+.dropdownMenu {
+    padding: 2%;
     border-radius: 10px;
     height: 100%;
     width: 100%;
-    background-color: #2a2a2a;
+    background-color: black;
+    box-sizing: border-box;
 }
 
 .buttonsContainer{
     width: 100%;
     height: 50%;
+    text-align: center;
 }
 
 .buttonsContainer select {    
@@ -58,22 +47,28 @@
 }
 
 .searchBarContainer a {
-    padding: 5px;
+    padding: 5px; 
     padding-top: 2%;
     padding-left: 2%;
     padding-right: 2%;
-    font-size: 2vh;
-    background-color: rgb(211,211,211);
-    color: #000000;
+    font-size: 2em;
     text-decoration: none;
     border-radius: 5px;
-    display: inline-block;
-    height: 15%;
-    box-shadow: 2px 2px;
+    height: 52%;
 }
 
 .searchBarContainer {
-    height: 100%;
+    text-align: center;
+    position: relative;
+    height: 50%;
+}
+
+.searchBarContainer div{
+    position: absolute;
+    top:50%;
+    width: 100%;
+    height: 40%;
+    transform: translate(0,-50%);
 }
 
 .searchBarContainer .searchName {
@@ -83,6 +78,9 @@
     margin-left: 15%;
 }
 
-.searchName label input {
-    font-size: 330%;
+.searchBarContainer input {
+    font-size: 3em;
+    width: 75%;
+    height: 100%;
+    margin-right: 1%;
 }

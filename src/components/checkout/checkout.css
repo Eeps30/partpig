@@ -83,13 +83,15 @@
 }
 
 .form-group input{
-    font-size: 1.1em;
+    font-size: 1.2em;
     width: 100%;
+    padding: 1%;
 }
 
 .form-group select{
-    font-size: 1.1em;
+    font-size: 1.2em;
     width: 100%;
+    padding: 2%;
 }
 
 .shippingAddress{
@@ -142,18 +144,18 @@
     z-index: 1;
   }
   
-  .form-group .help-block {
+  .help-block {
     position: absolute;
     display: inline-block;
     padding: 0px 5px;
-    font-size: 0.6em;
+    font-size: 0.8em;
     line-height: 1.5em;
     margin: -2px 0 0 10px;
     color: #fff;
     background: #ff4e4e;
   }
   
-  .form-group .help-block:after {
+  .help-block:after {
     content: " ";
     position: absolute;
     left: 5px;
@@ -163,12 +165,19 @@
     border-bottom: 10px solid #ff4e4e;
     border-right: 10px solid transparent;
   }
-  .form-group .help-block:empty {
+  .help-block:empty {
     display: none;
   }
 
   .has-error .form-control + .form-control-border {
     background: #d0451b;
+  }
+
+  .textarea{  
+    width: 100%;    
+    resize:none;
+    padding:1%;
+    box-sizing:border-box;    
   }
 
   .orderCompleted{

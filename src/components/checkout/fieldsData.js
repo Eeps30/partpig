@@ -1,3 +1,5 @@
+import states from './../tools/states';
+
 const inputs = [
     {
         label:'First Name',
@@ -78,7 +80,8 @@ const inputs = [
         name:'state_abbr',
         width: '26%',
         disabled: false,
-        required: true
+        required: true,
+        list: states
     },
     {
         label:'Phone Number',
