@@ -4,110 +4,173 @@
     height: 100%;
 }
 
-.statusUpdateContainer {
-    position: absolute;
-    color: rgb(0, 0, 0);
-    float: right;
-    bottom: 0%;
-    right: 0%;
-    width: 40%;
-}
-
-.statusUpdateContainer div{
-    float: right;
-    bottom: 0%;
-    right: 0%;
-}
-
-.statusUpdateContainer h3 {
-  display: inline-block;
-  bottom: 0%;
-  right: 0%;
-}
-
 .userPartsList::-webkit-scrollbar {
     display: none;
 }
 
-.userPartsList .singlePart{
+.dashboardPart{
+    display: inline-block; 
     position: relative;  
     vertical-align: middle;
+    margin-top: 2%;
+    text-align: left;
     width: 100%;
-    height: 10%;
+    /*height: 15vmin;*/
+    line-height: 15vmin;
     box-sizing: border-box;
     background-color: white;
-    margin: 1% auto;
-    border-radius: 2px;
+    /*margin: 1% auto;*/
+    /*border-radius: 15px;*/
     box-shadow: 0 1px 4px rgba(41,51,57,.5);
-    font-size: 1.5em;
+    font-size: 0;
     padding: 0;
 }
 
-.userPartsList .singlePart:hover{    
+.dashboardPart:hover{    
     box-shadow: 1px 3px 3px #888888;
 }
-.listingColumns div {
-    font-size: 1.5vmin;
+.dashboardPart > div{
+    font-size: 1.8rem;
+    /*border: 1px red solid;*/
 }
-
-.mainImage .singlePart img{
+/*.dashboardPart .mainImage img{
     min-width: 50%;
     max-height: auto;
-}
+}*/
 
 .listingColumns {
-    height: 2%;
+    height: 5vmin;
     width: 100%;
+    margin-top: 3%;
     border-bottom: 2px solid #888888;
 }
+.listingColumns > div {
+    font-size: 1.5vmin;
+    font-weight: bold;
+    line-height: 1.8vmin;
+    display: inline-block;
+    float: left;
+    /*border: 1px solid blue;*/
+}
 
-.userPartsList .mainImage{
+
+.listingColumns .title-mainImage{
     margin: 0;
     width: 10%;
+}
+.listingColumns .title-listingId {
+    width: 10%;
+    vertical-align: middle;
+    /*line-height: 15vmin;*/
+}
+.listingColumns .title-partNumber {
+    width: 15%; 
+}
+.listingColumns .title-brand{
+    width: 7%; 
+}
+.listingColumns .title-partName {
+    width: 17.5%;
+}
+.listingColumns .title-fitment{
+    width: 17.5%;
+}
+.listingColumns .title-price{
+    /*float: right;*/
+    width: 10%;
+}
+.listingColumns .title-status{
+    /*float: right;*/
+    width: 10%;
+}
+.userPartsList > .dashboardPart > div, .userPartsList > .dashboardPart > img {
+    display: inline-block;
+    text-align: center;
+    /*height: 100%;*/
+}
+.dashboardPart .mainImage{
+    margin: 0;
+    max-height: 15vmin;
+    width: 10%;
+    height: auto;
+    /*width: auto;*/
+    padding: 0;
+    /*float: left;*/
+}
+
+.dashboardPart .listingId {
+    width: 10%;
+}
+.dashboardPart .partNumber {
+    float: none;
+    width: 15%;      
+}
+.dashboardPart .brand{
+    /*float: left;*/
+    width: 7%; 
+}
+.dashboardPart .partName {
+    /*float: left;*/
+    width: 17.5%;
+}
+.dashboardPart .fitment{
+    /*float: left;*/
+    width: 17.5%;
+}
+.dashboardPart .price{
+    /*float: right;*/
+    width: 10%;
+}
+.userPartsList > .dashboardPart > .statusUpdateContainer {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    width: 10%;
     height: 100%;
-    float: left;
-    display: inline-block;
-
+    /*border: 1px solid red;*/
 }
 
-.userPartsList .brand{
-    float: left;
-    display: inline-block;
-    width: 10%;
+.userPartsList > .dashboardPart > .statusUpdateContainer .editPart{
+    /*position: relative;*/
+    /*bottom: 50%;*/
+    height: 13%;
+    width: 80%;
+    text-align: center;
+    line-height: normal;
+    font-size: 1.3rem;
+    padding: 0.5rem;
 }
 
-.userPartsList .partName {
-    float: left;
-    display: inline-block;
-    width: 20%;
-}
-
-.userPartsList .fitment{
-    float: left;
-    display: inline-block;
-    width: 20%;
-}
-
-.userPartsList .category{
-    float: left;
-    display: inline-block;
-    width: 10%;
-}
-
-.userPartsList .listingId {
-    float: left;
-    display: inline-block;
-    width: 10%;
-}
-
-.userPartsList .partNumber {
-    float: left;
-    display: inline-block;
-    width: 15%;
-}
-
-.userPartsList .price{
+/*.statusUpdateContainer div{
     float: right;
+    bottom: 0%;
+    right: 0%;
+}*/
+.statusUpdateContainer h3 {
+  /*display: inline-block;*/
+  position: absolute;
+  height: 15%;
+  width: 80vmin;
+  bottom: 0%;
+  right: 0%;
+  line-height: normal;
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: left;
+  /*border: 1px solid red;*/
+}
+
+.alignMiddle {
+    vertical-align: middle;
+    line-height: normal;  
+}
+
+
+/*.userPartsList .category{
+    float: left;
     display: inline-block;
     width: 10%;
-}
+}*/
+
+
+
