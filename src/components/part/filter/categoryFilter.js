@@ -55,7 +55,6 @@ class CategoryFilter extends Component{
         return (            
             <div>
                 <h2>Categories</h2>
-                <hr/>
                 {categoryList}
             </div>   
         )
