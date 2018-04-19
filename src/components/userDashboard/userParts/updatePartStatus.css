@@ -1,15 +1,22 @@
 .statusUpdateDropdown {
     position: absolute;
-    color: rgb(0, 0, 0);
-    float: right;
+    /*color: rgb(0, 0, 0);*/
+    /*float: right;*/
     bottom: 1%;
-    right: 1%;
-    font-size: 1rem;
+    /*right: 1%;*/
+    width: 100%;
+    height: 20%;
+    text-align: left;
+    /*border: 1px dashed green;*/
 }
 
 
-.statusUpdateDropdown .changeStatus{
+.statusUpdateDropdown select {
    display:  inline-block;
+   font-size: 1.8rem;
+   padding: 0.2rem;
+   position: absolute;
+
 }
 
 .cancelButton{

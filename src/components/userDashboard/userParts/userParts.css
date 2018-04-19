@@ -123,7 +123,7 @@
     right: 0%;
     width: 10%;
     height: 100%;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 .userPartsList > .dashboardPart > .statusUpdateContainer .editPart{
@@ -131,6 +131,7 @@
     /*bottom: 50%;*/
     height: 13%;
     width: 80%;
+    text-align: left;
     line-height: normal;
     font-size: 1.5rem;
     padding: 1rem;
