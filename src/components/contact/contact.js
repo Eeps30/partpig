@@ -5,9 +5,6 @@ import React, { Component } from "react";
 // import Loading from '../loading/loading';
 import axios from 'axios';
 // import inputs from './fieldsData';
-
-import contact_pig from '../../assets/images/AndrewPartPig.jpg'
-
 // import React from "react";
 import './contact.css';
 
@@ -21,12 +18,20 @@ class Contact extends Component {
 				email: "",
 				subject: "",
 				body: ""
-			}
+			},
+			submitted: ""
 		}
 	}
 	render() {
-		let submitButton = <button className='button-link'>Submit Your Message</button>
+		let submitButton = <button className='button-link'>Submit Your Message</button>;
+		if(this.state.submitted){
+			submitButton = <button type="button" className='button-link'>Submitted</button>;
+		} 
 
+		let result = "";
+		if(this.state.submitted){
+			result = <div className="submitted"><h3>Your message has been submitted.</h3><h3> Thank you for your feedback</h3></div>;
+		}
 		const { name, email, subject, body } = this.state.form;
 
 		return (
@@ -58,7 +63,8 @@ class Contact extends Component {
 							<label>Message:</label>
 							<textarea className="message" value={body} placeholder="Enter your message here" onChange={this.handleMessageInputChange.bind(this)} required></textarea>
 						</div>
-						{submitButton}
+						{submitButton}'
+						{result}
 
 					</form>
 				</div>
@@ -77,15 +83,28 @@ class Contact extends Component {
 				email: '',
 				subject: '',
 				body: ''
-			}
+			},
+			submitted:'true'
 		});
+		this.submitMessageTimer();
 	}
+	submitMessageTimer(){
+		setTimeout(() => {
+			this.setState({
+				...this.state,
+				submitted:''
+			});
+		}, 3000);
+	}
+		
 	handleSubmit(event) {
 		event.preventDefault();
 
 		const url = 'http://localhost:8000/teampartpig/src/assets/php/Mail/transactionalEmail.php';
 		const data = { ...this.state.form };
 		this.reset();
+
+
 		axios({
 			url: url,
 			method: 'post',
@@ -105,7 +124,8 @@ class Contact extends Component {
 			form: {
 				...this.state.form,
 				name: value
-			}
+			},
+			...this.state.submitted
 		});
 	}
 	handleEmailInputChange(e) {
@@ -114,7 +134,8 @@ class Contact extends Component {
 			form: {
 				...this.state.form,
 				email: value
-			}
+			},
+			...this.state.submitted
 		});
 	}
 	handleSubjectInputChange(e) {
@@ -123,7 +144,8 @@ class Contact extends Component {
 			form: {
 				...this.state.form,
 				subject: value
-			}
+			},
+			...this.state.submitted
 		});
 	}
 	handleMessageInputChange(e) {
@@ -132,7 +154,8 @@ class Contact extends Component {
 			form: {
 				...this.state.form,
 				body: value
-			}
+			},
+			...this.state.submitted
 		});
 	}
 

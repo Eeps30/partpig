@@ -4,9 +4,10 @@
 	font-size: 3rem;
 }
 .contactContainer{
-    background-image:url("../../assets/images/AndrewPartPig.jpg");
+    background-image:url("../../assets/images/contact_pig.jpg");
     background-size:contain;
     border: solid 3px black;
+    height:83vh;
 }
 .contact-header {
 	width: 40%;
@@ -19,6 +20,7 @@
 	font-family: Verdana, Geneva, sans-serif;
     font-size: 2rem;
     height: 40%;
+    text-shadow: 0.5px 0.5px black;
 }
 .contactForm{
 	width: 50%;
@@ -63,6 +65,11 @@
     border: solid black 5px;
     border-radius:5%;
     width: 60%;
+}
+.submitted{
+    text-align:center;
+    color:darkgreen;
+    text-shadow: 0.5px 0.5px darkgrey;
 }
 /*.modal{
     display: none;
