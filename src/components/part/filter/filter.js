@@ -8,9 +8,9 @@ const Filter = (props) =>{
 
     return (
         <div className={props.filterClass}>            
-            <BrandFilter history={props.history} filters = {props.filters} filterMethod = {props.filterBrandMethod} />
-            <PriceFilter update={props.update} history={props.history} filters = {props.filters} filterMethod = {props.filterPriceMethod}/> 
-            <CategoryFilter history={props.history} filters = {props.filters} filterMethod = {props.filterCategoryMethod} />              
+            <BrandFilter {...props} />
+            <PriceFilter {...props}/> 
+            <CategoryFilter {...props} />              
         </div>
     )
     

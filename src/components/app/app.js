@@ -186,8 +186,12 @@ class App extends Component{
                     <Route exact path='/' component={ ()=>  <Home images={this.images} />}/>
                     <Route exact path='/partresults' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
+                    <Route exact path='/partresults/part_name/:name' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
+                    <Route path='/partresults/part_name/:name/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/make/:make/model/:model/year/:year' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
                     <Route path='/partresults/make/:make/model/:model/year/:year/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />                   
+                    <Route path='/partresults/make/:make/model/:model/year/:year/part_name/:name' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
+                    <Route path='/partresults/make/:make/model/:model/year/:year/part_name/:name/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
                     <Route path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                    
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={Contact}/>

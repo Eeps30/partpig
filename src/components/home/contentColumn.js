@@ -3,6 +3,7 @@ import './home.css';
 
 
 class ContentColumn extends Component{
+
     constructor(props){
       super(props);
       this.state = {
@@ -12,10 +13,11 @@ class ContentColumn extends Component{
       }
       this.handleTimerUpdate = this.handleTimerUpdate.bind(this);
     }
+
     handleTimerUpdate(){
       let newPosition = this.state.position+this.props.shiftRate
       if(newPosition > this.itemHeight){
-        newPosition = -4;
+        newPosition = -1;
         var nextArray = this.state.images.slice();
         nextArray.push( nextArray.shift());
       } else {
@@ -28,13 +30,16 @@ class ContentColumn extends Component{
       })
   
     }
+
     componentDidMount(){
-      setInterval( this.handleTimerUpdate, 30);
+      setInterval( this.handleTimerUpdate, 1);
       this.itemHeight = this.column.clientHeight / this.props.displaySize;
     }
+
     makeAllPictures(array){
       return array.map( (item, key) => this.makePicture(item, key))
     }
+
     makePicture(image, key){
       const styling = {
         backgroundImage: `url(/images/${image})`,
@@ -42,6 +47,7 @@ class ContentColumn extends Component{
       }
       return (<div className='scrollingImg' style={styling} key={key}></div>)
     }
+    
     render(){
       return (
       <div className="scrollingImgColumn" ref={ element => this.column=element}>

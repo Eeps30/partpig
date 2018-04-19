@@ -5,9 +5,6 @@ import YearDropDown from './dropdown/yearDropdown';
 import data from './dataModel';
 import './search.css';
 import {Link} from 'react-router-dom';
-import SearchPartName from './dropdown/searchPartName';
-import SearchPartNumber from './dropdown/searchPartNumber';
-import PartNameSearch from './dropdown/searchPartName';
 
 class DropDownContainer extends Component {
     constructor(props){
@@ -54,21 +51,29 @@ class DropDownContainer extends Component {
         })
     }
 
+    validateFields(){
+        return ((this.state.make !== 'default' && this.state.model !== 'default' && this.state.year !== 'default') || this.state.searchText !== '');
+    }
+
     render(){
 
-        const make = this.state.make
+        let queryStr = this.state.make !== 'default' ? '/make/' + this.state.make : '';
+        queryStr += this.state.model !== 'default' ? '/model/' + this.state.model : '';
+        queryStr += this.state.year !== 'default' ? '/year/' + this.state.year : '';
+        queryStr += this.state.searchText !== '' ? '/part_name/' + this.state.searchText : '';
 
-        const makeStr = this.state.make !== 'default' ? '/make/' + this.state.make : '';
-        const modelStr = this.state.model !== 'default' ? '/model/' + this.state.model : '';
-        const yearStr = this.state.year !== 'default' ? '/year/' + this.state.year : '';
+        let searchButton = <Link className='button-link' to={"/partresults" + queryStr}> FIND PARTS </Link>
+        if(!this.validateFields()){
+            searchButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/partresults" + queryStr}> FIND PARTS </Link>
+        }
         
         return(
             <div className="outerDiv">
                 <div className="dropdownMenu">
                     <div className="searchBarContainer">
                         <div>
-                            <input type="text" value={this.state.searchText} onChange={this.handleChange} placeholder='Search By Part Name'/> 
-                            <Link className='button-link' to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
+                            <input type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
+                            {searchButton}
                         </div>                        
                     </div>
                     <div className="buttonsContainer">
