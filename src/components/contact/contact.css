@@ -3,7 +3,10 @@
     font-weight: bold;
 	font-size: 3rem;
 }
-.contactContainer{
+.contactPageContainer{
+    width: 90vw;
+    margin: auto;
+    box-sizing: border-box;
     background-image:url("../../assets/images/contact_pig.jpg");
     background-size:contain;
     border: solid 3px black;
