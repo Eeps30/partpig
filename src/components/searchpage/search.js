@@ -60,7 +60,7 @@ class DropDownContainer extends Component {
         let queryStr = this.state.make !== 'default' ? '/make/' + this.state.make : '';
         queryStr += this.state.model !== 'default' ? '/model/' + this.state.model : '';
         queryStr += this.state.year !== 'default' ? '/year/' + this.state.year : '';
-        queryStr += this.state.searchText !== '' ? '/part_name/' + this.state.searchText : '';
+        queryStr += this.state.searchText !== '' ? '/keyword/' + this.state.searchText : '';
 
         let searchButton = <Link className='button-link' to={"/partresults" + queryStr}> FIND PARTS </Link>
         if(!this.validateFields()){

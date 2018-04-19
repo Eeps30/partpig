@@ -60,8 +60,8 @@ class PartList extends Component{
     componentDidMount(){
         
         if (!this.state.isLoading) {           
-            const {make,model,year,part_name} = this.props.match.params;
-            const params = {make,model,year,part_name:part_name};
+            const {make,model,year,keyword} = this.props.match.params;
+            const params = {make,model,year,keyword};
             const url = 'http://localhost:8000/teampartpig/src/assets/php/searchSubmit.php';        
             axios.get(url,{params}).then(resp=>{
                     try {
