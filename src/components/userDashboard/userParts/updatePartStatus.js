@@ -131,7 +131,6 @@ class UpdatePartStatus extends Component {
 
         return  (
             <div className="statusUpdateDropdown">
-                        <label className="changeStatus" htmlFor="status">Status: </label>
                         <select onChange={this.statusChange} value={this.state.status} name="status" type="text">
                         <option value="available">Active</option>
                         <option value="draft">Draft</option>

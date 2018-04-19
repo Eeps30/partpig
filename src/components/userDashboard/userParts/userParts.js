@@ -82,6 +82,7 @@ class UserParts extends Component {
                         <div className="title-partName">Part Name</div>
                         <div className="title-fitment">Fitment</div>
                         <div className="title-price">Price</div>
+                        <div className="title-status">Status</div>
                     </div>
                     {list}
                 </div>
