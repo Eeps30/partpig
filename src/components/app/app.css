@@ -34,7 +34,8 @@ body {
     width: 80%;
     height: 90%;  
     margin: auto;
-    padding-top: 4%;
+	padding-top: 4%;
+	min-height: 82.5vh;
 }
 
 .container > a{
