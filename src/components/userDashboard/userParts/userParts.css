@@ -31,6 +31,7 @@
 }
 .dashboardPart > div{
     font-size: 1.8rem;
+    /*border: 1px red solid;*/
 }
 /*.dashboardPart .mainImage img{
     min-width: 50%;
@@ -49,6 +50,7 @@
     line-height: 1.8vmin;
     display: inline-block;
     float: left;
+    /*border: 1px solid blue;*/
 }
 
 
@@ -65,7 +67,7 @@
     width: 15%; 
 }
 .listingColumns .title-brand{
-    width: 10%; 
+    width: 7%; 
 }
 .listingColumns .title-partName {
     width: 17.5%;
@@ -88,8 +90,10 @@
 }
 .dashboardPart .mainImage{
     margin: 0;
+    max-height: 15vmin;
     width: 10%;
-    height: 15vmin;
+    height: auto;
+    /*width: auto;*/
     padding: 0;
     /*float: left;*/
 }
@@ -103,7 +107,7 @@
 }
 .dashboardPart .brand{
     /*float: left;*/
-    width: 10%; 
+    width: 7%; 
 }
 .dashboardPart .partName {
     /*float: left;*/
