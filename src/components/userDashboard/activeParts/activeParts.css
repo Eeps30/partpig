@@ -46,28 +46,26 @@
 .userPartsList .singlePart:hover{    
     box-shadow: 1px 3px 3px #888888;
 }
+.userPartsList .listingColumns {
+    height: 5vmin;
+    width: 100%;
+    background-color: red;
+    border-bottom: 2px solid #888888;
+}
 .listingColumns div {
-    font-size: 1.5vmin;
+    font-size: 1.5rem;
 }
 
 .mainImage .singlePart img{
     min-width: 50%;
     max-height: auto;
 }
-
-.listingColumns {
-    height: 2%;
-    width: 100%;
-    border-bottom: 2px solid #888888;
-}
-
 .userPartsList .mainImage{
     margin: 0;
     width: 10%;
     height: 100%;
     float: left;
     display: inline-block;
-
 }
 
 .userPartsList .brand{

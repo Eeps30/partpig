@@ -51,23 +51,23 @@ class UserParts extends Component {
             let status = item.status;
             return  (
                 // <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
-                    <div key={index} className="singlePart">
-                        <img className="mainImage" src={item.images}></img>
-                        <div className="listingId">{item.id}</div>
-                        <div className="partNumber">{item.part_number}</div>
-                        <div className="brand"> {item.brand} </div>
-                        <div className="partName">{item.part_name}</div>
-                        <div className="fitment"> {item.make} {item.model} {item.year}</div>
-                        <div className="price">${parseFloat(item.price_usd)}</div>
-                        <div className="statusUpdateContainer">
-                        <Link key={index} to={"/partdetails/" + item.id+'/true'}><button className="editPart">Edit Part</button></Link> 
-                        <UpdatePartStatus id = {id} status = {status}/></div>       
-                    </div>         
-                     );
-                    } else {
-                        return
-                    }                    
-        });
+                <div key={index} className="dashboardPart">
+                    <img className="mainImage alignMiddle" src={item.images}></img>
+                    <div className="listingId alignMiddle">{item.id}</div>
+                    <div className="partNumber alignMiddle">{item.part_number}</div>
+                    <div className="brand alignMiddle"> {item.brand} </div>
+                    <div className="partName alignMiddle">{item.part_name}</div>
+                    <div className="fitment alignMiddle"> {item.make} {item.model} {item.year}</div>
+                    <div className="price alignMiddle">${parseFloat(item.price_usd)}</div>
+                    <div className="statusUpdateContainer">
+                    <Link className="button-link editPart" key={index} to={"/partdetails/" + item.id+'/true'}>Edit Part</Link> 
+                    <UpdatePartStatus id = {id} status = {status}/></div>       
+                </div>         
+                 );
+                } else {
+                    return
+                }                    
+            });
 
         
         return  (
@@ -75,13 +75,14 @@ class UserParts extends Component {
             <h2>Your active listings</h2>    
                 <div className="userPartsList">
                     <div className="listingColumns">
-                        <div className="mainImage">Main Image</div>
-                        <div className="listingId">Listing Id</div>
-                        <div className="partNumber">Part Number</div>
-                        <div className="brand">Brand</div>
-                        <div className="partName">Part Name</div>
-                        <div className="fitment">Fitment</div>
-                        <div className="price">Price</div>
+                        <div className="title-mainImage">Main Image</div>
+                        <div className="title-listingId">Listing Id</div>
+                        <div className="title-partNumber">Part Number</div>
+                        <div className="title-brand">Brand</div>
+                        <div className="title-partName">Part Name</div>
+                        <div className="title-fitment">Fitment</div>
+                        <div className="title-price">Price</div>
+                        <div className="title-status">Status</div>
                     </div>
                     {list}
                 </div>
