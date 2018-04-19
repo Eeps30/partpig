@@ -7,13 +7,14 @@
     width: 100%;
     height: 20%;
     text-align: left;
+    padding-left: 5%;
     /*border: 1px dashed green;*/
 }
 
 
 .statusUpdateDropdown select {
    display:  inline-block;
-   font-size: 1.8rem;
+   font-size: 1.6rem;
    padding: 0.2rem;
    position: absolute;
 
