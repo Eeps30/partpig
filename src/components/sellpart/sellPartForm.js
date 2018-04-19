@@ -44,22 +44,24 @@ class SellPartForm extends Component{
     
     handleSellPartSubmit(event){
         event.preventDefault();
-        const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
+        if(validateFields()){
+            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
 
-        axios({
-            url: url,
-            method: 'post',
-            data: this.state.part, 
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).then(resp=>{
-            console.log("Server Response:", resp);
-            // this.props.history.push('/listingsuccess');
-        }).catch(err => {
-            console.log("There was an error:");
-            // this.props.history.push('/listingsuccess');
-        });
+            axios({
+                url: url,
+                method: 'post',
+                data: this.state.part, 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(resp=>{
+                console.log("Server Response:", resp);
+                // this.props.history.push('/listingsuccess');
+            }).catch(err => {
+                console.log("There was an error:");
+                // this.props.history.push('/listingsuccess');
+            });
+        }
     }
 
     handleImageChange(files) {
@@ -131,8 +133,7 @@ class SellPartForm extends Component{
     }
 
     partHandleOnBlur(event){
-
-        const elements = document.querySelector("require=true");
+        
         const {name,value,placeholder,required} = event.target;
         const newPartErrors = {...this.state.partErrors};
         if(value ==='' && required){           
@@ -173,10 +174,36 @@ class SellPartForm extends Component{
     }
 
     validateFields(){
-        return(this.state.part.images.length > 0 
-            && this.state.part.year !== 'default'
-            && this.state.part.part_name !== ''
-            && this.state.part.price_usd > 0);        
+        const newPartErrors = {...this.state.partErrors};
+        if(this.state.part.images.length > 0){
+           newPartErrors['images'] = 'You need to add at least one image';           
+        }else{
+            delete newPartErrors['images'];            
+        }
+        
+        if(this.state.part.year !== 'default'){
+            newPartErrors['year'] = 'You need to choose make, model and year';           
+        }else{
+            delete newPartErrors['year'];            
+        }
+        
+        if(this.state.part.part_name !== ''){
+            newPartErrors['part_name'] = 'Part name is requiered';           
+        }else{
+            delete newPartErrors['part_name'];            
+        }
+
+        if(this.state.part.price_usd > 0){
+            newPartErrors['part_name'] = 'Price is requiered';           
+        }else{
+            delete newPartErrors['part_name'];            
+        }              
+        
+        this.setState({
+            partErrors:newPartErrors
+        });
+
+        return (Object.keys(newPartErrors).length === 0);
     }
 
     render() {
@@ -184,11 +211,7 @@ class SellPartForm extends Component{
         const fields = formInputs.map((field,index) => {
             return <Field key={index} {...field} error={this.state.partErrors[field.name]} handleOnBlur={this.partHandleOnBlur.bind(this)} handleInputChange={this.handlePartInputChange.bind(this)} value={this.state.part[field.name] || ''}/>
         });
-
-        let listPartButton = <button type='button' onClick={this.handleSellPartSubmit.bind(this)} className="button-link">List Part</button>
-        if(!this.validateFields()){
-            listPartButton = <button onClick={e => e.preventDefault()} className='disabled'>List Part</button>;
-        }
+        
         return(
             <div className="sellPartContainer">
                 <h1 className="sellPartTitle">List a part for sale!</h1>
@@ -210,7 +233,7 @@ class SellPartForm extends Component{
                         <ImageUpload images={this.state.part.images} handleImageChange={this.handleImageChange.bind(this)} deleteImage={this.deleteImageChange.bind(this)}/>
                         </div>   
                     <div className="buttonContainer">
-                        {listPartButton}
+                        <button type='button' onClick={this.handleSellPartSubmit.bind(this)} className="button-link">List Part</button>
                     </div>
                 </form>
             </div>          
