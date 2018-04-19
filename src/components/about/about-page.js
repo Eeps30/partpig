@@ -4,17 +4,26 @@ import contactCSS from './about.css'
 import githubIcon from '../../assets/images/contact-icons/github-icon.png'
 import linkedinIcon from '../../assets/images/contact-icons/linkedIn-icon.png'
 import headshot from '../../assets/images/contact-icons/headshot.png'
-import casualBobbleBody from '../../assets/images/bobble-bodies/partPigBobbleBody.png'
-import conneryHead from '../../assets/images/bobble-bodies/conneryHead.png'
+// import mp3 from '../../assets/audio/What-Is-Love.mp3'
+// import Music from './audio'
 
 class AboutPage extends Component {
     constructor(props){
         super(props)
+
+        this.state = {
+            isLoaded: false
+        }
+
     }
 
     render(){
 
+        const { song } = this.props;
+        const { isLoaded } = this.state;
+
         const contactElements = contact.map((item, index) => {
+            
             return (
                 <div className="users" key={index}>
                     
@@ -22,76 +31,49 @@ class AboutPage extends Component {
                     <div className="userRole">{item.role}</div>
                         <div className="contactIcons">
                             <div className="githubLink">
-                                <a href={`${item.github}`}><img src={githubIcon}/></a>
+                                <a onClick={() => window.open(`${item.github}`, "_blank")}><img src={githubIcon}/></a>
                             </div>
                             <div className="linkedInLink">
-                                <a href={`${item.linkedin}`}><img src={linkedinIcon}/></a>
+                                <a onClick={() => window.open(`${item.linkedin}`, "_blank")}><img src={linkedinIcon}/></a>
                             </div>
                         </div>
                 </div>
             )
         })
 
-        const bobbleBodyStyle1 = {
-            'backgroundImage': 'url('+casualBobbleBody+')',
-            'height': '80%',
-            'backgroundSize': 'contain',
-            'backgroundRepeat': 'no-repeat',
-            'marginTop': '35%',
-            'marginLeft': '25%'
-        };
-
-        // const bobbleBodyStyle2 = {
-        //     'backgroundImage': 'url('+businessBody+')',
-        //     'height': '80%',
-        //     'backgroundSize': 'contain',
-        //     'backgroundRepeat': 'no-repeat',
-        //     'marginTop': '35%',
-        //     'marginLeft': '25%'
-        // };
-
-        const bobbleHeadStyle1 = {
-            'content': 'url('+conneryHead+')',
-            'width': '113%',
-            'backgroundSize': 'contain',
-            'backgroundRepeat': 'no-repeat',
-            'marginLeft': '-22%',
-            'animation': 'bobble .4s',
-            'animationIterationCount': 'infinite'
-        }
-
         return(
             <div className="contactContainer">
                 <div className="images">
-                    <div>
-                        <div className="bobbleBody1" style={bobbleBodyStyle1}>
-                            <div className="bobbleHead1" style={bobbleHeadStyle1}></div>
+                    <div className='person'>
+                        <div className="bobbleBody1">
+                            <div className="bobbleHead1"></div>
                         </div>
                     </div>
-                    <div>
-                        <div className="bobbleBody1" style={bobbleBodyStyle1}>
-                            <div className="bobbleHead1" style={bobbleHeadStyle1}></div>
+                    <div className='person'>
+                        <div className="bobbleBody1">
+                            <div className="bobbleHead1"></div>
                         </div>
                     </div>
-                    <div>
-                        <div className="bobbleBody1" style={bobbleBodyStyle1}>
-                            <div className="bobbleHead1" style={bobbleHeadStyle1}></div>
+                    <div className='person'>
+                        <div className="bobbleBody1">
+                            <div className="bobbleHead1"></div>
                         </div>
                     </div> 
-                    <div>
-                        <div className="bobbleBody1" style={bobbleBodyStyle1}>
-                            <div className="bobbleHead1" style={bobbleHeadStyle1}></div>
+                    <div className='person'>
+                        <div className="bobbleBody1">
+                            <div className="bobbleHead1"></div>
                         </div>
                     </div> 
-                    <div>
-                        <div className="bobbleBody1" style={bobbleBodyStyle1}>
-                            <div className="bobbleHead1" style={bobbleHeadStyle1}></div>
+                    <div className='person'>
+                        <div className="bobbleBody1">
+                            <div className="bobbleHead1"></div>
                         </div>
                     </div>                 
                 </div>
                 <div className="infoContainer">
                     {contactElements}
                 </div>
+                {/* <Music/> */}
             </div>
         )
     }
