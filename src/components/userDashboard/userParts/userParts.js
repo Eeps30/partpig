@@ -13,8 +13,7 @@ class UserParts extends Component {
         this.state = {
             partInfo:{},
             isLoading: false,
-            seller_id: 2 
-            // seller_id: props.userId          
+            seller_id: props.userId          
         }
     }
 
