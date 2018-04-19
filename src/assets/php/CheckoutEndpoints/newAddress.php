@@ -2,6 +2,9 @@
 header("Access-Control-Allow-Origin: *");
 require_once('../mysqlConnect.php');
 
+//this endpoint is ready for the front end to call and add a new address for a registered user.
+
+
 //basic output format, all data gets pushed into data[]
 $output = [
     'success'=> false,

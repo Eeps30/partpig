@@ -227,7 +227,6 @@ class Checkout extends Component {
                             subject: "Part Pig test",
                             receipt: true
                         };
-                        console.log('information', emailData);
                         axios({
                             url: emailUrl,
                             method: 'post',

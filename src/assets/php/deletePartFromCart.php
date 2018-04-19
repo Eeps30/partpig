@@ -25,11 +25,11 @@ $query = "DELETE FROM `shoppingcart`
 $result = mysqli_query($conn, $query);
 $rows_affected = mysqli_affected_rows($conn);
 if($result){
-
-    echo "Successfully removed records from table shoppingcart. Total rows affected: ", $rows_affected .".";
+    $output['success'] = true;
+    $output['data'][] = "Successfully removed records from table shoppingcart. Total rows affected: $rows_affected";
 
 } else {
-    echo "Error: " . mysqli_error($conn);
+    $output['error'][] = "Error: " . mysqli_error($conn);
 }
 mysqli_close($conn);
 ?>

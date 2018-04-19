@@ -5,6 +5,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 require_once('mysqlConnect.php');
 require("sanitizeInput.php");
+
 $output = [
     'success'=> false,
     'error' => [],
@@ -34,13 +35,7 @@ if(count($subQuery) < 1){
     die('no fields to edit');
 }
 $query =  "UPDATE `part` as p SET " . implode(" , ",$subQuery) . 
-         " WHERE p.id = $ID";
-
-
-            // $output['data'][] = "request data is " . $request_data;
-            // $output['data'][] = "subquery is " . implode(",",$subQuery);
-            // $output['data'][] = "query is $query";
-            
+         " WHERE p.id = $ID";       
 
 $result = mysqli_query($conn, $query);
 

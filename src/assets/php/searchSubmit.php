@@ -8,7 +8,7 @@ $output = [
     'data' => []
 ];
 
-// default query
+// default query we build off of
 $query =  "SELECT p.id, 
                   p.brand, 
                   p.part_name, 
@@ -52,15 +52,13 @@ if(isset($_GET['make']) || isset($_GET['model']) || isset($_GET['year'])){
         }
     }
 }
-// else{
-    //     die('no field to check');
-    // }
-    
+
     $query .=  implode(" AND ",$subQuery);
     
     $output['error'][] = $query;
 $result = mysqli_query($conn, $query);
-// make a display object that we later add to each search result
+
+// display enables the front end filters
 $display = new stdClass();
 $display->brand = 'true';
 $display->price_usd = 'true';

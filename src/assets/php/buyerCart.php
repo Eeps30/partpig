@@ -10,9 +10,6 @@ $output = [
 
 $user_id = $_GET['user_id'];
 
-//hard coded for testing =========
-// $user_id = 3;
-//==========
 
 $query =  "SELECT s.buyer_id,
                   p.id, 

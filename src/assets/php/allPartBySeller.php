@@ -35,7 +35,6 @@ $query =  "SELECT p.id,
                 AND p.seller_id = '{$_GET['seller_id']}'";   
 
 $result = mysqli_query($conn, $query);
-// make a display object that we later add to each search result
 
 if($result){
     if(mysqli_num_rows($result)> 0){

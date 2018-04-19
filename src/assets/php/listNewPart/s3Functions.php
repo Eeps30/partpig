@@ -1,4 +1,5 @@
 <?php
+//These functions are being required by addImagesToS3.php
 
 function prepImageTypesAndExtForDecoding($imageURI){
     
@@ -54,7 +55,7 @@ function saveAndUploadImageToAws($img, $filePath, $index){
                 
         }
         catch (Aws\S3\Exception\S3Exception $e) {
-            echo "There was an error uploading the file.\n";
+            die("There was an error uploading the file.");
         }
         
     //delete image from local storage

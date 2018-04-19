@@ -10,29 +10,13 @@ require("../sanitizeInput.php");
 $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
 
-//only do filter_var for email and phone
-require_once('./addImagesToS3.php');
-// hard-coded test $_POST data **********************************************
-// $_POST['part_name'] = ' 3rd test/<?\\\<Post>  ';
-// $_POST['description'] = '    ';
-// $_POST['part_condition'] = '1';
-// $_POST['status'] = 'For sale';
-// $_POST['brand'] = 'testBrand';
-// $_POST['make'] = 'testMake';
-// $_POST['model'] = 'testModel';
-// $_POST['year'] = '2018';
-// $_POST['seller_id'] = 1;
-// $_POST['price_usd'] = 999;
-// $_POST['listed_date'] = date("Y-m-d", time());
-// $_POST['part_number'] = 'part#999';
-
-
-// remove above content for frontEnd testing *********************************
 $output = [
     'success'=> false,
     'error' => [],
     'data' => []
 ];
+require_once('./addImagesToS3.php');
+
 
 
 
