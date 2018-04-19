@@ -3,7 +3,6 @@ import './userHistory.css';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
 import axios from 'axios';
-import NoResults from '../../noResults/noResults'
 
 
 class UserHistory extends Component {
@@ -64,7 +63,8 @@ class UserHistory extends Component {
         return  (
             <div className="userPartsContainer">     
                 <div className="userPartsList">
-                    <NoResults/>
+                <h1>YOUR HISTORY</h1>
+                <h1>This page is still under construction</h1>
                 </div>
             </div>     
         );
