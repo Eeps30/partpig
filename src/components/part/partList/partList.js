@@ -7,6 +7,7 @@ import axios from 'axios';
 import Loading from '../../loading/loading';
 import Pagination from './../pagination/pagination';
 import Sorter from './../sorter/sorter';
+import NoResults from '../../noResults/noResults';
 
 class PartList extends Component{
 
@@ -185,7 +186,10 @@ class PartList extends Component{
     }
 
     render(){
-       
+        let noResults = '';
+        if(this.state.arrayParts.length === 0){
+            noResults = <NoResults/>;
+        }
         if (!this.state.isLoading) {
             return <Loading />;
         }
@@ -201,6 +205,8 @@ class PartList extends Component{
                     </div>              
                 <Filter update={this.state.showFilters} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} {...this.props} filters={this.filters}/>
                 <div className={this.state.showFilters ? 'partList partListFilter' : 'partList'}>                                      
+                {noResults}
+
                     <Pagination {...this.props} allParts={visibleParts} showFilters={this.state.showFilters} />
                 </div>
             </div>

@@ -27,7 +27,8 @@ class App extends Component{
     constructor(props){
         super(props);     
         this.state = {
-            cartParts: []
+            cartParts: [],
+            userId: localStorage.getItem('user')
         }
         this.images = ['part1.jpg','part2.jpg','part3.jpg','part4.jpg','part5.jpg','part6.jpg','part7.jpg','part8.jpg','part9.jpg','part10.jpg','part11.jpg','part12.jpg','part13.jpg','part14.jpg','part15.jpg','part16.jpg','part17.jpg','part18.jpg','part19.jpg','part20.jpg','part21.jpg','part22.jpg','part23.jpg','part24.jpg','part25.jpg','part26.jpg','part27.jpg','part28.jpg','part29.jpg','part30.jpg'];
 
@@ -41,19 +42,21 @@ class App extends Component{
         this.removeAllPartsFromCart = this.removeAllPartsFromCart.bind(this);
         this.urlBack = '';
         this.user = null;
-        this.userId = localStorage.getItem('user');
-        if(this.userId){
-            this.getPartsFromCartByUserId(this.userId);
+        if(this.state.userId){
+            this.getPartsFromCartByUserId(this.state.userId);
         }
     }
 
     setUserData(data){
         if(data && data[0]){
             this.user=data[0];
-            this.userId = data[0].id;
             localStorage.setItem('user',data[0].id);
+            this.setState({
+                userId: data[0].id
+            });            
+            
             //axios call to get all the parts in the cart for this user
-           this.getPartsFromCartByUserId(data[0].id);
+            this.getPartsFromCartByUserId(data[0].id);
         }
     }
 
@@ -83,11 +86,11 @@ class App extends Component{
 
     addPart(partInfo,initLoad){
 
-        if(this.userId){
+        if(this.state.userId){
             
             const params = {
                 part_id: parseInt(partInfo.id),
-                user_id: parseInt(this.userId)
+                user_id: parseInt(this.state.userId)
             };
             const url = 'http://localhost:8000/teampartpig/src/assets/php/addPartToCart.php';        
             axios.get(url,{params}).then(resp=>{
@@ -135,11 +138,11 @@ class App extends Component{
 
     removePart(partInfo){
 
-        if(this.userId){
+        if(this.state.userId){
             
             const params = {
                 part_id: parseInt(partInfo.id),
-                user_id: parseInt(this.userId)
+                user_id: parseInt(this.state.userId)
             };
             const url = 'http://localhost:8000/teampartpig/src/assets/php/deletePartFromCart.php';        
             axios.get(url,{params}).then(resp=>{
@@ -178,11 +181,17 @@ class App extends Component{
         this.urlBack = urlBack;
     }
 
+    logout(){
+        this.setState({
+            userId: null
+        });
+    }
+
     render(){
         return (
             <Router>
                 <div className='mainContainer'>
-                    <Header/>            
+                    <Header userId={this.state.userId} logout={this.logout.bind(this)}/>            
                     <Route exact path='/' component={ ()=>  <Home images={this.images} />}/>
                     <Route exact path='/partresults' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />

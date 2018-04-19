@@ -1,55 +1,53 @@
 header {
-    display: table;
+    display: inline-block;
     color: rgb(238, 75, 0);
     width: 100%;
     height: 5%;
     margin-left: 0;
     background-color: rgb(255, 255, 255);
     margin-bottom: 0;
-    box-shadow: 0 1px 4px rgba(41, 51, 57, 0.397)
+    box-shadow: 0 1px 4px rgba(41, 51, 57, 0.397);
 }
 
 .logo-container{
     width: 50%;
     height: 100%;
     text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+    display: inline-block;
+    vertical-align: top;
     font-size: 3vh;
     color: rgb(238, 75, 0);
 }
 
 .mainLogo {
-    height: 50px;
+    height: 100%;
 }
 
 .user-nav{
     width: 25%;
-    display: table-cell;
-    vertical-align: middle;
+    display: inline-block;
     font-size: 2vh;
-    height: 4vh;
-    align-content: right;
+    height: 99%;
+    text-align: right;
 }
 
 .hamburger{
     width: 25%;
-    display: table-cell;
-    vertical-align: middle;
+    display: inline-block;
+    vertical-align: top;
     font-size: 2vh;
     height: 100%;
-    text-align: right;
-    
+    text-align: right;    
 }
 
 .login-icon{
-    float: right;
-    height: 90%;
-    margin: .5em;
+    position: relative;
+    top: 10%;
+    right: 2%;
+    height: 80%;
 }
 
 .sellPartButton {
-    float: right;
     border: none;
     text-align: center;
     text-decoration: none;
@@ -57,11 +55,13 @@ header {
     background-color: #d0451b;
     color: white;
     padding: 1%;
-    height: 80%;
     border-radius: 5px;
     margin: 1%;
-    padding: 3% 2%;
+    padding: 2% 2%;
     border: 2px solid #d0451b;
+    vertical-align: top;
+    position: relative;
+    top: 35%;
 }
 
 .sellPartButton:hover{
@@ -71,20 +71,26 @@ header {
 }
 
 .cartDivIcon{
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+}
+
+.cartDivIcon a{
     position: relative;
-    top: 23%;
-    right: -1%;
-    float: right;
+    text-decoration: none;
 }
 
 .cartIcon{   
+    position: relative;
+    top: 10%;
     height: 4vmin;
 }
 
 .cartCount{
-    position: absolute;
-    top: -6%;
-    right: 34%;
+    position: relative;
+    top: -40%;
+    right: 50%;
     font-size: 0.9em;
     font-weight: bold;
     color: #bc3315;
