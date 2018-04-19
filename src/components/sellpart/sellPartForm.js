@@ -11,6 +11,7 @@ import MakeDropDown from '../searchpage/dropdown/makeDropdown';
 import ModelDropDown from '../searchpage/dropdown/modelDropdown';
 import YearDropDown from '../searchpage/dropdown/yearDropdown';
 import data from '../searchpage/dataModel';
+import Loading from '../loading/loading';
 
 
 class SellPartForm extends Component{
@@ -35,7 +36,8 @@ class SellPartForm extends Component{
                 "part_number": '',
                 "seller_id": this.userId
             },            
-            partErrors:{}
+            partErrors:{},
+            isLoading: false
         }
         this.catchMakeSelect = this.catchMakeSelect.bind(this);
         this.catchModelSelect = this.catchModelSelect.bind(this);
@@ -47,6 +49,9 @@ class SellPartForm extends Component{
         if(this.validateFields()){
             const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
 
+            this.setState({
+               isLoading: true
+            });
             axios({
                 url: url,
                 method: 'post',
@@ -203,6 +208,10 @@ class SellPartForm extends Component{
 
     render() {
         
+        if (this.state.isLoading) {
+            return <Loading />;
+        }
+
         const fields = formInputs.map((field,index) => {
             return <Field key={index} {...field} error={this.state.partErrors[field.name]} handleOnBlur={this.partHandleOnBlur.bind(this)} handleInputChange={this.handlePartInputChange.bind(this)} value={this.state.part[field.name] || ''}/>
         });
