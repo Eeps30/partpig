@@ -60,7 +60,7 @@ $response = $sg->client->mail()->send()->post($mail);
 $status = $response->statusCode();
 if($status === 202){
     $output['success'] = true;
-    $output['data'][] = "email sent";
+    $output['data'][] = "email sent to $destinationEmail";
 }
 else{
     $output['success'] = false;
