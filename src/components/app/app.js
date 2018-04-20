@@ -73,7 +73,7 @@ class App extends Component{
                     this.addPartToCart(item,true);
                 });
                 this.setState({
-                    userName: resp.data.username
+                    userName: resp.data.firstname
                 });  
             }         
         }).catch(err => {

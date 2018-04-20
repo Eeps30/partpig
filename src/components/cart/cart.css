@@ -79,7 +79,7 @@
 .cartMessageContainer{
     position: absolute;
     right: 2.3%;
-    top: 5.9%;
+    top: 7%;
     width: 19vmin;
     height: 1%;
     background-color: lightgrey;
@@ -95,7 +95,7 @@
     z-index: -1;
 }
 
-.cartMessageContainer.top:before {
+/* .cartMessageContainer.top:before {
     top: -21%;
     bottom: auto;
     left: auto;
@@ -108,7 +108,7 @@
     border-style: solid;
     border-color: lightgrey transparent;
     display: block;
-}
+} */
 
 
 .show_block{
