@@ -36,9 +36,10 @@ header {
     width: 25%;
     display: inline-block;
     vertical-align: top;
-    font-size: 2vh;
+    font-size: 2vmin;
     height: 100%;
-    text-align: right;    
+    text-align: right;
+    /*min-width: 240px;    */
 }
 
 .login-icon{
