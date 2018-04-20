@@ -32,13 +32,13 @@ class Home extends Component {
     return (
       <div className="homeMainContainer">
         <div className="scrollingBackground">
-          <ContentColumn shiftRate={.7} displaySize={7} images={this.randomizeArray(this.state.images)} />
-          <ContentColumn shiftRate={.9} displaySize={7} images={this.randomizeArray(this.state.images)} />
-          <ContentColumn shiftRate={.8} displaySize={7} images={this.randomizeArray(this.state.images)} />
-          <ContentColumn shiftRate={1} displaySize={7} images={this.randomizeArray(this.state.images)} />
-          <ContentColumn shiftRate={.9} displaySize={7} images={this.randomizeArray(this.state.images)} />
-          <ContentColumn shiftRate={.7} displaySize={7} images={this.randomizeArray(this.state.images)} />
-          <ContentColumn shiftRate={.8} displaySize={7} images={this.randomizeArray(this.state.images)} />
+          <ContentColumn shiftRate={1.0} displaySize={7} images={this.randomizeArray(this.state.images)} />
+          <ContentColumn shiftRate={0.6} displaySize={7} images={this.randomizeArray(this.state.images)} />
+          <ContentColumn shiftRate={0.8} displaySize={7} images={this.randomizeArray(this.state.images)} />
+          <ContentColumn shiftRate={0.5} displaySize={7} images={this.randomizeArray(this.state.images)} />
+          <ContentColumn shiftRate={1.0} displaySize={7} images={this.randomizeArray(this.state.images)} />
+          <ContentColumn shiftRate={.6} displaySize={7} images={this.randomizeArray(this.state.images)} />
+          <ContentColumn shiftRate={1.0} displaySize={7} images={this.randomizeArray(this.state.images)} />
             <div className="shadow">                     
               <div id="welcomeMessage">The fastest growing car part marketplace</div>
               <Search/>
