@@ -49,27 +49,27 @@ class AboutPage extends Component {
                 <div className="images">
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead1"></div>
+                            <div className="bobbleHead1 head"></div>
                         </div>
                     </div>
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead2"></div>
+                            <div className="bobbleHead2 head"></div>
                         </div>
                     </div>
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead3"></div>
+                            <div className="bobbleHead3 head"></div>
                         </div>
                     </div> 
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead4"></div>
+                            <div className="bobbleHead4 head"></div>
                         </div>
                     </div> 
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead5"></div>
+                            <div className="bobbleHead5 head"></div>
                         </div>
                     </div>                 
                 </div>

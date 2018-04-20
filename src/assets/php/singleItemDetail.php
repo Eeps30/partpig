@@ -6,7 +6,8 @@ require_once('mysqlConnect.php');
 $ID = $_GET['id'];
 $imgQuery =  "SELECT url  FROM `image` WHERE part_id='$ID'";
 $imgResult =  mysqli_query($conn, $imgQuery);
-
+print_r($imgResult);
+die();
 if($imgResult){
     if(mysqli_num_rows($imgResult)> 0){
         while($row = mysqli_fetch_assoc($imgResult)){
@@ -44,7 +45,7 @@ $query =  "SELECT
             JOIN `category` AS c
                 ON p.category_id = c.id 
             JOIN `user` AS u
-                ON  p.seller_id = u.billing_address_id
+                ON  p.seller_id = u.id
             JOIN `address` AS a
                 ON u.billing_address_id = a.id
             WHERE p.id = $ID";
