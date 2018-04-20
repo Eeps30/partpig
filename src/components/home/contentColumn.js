@@ -16,7 +16,7 @@ class ContentColumn extends Component{
 
     handleTimerUpdate(){
       let newPosition = this.state.position+this.props.shiftRate
-      if(newPosition > (this.itemHeight *1.14)){
+      if(newPosition > (this.itemHeight *1.15)){
         newPosition = 0;
         var nextArray = this.state.images.slice();
         nextArray.push( nextArray.shift());
