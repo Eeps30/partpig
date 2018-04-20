@@ -37,8 +37,8 @@ class ActiveParts extends Component {
 
         if (!this.state.isLoading) {
             return (
-                <div>                    
-                    <Loading />
+                <div className='container'>
+                    <Loading />;
                 </div>
             );
         }
