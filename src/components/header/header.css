@@ -39,7 +39,7 @@ header {
     font-size: 2vmin;
     height: 100%;
     text-align: right;
-    min-width: 240px;    
+    /*min-width: 240px;    */
 }
 
 .login-icon{
