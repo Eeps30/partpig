@@ -16,8 +16,8 @@ class ContentColumn extends Component{
 
     handleTimerUpdate(){
       let newPosition = this.state.position+this.props.shiftRate
-      if(newPosition > this.itemHeight){
-        newPosition = -1;
+      if(newPosition > (this.itemHeight *1.14)){
+        newPosition = 0;
         var nextArray = this.state.images.slice();
         nextArray.push( nextArray.shift());
       } else {
@@ -32,7 +32,8 @@ class ContentColumn extends Component{
     }
 
     componentDidMount(){
-      setInterval( this.handleTimerUpdate, 500);
+
+      setInterval( this.handleTimerUpdate, 10);
       this.itemHeight = this.column.clientHeight / this.props.displaySize;
     }
 

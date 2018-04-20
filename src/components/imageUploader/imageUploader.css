@@ -18,7 +18,7 @@
 }
 
 .displayImages{
-    width: 76%;
+    width: 75%;
     height: 20vh;
     overflow-y: auto;
     display: inline-block;
