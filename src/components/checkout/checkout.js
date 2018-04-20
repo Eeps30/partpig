@@ -476,7 +476,7 @@ class Checkout extends Component {
                     </div>
                 </div>
                 <div className='checkoutTotal'>
-                    <div className="cartTitle"><b>CART SUMARY: ({listParts.length} items)</b> </div>
+                    <div className="cartTitle"><b>CART SUMMARY: ({listParts.length} items)</b> </div>
                     <div className="checkoutList">
                         <ul>
                             {listParts}

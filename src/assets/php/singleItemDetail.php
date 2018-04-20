@@ -44,7 +44,7 @@ $query =  "SELECT
             JOIN `category` AS c
                 ON p.category_id = c.id 
             JOIN `user` AS u
-                ON  p.seller_id = u.billing_address_id
+                ON  p.seller_id = u.id
             JOIN `address` AS a
                 ON u.billing_address_id = a.id
             WHERE p.id = $ID";

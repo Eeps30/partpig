@@ -6,7 +6,7 @@ $output = [
     'success'=> false,
     'error' => [],
     'data' => [],
-    'username' => []
+    'firstname' => []
 ];
 if(!empty($_GET['user_id'])){
     $user_id = $_GET['user_id'];
@@ -15,10 +15,10 @@ else{
     die('id required');
 }
 
-$nameResult = mysqli_query($conn, "SELECT user_name FROM `user` WHERE id=$user_id");
-$username = mysqli_fetch_assoc($nameResult)['user_name'];
-if(!empty($username)){
-    $output['username'] = $username;   
+$nameResult = mysqli_query($conn, "SELECT first_name FROM `user` WHERE id=$user_id");
+$firstname = mysqli_fetch_assoc($nameResult)['first_name'];
+if(!empty($firstname)){
+    $output['firstname'] = $firstname;   
 
 }
 else{

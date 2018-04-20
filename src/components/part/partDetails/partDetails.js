@@ -20,8 +20,7 @@ class PartDetails extends Component {
         const id = this.props.match.params.id;
         const url = 'http://localhost:8000/teampartpig/src/assets/php/singleItemDetail.php';
         const params = {id};      
-        axios.get(url,{params}).then(resp=>{
-                console.log('result is: ', resp.data.data[0]);                
+        axios.get(url,{params}).then(resp=>{              
                 this.setState({
                     partInfo:resp.data.data[0],
                     isLoading: true            
