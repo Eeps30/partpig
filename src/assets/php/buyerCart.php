@@ -5,11 +5,25 @@ require_once('mysqlConnect.php');
 $output = [
     'success'=> false,
     'error' => [],
-    'data' => []
+    'data' => [],
+    'username' => []
 ];
+if(!empty($_GET['user_id'])){
+    $user_id = $_GET['user_id'];
+}
+else{
+    die('id required');
+}
 
-$user_id = $_GET['user_id'];
+$nameResult = mysqli_query($conn, "SELECT user_name FROM `user` WHERE id=$user_id");
+$username = mysqli_fetch_assoc($nameResult)['user_name'];
+if(!empty($username)){
+    $output['username'] = $username;   
 
+}
+else{
+    die("no username for that id");
+}
 
 $query =  "SELECT s.buyer_id,
                   p.id, 
