@@ -47,21 +47,25 @@ class PriceFilter extends Component{
         }
     }
 
-    filterPrices(values){        
-        let valArray = values.split(',');
-        const min = parseInt(valArray[0]);
-        const max = parseInt(valArray[1]);
-        this.newFilters['prices'][1] = [min,max];
-        this.props.history.push('/partresults/filters/'+JSON.stringify(this.newFilters));
+    filterPrices(values){     
+        let sliderElem = document.getElementsByClassName("rs-container")[0]
+        //Check if the element is visible
+        if(sliderElem && sliderElem.offsetParent !== null){   
+            let valArray = values.split(',');
+            const min = parseInt(valArray[0]);
+            const max = parseInt(valArray[1]);
+            this.newFilters['prices'][1] = [min,max];
+            let index = this.props.match.url.indexOf('/filters');
+            let url = index === -1 ? this.props.match.url : this.props.match.url.substring(0,index);
+            this.props.history.push(url+'/filters/'+JSON.stringify(this.newFilters));
+        }
     }
 
     render(){            
         
         return (            
             <div id='priceFilterDiv'>                
-                <h2>Price</h2>
-                <hr/>
-                <br/>
+                <h2 className='priceFilterH2'>Price</h2>
                 <input type="text" id="slider" />                               
             </div>  
         )

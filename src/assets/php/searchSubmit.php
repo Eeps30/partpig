@@ -8,16 +8,16 @@ $output = [
     'data' => []
 ];
 
-// default query
+// default query we build off of
 $query =  "SELECT p.id, 
                   p.brand, 
-                  p.part_name AS title, 
+                  p.part_name, 
                   c.name AS category, 
                   p.make, 
                   p.model, 
                   p.year,                               
-                  p.part_number AS partNumber, 
-                  p.price_usd AS price, 
+                  p.part_number, 
+                  p.price_usd, 
                   i.url AS images
             FROM `part` AS p
             JOIN `category` AS c
@@ -28,32 +28,48 @@ $query =  "SELECT p.id,
                     SELECT MIN(im.id) 
                     FROM `image` as im 
                     WHERE im.part_id=p.id
-                )";
-// unset($_GET['year']);
-$fieldsToCheck = ['make', 'model', 'year'];  //changed name from partsToCheck
-$subQuery = [];
+                )
+            WHERE ";
+
+$fieldsToCheck = ['make', 'model', 'year'];  
+
 $subQuery[] = "(p.status ='available' OR p.status='incart')";
-forEach($fieldsToCheck as $value){
-    if(!empty($_GET[$value])){
-        $subQuery[] = " $value LIKE '{$_GET[$value]}%'";
+
+if(!empty($_GET['keyword'])){
+    $keyword = $_GET['keyword'];
+
+    $subQuery[] = "(`brand` LIKE '%$keyword%'
+    OR `part_name` LIKE '%$keyword%'  
+    OR `make` LIKE '%$keyword%' 
+    OR `model` LIKE '%$keyword%'
+    OR `description` LIKE '%$keyword%'
+    OR `part_number` LIKE '%$keyword%')";
+}
+if(isset($_GET['make']) || isset($_GET['model']) || isset($_GET['year'])){
+    forEach($fieldsToCheck as $value){
+        if(!empty($_GET[$value])){
+            $subQuery[] = " $value = '{$_GET[$value]}'";
+        }
     }
 }
 
-// if(count($subQuery)>0){
-	$query .= " WHERE ". implode(" AND ",$subQuery);
-// }
-
+    $query .=  implode(" AND ",$subQuery);
+    
+    $output['error'][] = $query;
 $result = mysqli_query($conn, $query);
-// make a display object that we later add to each search result
+
+// display enables the front end filters
 $display = new stdClass();
 $display->brand = 'true';
-$display->price = 'true';
+$display->price_usd = 'true';
+$display->category = 'true';
+
 if($result){
     if(mysqli_num_rows($result)> 0){
         while($row = mysqli_fetch_assoc($result)){
             $row['images'] = array($row['images']); 
             $row['display'] = $display;
-            $row['price'] = (float)$row['price'];
+            $row['price_usd'] = (float)$row['price_usd'];
             $row['year'] = (int)$row['year'];
             $output['data'][] = $row;
         }

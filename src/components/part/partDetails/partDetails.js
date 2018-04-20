@@ -20,8 +20,7 @@ class PartDetails extends Component {
         const id = this.props.match.params.id;
         const url = 'http://localhost:8000/teampartpig/src/assets/php/singleItemDetail.php';
         const params = {id};      
-        axios.get(url,{params}).then(resp=>{
-                console.log('result is: ', resp.data.data[0]);                
+        axios.get(url,{params}).then(resp=>{              
                 this.setState({
                     partInfo:resp.data.data[0],
                     isLoading: true            
@@ -37,15 +36,15 @@ class PartDetails extends Component {
 
     render(){
 
-        let linkBack = <Link to={this.props.urlBack}><div>Back to results</div></Link>;
+        let linkBack = <Link className='button-link' to={this.props.urlBack}><div>Back to results</div></Link>;
         if(this.props.match.params.fromDashboard == 'true'){
-            linkBack = <Link to={"/dashboard/activeparts"}><div>Back to dashboard</div></Link>;
+            linkBack = <Link className='button-link' to={"/dashboard/activeparts"}><div>Back to dashboard</div></Link>;
         }
 
         if (!this.state.isLoading) {
             return (
-                <div>                    
-                    <Loading />
+                <div className='container'>
+                    <Loading />;
                 </div>
             );
         }

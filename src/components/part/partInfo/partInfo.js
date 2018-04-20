@@ -3,8 +3,7 @@ import './partInfo.css';
 import {Link} from 'react-router-dom';
 import fb from '../../../assets/images/facebook.png';
 import email from '../../../assets/images/email.png';
-
-
+import axios from 'axios';
 
 class PartInfo extends Component {
 
@@ -13,7 +12,8 @@ class PartInfo extends Component {
 
         this.state = {
             partInfo:props.partInfo,
-            editable: false
+            editable: false,
+            updated: false
         }
         this.oldPartInfo = props.partInfo; 
         this.editField = this.editField.bind(this);
@@ -22,7 +22,7 @@ class PartInfo extends Component {
     }
 
     addCart(){
-        this.props.addCart(this.state.partInfo);
+        this.props.addCart(this.state.partInfo,false);
         if(this.props.history){
             this.props.history.push(this.props.urlBack);
         }   
@@ -79,11 +79,45 @@ class PartInfo extends Component {
 
     savePartInfo(){
         //axios call to update the part  
-        this.setState({
-            editable:false
-        });    
-        this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],false);
+        const url = "http://localhost:8000/teampartpig/src/assets/php/editPartDetails.php";
+
+        axios({
+            url: url,
+            method: 'post',
+            data: this.state.partInfo, 
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(resp=>{     
+            this.oldPartInfo = this.state.partInfo;                  
+            this.setState({
+                editable:false,
+                updated: true
+            });     
+            this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],false);
+            
+        }).catch(err => {
+            console.log("There was an error:");
+        });
+        
         console.log('partInfo:',this.state.partInfo);
+    }
+
+    componentDidMount(){
+        if(this.props.fromDashboard=='true'){
+            this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],true);
+            this.setState({
+                editable:true           
+            });
+        }
+    }
+
+    componentDidUpdate(){
+        if(this.state.partInfo !== this.props.partInfo && !this.state.editable && !this.state.updated){
+            this.setState({
+                partInfo:this.props.partInfo
+            });
+        }
     }
 
     render(){
@@ -100,7 +134,7 @@ class PartInfo extends Component {
             if(this.state.editable){
                 editableUsebutton = <button className='button-link editButton' onClick={this.savePartInfo.bind(this)}>Save</button>;
                 cancelButton = <button className='button-link editButton' onClick={this.resetPartInfo}>Cancel</button>;
-                messageEditable = <span className='editMessage'>Click in the elements on grey to edit them</span>
+                messageEditable = <span className='editMessage'>Click in the elements on blue to edit them</span>
             }else{
                 editableUsebutton = <button className='button-link editButton' onClick={()=>{
                     this.setState({editable: true});
@@ -120,9 +154,9 @@ class PartInfo extends Component {
                 <div>
                     <hr/>                
                     <p className="productDescription"><span id='description'>{this.state.partInfo.description}</span></p>
-                    <p className="productCondition">Condition: {this.state.partInfo.condition}</p>
+                    <p className="productCondition">Condition: {this.state.partInfo.part_condition}</p>
                     <p className="productLocation">Location: {this.state.partInfo.city + ', '+ this.state.partInfo.state}</p>               
-                    <p>Seller: {this.state.partInfo.seller} {/*<Link className='button-link' to={"/contactSeller"}>Contact</Link>*/} {editableUsebutton}{cancelButton}</p>
+                    <p>Seller: {this.state.partInfo.seller} {editableUsebutton}{cancelButton}</p>
                     {messageEditable}
                 </div>           
             );
@@ -137,12 +171,12 @@ class PartInfo extends Component {
 
         return (
             <div className={this.props.infoClass}>
-                {share}
-                <span id='brand'>{this.state.partInfo.brand}</span> <span id='partNumber' className="partNumber">{this.state.partInfo.partNumber} </span><span className="partNumber">P/N:</span>
-                <h3 className="productTitle"><span id='title'>{this.state.partInfo.title}</span></h3>
+                {/* {share} */}
+                <span id='brand'>{this.state.partInfo.brand}</span> <span id='part_number' className="partNumber">{this.state.partInfo.part_number} </span><span className="partNumber">P/N:</span>
+                <h3 className="productTitle"><span id='part_name'>{this.state.partInfo.part_name}</span></h3>
                 <span><b>{this.state.partInfo.category} - {this.state.partInfo.make} {this.state.partInfo.model} {this.state.partInfo.year} </b></span>
                 
-                <p className="productPrice"><span>$</span><span id='price'>{this.state.partInfo.price}</span> {multiUsebutton}</p>          
+                <p className="productPrice"><span>$</span><span id='price_usd'>{this.state.partInfo.price_usd}</span> {multiUsebutton}</p>          
                 {details}
             </div> 
         );

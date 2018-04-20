@@ -10,30 +10,30 @@
  }
  
  #menuToggle {
-    position: relative;
-    top: 0px;
-    left: 5px;
-    z-index: 1;
+    margin-top: 3%;
+    margin-left: 3%;
+    height: 100%;
+    z-index: 2;
     -webkit-user-select: none;
     user-select: none;
  }
  
  #menuToggle input {
-    width: 40px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
     position: absolute;
     top: 0px;
     left: 0px;
     cursor: pointer;
     opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
+    z-index: 3; /* and place it over the hamburger */
     -webkit-touch-callout: none;
  }
 
  #menuToggle span {
     display: block;
-    width: 33px;
-    height: 4px;
+    width: 32px;
+    height: 6px;
     margin-bottom: 5px;
     position: relative;
     background:  rgb(206, 0, 17);
@@ -54,28 +54,35 @@
  }
  
  #menuToggle input:checked ~ span {
-   opacity: 1;
-   transform: rotate(45deg) translate(-2px, -1px);
-   background: rgb(206, 0, 17);
+  opacity: 1;
+  transform: rotate(45deg) translate(-3px, 0px);
+  background: rgb(206, 0, 17);
+  width: 34px;
+  z-index: 2;
  }
  
  #menuToggle input:checked ~ span:nth-last-child(3) {
-   opacity: 0;
-   transform: rotate(0deg) scale(0.2, 0.2);
+  opacity: 0;
+  width: 2px;
+  height: 1px;
+  transform: rotate(0deg) scale(0.2, 0.2);
  }
  
  #menuToggle input:checked ~ span:nth-last-child(2) {
-   transform: rotate(-45deg) translate(0, -1px);
+   transform: rotate(-45deg) translate(-1px, -1px);
  }
  
  #menu {
-   position: absolute;
-   width: 300px;
-   margin: -100px 0 0 -50px;
-   padding: 50px;
-   padding-top: 125px;
-   background: #ededed;
-   list-style-type: none;
+  position: absolute;
+  position: absolute;
+  width: 16%;
+  margin: -5% 0 0 -5%;
+  padding: 1%;
+  padding-top: 4%;
+  /*min-width: 210px;   */
+  background: #ededed;
+  list-style-type: none;
+  z-index:1;
    -webkit-font-smoothing: antialiased;
    transform-origin: 0% 0%;
    transform: translate(-100%, 0);
@@ -83,8 +90,8 @@
  }
  
  #menu li {
-   padding: 10px 0;
-   font-size: 22px;
+   padding: 2% 0;
+   font-size: 0.9em;
  }
 
  #menuToggle input:checked ~ ul {

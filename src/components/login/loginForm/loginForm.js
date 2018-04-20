@@ -28,7 +28,7 @@ class LoginForm extends Component {
         }).then(resp=>{
             if(resp.data.success){
                 this.props.setUserData(resp.data.data);
-                this.props.history.push('/');
+                this.props.history.push('/dashboard');
             }
         }).catch(err => {
             console.log('error is: ', err);
@@ -40,11 +40,11 @@ class LoginForm extends Component {
             <div className="loginForm">
                 <h2>Login with username</h2>
                     <form onSubmit={this.handleSubmit}>
-                        <label>user</label>
+                        <label>Username</label>
                         <input type="text" id="user" name="user" placeholder="user"/>
                         <label>Password</label>
-                        <input type="text" id="password" name="password" placeholder="Password"/>
-                        <input type="submit" value="Submit"/>
+                        <input type="password" id="password" name="password" placeholder="Password"/>
+                        <input type="submit" value="Sign In"/>
                     </form>
             </div>
         );

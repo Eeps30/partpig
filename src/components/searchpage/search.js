@@ -3,11 +3,8 @@ import MakeDropDown from './dropdown/makeDropdown';
 import ModelDropDown from './dropdown/modelDropdown';
 import YearDropDown from './dropdown/yearDropdown';
 import data from './dataModel';
-import mainLogo from '../../assets/images/part1/subaruWheels2.jpg';
 import './search.css';
 import {Link} from 'react-router-dom';
-import SearchPartName from './dropdown/searchPartName';
-import SearchPartNumber from './dropdown/searchPartNumber';
 
 class DropDownContainer extends Component {
     constructor(props){
@@ -16,7 +13,8 @@ class DropDownContainer extends Component {
         this.state = {
             make: 'default',
             model: 'default',
-            year: 'default'
+            year: 'default',
+            searchText:''
         }
         this.catchMakeSelect = this.catchMakeSelect.bind(this)
         this.catchModelSelect = this.catchModelSelect.bind(this)
@@ -47,25 +45,42 @@ class DropDownContainer extends Component {
         })
     }
 
+    handleChange(event){
+        this.setState({
+            searchText: event.target.value
+        })
+    }
+
+    validateFields(){
+        return ((this.state.make !== 'default' && this.state.model !== 'default' && this.state.year !== 'default') || this.state.searchText !== '');
+    }
+
     render(){
 
-        const make = this.state.make
+        let queryStr = this.state.make !== 'default' ? '/make/' + this.state.make : '';
+        queryStr += this.state.model !== 'default' ? '/model/' + this.state.model : '';
+        queryStr += this.state.year !== 'default' ? '/year/' + this.state.year : '';
+        queryStr += this.state.searchText !== '' ? '/keyword/' + this.state.searchText : '';
 
-        const makeStr = this.state.make !== 'default' ? '/make/' + this.state.make : '';
-        const modelStr = this.state.model !== 'default' ? '/model/' + this.state.model : '';
-        const yearStr = this.state.year !== 'default' ? '/year/' + this.state.year : '';
+        let searchButton = <Link className='button-link' to={"/partresults" + queryStr}> FIND PARTS </Link>
+        if(!this.validateFields()){
+            searchButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/partresults" + queryStr}> FIND PARTS </Link>
+        }
         
         return(
             <div className="outerDiv">
                 <div className="dropdownMenu">
+                    <div className="searchBarContainer">
+                        <div>
+                            <input type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
+                            {searchButton}
+                        </div>                        
+                    </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                         <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                        <button className="searchButton">
-                            <Link to={"/partresults" + makeStr + modelStr + yearStr}> FIND PARTS </Link>
-                        </button>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         )

@@ -4,25 +4,24 @@
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
-//refactored for axios post requests
  $entityBody = file_get_contents('php://input');
  $request_data = json_decode($entityBody, true);
-
+ 
+ $output = [
+     'success'=> false,
+     'error' => [],
+     'data' => []
+ ];
 
 require_once('../mysqlConnect.php');
 if(isset($_GET['logout'])){
     if(isset($_SESSION['userinfo'])){
-       print("<h1>user session info  of $_SESSION[userinfo]  was destroyed</h1>");
+      $output['data'][] ="user session info  of $_SESSION[userinfo]  was destroyed";
     }
     unset($_SESSION['userinfo']);
     session_destroy();
     exit();
 }
-$output = [
-    'success'=> false,
-    'error' => [],
-    'data' => []
-];
 
 
 if(isset($request_data['user'], $request_data['password'])){

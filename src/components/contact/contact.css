@@ -1,0 +1,130 @@
+.contact-us h1{
+    text-align: center;
+    font-weight: bold;
+	font-size: 3rem;
+}
+.contactPageContainer{
+    width: 90%;
+    margin: auto;
+    box-sizing: border-box;
+    background-image:url("../../assets/images/contact_pig.jpg");
+    background-size:cover;
+    border: solid 3px black;
+    height:80vh;
+    margin-bottom: 2vh;
+}
+.contact-header {
+	width: 40%;
+	display: inline-block;
+	vertical-align: top;
+	margin: 2%;
+    text-align: center;
+	box-sizing: border-box;
+	color: #666666;
+	font-family: Verdana, Geneva, sans-serif;
+    font-size: 2rem;
+    height: 40%;
+    text-shadow: 0.5px 0.5px black;
+}
+.contactForm{
+	width: 50%;
+	display: inline-block;
+	font-size: 2rem;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.contactForm input, .contactForm textarea {
+    display: inline-block;
+    height: 4vmin;
+    width: 80%;
+    font-size: 1.6rem;
+    margin: 0 10%;
+    border-radius: 5px;
+    padding: 1%;
+    border-style: groove;
+	font-family: Verdana, Geneva, sans-serif;
+    box-sizing: border-box;
+}
+.contactForm button{
+	margin: 1% 0 0 10%;
+	width: 80%;
+	font-size: 2.2rem;
+}
+.contactForm input[type=text]:focus, .contactForm input[type=email]:focus, .contactForm textarea:focus{
+    border: .2em solid #9C9D99;
+    background-color: #FFF;
+}
+.contactForm textarea.message{
+    height: 20vh;
+    resize: none;
+}
+.input-container{
+    width: 100%;
+}
+.input-container label{
+	display: block;
+    margin: 3% 0 1% 10%;
+    font-size: 2rem;
+}
+.contact_image{
+    border: solid black 5px;
+    border-radius:5%;
+    width: 60%;
+}
+.submitted{
+    text-align:center;
+    color:darkgreen;
+    text-shadow: 0.5px 0.5px darkgrey;
+}
+/*.modal{
+    display: none;
+    position: fixed;
+    width: 30vw;
+    height: 20vh;
+    background-color: white;
+    top: 40%;
+    text-align: center;
+    left: 40%;
+    padding: 2em;
+    border: 2px solid #e6e6e6;
+    border-radius: 1em;
+    z-index: 2;
+}
+.modal-overlay {
+    position: fixed;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+/*    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;*/
+    /*background-color: rgba(0,0,0,0.3);
+    z-index: 1;
+    cursor: pointer;
+}
+.close{
+    cursor: pointer;
+    text-align: right;
+}
+.modal p {
+    margin: 3em;
+}*/
+
+@media screen and (max-width: 600px){
+	.contactForm {
+		width: 100%;
+	}
+    .contact-header {
+        text-align: center;
+        width: 100%;
+    }
+    .input-container {
+    	width: 100%;
+    }
+    .input-container > input, .input-container > textarea  {
+		width: 80%;
+    }
+    .contactForm > button{
+        width: 80%;
+    }
+}

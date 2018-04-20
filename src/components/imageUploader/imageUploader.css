@@ -1,8 +1,58 @@
+.imgThumbContainer {
+    position: relative;
+    display: inline-block;
+    margin: 0 0.4%;
+    width: 5vw;
+    height: 4vw;
+    border: 1px solid black;
+    vertical-align: top;
+}
+
 .imgThumb {
-    width: 25%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.displayImages{
+    width: 75%;
+    height: 20vh;
+    overflow-y: auto;
+    display: inline-block;
 }
 
 .fileInput{
     width: 25%;
     height: 40px;
+}
+
+.dropZone {
+    width: 20%;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: lightgray;
+    text-align: center;
+    font-size: 1.7em;
+    padding: 5% 1%;
+    border: 0.3em dashed darkslategray;
+    vertical-align: top;
+}
+
+.imageUploadContainer{
+    width: 100%;
+    padding: 1%;
+    box-sizing: border-box;
+}
+
+.imageSection .help-block{
+    font-size: 1.3em;
+}
+
+.removeImg {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
