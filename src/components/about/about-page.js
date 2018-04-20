@@ -15,9 +15,22 @@ class AboutPage extends Component {
         super(props)
 
         this.state = {
-            isLoaded: false
+            style: {}
         }
 
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick = () => {
+
+        let style = {
+            animation: 'bobble .45s infinite'
+        }
+
+        this.setState({
+            style: style
+        })
+        
     }
 
     render(){
@@ -48,30 +61,30 @@ class AboutPage extends Component {
             <div className="aboutUsContainer">
                 <div className="images">
                     <div className='person'>
-                        <div className="bobbleBody1">
-                            <div className="bobbleHead1"></div>
+                        <div onClick={this.handleClick} className="bobbleBody1">
+                            <div className="bobbleHead1" style={this.state.style}></div>
                         </div>
                     </div>
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead2"></div>
+                            <div className="bobbleHead2" style={this.state.style}></div>
                         </div>
                     </div>
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead3"></div>
+                            <div className="bobbleHead3" style={this.state.style}></div>
                         </div>
                     </div> 
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead4"></div>
+                            <div className="bobbleHead4" style={this.state.style}></div>
                         </div>
                     </div> 
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead5"></div>
+                            <div className="bobbleHead5" style={this.state.style}></div>
                         </div>
-                    </div>                 
+                    </div>
                 </div>
                 <div className="infoContainer">
                     {contactElements}

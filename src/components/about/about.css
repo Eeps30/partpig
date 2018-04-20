@@ -89,18 +89,17 @@
     width: 70%;
 }
 
-/* @keyframes bobble {
+@keyframes bobble {
     0% {transform: translate(6px, 10px) rotate(1deg);}
     25% {transform: translate(-1px, -2px) rotate(-2deg);}
     50% {transform: translate(-2px, -3px) rotate(-3deg);}
     75% {transform: translate(2px, 2px) rotate(-1deg);}
     100% {transform: translate(6px, 10px) rotate(1deg);}
-} */
+}
 
-/* .person {
-    border: 1px solid red;
-    
-} */
+.bobbleAnimation {
+    animation: bobble .45s;
+}
 
 .bobbleBody1 {
     background-image: url('../../assets/images/bobble-bodies/partPigBobbleBody.png');
@@ -117,7 +116,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: -22%;
-    animation: bobble .45s;
     animation-iteration-count: infinite;
     position: relative;
     bottom: 34%;
@@ -129,7 +127,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: -14%;
-    animation: bobble .45s;
     animation-iteration-count: infinite;
     position: relative;
     bottom: 19%;
@@ -141,7 +138,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: -8%;
-    animation: bobble .45s;
     animation-iteration-count: infinite;
     position: relative;
     bottom: 21%;
@@ -153,7 +149,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: -15%;
-    animation: bobble .45s;
     animation-iteration-count: infinite;
     position: relative;
     bottom: 20%;
@@ -165,7 +160,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: -17%;
-    animation: bobble .45s;
     animation-iteration-count: infinite;
     position: relative;
     bottom: 21%;
