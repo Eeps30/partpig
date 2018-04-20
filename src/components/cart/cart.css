@@ -54,8 +54,10 @@
     float: right;
 }
 
-.cartData a{
+.cartData button, .cartData button, .cartData .disabled{
     float: right;
+    margin-top:5%;
+    margin-bottom: 40%;
 }
 
 .emptyMessage{
