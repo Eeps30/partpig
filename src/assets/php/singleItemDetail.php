@@ -6,7 +6,8 @@ require_once('mysqlConnect.php');
 $ID = $_GET['id'];
 $imgQuery =  "SELECT url  FROM `image` WHERE part_id='$ID'";
 $imgResult =  mysqli_query($conn, $imgQuery);
-
+print_r($imgResult);
+die();
 if($imgResult){
     if(mysqli_num_rows($imgResult)> 0){
         while($row = mysqli_fetch_assoc($imgResult)){

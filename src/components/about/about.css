@@ -111,24 +111,22 @@
 }
 
 .bobbleHead1 {
-    content: url('../../assets/images/bobble-bodies/dave-head.png');
-    width: 113%;
+    content: url('../../assets/images/bobble-bodies/dave-head1.png');
+    width: 102%;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-left: -22%;
+    margin-left: -16%;
+    
     animation-iteration-count: infinite;
-    position: relative;
-    bottom: 34%;
 }
 
 .bobbleHead2 {
-    content: url('../../assets/images/bobble-bodies/alex-head.png');
-    width: 97%;
+    content: url('../../assets/images/bobble-bodies/alex-head1.png');
+    width: 81%;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-left: -14%;
+    margin-left: -8%;
     animation-iteration-count: infinite;
-    position: relative;
     bottom: 19%;
 }
 
@@ -137,9 +135,8 @@
     width: 85%;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-left: -8%;
+    margin-left: -9%;
     animation-iteration-count: infinite;
-    position: relative;
     bottom: 21%;
 }
 
@@ -150,7 +147,6 @@
     background-repeat: no-repeat;
     margin-left: -15%;
     animation-iteration-count: infinite;
-    position: relative;
     bottom: 20%;
 }
 
@@ -161,6 +157,11 @@
     background-repeat: no-repeat;
     margin-left: -17%;
     animation-iteration-count: infinite;
-    position: relative;
     bottom: 21%;
+}
+
+.head{
+    position: relative;
+    bottom:31%;
+    right:2%;
 }
