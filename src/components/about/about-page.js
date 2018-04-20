@@ -4,8 +4,11 @@ import contactCSS from './about.css'
 import githubIcon from '../../assets/images/contact-icons/github-icon.png'
 import linkedinIcon from '../../assets/images/contact-icons/linkedIn-icon.png'
 import headshot from '../../assets/images/contact-icons/headshot.png'
-// import mp3 from '../../assets/audio/What-Is-Love.mp3'
-// import Music from './audio'
+import alexHead from '../../assets/images/bobble-bodies/alex-head.png'
+import evanHead from '../../assets/images/bobble-bodies/evan-head.png'
+import brianHead from '../../assets/images/bobble-bodies/brian-head.png'
+import daveHead from '../../assets/images/bobble-bodies/dave-head.png'
+import liHead from '../../assets/images/bobble-bodies/li-head.png'
 
 class AboutPage extends Component {
     constructor(props){
@@ -51,29 +54,28 @@ class AboutPage extends Component {
                     </div>
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead1"></div>
+                            <div className="bobbleHead2"></div>
                         </div>
                     </div>
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead1"></div>
+                            <div className="bobbleHead3"></div>
                         </div>
                     </div> 
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead1"></div>
+                            <div className="bobbleHead4"></div>
                         </div>
                     </div> 
                     <div className='person'>
                         <div className="bobbleBody1">
-                            <div className="bobbleHead1"></div>
+                            <div className="bobbleHead5"></div>
                         </div>
                     </div>                 
                 </div>
                 <div className="infoContainer">
                     {contactElements}
                 </div>
-                {/* <Music/> */}
             </div>
         )
     }

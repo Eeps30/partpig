@@ -97,10 +97,10 @@
     100% {transform: translate(6px, 10px) rotate(1deg);}
 } */
 
-.person {
+/* .person {
     border: 1px solid red;
     
-}
+} */
 
 .bobbleBody1 {
     background-image: url('../../assets/images/bobble-bodies/partPigBobbleBody.png');
@@ -112,11 +112,61 @@
 }
 
 .bobbleHead1 {
-    content: url('../../assets/images/bobble-bodies/conneryHead.png');
+    content: url('../../assets/images/bobble-bodies/dave-head.png');
     width: 113%;
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: -22%;
     animation: bobble .45s;
     animation-iteration-count: infinite;
+    position: relative;
+    bottom: 34%;
+}
+
+.bobbleHead2 {
+    content: url('../../assets/images/bobble-bodies/alex-head.png');
+    width: 97%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: -14%;
+    animation: bobble .45s;
+    animation-iteration-count: infinite;
+    position: relative;
+    bottom: 19%;
+}
+
+.bobbleHead3 {
+    content: url('../../assets/images/bobble-bodies/evan-head.png');
+    width: 85%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: -8%;
+    animation: bobble .45s;
+    animation-iteration-count: infinite;
+    position: relative;
+    bottom: 21%;
+}
+
+.bobbleHead4 {
+    content: url('../../assets/images/bobble-bodies/li-head.png');
+    width: 93%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: -15%;
+    animation: bobble .45s;
+    animation-iteration-count: infinite;
+    position: relative;
+    bottom: 20%;
+}
+
+.bobbleHead5 {
+    content: url('../../assets/images/bobble-bodies/brian-head.png');
+    width: 96%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: -17%;
+    animation: bobble .45s;
+    animation-iteration-count: infinite;
+    position: relative;
+    bottom: 21%;
 }
