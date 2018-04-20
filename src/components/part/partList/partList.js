@@ -191,7 +191,11 @@ class PartList extends Component{
             noResults = <NoResults/>;
         }
         if (!this.state.isLoading) {
-            return <Loading />;
+            return (
+                <div className='partResults container'>
+                    <Loading />;
+                </div>
+            );
         }
         let visibleParts = this.state.arrayParts.filter((part) => {return part.display.brand && part.display.price_usd && part.display.category;});
             

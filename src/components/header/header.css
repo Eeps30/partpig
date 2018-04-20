@@ -63,8 +63,8 @@ header {
     border: 2px solid #d0451b;
     vertical-align: top;
     position: relative;
-    top: 34%;
-    transform: translate(0,-50%);
+    top: 40%;
+    transform: translate(-50%,0);
 }
 
 .sellPartButton:hover{

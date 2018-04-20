@@ -209,7 +209,9 @@ class SellPartForm extends Component{
     render() {
         
         if (this.state.isLoading) {
-            return <Loading />;
+            <div className='container'>
+                <Loading />;
+            </div>
         }
 
         const fields = formInputs.map((field,index) => {

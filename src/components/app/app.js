@@ -28,7 +28,8 @@ class App extends Component{
         super(props);     
         this.state = {
             cartParts: [],
-            userId: localStorage.getItem('user')
+            userId: localStorage.getItem('user'),
+            userName:''
         }
         this.images = ['part1.jpg','part2.jpg','part3.jpg','part4.jpg','part5.jpg','part6.jpg','part7.jpg','part8.jpg','part9.jpg','part10.jpg','part11.jpg','part12.jpg','part13.jpg','part14.jpg','part15.jpg','part16.jpg','part17.jpg','part18.jpg','part19.jpg','part20.jpg','part21.jpg','part22.jpg','part23.jpg','part24.jpg','part25.jpg','part26.jpg','part27.jpg','part28.jpg','part29.jpg','part30.jpg'];
 
@@ -52,7 +53,8 @@ class App extends Component{
             this.user=data[0];
             localStorage.setItem('user',data[0].id);
             this.setState({
-                userId: data[0].id
+                userId: data[0].id,
+                userName: data[0].first_name
             });            
             
             //axios call to get all the parts in the cart for this user
@@ -66,9 +68,14 @@ class App extends Component{
         };
         const url = 'http://localhost:8000/teampartpig/src/assets/php/buyerCart.php';        
         axios.get(url,{params}).then(resp=>{
-             resp.data.data.map((item ,index)=>{
-                this.addPartToCart(item,true);
-             });           
+            if(resp.data.success){
+                resp.data.data.map((item ,index)=>{
+                    this.addPartToCart(item,true);
+                });
+                this.setState({
+                    userName: resp.data.username
+                });  
+            }         
         }).catch(err => {
             console.log('error is: ', err);
         });
@@ -209,7 +216,7 @@ class App extends Component{
                     <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
-                    <Route path='/dashboard' component={UserDashboard}/>
+                    <Route path='/dashboard' render={props => <UserDashboard userData={this.state.userName} {...props}/>}/>
                     <Route path='/checkoutComplete/:orderNumber' component={CheckoutComplete}/>
                     <Footer/> 
                 </div>
