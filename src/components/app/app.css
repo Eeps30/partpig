@@ -20,6 +20,7 @@ body {
 
 #root{
     width:100%;
+    min-width: 900px;
 }
 
 .mainContainer {
@@ -37,7 +38,7 @@ body {
 
 .container > a{
     position: absolute;
-    top: 9.8%;
+    top: 8.5%;
     left: 10%;
     text-decoration: none;
     font-size: 1.5em;
