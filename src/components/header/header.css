@@ -52,17 +52,18 @@ header {
     border: none;
     text-align: center;
     text-decoration: none;
-    font-size: 0.7em;
+    font-size: 0.8em;
     background-color: #d0451b;
     color: white;
     padding: 1%;
     border-radius: 5px;
-    margin: 1%;
+    margin-right: 2%;
     padding: 2% 2%;
     border: 2px solid #d0451b;
     vertical-align: top;
     position: relative;
-    top: 35%;
+    top: 34%;
+    transform: translate(0,-50%);
 }
 
 .sellPartButton:hover{
@@ -74,25 +75,26 @@ header {
 .cartDivIcon{
     display: inline-block;
     vertical-align: top;
-    height: 100%;
+    height: 80%;
 }
 
 .cartDivIcon a{
     position: relative;
     text-decoration: none;
+    top: 14%;
 }
 
 .cartIcon{   
     position: relative;
     top: 10%;
-    height: 4vmin;
+    height: 88%;
 }
 
 .cartCount{
     position: relative;
-    top: -40%;
+    top: -46%;
     right: 50%;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: bold;
     color: #bc3315;
 }
