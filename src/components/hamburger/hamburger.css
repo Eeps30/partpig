@@ -19,14 +19,14 @@
  }
  
  #menuToggle input {
-    width: 3%;
-    height: 5%;
+    width: 50px;
+    height: 50px;
     position: absolute;
     top: 0px;
     left: 0px;
     cursor: pointer;
     opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
+    z-index: 3; /* and place it over the hamburger */
     -webkit-touch-callout: none;
  }
 
