@@ -417,7 +417,9 @@ class Checkout extends Component {
     render() {
 
         if (!this.state.isLoading) {
-            return <Loading />;
+            <div className='container'>
+                <Loading />;
+            </div>
         }
 
         let listParts = [];
