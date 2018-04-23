@@ -42,3 +42,8 @@
 .loginForm label {
     float: left;
 }
+
+.loginFormErrorMessage{
+    background-color:lightcoral;
+
+}
