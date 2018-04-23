@@ -7,6 +7,10 @@ class LoginForm extends Component {
     constructor(props){
         super(props);
         this.state = {
+            form:{
+                user: '',
+                password: ''
+            },
             loginError: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -56,15 +60,35 @@ class LoginForm extends Component {
                 <h2>Login with username</h2>
                     <form onSubmit={this.handleSubmit}>
                         <label>Username</label>
-                        <input type="text" id="user" name="user" placeholder="user"/>
+                        <input type="text" id="user" name="user" placeholder="user" onChange={this.handleUserInputChange.bind(this)}/>
                         <label>Password</label>
-                        <input type="password" id="password" name="password" placeholder="Password"/>
+                        <input type="password" id="password" name="password" placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)}/>
                         <input type="submit" value="Sign In"/>
                     </form>
                     {errorMessage}
             </div>
         );
     }
+    handleUserInputChange(e) {
+		const { value } = e.target
+		this.setState({
+			form: {
+				...this.state.form,
+				user: value
+			},
+			...this.state.loginError
+		});
+    }
+    handlePasswordInputChange(e) {
+		const { value } = e.target
+		this.setState({
+			form: {
+				...this.state.form,
+				password: value
+			},
+			...this.state.loginError
+		});
+	}
 }
 
 export default LoginForm;
