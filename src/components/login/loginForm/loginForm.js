@@ -52,7 +52,6 @@ class LoginForm extends Component {
         if (this.state.loginError) {
             errorMessage = <h2 className="loginFormErrorMessage">Username or Password Incorrect</h2>;
         }
-        console.log('state', this.state);
         const {user, password} = this.state.form;
         return (
             <div className="loginForm">
