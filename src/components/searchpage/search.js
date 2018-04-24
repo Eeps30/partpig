@@ -52,7 +52,15 @@ class DropDownContainer extends Component {
     }
 
     validateFields(){
-        return ((this.state.make !== 'default' && this.state.model !== 'default' && this.state.year !== 'default') || this.state.searchText !== '');
+        if((this.state.make !== 'default' && this.state.model !== 'default' && this.state.year !== 'default') || this.state.searchText !== ''){
+            if((this.state.searchText !== '') && (this.state.make !== 'default' && this.state.model === 'default' && this.state.year === 'default')){
+                return false
+            }else if((this.state.searchText !== '') && (this.state.make !== 'default' && this.state.model !== 'default' && this.state.year === 'default')){
+                return false
+            }else{
+                return true
+            }
+        }
     }
 
     render(){
