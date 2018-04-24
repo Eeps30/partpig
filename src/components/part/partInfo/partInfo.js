@@ -89,8 +89,7 @@ class PartInfo extends Component {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }).then(resp=>{   
-            console.log(resp);  
+        }).then(resp=>{     
             this.oldPartInfo = this.state.partInfo;                  
             this.setState({
                 editable:false,
