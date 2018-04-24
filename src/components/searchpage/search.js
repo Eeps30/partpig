@@ -14,7 +14,8 @@ class DropDownContainer extends Component {
             make: 'default',
             model: 'default',
             year: 'default',
-            searchText:''
+            searchText:'',
+            showErrorBorder: {}
         }
         this.catchMakeSelect = this.catchMakeSelect.bind(this)
         this.catchModelSelect = this.catchModelSelect.bind(this)
@@ -48,27 +49,27 @@ class DropDownContainer extends Component {
     handleChange(event){
         this.setState({
             searchText: event.target.value
+        });
+    }
+
+    handleError(){
+        this.setState({
+            showErrorBorder : {
+                border: 'solid red 2px'
+            }
         })
     }
 
     validateFields(){
 
-        const errorClassStyle = {
-            "border": "2px solid red",
-            "border-radius": "7px"
-        }
-
         if((this.state.make !== 'default' && this.state.model !== 'default' && this.state.year !== 'default') || this.state.searchText !== ''){
             if((this.state.searchText !== '') && (this.state.make !== 'default' && this.state.model === 'default' && this.state.year === 'default')){
-                let modelError = document.getElementsByClassName('makeDropdown')
-                modelError.className(`${errorClassStyle}`)
-                // let yearError = document.getElementsByClassName('yearError')
-                // yearError.className += `${errorClassStyle}`
+                // this.handleError();
                 return false
             }else if((this.state.searchText !== '') && (this.state.make !== 'default' && this.state.model !== 'default' && this.state.year === 'default')){
-                return false
+                return false;
             }else{
-                return true
+                return true;
             }
         }
     }
@@ -92,11 +93,11 @@ class DropDownContainer extends Component {
                         <div>
                             <input type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
                             {searchButton}
-                        </div>                       
+                        </div>
                     </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                        <ModelDropDown className="modelError" data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <ModelDropDown style={this.state.showErrorBorder} data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown className="yearError" data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                     </div>
                 </div>
