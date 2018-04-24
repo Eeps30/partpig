@@ -42,6 +42,7 @@ class App extends Component{
         this.saveUrlBack = this.saveUrlBack.bind(this);
         this.setUserData = this.setUserData.bind(this);
         this.removeAllPartsFromCart = this.removeAllPartsFromCart.bind(this);
+        this.removeAllPartsYouOwnFromCart = this.removeAllPartsYouOwnFromCart.bind(this);
         this.urlBack = '';
         this.user = null;
         if(this.state.userId){
@@ -67,6 +68,7 @@ class App extends Component{
         const params = {               
             user_id: parseInt(userId)
         };
+        this.removeAllPartsYouOwnFromCart(this.state.cartParts);
         const url = 'http://localhost:8000/teampartpig/src/assets/php/buyerCart.php';        
         axios.get(url,{params}).then(resp=>{
             if(resp.data.success){
@@ -167,6 +169,26 @@ class App extends Component{
         const partList = [...this.state.cartParts];
         for(let i=0;i<partList.length;i++){
             if(partList[i].id === partInfo.id){
+                partList.splice(i,1);
+            }
+        }               
+        const cartCount = document.getElementsByClassName('cartCount');
+        cartCount[0].textContent = partList.length;
+        this.setState({
+            cartParts: partList
+        });
+    }
+
+    removeAllPartsYouOwnFromCart(partArray){
+        partArray.map((item ,index)=>{
+            this.removePartYouOwnFromCart(item);
+         });
+    }
+
+    removePartYouOwnFromCart(partInfo){
+        const partList = [...this.state.cartParts];
+        for(let i=0;i<partList.length;i++){
+            if(partList[i].id === partInfo.id && partInfo.seller_id === this.state.userId){
                 partList.splice(i,1);
             }
         }               

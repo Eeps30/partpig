@@ -10,6 +10,7 @@ class PartInfo extends Component {
     constructor(props){
         super(props);
 
+        this.userId = localStorage.getItem('user');
         this.state = {
             partInfo:props.partInfo,
             editable: false,
@@ -183,7 +184,9 @@ class PartInfo extends Component {
             if(this.containsObject(this.state.partInfo,this.props.cartParts)){
                 multiUsebutton = <button className='disabled addButton'>Added</button>;            
             }else{
-                multiUsebutton = <button className='button-link addButton' onClick={()=>{this.addCart()}}>Add to Cart</button>;
+                if(this.userId !== this.state.partInfo.seller_id){
+                    multiUsebutton = <button className='button-link addButton' onClick={()=>{this.addCart()}}>Add to Cart</button>;
+                }                
             }
         }
 
