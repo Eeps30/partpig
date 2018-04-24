@@ -62,7 +62,7 @@ if($result){
 
 	$imgResult = mysqli_query($conn, $imgQuery);
 	
-	$output['data'][] = "last Id was $last_id";
+	$output['data'][] = "$last_id";
 	$output['data'][] = "The Query was: ".$imgQuery ." result was" .$imgResult;
 	if(!$imgResult){
 		$output['error'] = mysqli_error($conn);

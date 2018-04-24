@@ -21,6 +21,7 @@ import ListingSuccess from '../listingSuccess/listingSuccess';
 import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
+require('../../assets/images/piglogo.png');
 
 class App extends Component{
 
@@ -207,7 +208,8 @@ class App extends Component{
                     <Route path='/partresults/make/:make/model/:model/year/:year/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />                   
                     <Route exact path='/partresults/make/:make/model/:model/year/:year/keyword/:keyword' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
                     <Route path='/partresults/make/:make/model/:model/year/:year/keyword/:keyword/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
-                    <Route path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                    
+                    <Route exact path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />
+                    <Route path='/partdetails/:id/newPart/:newPart' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                                        
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={ContactPage}/>
                     <Route path='/contactSeller' component={ContactSeller}/>

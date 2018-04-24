@@ -103,6 +103,36 @@ class PartInfo extends Component {
         console.log('partInfo:',this.state.partInfo);
     }
 
+    confirmPart(){       
+        const params = {
+            status: 'available',
+            id: this.state.partInfo.id
+        };
+        const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/updatePartStatus.php';
+        axios.get(urlStatus, { params }).then(resp => {
+            if (resp.data.success) {
+                this.props.history.push('/dashboard');
+            }
+        }).catch(err => {
+            console.log('error is: ', err);
+        });
+    }
+
+    cancelPart(){        
+        const params = {
+            status: 'deleted',
+            id: this.state.partInfo.id
+        };
+        const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/updatePartStatus.php';
+        axios.get(urlStatus, { params }).then(resp => {
+            if (resp.data.success) {
+                this.props.history.push('/sellpart');
+            }
+        }).catch(err => {
+            console.log('error is: ', err);
+        });
+    }
+
     componentDidMount(){
         if(this.props.fromDashboard=='true'){
             this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],true);
@@ -127,14 +157,22 @@ class PartInfo extends Component {
         let editableUsebutton = '';
         let cancelButton = '';
         let messageEditable = '';
+        let confirmButton = '';
+        let deletePartButton = '';
 
         if(this.props.isCart){
             multiUsebutton = <button className='button-link' onClick={()=>this.props.removePart(this.state.partInfo)}>Remove</button>;
-        }else if(this.props.fromDashboard=='true'){
+        }else if(this.props.fromDashboard=='true'|| this.props.newPart=='true'){
+            if(this.props.newPart=='true'){
+                confirmButton = <button className='button-link editButton' onClick={this.confirmPart.bind(this)}>Confirm</button>;
+                deletePartButton = <button className='button-link editButton' onClick={this.cancelPart.bind(this)}>Cancel</button>;
+            }
             if(this.state.editable){
                 editableUsebutton = <button className='button-link editButton' onClick={this.savePartInfo.bind(this)}>Save</button>;
                 cancelButton = <button className='button-link editButton' onClick={this.resetPartInfo}>Cancel</button>;
                 messageEditable = <span className='editMessage'>Click in the elements on blue to edit them</span>
+                confirmButton='';
+                deletePartButton = '';
             }else{
                 editableUsebutton = <button className='button-link editButton' onClick={()=>{
                     this.setState({editable: true});
@@ -156,7 +194,7 @@ class PartInfo extends Component {
                     <p className="productDescription"><span id='description'>{this.state.partInfo.description}</span></p>
                     <p className="productCondition">Condition: {this.state.partInfo.part_condition}</p>
                     <p className="productLocation">Location: {this.state.partInfo.city + ', '+ this.state.partInfo.state}</p>               
-                    <p>Seller: {this.state.partInfo.seller} {editableUsebutton}{cancelButton}</p>
+                    <p>Seller: {this.state.partInfo.seller} {confirmButton}{editableUsebutton}{cancelButton}{deletePartButton}</p>
                     {messageEditable}
                 </div>           
             );
