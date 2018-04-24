@@ -97,7 +97,7 @@ class DropDownContainer extends Component {
                     </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                        <ModelDropDown style={this.state.showErrorBorder} data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <ModelDropDown errorBorder={this.state.showErrorBorder} data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown className="yearError" data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                     </div>
                 </div>
