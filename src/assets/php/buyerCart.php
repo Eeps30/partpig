@@ -8,22 +8,24 @@ $output = [
     'data' => [],
     'firstname' => []
 ];
-if(!empty($_GET['user_id'])){
-    $user_id = $_GET['user_id'];
-}
-else{
+if(empty($_GET['user_id'])){
     die('id required');
 }
+$user_id = $_GET['user_id'];
+$nameQuery = "SELECT first_name FROM `user` WHERE id=?";
 
-$nameResult = mysqli_query($conn, "SELECT first_name FROM `user` WHERE id=$user_id");
-$firstname = mysqli_fetch_assoc($nameResult)['first_name'];
-if(!empty($firstname)){
-    $output['firstname'] = $firstname;   
-
+//prepared statement for query
+$nameStmt = $conn->prepare($nameQuery);
+$nameStmt->bind_param("i", $user_id);
+$nameStmt->execute();
+$nameResult = $nameStmt->get_result();
+if($nameResult){
+    $firstname = mysqli_fetch_assoc($nameResult)['first_name'];
 }
-else{
+if(empty($firstname)){
     die("no username for that id");
-}
+}   
+$output['firstname'] = $firstname;   
 
 $query =  "SELECT s.buyer_id,
                   p.id, 
@@ -38,7 +40,7 @@ $query =  "SELECT s.buyer_id,
                   i.url AS images
             FROM `shoppingcart` AS s
             JOIN `part` AS p
-                ON s.buyer_id = $user_id AND s.part_id = p.id
+                ON s.buyer_id = ? AND s.part_id = p.id
             JOIN `category` AS c
                 ON p.category_id = c.id 
             JOIN `image` AS i 
@@ -49,7 +51,13 @@ $query =  "SELECT s.buyer_id,
                     WHERE im.part_id=p.id
                 )";
 
-$result = mysqli_query($conn, $query);
+//prepared statement for query
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+
 $display = new stdClass();
 $display->brand = 'true';
 $display->price = 'true';
@@ -63,11 +71,11 @@ if($result){
             $row['year'] = (int)$row['year'];
             $output['data'][] = $row;
         }
+        $output['success'] = true;
     }
     else{
         $output['errors'][] = 'NO Data available';
     }
-    $output['success'] = true;
 }
 else{
     $output['errors'][] = 'Error in database query';
