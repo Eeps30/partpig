@@ -37,7 +37,6 @@ class LoginForm extends Component {
                 this.props.history.push('/dashboard');
             }
             else {
-                console.log("incorrect login");
                 this.setState({
                     loginError: true
                 });
@@ -48,7 +47,6 @@ class LoginForm extends Component {
     }
 
     render() {
-        console.log("loginError is : ", this.state.loginError);
         let errorMessage = '';
         if (this.state.loginError) {
             errorMessage = <h2 className="loginFormErrorMessage">Username or Password Incorrect</h2>;
