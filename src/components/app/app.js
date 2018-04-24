@@ -21,6 +21,7 @@ import ListingSuccess from '../listingSuccess/listingSuccess';
 import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
+require('../../assets/images/piglogo.png');
 
 class App extends Component{
 
@@ -41,6 +42,7 @@ class App extends Component{
         this.saveUrlBack = this.saveUrlBack.bind(this);
         this.setUserData = this.setUserData.bind(this);
         this.removeAllPartsFromCart = this.removeAllPartsFromCart.bind(this);
+        this.removeAllPartsYouOwnFromCart = this.removeAllPartsYouOwnFromCart.bind(this);
         this.urlBack = '';
         this.user = null;
         if(this.state.userId){
@@ -66,6 +68,7 @@ class App extends Component{
         const params = {               
             user_id: parseInt(userId)
         };
+        this.removeAllPartsYouOwnFromCart(this.state.cartParts);
         const url = 'http://localhost:8000/teampartpig/src/assets/php/buyerCart.php';        
         axios.get(url,{params}).then(resp=>{
             if(resp.data.success){
@@ -176,6 +179,26 @@ class App extends Component{
         });
     }
 
+    removeAllPartsYouOwnFromCart(partArray){
+        partArray.map((item ,index)=>{
+            this.removePartYouOwnFromCart(item);
+         });
+    }
+
+    removePartYouOwnFromCart(partInfo){
+        const partList = [...this.state.cartParts];
+        for(let i=0;i<partList.length;i++){
+            if(partList[i].id === partInfo.id && partInfo.seller_id === this.state.userId){
+                partList.splice(i,1);
+            }
+        }               
+        const cartCount = document.getElementsByClassName('cartCount');
+        cartCount[0].textContent = partList.length;
+        this.setState({
+            cartParts: partList
+        });
+    }
+
     removeListing(partInfo){
         console.log("removed part")
     }
@@ -207,7 +230,8 @@ class App extends Component{
                     <Route path='/partresults/make/:make/model/:model/year/:year/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />                   
                     <Route exact path='/partresults/make/:make/model/:model/year/:year/keyword/:keyword' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
                     <Route path='/partresults/make/:make/model/:model/year/:year/keyword/:keyword/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
-                    <Route path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                    
+                    <Route exact path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />
+                    <Route path='/partdetails/:id/newPart/:newPart' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                                        
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={ContactPage}/>
                     <Route path='/contactSeller' component={ContactSeller}/>
@@ -217,7 +241,7 @@ class App extends Component{
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Route path='/dashboard' render={props => <UserDashboard userData={this.state.userName} {...props}/>}/>
-                    <Route path='/checkoutComplete/:orderNumber' component={CheckoutComplete}/>
+                    <Route path='/checkoutComplete/:orderNumber' render={props => <CheckoutComplete  urlBack={this.urlBack} {...props}/>}/>
                     <Footer/> 
                 </div>
             </Router>  

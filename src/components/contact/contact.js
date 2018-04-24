@@ -115,7 +115,7 @@ class Contact extends Component {
 		}).then(resp => {
 			console.log("Server Response:", resp);
 		}).catch(err => {
-			console.log("There was an error:");
+			console.log("There was an error:", err);
 		});
 	}
 	handleNameInputChange(e) {

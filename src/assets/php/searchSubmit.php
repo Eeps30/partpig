@@ -17,7 +17,8 @@ $query =  "SELECT p.id,
                   p.model, 
                   p.year,                               
                   p.part_number, 
-                  p.price_usd, 
+                  p.price_usd,
+                  p.seller_id, 
                   i.url AS images
             FROM `part` AS p
             JOIN `category` AS c

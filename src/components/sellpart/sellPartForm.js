@@ -47,11 +47,17 @@ class SellPartForm extends Component{
     handleSellPartSubmit(event){
         event.preventDefault();
         if(this.validateFields()){
-            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
-
             this.setState({
-               isLoading: true
-            });
+                isLoading: true
+             });
+        }
+    }
+
+    componentDidUpdate(){  
+        
+        if(this.state.isLoading){
+            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
+            
             axios({
                 url: url,
                 method: 'post',
@@ -61,7 +67,7 @@ class SellPartForm extends Component{
                 }
             }).then(resp=>{
                 console.log("Server Response:", resp);
-                this.props.history.push('/dashboard/activeparts');
+                this.props.history.push(`/partdetails/${resp.data.data[0]}/newPart/true`);
             }).catch(err => {
                 console.log("There was an error:");
             });
@@ -209,9 +215,10 @@ class SellPartForm extends Component{
     render() {
         
         if (this.state.isLoading) {
-            <div className='container'>
-                <Loading />;
-            </div>
+            return(<div className='container'>
+                        <Loading />;
+                    </div>
+                   );
         }
 
         const fields = formInputs.map((field,index) => {

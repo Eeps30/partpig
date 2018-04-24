@@ -32,6 +32,7 @@ $fields['category_id'] = (int)$fields['category_id'] ?: 8;
 $fields['year'] = (int)$fields['year'];
 $fields['price_usd'] = (float)$fields['price_usd'];
 $fields['seller_id'] = (int)$fields['seller_id'];
+$fields['status'] = 'draft';
 
 $query = "INSERT INTO `part` "; 
 $tableValues =  [];
@@ -67,7 +68,7 @@ if($stmt->affected_rows === 1){
 
 	$imgResult = mysqli_query($conn, $imgQuery);
 	
-	$output['data'][] = "last Id was $last_id";
+	$output['data'][] = "$last_id";
 	$output['data'][] = "The Query was: ".$imgQuery ." result was" .$imgResult;
 	if(!$imgResult){
 		$output['error'] = mysqli_error($conn);

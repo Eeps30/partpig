@@ -37,7 +37,6 @@ class LoginForm extends Component {
                 this.props.history.push('/dashboard');
             }
             else {
-                console.log("incorrect login");
                 this.setState({
                     loginError: true
                 });
@@ -45,24 +44,24 @@ class LoginForm extends Component {
         }).catch(err => {
             console.log('error is: ', err);
         });
+        this.reset();
     }
 
     render() {
-        console.log("loginError is : ", this.state.loginError);
         let errorMessage = '';
         if (this.state.loginError) {
             errorMessage = <h2 className="loginFormErrorMessage">Username or Password Incorrect</h2>;
         }
-
+        const {user, password} = this.state.form;
         return (
             <div className="loginForm">
 
                 <h2>Login with username</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username</label>
-                    <input type="text" id="user" name="user" placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
+                    <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
                     <label>Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
+                    <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
                     <input type="submit" value="Sign In" />
                 </form>
                 {errorMessage}
@@ -88,6 +87,16 @@ class LoginForm extends Component {
             },
             ...this.state.loginError
         });
+    }
+    reset(){
+        const {user} = this.state.form.user;
+        this.setState({
+            form:{
+                ...this.state.form,
+                password:''
+            },
+            ...this.state.loginError
+        })
     }
 }
 
