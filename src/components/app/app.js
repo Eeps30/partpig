@@ -14,6 +14,7 @@ import ContactPage from '../contact/contact';
 import ContactSeller from '../contact/seller/contactSeller';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
+import SignUp from '../signUp/signUp';
 import Home from '../home/home';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
@@ -218,6 +219,7 @@ class App extends Component{
                     <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Route path='/dashboard' render={props => <UserDashboard userData={this.state.userName} {...props}/>}/>
                     <Route path='/checkoutComplete/:orderNumber' component={CheckoutComplete}/>
+                    <Route path='/signup' component={SignUp}/>
                     <Footer/> 
                 </div>
             </Router>  
