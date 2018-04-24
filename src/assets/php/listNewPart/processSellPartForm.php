@@ -33,6 +33,7 @@ $fields['category_id'] = (int)$fields['category_id'] ?: 8;
 $fields['year'] = (int)$fields['year'];
 $fields['price_usd'] = (float)$fields['price_usd'];
 $fields['seller_id'] = (int)$fields['seller_id'];
+$fields['status'] = 'draft';
 
 $query = "INSERT INTO `part` "; 
 $tableFields = '';
