@@ -52,8 +52,18 @@ class DropDownContainer extends Component {
     }
 
     validateFields(){
+
+        const errorClassStyle = {
+            "border": "2px solid red",
+            "border-radius": "7px"
+        }
+
         if((this.state.make !== 'default' && this.state.model !== 'default' && this.state.year !== 'default') || this.state.searchText !== ''){
             if((this.state.searchText !== '') && (this.state.make !== 'default' && this.state.model === 'default' && this.state.year === 'default')){
+                let modelError = document.getElementsByClassName('makeDropdown')
+                modelError.className(`${errorClassStyle}`)
+                // let yearError = document.getElementsByClassName('yearError')
+                // yearError.className += `${errorClassStyle}`
                 return false
             }else if((this.state.searchText !== '') && (this.state.make !== 'default' && this.state.model !== 'default' && this.state.year === 'default')){
                 return false
@@ -86,8 +96,8 @@ class DropDownContainer extends Component {
                     </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                        <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                        <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <ModelDropDown className="modelError" data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <YearDropDown className="yearError" data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                     </div>
                 </div>
             </div>

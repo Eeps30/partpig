@@ -111,12 +111,12 @@ class SellPartForm extends Component{
         }       
     }
 
-    containsImage(obj, list) {        
+    containsImage(obj, list) {
         for (let i = 0; i < list.length; i++) {
             if (list[i].imagePreviewUrl === obj.name) {
                 return i;
             }
-        }    
+        }
         return -1;
     }
 
@@ -126,11 +126,10 @@ class SellPartForm extends Component{
         newPart[name] = value;
         this.setState({
             part:newPart
-        });  
+        });
     }
 
     partHandleOnBlur(event){
-        
         const {name,value,placeholder,required} = event.target;
         const newPartErrors = {...this.state.partErrors};
         if(value ==='' && required){           
@@ -170,7 +169,7 @@ class SellPartForm extends Component{
         this.setState({
             part: newPart,
             partErrors:newPartErrors
-        });  
+        });
     }
 
     validateFields(){
@@ -196,7 +195,7 @@ class SellPartForm extends Component{
         if(this.state.part.price_usd === 0){
             newPartErrors['price_usd'] = 'Price is required';           
         }else{
-            delete newPartErrors['price_usd'];            
+            delete newPartErrors['price_usd'];
         }              
         
         this.setState({
@@ -244,7 +243,7 @@ class SellPartForm extends Component{
                         <button type='button' onClick={this.handleSellPartSubmit.bind(this)} className="button-link">List Part</button>
                     </div>
                 </form>
-            </div>          
+            </div>
         );
     
     }
