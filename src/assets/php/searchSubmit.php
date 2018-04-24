@@ -33,44 +33,53 @@ $query =  "SELECT p.id,
             WHERE ";
 
 $fieldsToCheck = ['make', 'model', 'year'];  
-
+$params = [];
 $subQuery[] = "(p.status ='available' OR p.status='incart')";
 
 if(!empty($_GET['keyword'])){
     $keyword = $_GET['keyword'];
-
-    $subQuery[] = "(`brand` LIKE '%$keyword%'
-    OR `part_name` LIKE '%$keyword%'  
-    OR `make` LIKE '%$keyword%' 
-    OR `model` LIKE '%$keyword%'
-    OR `description` LIKE '%$keyword%'
-    OR `part_number` LIKE '%$keyword%')";
+    for($x = 0; $x < 6; $x++){
+        $params[] = "%" . $_GET['keyword'] . "%";
+    }
+    $subQuery[] = "(`brand` LIKE ?
+    OR `part_name` LIKE ?  
+    OR `make` LIKE ? 
+    OR `model` LIKE ?
+    OR `description` LIKE ?
+    OR `part_number` LIKE ?)";
 }
 if(isset($_GET['make']) || isset($_GET['model']) || isset($_GET['year'])){
     forEach($fieldsToCheck as $value){
         if(!empty($_GET[$value])){
-            $subQuery[] = " $value = '{$_GET[$value]}'";
+            $subQuery[] = " $value = ?";
+            $params[] = $_GET[$value];
         }
     }
 }
 
-    $query .=  implode(" AND ",$subQuery);
-    
-    $output['error'][] = $query;
-$result = mysqli_query($conn, $query);
+$query .=  implode(" AND ",$subQuery);
+$output['error'][] = $query;
+$letterString = str_repeat("s", count($params));
 
-// display enables the front end filters
+//prepared statement for query
+$stmt = $conn->prepare($query);
+$stmt->bind_param($letterString, ...$params);
+$stmt->execute();
+$result = $stmt->get_result();
+
+
+    // display enables the front end filters
 $display = new stdClass();
 $display->brand = 'true';
 $display->price_usd = 'true';
 $display->category = 'true';
-
-if($result){
-    if(mysqli_num_rows($result)> 0){
-        while($row = mysqli_fetch_assoc($result)){
-            $row['images'] = array($row['images']); 
-            $row['display'] = $display;
-            $row['price_usd'] = (float)$row['price_usd'];
+    
+    if($result){
+        if(mysqli_num_rows($result)> 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $row['images'] = array($row['images']); 
+                $row['display'] = $display;
+                $row['price_usd'] = (float)$row['price_usd'];
             $row['year'] = (int)$row['year'];
             $output['data'][] = $row;
         }
@@ -84,6 +93,7 @@ else{
     $output['errors'][] = 'Error in database query';
 }
 
+$stmt->close();
 $json_output = json_encode($output);
 print($json_output);
 ?>

@@ -5,6 +5,11 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 require_once('mysqlConnect.php');
 
+if(empty($_GET['user_id'])){
+    die('id required');
+}
+
+
 //basic output format, all data gets pushed into data[]
 $output = [
     'success'=> false,
@@ -34,9 +39,15 @@ $query =  "SELECT p.id,
                     FROM `image` as im 
                     WHERE im.part_id=p.id
                 ) 
-                AND s.buyer_id = '{$_GET['user_id']}'";   
+                AND s.buyer_id = ? ";   
 
-$result = mysqli_query($conn, $query);
+
+//prepared statement for query
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $_GET['user_id']);
+$stmt->execute();
+$result = $stmt->get_result();
+
 
 if($result){
     if(mysqli_num_rows($result)> 0){

@@ -8,8 +8,11 @@ $output = [
     'data' => []
 ];
 
-if(!isset($_GET['user_id'], $_GET['addressType'])){
+if(empty($_GET['user_id']) OR empty($_GET['addressType'])){
     die('need a user id and addressType');
+}
+if($_GET['addressType'] !== 'shipping' AND $_GET['addressType'] !== 'billing'){
+    die("valid address type required");
 }
 
 $user_id = $_GET['user_id'];
@@ -42,11 +45,11 @@ if($result){
         while($row = mysqli_fetch_assoc($result)){
             $output['data'][] = $row;
         }
+        $output['success'] = true;
     }
     else{
         $output['errors'][] = 'NO Data available';
     }
-    $output['success'] = true;
 }
 else{
     $output['errors'][] = 'Error in database query';
