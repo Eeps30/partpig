@@ -17,6 +17,7 @@ class DropDownContainer extends Component {
             searchText:'',
             showErrorBorder: {}
         }
+        this.validateFields = this.validateFields.bind(this);
         this.catchMakeSelect = this.catchMakeSelect.bind(this)
         this.catchModelSelect = this.catchModelSelect.bind(this)
         this.catchYearSelect = this.catchYearSelect.bind(this)
@@ -52,13 +53,13 @@ class DropDownContainer extends Component {
         });
     }
 
-    handleError(){
-        this.setState({
-            showErrorBorder : {
-                border: 'solid red 2px'
-            }
-        })
-    }
+    // handleError(){
+    //     this.setState({
+    //         showErrorBorder : {
+    //             border: 'solid red 2px'
+    //         }
+    //     })
+    // }
 
     validateFields(){
 
@@ -84,6 +85,7 @@ class DropDownContainer extends Component {
         let searchButton = <Link className='button-link' to={"/partresults" + queryStr}> FIND PARTS </Link>
         if(!this.validateFields()){
             searchButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/partresults" + queryStr}> FIND PARTS </Link>
+            //after button throw, run the check that is before the handlerError method from above
         }
         
         return(
@@ -97,8 +99,8 @@ class DropDownContainer extends Component {
                     </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
-                        <ModelDropDown errorBorder={this.state.showErrorBorder} data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
-                        <YearDropDown className="yearError" data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                     </div>
                 </div>
             </div>

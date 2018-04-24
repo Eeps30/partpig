@@ -8,8 +8,8 @@ class ModelDropdown extends Component {
         super(props)
     }
 
-    handleChildClick(event){
-        this.props.modelSelect(event.currentTarget.value)
+    handleChildClick(event){  
+        this.props.modelSelect(event.currentTarget.value);
     }
 
     componentWillReceiveProps(nextProps){
@@ -30,7 +30,7 @@ class ModelDropdown extends Component {
             const generatedRows = listOfModels.map( (item, index) => <GenerateRows key={index} callback={this.handleChildClick.bind(this)} label={item}/>)
 
             return(
-                <select className="modelDropdown" style={this.props.errorBorder} defaultValue='default' placeholder="Select a Model" value={this.props.value} onChange={(e) => this.handleChildClick(e)}>
+                <select className="modelDropdown" defaultValue='default' placeholder="Select a Model" value={this.props.value} onChange={(e) => this.handleChildClick(e)}>
                     <option value='default' disabled="disabled">Select a Model</option>
                     {generatedRows}
                 </select>
