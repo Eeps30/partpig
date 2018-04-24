@@ -11,7 +11,7 @@ const Cart = (props) => {
     let list = (<div className='emptyMessage'>
                     <img src={emptyCart}/>
                     <p>Your Shopping Cart is Empty</p>
-                    <Link  className='button-link' to="/partResults">Keep Shopping</Link>
+                    <Link  className='button-link' to={props.urlBack}>Keep Shopping</Link>
                 </div>
                 );
     let checkoutButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</Link>;
