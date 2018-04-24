@@ -33,7 +33,7 @@ class ContentColumn extends Component{
 
     componentDidMount(){
 
-      setInterval( this.handleTimerUpdate, 300);
+      setInterval( this.handleTimerUpdate, 10);
       this.itemHeight = this.column.clientHeight / this.props.displaySize;
     }
 

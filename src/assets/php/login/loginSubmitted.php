@@ -1,9 +1,10 @@
 <?php
- session_start();
  header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
-header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
-
+ header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
+ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+ 
+ require_once('../mysqlConnect.php');
+ 
  $entityBody = file_get_contents('php://input');
  $request_data = json_decode($entityBody, true);
  
@@ -12,16 +13,12 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
      'error' => [],
      'data' => []
  ];
-
-require_once('../mysqlConnect.php');
-if(isset($_GET['logout'])){
-    if(isset($_SESSION['userinfo'])){
-      $output['data'][] ="user session info  of $_SESSION[userinfo]  was destroyed";
-    }
-    unset($_SESSION['userinfo']);
-    session_destroy();
-    exit();
-}
+// if(isset($_GET['logout'])){
+//     if(isset($_SESSION['userinfo'])){
+//       $output['data'][] ="user session info  of $_SESSION[userinfo]  was destroyed";
+//     }
+//     exit();
+// }
 
 
 if(isset($request_data['user'], $request_data['password'])){
