@@ -4,10 +4,7 @@ import {Link} from 'react-router-dom';
 
 const RegisterForm = () => (
     <div className="register-container">
-    <h3>No account? No problem!</h3>
-    <div className="register-button">
-        <Link to={"/signup"}> SIGN UP </Link>
-    </div>
+    <Link className="buttonText" to={"/signup"}> SIGN UP </Link>
     </div>
 );
 
