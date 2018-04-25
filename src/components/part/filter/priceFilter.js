@@ -15,25 +15,10 @@ class PriceFilter extends Component{
         this.newFilters = props.filters;
         this.filterPrices = this.filterPrices.bind(this);
     }
-   
-    componentDidMount(){
-        const slider = new rSlider({
-            target: '#slider',
-            values: this.state.prices[0],
-            range: true,
-            tooltip: true,
-            scale: true,
-            labels: false,
-            set: this.state.prices[1],
-            onChange: this.filterPrices
-        });     
-    }
+      
 
     componentDidUpdate(){
         if(this.props.update){
-            var parent = document.getElementById("priceFilterDiv");
-            var child = document.getElementsByClassName("rs-container")[0];
-            parent.removeChild(child);
             const slider = new rSlider({
                 target: '#slider',
                 values: this.state.prices[0],
