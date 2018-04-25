@@ -43,7 +43,11 @@
     float: left;
 }
 
+
 .loginFormErrorMessage{
     background-color:lightcoral;
 
+
+.loginForm form {
+    margin-bottom: 10%;
 }
