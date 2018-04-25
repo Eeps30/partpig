@@ -1,0 +1,50 @@
+.outer-container {
+    height: 90vh;
+    border: solid black 2px;
+    box-sizing: border-box;
+}
+
+.inner-container{
+    width: 40%;
+    margin: auto;
+    height: 65%;
+    margin-top: 5%;
+    box-shadow: 0 1px 4px rgba(41,51,57,.5);
+    background-color: rgb(255, 255, 255);
+}
+
+.inner-container > form > input {
+    width: 100%;
+    padding: 2% 2%;
+    margin: 2% 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.inner-container form {
+    padding: 1%;
+}
+
+.inner-container form > label {
+    float: left;
+    font-size: 2em;
+}
+
+.inner-container form > h2 {
+    text-align: center;
+    font-size: 3.5em;
+}
+
+.inner-container form > button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 2% 2%;
+    margin-top: 5%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 2.2em;
+}

@@ -42,3 +42,7 @@
 .loginForm label {
     float: left;
 }
+
+.loginForm form {
+    margin-bottom: 10%;
+}
