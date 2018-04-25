@@ -38,20 +38,29 @@ $query = "INSERT INTO `part` ";
 $tableValues =  [];
 $tableFields = [];
 $params = [];
+$letterString = "";
 
 forEach($fields as $key => $value){
 	$tableFields[] = $key;
 	$params[] = $value;
 	$tableValues[] = "?";
+	if(gettype($value) === 'integer'){
+		$letterString .= "i";
+	}
+	else if(gettype($value) === 'double'){
+		$letterString .= "d";
+	}
+	else{
+		$letterString .= "s";
+	}
 }
-
 $tableFields = "(" . implode(" , ", $tableFields) . ")";
 $tableValues = "VALUES (" . implode(" , ", $tableValues) . ")";
 
 $query .= $tableFields . $tableValues;
 //prepared statement for query
 $stmt = $conn->prepare($query);
-$stmt->bind_param("ssiisssiids", ...$params);
+$stmt->bind_param($letterString, ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
 
