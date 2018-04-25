@@ -13,11 +13,11 @@
      'error' => [],
      'data' => []
  ];
-
-if(empty($request_data['user_name']) OR empty($request_data['password'])  OR empty($request_data['email'])){
-    die("user, password, and email required");
+ if(empty($request_data['username']) OR empty($request_data['password'])  OR empty($request_data['email'])){
+     die("user, password, and email required");
 }
     
+$request_data['user_name'] = $request_data['username'];
 $request_data['password'] = sha1($request_data['password']);
 if(!filter_var($request_data['email'], FILTER_VALIDATE_EMAIL)){
     die("invalid email");

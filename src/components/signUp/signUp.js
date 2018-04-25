@@ -42,11 +42,12 @@ class SignUp extends Component {
 
     onSubmit(event){
         event.preventDefault();
-
+        
         const { username, email, password } = this.state
         const params = {
             username, email, password 
         }
+
 
         if(this.state.password === this.state.confirmPass){
             axios({
@@ -57,6 +58,7 @@ class SignUp extends Component {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(resp => {
+                console.log('response is: ', resp);
                 if(resp.data.success){
                     console.log(resp.data.success)
                 }
