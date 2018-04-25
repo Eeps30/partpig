@@ -41,7 +41,6 @@ class SignUp extends Component {
 
     onSubmit(event){
         event.preventDefault();
-        console.log('You submitted');
     }
 
     render(){
