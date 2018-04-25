@@ -16,7 +16,8 @@ class PartList extends Component{
         this.state = {
             arrayParts:[],
             isLoading: false,
-            showFilters: false            
+            showFilters: false,
+            updatePriceFilter: false
         }
         this.filterBrandMethod = this.filterBrandMethod.bind(this);
         this.filterPriceMethod = this.filterPriceMethod.bind(this);
@@ -107,6 +108,14 @@ class PartList extends Component{
         }
     }
 
+    componentDidUpdate(){
+        if(this.state.updatePriceFilter){
+            this.setState({
+                updatePriceFilter: false
+            });
+        }
+    }
+
     containsObject(obj, list) {        
         for (let i = 0; i < list.length; i++) {
             if (list[i].text === obj.text) {
@@ -178,10 +187,10 @@ class PartList extends Component{
     }
 
     handleShowFilters(){
-
         let showFilters = !this.state.showFilters;
         this.setState({
-            showFilters: showFilters
+            showFilters: showFilters,
+            updatePriceFilter: showFilters,
         });
     }
 
@@ -193,7 +202,7 @@ class PartList extends Component{
         if (!this.state.isLoading) {
             return (
                 <div className='partResults container'>
-                    <Loading />;
+                    <Loading />
                 </div>
             );
         }
@@ -212,10 +221,9 @@ class PartList extends Component{
                         {visibleParts.length + ' Results'}
                         <Sorter sortPartArray={this.sortPartArray} />
                     </div>              
-                <Filter update={this.state.showFilters} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} {...this.props} filters={this.filters}/>
+                <Filter update={this.state.updatePriceFilter} filterClass={this.state.showFilters ? 'filter' : 'filter hidden'} {...this.props} filters={this.filters}/>
                 <div className={this.state.showFilters ? 'partList partListFilter' : 'partList'}>                                      
-                {noResults}
-
+                    {noResults}
                     <Pagination {...this.props} allParts={visibleParts} showFilters={this.state.showFilters} />
                 </div>
             </div>
