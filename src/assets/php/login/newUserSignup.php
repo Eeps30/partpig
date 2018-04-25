@@ -29,7 +29,7 @@ $testStmt->bind_param("s", $request_data['user_name']);
 $testStmt->execute();
 $testResult = $testStmt->get_result();
 if($testResult->num_rows){
-    $output['error'][] = "User already exists";
+    $output['duplicate'][] = "User already exists";
     $json_output = json_encode($output);
     print($json_output);
     die();
