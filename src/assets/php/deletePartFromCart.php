@@ -9,27 +9,44 @@ $output = [
     'data' => []
 ];
 
+if(empty($_GET['user_id']) OR empty($_GET['part_id'])){
+    die("user id and part id required");
+}
+
 $buyer_id = (int)$_GET['user_id'];
-
-$query = "DELETE FROM `order_meta`
-           WHERE `order_meta`.`buyer_id` = '$buyer_id'";
-
 $part_id = (int)$_GET['part_id'];
 
+// $query = "DELETE FROM `order_meta`
+//            WHERE `order_meta`.`buyer_id` = '$buyer_id'";
+
+
 $query = "DELETE FROM `shoppingcart`
-           WHERE `shoppingcart`.`buyer_id` = '$buyer_id'
-           AND `shoppingcart`.`part_id` = '$part_id';
+           WHERE `shoppingcart`.`buyer_id` = ?
+           AND `shoppingcart`.`part_id` = ?;
 
            ";
 
-$result = mysqli_query($conn, $query);
-$rows_affected = mysqli_affected_rows($conn);
-if($result){
+
+//prepared statement for query
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ii", $buyer_id, $part_id);
+$stmt->execute();
+$result = $stmt->get_result();
+print_r($result);
+
+if($stmt->affected_rows > 0){
     $output['success'] = true;
-    $output['data'][] = "Successfully removed records from table shoppingcart. Total rows affected: $rows_affected";
+    $output['data'][] = "Successfully removed records from table shoppingcart. Total rows affected: {$stmt->affected_rows}";
 
 } else {
-    $output['error'][] = "Error: " . mysqli_error($conn);
+    preg_match_all('/(\S[^:]+): (\d+)/', $conn->info, $matches); 
+    $infoArr = array_combine ($matches[1], $matches[2]);
+    $output['error'][] = $infoArr;
+    $output['error'][] = "error with deletion";
 }
-mysqli_close($conn);
+$stmt->close();
+
+$json_output = json_encode($output);
+print($json_output);
+
 ?>

@@ -63,7 +63,7 @@ class Contact extends Component {
 							<label>Message:</label>
 							<textarea className="message" value={body} placeholder="Enter your message here" onChange={this.handleMessageInputChange.bind(this)} required></textarea>
 						</div>
-						{submitButton}'
+						{submitButton}
 						{result}
 
 					</form>
@@ -115,7 +115,7 @@ class Contact extends Component {
 		}).then(resp => {
 			console.log("Server Response:", resp);
 		}).catch(err => {
-			console.log("There was an error:");
+			console.log("There was an error:", err);
 		});
 	}
 	handleNameInputChange(e) {
