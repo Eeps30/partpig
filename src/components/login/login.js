@@ -11,6 +11,5 @@ const Login = (props) => (
                <RegisterForm/>
             </div>
         );
-
-
+        
 export default Login;
