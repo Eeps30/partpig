@@ -81,9 +81,9 @@ class SignUp extends Component {
                             <label>Desired Username:</label>
                             <input value={this.state.username} onChange={this.handleUserChange.bind(this)} required type="text"/>
                             <label>Password:</label>
-                            <input value={this.state.password} onChange={this.handlePassChange.bind(this)} required type="text"/>
+                            <input value={this.state.password} onChange={this.handlePassChange.bind(this)} required type="password"/>
                             <label>Confirm Password:</label>
-                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} required type="text"/>
+                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} required type="password"/>
                             <button onClick={this.onSubmit.bind(this)}>Sign Up</button>
                         </form>
                     </div>
