@@ -14,22 +14,21 @@
      'data' => []
  ];
 
-if(empty($request_data['user']) OR empty($request_data['password'])  OR empty($request_data['email'])){
+if(empty($request_data['user_name']) OR empty($request_data['password'])  OR empty($request_data['email'])){
     die("user, password, and email required");
 }
     
-$user = $request_data['user'];
-$password = sha1($request_data['password']);
-$email = $request_data['email'];
-    
+$request_data['password'] = sha1($request_data['password']);
+if(!filter_var($request_data['email'], FILTER_VALIDATE_EMAIL)){
+    die("invalid email");
+} 
 $testQuery = "SELECT * FROM `user` WHERE user_name=?";
     
 $testStmt = $conn->prepare($testQuery);
-$testStmt->bind_param("s", $user);
+$testStmt->bind_param("s", $request_data['user_name']);
 $testStmt->execute();
-// $result = $testStmt->get_result();
-
-if($testStmt->affected_rows > 0){
+$testResult = $testStmt->get_result();
+if($testResult->num_rows){
     $output['error'][] = "User already exists";
     $json_output = json_encode($output);
     print($json_output);
@@ -37,24 +36,25 @@ if($testStmt->affected_rows > 0){
 }  
 $testStmt->close();
 
-$userFields = ['user', 'password', 'email', 'first_name', 'last_name'];
+
+$userFields = ['user_name', 'password', 'email', 'first_name', 'last_name', 'billing_address_id', 'shipping_address_id'];
 $queryValues = [];
 $params = [];
 $letterString = "";
 
 forEach($userFields as $key => $value){
-    if(empty($request_data[$key])){
-        $params[] = "default";   
+    if(empty($request_data[$value])){
+        $params[] = 1;   
     }
     else{
-        $params[] = $request_data[$key];
+        $params[] = $request_data[$value];
     }
     $letterString .= "s";
     $queryValues[] = "?";
 }
-    
+
 $query = "INSERT INTO `user` (" . implode(' , ', $userFields) . ")
-        VALUES (" . implode(' , ', $queryValues) . ")";
+VALUES (" . implode(' , ', $queryValues) . ")";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param($letterString, ...$params);
