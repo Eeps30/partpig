@@ -6,15 +6,7 @@ import axios from 'axios';
 
 class UserHome extends Component {
         
-    constructor(props){
-        super(props);
-        this.state = {
-            // partInfo:{},
-            // isLoading: false,  
-            // seller_id: 2          
-        }
-    }
-
+ 
         render(){
 
         return  (
@@ -30,11 +22,6 @@ class UserHome extends Component {
                 <Link to={"/dashboard/partdrafts"}>
                     <div className="statContainer">
                         Saved Drafts 
-                    </div>
-                </Link>
-                <Link to={"/dashboard/activeparts"}>
-                    <div className="statContainer">
-                        Sold Parts 
                     </div>
                 </Link>
             </div>     

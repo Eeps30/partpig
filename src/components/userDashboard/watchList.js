@@ -6,16 +6,7 @@ import construction from '../../assets/images/webConstruction.jpg';
 
 
 class WatchList extends Component {
-        
-    constructor(props){
-        super(props);
-        this.state = {
-            // partInfo:{},
-            // isLoading: false,  
-            // seller_id: 2          
-        }
-    }
-    
+   
         render(){
             return  (
 
