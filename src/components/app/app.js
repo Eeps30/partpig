@@ -13,7 +13,7 @@ import About from './about';
 import ContactPage from './contact';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
-import SignUp from '../signUp/signUp';
+import SignUp from '../login/signUp/signUp';
 import Home from '../home/home';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
