@@ -4,7 +4,7 @@
 
 .aboutUsContainer {
     width: 90vw;
-    height: 85vh;
+    height: 90vh;
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -14,11 +14,12 @@
     height: 60%;
 }
 
-.images > div {
+.images .person {
     box-sizing: border-box;
     float: left;
     height: 100%;
     width: 20%;
+    border: 1px solid black;
 }
 
 .infoContainer {
