@@ -4,17 +4,17 @@
 
 .aboutUsContainer {
     width: 90vw;
-    height: 90vh;
+    height: 90vmin;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
 .images {
     box-sizing: border-box;
-    height: 60%;
+    height: 60vmin;
 }
 
-.images .person {
+.person {
     box-sizing: border-box;
     position: relative;
     float: left;
@@ -23,8 +23,12 @@
     border: 1px solid black;
 }
 
+.person:hover .head {
+    animation: bobble 0.45s infinite;
+}
+
 .infoContainer {
-    height: 40%;
+    height: 40vmin;
     box-sizing: border-box;
 }
 
@@ -85,12 +89,6 @@
     width: 50%;
 }
 
-.bobbleBody1 > img {
-    margin-left: 15%;
-    margin-top: 30%;
-    width: 70%;
-}
-
 @keyframes bobble {
     0% {transform: translate(6px, 10px) rotate(1deg);}
     25% {transform: translate(-1px, -2px) rotate(-2deg);}
@@ -105,37 +103,39 @@
 
 .bobbleBody1 {
     background-image: url('../../assets/images/bobble-bodies/partPigBobbleBody.png');
-    height: 80%;
+    height: 100%;
+    width: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin-top: 35%;
     border: 1px dashed red;
 }
 
 .bobbleHead1 {
-    content: url('../../assets/images/bobble-bodies/dave-head1.png');
+    content: url('../../assets/images/bobble-bodies/dave-head2.png');
 }
 
 .bobbleHead2 {
-    content: url('../../assets/images/bobble-bodies/alex-head1.png');
+    content: url('../../assets/images/bobble-bodies/alex-head2.png');
 }
 
 .bobbleHead3 {
-    content: url('../../assets/images/bobble-bodies/evan-head.png');
+    content: url('../../assets/images/bobble-bodies/evan-head2.png');
 }
 
 .bobbleHead4 {
-    content: url('../../assets/images/bobble-bodies/li-head.png');
+    content: url('../../assets/images/bobble-bodies/li-head2.png');
 }
 
 .bobbleHead5 {
-    content: url('../../assets/images/bobble-bodies/brian-head.png');
+    content: url('../../assets/images/bobble-bodies/brian-head2.png');
 }
 
 .head{
     position: absolute;
-    width: 100%;
+    bottom: 65%;
+    width: 90%;
+    margin: 0 5%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

@@ -15,22 +15,29 @@ class AboutPage extends Component {
         super(props)
 
         this.state = {
-            style: {}
+            // style: {}
         }
 
-        this.handleClick = this.handleClick.bind(this)
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
     }
 
-    handleClick(){
+    handleMouseEnter(){
+        // const style = {
+        //     animation: 'bobble .45s infinite'
+        // }
+        // this.setState({
+        //     style: style
+        // })
+    }
 
-        const style = {
-            animation: 'bobble .45s infinite'
-        }
-
-        this.setState({
-            style: style
-        })
-        
+    handleMouseLeave(){
+        // const style = {
+        //     animation: 'none'
+        // }
+        // this.setState({
+        //     style: style
+        // })
     }
 
     render(){
@@ -55,8 +62,8 @@ class AboutPage extends Component {
             <div className="aboutUsContainer">
                 <div className="images">
                     <div className='person'>
-                        <div className="bobbleHead1 head" style={this.state.style}></div>
-                        <div onClick={this.handleClick} className="bobbleBody1"></div>
+                        <div onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} className="bobbleHead1 head" style={this.state.style}></div>
+                        <div className="bobbleBody1"></div>
                     </div>
                     <div className='person'>
                         <div className="bobbleHead2 head" style={this.state.style}></div>
