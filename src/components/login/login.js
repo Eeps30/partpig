@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from "./loginForm/loginForm";
+import LoginForm from "./loginForm";
 import "./login.css";
 
 const Login = (props) => (

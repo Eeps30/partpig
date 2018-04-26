@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './checkout.css';
 import {Link} from 'react-router-dom';
 import Field from '../tools/field';
-import Loading from '../loading/loading';
+import Loading from '../tools/loading/loading';
 import axios from 'axios';
 import inputs from './fieldsData';
 

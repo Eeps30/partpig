@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ImageGallery from '../imageGallery/imageGallery';
+import ImageGallery from './imageGallery';
 import PartInfo from './partInfo';
 import {Link} from 'react-router-dom';
 import Loading from '../tools/loading/loading';

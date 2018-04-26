@@ -1,6 +1,6 @@
 import React from 'react';
-import ImageGallery from './imageGallery/imageGallery';
-import PartInfo from './partInfo/partInfo';
+import ImageGallery from './imageGallery';
+import PartInfo from './partInfo';
 import {Link} from 'react-router-dom';
 import './part.css'
 

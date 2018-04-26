@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import fb from '../../../assets/images/facebook.png';
-import email from '../../../assets/images/email.png';
+import fb from '../../assets/images/facebook.png';
+import email from '../../assets/images/email.png';
 import axios from 'axios';
 
 class PartInfo extends Component {

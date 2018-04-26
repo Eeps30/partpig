@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Part from '../part';
-import NoResults from '../../noResults/noResults';
+import Part from './part';
+import NoResults from '../tools/noResults/noResults';
 
 class Pagination extends Component {
         

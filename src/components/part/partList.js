@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import Filter from '../filter/filter';
+import Filter from './filter/filter';
 import BrandFilter from './filter/brandFilter';
 import axios from 'axios';
 import Loading from '../tools/loading/loading';

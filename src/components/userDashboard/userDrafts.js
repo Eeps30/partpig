@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../userParts/userParts.css';
+import './userParts/userParts.css';
 import {Link} from 'react-router-dom';
 import Loading from '../tools/loading/loading';
 import axios from 'axios';
