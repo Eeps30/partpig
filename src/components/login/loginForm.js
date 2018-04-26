@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./loginForm.css";
 import axios from 'axios';
 
 class LoginForm extends Component {
