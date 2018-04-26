@@ -39,6 +39,7 @@ class UpdatePartStatus extends Component {
 
             }).catch(err => {
                 console.log('error is: ', err);
+                this.props.history.push('/error');                
             }
         );
         window.location.reload()  

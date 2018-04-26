@@ -68,6 +68,8 @@ class SellPartForm extends Component{
                 this.props.history.push(`/partdetails/${resp.data.data[0]}/newPart/true`);
             }).catch(err => {
                 console.log("There was an error:");
+                this.props.history.push('/error');                
+
             });
         }
     }

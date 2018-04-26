@@ -42,6 +42,7 @@ class LoginForm extends Component {
             }
         }).catch(err => {
             console.log('error is: ', err);
+            this.props.history.push('/error');                
         });
         this.reset();
     }

@@ -20,6 +20,7 @@ import ListingSuccess from '../sellpart/listingSuccess';
 import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
+import AxiosError from '../tools/errorHandling/error';
 require('../../assets/images/piglogo.png');
 
 class App extends Component{
@@ -80,6 +81,8 @@ class App extends Component{
             }         
         }).catch(err => {
             console.log('error is: ', err);
+            this.props.history.push('/error');      ;
+            
         });
     }
 
@@ -105,6 +108,8 @@ class App extends Component{
                 this.addPartToCart(partInfo,initLoad);
             }).catch(err => {
                 console.log('error is: ', err);
+                this.props.history.push('/error');      ;
+                
             });
         
         }else{
@@ -157,6 +162,8 @@ class App extends Component{
                 this.removePartFromCart(partInfo);
             }).catch(err => {
                 console.log('error is: ', err);
+                this.props.history.push('/error');      ;
+                
             });
         }else{
             this.removePartFromCart(partInfo);
@@ -240,6 +247,7 @@ class App extends Component{
                     <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Route path='/dashboard' render={props => <UserDashboard userData={this.state.userName} {...props}/>}/>
                     <Route path='/checkoutComplete/:orderNumber' render={props => <CheckoutComplete  urlBack={this.urlBack} {...props}/>}/>
+                    <Route path='/error' component={AxiosError}/>
                     <Footer/> 
                 </div>
             </Router>  
