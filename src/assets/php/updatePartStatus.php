@@ -31,7 +31,6 @@ $stmt->bind_param($letterString, $status, $id);
 $stmt->execute();
 
 
-// $result = mysqli_query($conn, $query);
 if($stmt->affected_rows === 1){
     $output['success'] = true;
     $output['data'][] = "part $id status updated to $status";

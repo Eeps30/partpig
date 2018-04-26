@@ -98,9 +98,10 @@ class PartInfo extends Component {
             
         }).catch(err => {
             console.log("There was an error:");
+            this.props.history.push('/error');                
+
         });
         
-        console.log('partInfo:',this.state.partInfo);
     }
 
     confirmPart(){       

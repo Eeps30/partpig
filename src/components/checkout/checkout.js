@@ -75,9 +75,11 @@ class Checkout extends Component {
                         });
                     }).catch(err => {
                         console.log('error is: ', err);
+                        this.props.history.push('/error');      
                     });
                 }).catch(err => {
                     console.log('error is: ', err);
+                    this.props.history.push('/error');      
                 });
             }
         } else {
@@ -104,6 +106,7 @@ class Checkout extends Component {
             console.log(resp.data);
         }).catch(err => {
             console.log('error is: ', err);
+            this.props.history.push('/error');      
         });
     }
 
@@ -150,6 +153,7 @@ class Checkout extends Component {
             }
         }).catch(err => {
             console.log('error is: ', err);
+            this.props.history.push('/error');      
         });
     }
 
@@ -199,6 +203,8 @@ class Checkout extends Component {
                                 console.log("Server Response:", resp);
                             }).catch(err => {
                                 console.log("There was an error:");
+                                this.props.history.push('/error');      
+                                
                             });
                         }
                         
@@ -238,10 +244,14 @@ class Checkout extends Component {
                             console.log("Server email Response:", resp);
                         }).catch(err => {
                             console.log("There was an error:", err);
+                            this.props.history.push('/error');      ;
+                            
                         });
                     }
                 }).catch(err => {
                     console.log('error is: ', err);
+                    this.props.history.push('/error');      ;
+                    
                 });
 
             }
