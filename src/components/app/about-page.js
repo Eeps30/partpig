@@ -11,34 +11,34 @@ import daveHead from '../../assets/images/bobble-bodies/dave-head.png'
 import liHead from '../../assets/images/bobble-bodies/li-head.png'
 
 class AboutPage extends Component {
-    constructor(props){
-        super(props)
+    // constructor(props){
+    //     super(props)
 
-        this.state = {
-            // style: {}
-        }
+    //     this.state = {
+    //         // style: {}
+    //     }
 
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    }
+    //     this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    //     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    // }
 
-    handleMouseEnter(){
-        // const style = {
-        //     animation: 'bobble .45s infinite'
-        // }
-        // this.setState({
-        //     style: style
-        // })
-    }
+    // handleMouseEnter(){
+    //     // const style = {
+    //     //     animation: 'bobble .45s infinite'
+    //     // }
+    //     // this.setState({
+    //     //     style: style
+    //     // })
+    // }
 
-    handleMouseLeave(){
-        // const style = {
-        //     animation: 'none'
-        // }
-        // this.setState({
-        //     style: style
-        // })
-    }
+    // handleMouseLeave(){
+    //     // const style = {
+    //     //     animation: 'none'
+    //     // }
+    //     // this.setState({
+    //     //     style: style
+    //     // })
+    // }
 
     render(){
         const contactElements = contact.map((item, index) => {
@@ -62,23 +62,23 @@ class AboutPage extends Component {
             <div className="aboutUsContainer">
                 <div className="images">
                     <div className='person'>
-                        <div onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} className="bobbleHead1 head" style={this.state.style}></div>
+                        <div  className="bobbleHead1 head" ></div>
                         <div className="bobbleBody1"></div>
                     </div>
                     <div className='person'>
-                        <div className="bobbleHead2 head" style={this.state.style}></div>
+                        <div className="bobbleHead2 head" ></div>
                         <div className="bobbleBody1"></div>
                     </div>
                     <div className='person'>
-                        <div className="bobbleHead3 head" style={this.state.style}></div>
+                        <div className="bobbleHead3 head" ></div>
                         <div className="bobbleBody1"></div>
                     </div> 
                     <div className='person'>
-                        <div className="bobbleHead4 head" style={this.state.style}></div>
+                        <div className="bobbleHead4 head" ></div>
                         <div className="bobbleBody1"></div>
                     </div> 
                     <div className='person'>
-                        <div className="bobbleHead5 head" style={this.state.style}></div>
+                        <div className="bobbleHead5 head" ></div>
                         <div className="bobbleBody1"></div>
                     </div>
                 </div>
