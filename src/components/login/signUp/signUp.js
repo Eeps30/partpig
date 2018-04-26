@@ -10,8 +10,10 @@ class SignUp extends Component {
            email: '',
            emailError: false,
            username: '',
+           userExists: false,
            password: '',
-           confirmPass: ''
+           confirmPass: '',
+           errorMessage: ''
        }
 
        this.handleChange = this.handleChange.bind(this);
@@ -49,7 +51,11 @@ class SignUp extends Component {
            username, email, password
        }
 
-       if(this.state.password === this.state.confirmPass){
+       if(this.state.password !== this.state.confirmPass){
+           this.setState({
+               errorMessage: 'Mismatching Password Fields'
+           })
+       }else if(this.state.password === this.state.confirmPass){
            axios({
                url: 'http://localhost:8000/teampartpig/src/assets/php/login/newUserSignup.php',
                method: 'post',
@@ -60,14 +66,14 @@ class SignUp extends Component {
            }).then(resp => {
                console.log('response is: ', resp);
                if(resp.data === 'invalid email'){
-                   this.setState({
-                       emailError: {
-                           border: '1px solid red'
-                       }
+                    this.setState({
+                       errorMessage: 'Invalid Email'
                    })
-               }else{
-
-               }
+                }else if(resp.data.duplicate[0] === "User already exists"){
+                    this.setState({
+                        errorMessage: 'User Already Exists'
+                    })
+                }
            }).catch(err => {
                console.log('error is: ', err);
            });
@@ -76,31 +82,27 @@ class SignUp extends Component {
 
    render(){
 
-        let style = {
-           border: 'solid red 2px'
-        }
-
-       return (
-           <div>
-               <div className="outer-container">
-                   <div className="inner-container">
-                       <form>
-                           <h2>Create an Account</h2>
-                           <label>Email Address:</label>
-                           <input value={this.state.email} onChange={this.handleChange.bind(this)} required type="email"/>
-                           <label>Desired Username:</label>
-                           <input value={this.state.username} onChange={this.handleUserChange.bind(this)} required type="text"/>
-                           <label>Password:</label>
-                           <input value={this.state.password} onChange={this.handlePassChange.bind(this)} required type="password"/>
-                           <label>Confirm Password:</label>
-                           <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} required type="password"/>
-                           <button onClick={this.onSubmit.bind(this)}>Sign Up</button>
-                           <div className="emailError" style={this.state.emailError}></div>
-                       </form>
-                   </div>
-               </div>
-           </div>
-       )
+        return (
+            <div>
+                <div className="outer-container">
+                    <div className="inner-container">
+                        <form>
+                            <h2>Create an Account</h2>
+                            <label>Email Address:</label>
+                            <input value={this.state.email} onChange={this.handleChange.bind(this)} type="email" required/>
+                            <label>Desired Username:</label>
+                            <input value={this.state.username} onChange={this.handleUserChange.bind(this)} type="text" required/>
+                            <label>Password:</label>
+                            <input value={this.state.password} onChange={this.handlePassChange.bind(this)} type="password" required/>
+                            <label>Confirm Password:</label>
+                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password"/>
+                            <button onClick={this.onSubmit.bind(this)}>Sign Up</button>
+                            <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        )
    }
 }
 
