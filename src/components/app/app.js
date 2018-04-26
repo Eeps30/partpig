@@ -82,7 +82,7 @@ class App extends Component{
             }         
         }).catch(err => {
             console.log('error is: ', err);
-            this.props.history.push('/error');      ;
+            this.props.history.push('/error');      
             
         });
     }
@@ -163,7 +163,7 @@ class App extends Component{
                 this.removePartFromCart(partInfo);
             }).catch(err => {
                 console.log('error is: ', err);
-                this.props.history.push('/error');      ;
+                this.props.history.push('/error');      
                 
             });
         }else{
@@ -248,12 +248,9 @@ class App extends Component{
                     <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Route path='/dashboard' render={props => <UserDashboard userData={this.state.userName} {...props}/>}/>
                     <Route path='/checkoutComplete/:orderNumber' render={props => <CheckoutComplete  urlBack={this.urlBack} {...props}/>}/>
-<<<<<<< HEAD
                     <Route path='/error' component={AxiosError}/>
-=======
                     <Route path='/signup' component={SignUp}/>
 
->>>>>>> 691cd4439effdc36b8f4e32d05bced2b838ad737
                     <Footer/> 
                 </div>
             </Router>  
