@@ -1,23 +1,22 @@
 import React, {Component} from 'react';
 import './app.css';
-import Header from '../header/header';
-import Footer from '../footer/footer';
+import Header from './header';
+import Footer from './footer';
 import {
     BrowserRouter as Router,
     Route,
     Link
 } from 'react-router-dom';
-import PartList from '../part/partList/partList';
-import PartDetails from '../part/partDetails/partDetails';
-import About from '../about/about';
-import ContactPage from '../contact/contact';
-import ContactSeller from '../contact/seller/contactSeller';
+import PartList from '../part/partList';
+import PartDetails from '../part/partDetails';
+import About from './about';
+import ContactPage from './contact';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
 import Home from '../home/home';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
-import ListingSuccess from '../listingSuccess/listingSuccess';
+import ListingSuccess from '../sellpart/listingSuccess';
 import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';

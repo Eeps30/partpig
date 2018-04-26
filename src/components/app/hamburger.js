@@ -1,5 +1,4 @@
 import React from "react";
-import './hamburger.css';
 import {Link} from 'react-router-dom';
 
 const Hamburger = (props) => {

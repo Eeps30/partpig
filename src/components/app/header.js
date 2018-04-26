@@ -1,6 +1,5 @@
 import React from "react";
-import './header.css';
-import Hamburger from '../hamburger/hamburger';
+import Hamburger from './hamburger';
 import loginIcon from '../../assets/icons/loginicon.png';
 import loginOut from '../../assets/images/logout.png';
 import {Link} from 'react-router-dom';

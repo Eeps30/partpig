@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-// import './checkout.css';
-// import {Link} from 'react-router-dom';
-// import Field from './field';
-// import Loading from '../loading/loading';
 import axios from 'axios';
-// import inputs from './fieldsData';
-// import React from "react";
-import './contact.css';
+
 
 class Contact extends Component {
 
@@ -44,7 +38,6 @@ class Contact extends Component {
 						<h3>Have a question? Drop us a line!</h3>
 						<h3>Please submit your inquiry through the contact form.</h3>
 						<h3>We are committed to providing you the best part-purchasing experience!</h3>
-						{/* <img className="contact_image" src={contact_pig} alt=""/> */}
 					</div>
 					<form className="contactForm" onSubmit={e => this.handleSubmit(e)}>
 						<div className="input-container">
