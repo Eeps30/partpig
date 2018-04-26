@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import GenerateMakeRows from './generateMakeRows';
-import '../../searchpage/search.css';
 
 class MakeDropDown extends Component {
     constructor(props){

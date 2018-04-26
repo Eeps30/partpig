@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import GenerateRows from './generateMakeRows';
 import data from '../dataModel';
-import '../../searchpage/search.css';
 
 class ModelDropdown extends Component {
     constructor(props){

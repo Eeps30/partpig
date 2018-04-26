@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import '../../searchpage/searchBars.css';
 
 class PartNameSearch extends Component {
     constructor(props){
