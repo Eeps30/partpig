@@ -108,7 +108,7 @@ class App extends Component{
                 this.addPartToCart(partInfo,initLoad);
             }).catch(err => {
                 console.log('error is: ', err);
-                this.props.history.push('/error');      ;
+                this.props.history.push('/error');
                 
             });
         
