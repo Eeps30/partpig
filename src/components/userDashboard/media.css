@@ -1,0 +1,149 @@
+@media (max-width: 1250px) {
+    
+    .singlePart{        
+        width: 30%;
+    }
+
+    .container > a{
+        top: 6%;
+    }
+}
+
+@media (max-width: 950px){
+    .imageContainer {
+        width: 34vw;
+        height: 32vw;
+    }
+    .singlePart{        
+        width: 47%;
+    }
+
+    .productContainer {
+        height: 12vw;
+    }
+
+    .container > a{
+        top: 5%;
+    }
+    
+    .imageContainer {
+        width: 21vw;
+        height: 21vw;
+    }
+}
+
+@media (max-width: 750px){
+    .imageContainer {
+        width: 79vw;
+        height: 79vw;
+    }
+    .singlePart{        
+        width: 89%;
+        margin: 1.5% auto;
+        display: block;
+    }
+
+    .productContainer {
+        height: 14vw;
+    }
+
+    .resultsBar > button{
+        display: none;
+    }
+
+    .sorterContainer select {
+        font-size: 0.9em;
+    }
+    
+    .container > a{
+        top: 4%;
+    }
+
+    .imageDetailsContainer {
+        display: block;
+        width: 80vw;
+        height: 80vw;
+        margin: 3% auto;
+    }
+
+    .mainImageDetails {
+        display: inline-block;
+        width: 74%;
+        height: 85%;
+        margin: auto;
+    }
+
+    .imageList {
+        display: inline-block;
+        width: 26%;
+        vertical-align: top;
+        text-align: right;
+    }
+
+    .imageList img {
+        height: 13vw;
+        width: 13vw;
+        margin: 5% .5%;
+    }
+
+    .productDetailsContainer {
+        width: 100%;
+    }
+    
+    .filter{
+        display: none;
+    }
+
+    .partListFilter {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .container{
+        width: 95%;
+    }
+
+}
+
+
+@media (max-width: 550px){
+        
+    .container > a{
+        top: 3.5%;
+    }
+    
+    #menu {
+        width: 19%;
+    }
+
+    #menuToggle input {
+        width: 17px;
+        height: 17px;
+    }
+
+    #menuToggle span {
+        width: 15px;
+        height: 3px;
+        margin-bottom: 3px;
+    }
+
+    #menuToggle input:checked ~ span {
+        transform: rotate(45deg) translate(2px, 2px);
+    }
+
+    #menuToggle input:checked ~ span:nth-last-child(2) {
+        transform: rotate(-45deg) translate(3px, -2px);
+    }
+
+    #menuToggle input:checked ~ span {
+        width: 10px;
+    }
+}
+
+
+@media (min-height: 850px) {
+    
+    html{        
+        font-size: 0.85vmin;
+    }
+}
