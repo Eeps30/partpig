@@ -20,7 +20,7 @@ class UserHome extends Component {
         return  (
             <div className="userDashboard">     
                 <div className="dashboardTitle">
-                    <h1>{this.props.userData}, Welcome to your user dashboard!</h1>
+                    <h1>{this.props.userData} Welcome to your user dashboard!</h1>
                 </div>
                 <Link to={"/dashboard/activeparts"}>
                     <div className="statContainer">
