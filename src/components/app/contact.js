@@ -83,10 +83,12 @@ class Contact extends Component {
 	}
 	submitMessageTimer(){
 		setTimeout(() => {
-			this.setState({
-				...this.state,
-				submitted:''
-			});
+			if(this.props.history.location.pathname === "/contact"){
+				this.setState({
+					...this.state,
+					submitted:''
+				})
+			};
 		}, 3000);
 	}
 		
@@ -109,6 +111,7 @@ class Contact extends Component {
 			console.log("Server Response:", resp);
 		}).catch(err => {
 			console.log("There was an error:", err);
+			this.props.history.push('/error');
 		});
 	}
 	handleNameInputChange(e) {

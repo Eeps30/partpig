@@ -70,6 +70,7 @@ class PartList extends Component{
                     } catch (error) {
                         console.log('error is: ', error);
                         console.log('filters:',this.props.match.params.filters);
+                        this.props.history.push('/error');      
 
                     }
                     this.filters = (this.props.match.params.filters === undefined || this.props.match.params.filters.length === 0) ? this.initFilters(resp.data.data) : JSON.parse(this.props.match.params.filters);
@@ -93,6 +94,7 @@ class PartList extends Component{
                     this.props.history.push(this.props.match.url+'/filters/'+JSON.stringify(this.filters));
                 }).catch(err => {
                     console.log('error is: ', err);
+                    this.props.history.push('/error');      
                 }
             ); 
         }
