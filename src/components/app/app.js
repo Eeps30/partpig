@@ -13,6 +13,7 @@ import About from './about';
 import ContactPage from './contact';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
+import SignUp from '../signUp/signUp';
 import Home from '../home/home';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
@@ -81,7 +82,7 @@ class App extends Component{
             }         
         }).catch(err => {
             console.log('error is: ', err);
-            this.props.history.push('/error');      ;
+            this.props.history.push('/error');      
             
         });
     }
@@ -162,7 +163,7 @@ class App extends Component{
                 this.removePartFromCart(partInfo);
             }).catch(err => {
                 console.log('error is: ', err);
-                this.props.history.push('/error');      ;
+                this.props.history.push('/error');      
                 
             });
         }else{
@@ -248,6 +249,8 @@ class App extends Component{
                     <Route path='/dashboard' render={props => <UserDashboard userData={this.state.userName} {...props}/>}/>
                     <Route path='/checkoutComplete/:orderNumber' render={props => <CheckoutComplete  urlBack={this.urlBack} {...props}/>}/>
                     <Route path='/error' component={AxiosError}/>
+                    <Route path='/signup' component={SignUp}/>
+
                     <Footer/> 
                 </div>
             </Router>  
