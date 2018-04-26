@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-
 import '../userParts/userParts.css';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
+import Loading from '../tools/loading/loading';
 import axios from 'axios';
-import UpdatePartStatus from "../userParts/updatePartStatus"
-import './userDrafts.css';
+import UpdatePartStatus from "./userParts/updatePartStatus"
 
 
 class UserDrafts extends Component {
@@ -20,7 +18,6 @@ class UserDrafts extends Component {
     }
 
     componentDidMount(){
-        // const id = this.props.match.params.id;
         const seller_id = this.state.seller_id;
         const url = 'http://localhost:8000/teampartpig/src/assets/php/allPartBySeller.php';
         const params = {seller_id};      

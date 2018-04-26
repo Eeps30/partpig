@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import './userHistory.css';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
 import axios from 'axios';
-import construction from '../../../assets/images/webConstruction.jpg';
+import construction from '../../assets/images/webConstruction.jpg';
 
 class UserHistory extends Component {
         
@@ -63,7 +62,7 @@ class UserHistory extends Component {
         return  (
             <div className="userPartsContainer">     
                 <div className="userPartsList">
-                <h1>YOUR HISTORY</h1>
+                <h2>Your History</h2>
                 <img src={construction} alt=""/>
                 </div>
             </div>     

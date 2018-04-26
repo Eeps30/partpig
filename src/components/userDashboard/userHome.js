@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './userHome.css';
 import {Link} from 'react-router-dom';
 import Loading from '../../loading/loading';
 import axios from 'axios';

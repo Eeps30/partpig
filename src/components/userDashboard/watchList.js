@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import './watchList.css';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
+import Loading from '../tools/loading/loading';
 import axios from 'axios';
-import construction from '../../../assets/images/webConstruction.jpg';
+import construction from '../../assets/images/webConstruction.jpg';
 
 
 class WatchList extends Component {
@@ -22,7 +21,7 @@ class WatchList extends Component {
 
                 <div className="userPartsContainer">     
                     <div className="userPartsList">
-                        <h2>Your Settings</h2>
+                        <h2>Your Watch List</h2>
                         <img src={construction} alt=""/>
                     </div>
                 </div>
