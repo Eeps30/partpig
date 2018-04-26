@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
+import Loading from '../../tools/loading/loading';
 import axios from 'axios';
-import './updatePartStatus.css'
+import './updatePartStatus.css';
 
 
 class UpdatePartStatus extends Component {
