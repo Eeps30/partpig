@@ -233,7 +233,6 @@ class App extends Component{
                     <Route path='/partdetails/:id/newPart/:newPart' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                                        
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={ContactPage}/>
-                    <Route path='/contactSeller' component={ContactSeller}/>
                     <Route path='/cart' render={props => <Cart cartParts={this.state.cartParts} removePart={this.removePart} urlBack={this.urlBack} {...props}/>}/>
                     <Route path='/checkout' render={props => <Checkout removeAllPartsFromCart={this.removeAllPartsFromCart} cartParts={this.state.cartParts} {...props}/>}/>
                     <Route path='/sellpart' component={SellPartForm}/>
