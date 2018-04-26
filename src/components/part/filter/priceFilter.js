@@ -19,6 +19,11 @@ class PriceFilter extends Component{
 
     componentDidUpdate(){
         if(this.props.update){
+            var parent = document.getElementById("priceFilterDiv");
+            var child = document.getElementsByClassName("rs-container")[0];
+            if(parent && child){
+                parent.removeChild(child);
+            }
             const slider = new rSlider({
                 target: '#slider',
                 values: this.state.prices[0],

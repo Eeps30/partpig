@@ -49,8 +49,8 @@ class ImageGallery extends Component{
         }
         return(
             <div className={this.props.imageClass}>             
-                <div className="mainImage">
-                    <img src={this.state.mainImg}/>
+                <div className={this.props.isDetails ? "mainImageDetails" :  "mainImage"}>
+                    <img className='mainImageImg' src={this.state.mainImg}/>
                 </div>
                 {divList}
             </div>

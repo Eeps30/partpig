@@ -6,6 +6,15 @@
     transition: all 1s ease-in;
 }
 
+.filterScroll{
+    max-height: 30vh;
+    overflow-y: auto;
+}
+
+.filterScroll::-webkit-scrollbar {
+    display: none;
+}
+
 .filter h2{
     background-color: black;
     color: whitesmoke;

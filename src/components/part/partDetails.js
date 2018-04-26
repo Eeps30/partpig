@@ -63,7 +63,7 @@ class PartDetails extends Component {
         return (
             <div className="partDetails container">
                 {linkBack}
-                <ImageGallery imageClass='imageDetailsContainer' showList={true} mainImage = {this.state.partInfo.images[0]} imageList = {this.state.partInfo.images} />
+                <ImageGallery imageClass='imageDetailsContainer' showList={true} mainImage = {this.state.partInfo.images[0]} imageList = {this.state.partInfo.images}  isDetails={true} />
                 <PartInfo newPart={this.state.newPart} fromDashboard={this.props.match.params.fromDashboard} {...this.props} infoClass='productDetailsContainer' partInfo={this.state.partInfo}  isDetails={true} />
             </div> 
         );
