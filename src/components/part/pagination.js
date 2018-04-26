@@ -48,6 +48,8 @@ class Pagination extends Component {
 
     handleButtonOnClick(event){
         let numPage = event.target['id'];
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         switch(numPage){
             case 'first':
                 numPage = 0;
