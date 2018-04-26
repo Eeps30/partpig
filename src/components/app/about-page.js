@@ -55,29 +55,24 @@ class AboutPage extends Component {
             <div className="aboutUsContainer">
                 <div className="images">
                     <div className='person'>
-                        <div onClick={this.handleClick} className="bobbleBody1">
-                            <div className="bobbleHead1 head" style={this.state.style}></div>
-                        </div>
+                        <div className="bobbleHead1 head" style={this.state.style}></div>
+                        <div onClick={this.handleClick} className="bobbleBody1"></div>
                     </div>
                     <div className='person'>
-                        <div className="bobbleBody1">
-                            <div className="bobbleHead2 head" style={this.state.style}></div>
-                        </div>
+                        <div className="bobbleHead2 head" style={this.state.style}></div>
+                        <div className="bobbleBody1"></div>
                     </div>
                     <div className='person'>
-                        <div className="bobbleBody1">
-                            <div className="bobbleHead3 head" style={this.state.style}></div>
-                        </div>
+                        <div className="bobbleHead3 head" style={this.state.style}></div>
+                        <div className="bobbleBody1"></div>
                     </div> 
                     <div className='person'>
-                        <div className="bobbleBody1">
-                            <div className="bobbleHead4 head" style={this.state.style}></div>
-                        </div>
+                        <div className="bobbleHead4 head" style={this.state.style}></div>
+                        <div className="bobbleBody1"></div>
                     </div> 
                     <div className='person'>
-                        <div className="bobbleBody1">
-                            <div className="bobbleHead5 head" style={this.state.style}></div>
-                        </div>
+                        <div className="bobbleHead5 head" style={this.state.style}></div>
+                        <div className="bobbleBody1"></div>
                     </div>
                 </div>
                 <div className="infoContainer">
