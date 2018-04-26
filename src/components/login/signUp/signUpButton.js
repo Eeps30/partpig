@@ -1,11 +1,14 @@
 import React from "react";
-// import "./registerForm.css";
-import {Link} from 'react-router-dom';
+import "./signUp.css";
+import { Link } from 'react-router-dom';
 
 const SignUpButton = () => (
-    <div className="register-container">
-    <p>no account? no problem! sign up now!</p>
-    <Link className="buttonText" to={"/signup"}> SIGN UP </Link>
+    <div className="signUp_Container">
+        <div className="signUp_Message">
+            <h2 >No account? No problem! </h2>
+            <h2>Sign up for a Partpig account! </h2>
+        </div>
+        <Link className="signUp_Button" to={"/signup"}> Sign up now!</Link>
     </div>
 );
 
