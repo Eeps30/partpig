@@ -8,7 +8,7 @@ class SignUp extends Component {
           
        this.state = {
            email: '',
-           emailError: '',
+           emailError: false,
            username: '',
            password: '',
            confirmPass: ''
@@ -62,9 +62,11 @@ class SignUp extends Component {
                if(resp.data === 'invalid email'){
                    this.setState({
                        emailError: {
-                           style = {border: '1px solid red'}
+                           border: '1px solid red'
                        }
                    })
+               }else{
+
                }
            }).catch(err => {
                console.log('error is: ', err);
@@ -74,9 +76,9 @@ class SignUp extends Component {
 
    render(){
 
-       let style = {
+        let style = {
            border: 'solid red 2px'
-       }
+        }
 
        return (
            <div>
@@ -93,7 +95,7 @@ class SignUp extends Component {
                            <label>Confirm Password:</label>
                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} required type="password"/>
                            <button onClick={this.onSubmit.bind(this)}>Sign Up</button>
-                           <div style={this.state.emailError}></div>
+                           <div className="emailError" style={this.state.emailError}></div>
                        </form>
                    </div>
                </div>
