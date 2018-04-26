@@ -3,42 +3,8 @@ import contact from './about-info'
 import contactCSS from './about.css'
 import githubIcon from '../../assets/images/contact-icons/github-icon.png'
 import linkedinIcon from '../../assets/images/contact-icons/linkedIn-icon.png'
-import headshot from '../../assets/images/contact-icons/headshot.png'
-import alexHead from '../../assets/images/bobble-bodies/alex-head.png'
-import evanHead from '../../assets/images/bobble-bodies/evan-head.png'
-import brianHead from '../../assets/images/bobble-bodies/brian-head.png'
-import daveHead from '../../assets/images/bobble-bodies/dave-head.png'
-import liHead from '../../assets/images/bobble-bodies/li-head.png'
 
 class AboutPage extends Component {
-    // constructor(props){
-    //     super(props)
-
-    //     this.state = {
-    //         // style: {}
-    //     }
-
-    //     this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    //     this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    // }
-
-    // handleMouseEnter(){
-    //     // const style = {
-    //     //     animation: 'bobble .45s infinite'
-    //     // }
-    //     // this.setState({
-    //     //     style: style
-    //     // })
-    // }
-
-    // handleMouseLeave(){
-    //     // const style = {
-    //     //     animation: 'none'
-    //     // }
-    //     // this.setState({
-    //     //     style: style
-    //     // })
-    // }
 
     render(){
         const contactElements = contact.map((item, index) => {
