@@ -1,13 +1,10 @@
 .outerDiv {
-    /* border: solid black 1px; */
     width: 50%;
     height: 35%;
     border-radius: 10px;
     margin: auto;
     position: relative;
     top: 23%;
-    /* background-color: rgba(62, 62, 62, 0.25);
-    box-shadow: 3px 4px; */
     padding: 0.5%;    
     background-color: #9c1010;
 }
@@ -82,4 +79,14 @@
     width: 76%;
     height: 100%;
     margin-right: 2%;
+}
+
+.searchNumber {
+    float: right;
+    width: 48%;
+}
+
+.searchName {
+    float:left;
+    width: 48%;
 }

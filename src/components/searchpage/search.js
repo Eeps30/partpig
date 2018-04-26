@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import MakeDropDown from './dropdown/makeDropdown';
-import ModelDropDown from './dropdown/modelDropdown';
-import YearDropDown from './dropdown/yearDropdown';
+import MakeDropDown from '../tools/dropdown/makeDropdown';
+import ModelDropDown from '../tools/dropdown/modelDropdown';
+import YearDropDown from '../tools/dropdown/yearDropdown';
 import data from './dataModel';
 import './search.css';
 import {Link} from 'react-router-dom';
