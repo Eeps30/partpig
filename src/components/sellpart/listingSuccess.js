@@ -1,5 +1,4 @@
 import React from "react";
-import './listingSuccess.css';
 import {Link} from 'react-router-dom';
 
 const ListingSuccess = (props) => {

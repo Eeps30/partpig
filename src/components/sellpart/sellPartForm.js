@@ -1,17 +1,15 @@
 import React, {Component} from "react";
-import "./sellpart.css";
-import "./yearMakeModelSelect.css";
-import ImageUpload from '../imageUploader/imageUploader';
+import ImageUpload from './imageUploader';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Field from '../tools/field';
-import ListingSuccess from "../listingSuccess/listingSuccess";
+import ListingSuccess from "./listingSuccess";
 import formInputs from './formData';
-import MakeDropDown from '../searchpage/dropdown/makeDropdown';
-import ModelDropDown from '../searchpage/dropdown/modelDropdown';
-import YearDropDown from '../searchpage/dropdown/yearDropdown';
+import MakeDropDown from '../tools/dropdown/makeDropdown';
+import ModelDropDown from '../tools/dropdown/modelDropdown';
+import YearDropDown from '../tools/dropdown/yearDropdown';
 import data from '../searchpage/dataModel';
-import Loading from '../loading/loading';
+import Loading from '../tools/loading/loading';
 
 
 class SellPartForm extends Component{
