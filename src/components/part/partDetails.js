@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import './partDetails.css';
 import ImageGallery from '../imageGallery/imageGallery';
-import PartInfo from '../partInfo/partInfo';
+import PartInfo from './partInfo';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
+import Loading from '../tools/loading/loading';
 import axios from 'axios';
 
 class PartDetails extends Component {

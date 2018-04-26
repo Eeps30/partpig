@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './pagination.css';
 import Part from '../part';
 import NoResults from '../../noResults/noResults';
 

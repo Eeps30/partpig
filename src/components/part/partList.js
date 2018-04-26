@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import './partList.css';
 import {Link} from 'react-router-dom';
 import Filter from '../filter/filter';
-import BrandFilter from './../filter/brandFilter';
+import BrandFilter from './filter/brandFilter';
 import axios from 'axios';
-import Loading from '../../loading/loading';
-import Pagination from './../pagination/pagination';
-import Sorter from './../sorter/sorter';
-import NoResults from '../../noResults/noResults';
+import Loading from '../tools/loading/loading';
+import Pagination from './pagination';
+import Sorter from './sorter';
+import NoResults from '../tools/noResults/noResults';
 
 class PartList extends Component{
 

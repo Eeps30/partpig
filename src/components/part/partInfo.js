@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './partInfo.css';
 import {Link} from 'react-router-dom';
 import fb from '../../../assets/images/facebook.png';
 import email from '../../../assets/images/email.png';

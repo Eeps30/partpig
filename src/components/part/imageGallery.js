@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './imageGallery.css';
 
 
 class ImageGallery extends Component{
