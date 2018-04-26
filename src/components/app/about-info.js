@@ -1,7 +1,7 @@
 const contactInfo = [
     {
         name: 'David Forman',
-        role: 'Project Owner, Front End Development',
+        role: 'Front End Development',
         github: 'https://github.com/daveforman',
         linkedin: 'https://www.linkedin.com/in/dave-forman-175238ab/'
     },
