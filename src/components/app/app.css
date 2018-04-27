@@ -32,16 +32,13 @@ body {
     width: 80%;
     height: 90%;  
     margin: auto;
-	padding-top: 4%;
+	padding-top: 2%;
 	min-height: 82.5vh;
 }
 
-.container > a{
-    position: absolute;
-    top: 7%;
-    left: 10%;
-    text-decoration: none;
-    font-size: 1.5em;
+.goBack{
+    text-align: left;    
+    font-size: 2em;
 }
 
 .button-link {
@@ -133,7 +130,8 @@ header {
 }
 
 .mainLogo {
-    height: 100%;
+    height: 100%;    
+    vertical-align: top;
 }
 
 .user-nav{

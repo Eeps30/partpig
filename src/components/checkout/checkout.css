@@ -37,12 +37,13 @@
     float: right;
 }
 
-.checkoutList ul{
-    border-bottom: 1px solid lightgray;
-}
-
 .checkoutList li{
     padding: 3%;
+    list-style-type: none;
+}
+
+.checkoutList li:nth-child(odd) {
+    background: #CCC
 }
 
 .checkoutTotal{

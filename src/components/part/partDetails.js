@@ -45,9 +45,15 @@ class PartDetails extends Component {
 
     render(){
 
-        let linkBack = <Link className='button-link' to={this.props.urlBack}><div>Back to results</div></Link>;
+        let linkBack = (<div className="goBack"> 
+                        <Link className='button-link' to={this.props.urlBack}><div>Back to results</div></Link>
+                        </div>
+                        );
         if(this.props.match.params.fromDashboard == 'true'){
-            linkBack = <Link className='button-link' to={"/dashboard/activeparts"}><div>Back to dashboard</div></Link>;
+            linkBack = (<div className="goBack"> 
+                        <Link className='button-link' to={"/dashboard/activeparts"}><div>Back to dashboard</div></Link>
+                        </div>
+                        );
         }else if(this.props.match.params.newPart == 'true'){
             linkBack ='';
         }

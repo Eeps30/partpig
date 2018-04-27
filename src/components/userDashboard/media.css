@@ -3,10 +3,6 @@
     .singlePart{        
         width: 30%;
     }
-
-    .container > a{
-        top: 6%;
-    }
 }
 
 @media (max-width: 950px){
@@ -21,10 +17,6 @@
     .productContainer {
         height: 12vw;
     }
-
-    .container > a{
-        top: 5%;
-    }
     
     .imageContainer {
         width: 21vw;
@@ -35,7 +27,7 @@
 @media (max-width: 750px){
     .imageContainer {
         width: 79vw;
-        height: 79vw;
+        height: 65vw;
     }
     .singlePart{        
         width: 89%;
@@ -55,10 +47,6 @@
         font-size: 0.9em;
     }
     
-    .container > a{
-        top: 4%;
-    }
-
     .imageDetailsContainer {
         display: block;
         width: 80vw;
@@ -103,15 +91,37 @@
         width: 95%;
     }
 
+    .cartTotal {
+        display: block; 
+        width: 90%;
+    }
+
+    .cartPartsContainer {
+        display: block;
+        width: 90%;
+    }
+
+    .checkoutTotal {
+        display: block;
+        margin: 2% auto;
+        width: 95%;
+    }
+
+    .formCheckoutContainer {
+        display: block;
+        width: 95%;
+        margin: auto;
+    }
+
+    .imageCartContainer {
+        width: 13vw;
+        height: 13vw;
+    }
 }
 
 
 @media (max-width: 550px){
-        
-    .container > a{
-        top: 3.5%;
-    }
-    
+          
     #menu {
         width: 19%;
     }

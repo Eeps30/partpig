@@ -487,10 +487,8 @@ class Checkout extends Component {
                 </div>
                 <div className='checkoutTotal'>
                     <div className="cartTitle"><b>CART SUMMARY: ({listParts.length} items)</b> </div>
-                    <div className="checkoutList">
-                        <ul>
-                            {listParts}
-                        </ul>
+                    <div className="checkoutList">                        
+                        {listParts}                        
                         <button onClick={this.backToCart.bind(this)} className='button-link'>Go Back</button>
                     </div>
                     <hr />
