@@ -20,13 +20,13 @@ class SignUpDetails extends Component {
                 state_abbr: "CA",
                 street_address: "1234 Street",
                 zipcode: "92627",
-                country:'USA'
+                country: 'USA'
             },
-            sameAddress: false,
-            addressErrors: {},
+            addressErrors: '',
+            nameChange: false,
+            addressChange: false
         }
-        // this.userId = localStorage.getItem('user');
-        this.handleBillingInputChange = this.handleBillingInputChange.bind(this);
+        this.handleAddressInputChange = this.handleAddressInputChange.bind(this);
     }
 
 
@@ -36,31 +36,91 @@ class SignUpDetails extends Component {
 
 
     }
- 
-    handleBillingInputChange(event) {
+
+    handleAddressInputChange(event) {
         const { value, name } = event.target;
         const newUserInfo = { ...this.state.address };
         newUserInfo[name] = value;
-        this.setState({
-            address: newUserInfo
-        });
-    }
- 
-
-    billinghandleOnBlur(event) {
-        const { name, value, placeholder, required } = event.target;
-        const newBillingErrors = { ...this.state.billingErrors };
-        if (value === '' && required) {
-            '';
-        } else {
-            delete newBillingErrors[name];
+        if (name === 'first_name' || name === 'last_name') {
             this.setState({
-                addressErrors: newBillingErrors
+                address: newUserInfo,
+                nameChange: true
+            });
+        }
+        else {
+            this.setState({
+                address: newUserInfo,
+                addressChange: true
             });
         }
     }
-    buttonSubmit(){
-        this.props.history.push('/login');
+
+
+    handleAddressOnBlur(event) {
+        const { name, value, placeholder, required } = event.target;
+        const newAddressErrors = { ...this.state.addressErrors };
+        if (value === '' && required) {
+            '';
+        } else {
+            delete newAddressErrors[name];
+            this.setState({
+                addressErrors: newAddressErrors
+            });
+        }
+    }
+    buttonSubmit() {
+        const {
+            city,
+            first_name,
+            last_name,
+            phone_number,
+            state_abbr,
+            street_address,
+            zipcode,
+            nameChange,
+            addressChange
+        } = this.state;
+
+        if (nameChange) {
+            const url = 'http://localhost:8000/teampartpig/src/assets/php/login/newAddress.php';
+            axios({
+                url: url,
+                method: 'post',
+                data: params,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(resp => {
+                console.log('response is: ', resp);
+
+            }).catch(err => {
+                console.log('error is: ', err);
+                this.props.history.push('/error');
+            });
+
+        }
+
+        if (addressChange) {
+            const url = 'http://localhost:8000/teampartpig/src/assets/php/login/newAddress.php';
+            axios({
+                url: url,
+                method: 'post',
+                data: params,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(resp => {
+                console.log('response is: ', resp);
+
+            }).catch(err => {
+                console.log('error is: ', err);
+                this.props.history.push('/error');
+            });
+
+        }
+
+
+        // this.props.history.push('/login');
     }
     render() {
 
@@ -68,12 +128,11 @@ class SignUpDetails extends Component {
         // if (!this.state.sameAddress) {
         addressFields = inputs.map(((field, index) => {
             return <Field key={index} {...field} error={this.state.addressErrors[field.name]}
-                handleInputChange={this.handleBillingInputChange} handleOnBlur={this.billinghandleOnBlur.bind(this)} value={this.state.address[field.name] || ''} />
+                handleInputChange={this.handleAddressInputChange} handleOnBlur={this.handleAddressOnBlur.bind(this)} value={this.state.address[field.name] || ''} />
         }).bind(this));
         // }
 
         console.log(this.state);
-
         return (
             <div>
                 <div className="outer-container">
