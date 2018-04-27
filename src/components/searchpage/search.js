@@ -78,6 +78,9 @@ class DropDownContainer extends Component {
                         <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         {searchButton}
+                    </div>
+                    <div className='instruction'>
+                        Please enter keywords or select all the three fields to start your search.
                     </div>                    
                 </div>
             </div>
