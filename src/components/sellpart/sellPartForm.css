@@ -147,7 +147,7 @@
     margin: 1%;
     width: 31%;
     display: inline-block;
-    font-size: 1.2em;
+    font-size: 2rem;
     padding: 1%;
 }
 /*=========================== image uploader styling ============================ */
@@ -155,8 +155,8 @@
     position: relative;
     display: inline-block;
     margin: 0 0.4%;
-    width: 25%;
-    height: 10vw;
+    width: 30%;
+    height: 12vmin;
     border: 1px solid black;
     vertical-align: top;
 }
@@ -172,10 +172,12 @@
 
 .displayImages{
     width: 70%;
-    height: 21vw;
+    height: 17vmin;
     overflow-y: auto;
     display: inline-block;
-    border: 1px solid red;
+    border: 0.5rem dashed darkslategray;
+    /*border-radius: 10px;*/
+    margin-left: 2vmin;
 }
 
 .fileInput{
@@ -185,14 +187,14 @@
 
 .dropZone {
     width: 20%;
-    height: 20vw;
+    height: 17vmin;
     display: inline-block;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     background-color: lightgray;
     text-align: center;
-    font-size: 1.6em;
+    /*font-size: 1.6em;*/
     /*padding: 5% 1%;*/
-    border: 0.3em dashed darkslategray;
+    border: 0.5rem dashed darkslategray;
     vertical-align: top;
     position: relative;
 }
@@ -202,6 +204,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 2rem;
     margin: 0;
 }
 
@@ -219,4 +222,8 @@
     position: absolute;
     right: 0;
     top: 0;
+    width: 2vmin;
+    height: 2vmin;
+    font-size: 1.3rem;
+    padding: 0;
 }
