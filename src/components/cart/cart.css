@@ -54,10 +54,10 @@
     float: right;
 }
 
-.cartData button, .cartData button, .cartData .disabled{
-    float: right;
-    margin-top:5%;
-    margin-bottom: 40%;
+.cartCheckout {
+    text-align: right;
+    padding-top: 4%;
+    padding-bottom: 10%;
 }
 
 .emptyMessage{

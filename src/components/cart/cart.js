@@ -37,7 +37,9 @@ const Cart = (props) => {
     }
     return (
         <div className="container">
-            <Link  className='button-link' to={props.urlBack}>Go Back</Link>            
+            <div className="goBack">
+                <Link  className='button-link' to={props.urlBack}>Go Back</Link>
+            </div>
             <div className="cartPartsContainer">            
                 <span>YOUR SHOPPING CART</span>
                 {list}                
@@ -49,7 +51,9 @@ const Cart = (props) => {
                     <hr/>
                     <p>TOTAL:  <span>${total}</span></p>
                     <hr/>
-                    {checkoutButton}
+                    <div className="cartCheckout">
+                        {checkoutButton}
+                    </div>                    
                 </div>
             </div>
         </div>

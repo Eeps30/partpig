@@ -216,7 +216,9 @@ class PartList extends Component{
 
         return (               
             <div className='partResults container'>
-                <Link className='button-link' to="/"> Go Back </Link>  
+                <div className="goBack">                
+                    <Link className='button-link' to="/"> Go Back </Link> 
+                </div> 
                 <div className='resultsBar'>
                         {buttonFilter}
                         {visibleParts.length + ' Results'}
