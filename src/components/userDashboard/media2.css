@@ -1,0 +1,22 @@
+@media (max-width: 1250px) {
+    
+    html{        
+        font-size: 0.85vmin;
+    }
+
+}
+@media (max-width: 950px) {
+     html{        
+        font-size: 0.75vmin;
+    }
+
+}
+@media (max-width: 750px) {
+
+
+}
+@media (max-width: 550px) {
+
+
+}
+
