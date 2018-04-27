@@ -117,6 +117,14 @@
         width: 13vw;
         height: 13vw;
     }
+
+    .outerDiv {
+        width: 95%;
+    }
+
+    .sellPartContainer {     
+        width: 95%;
+    }
 }
 
 
