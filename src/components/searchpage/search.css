@@ -20,18 +20,35 @@
 
 .buttonsContainer{
     width: 100%;
-    height: 50%;
+    /*height: 50%;*/
+    height: 18vh;
     text-align: center;
+    margin-top: 1vh;
 }
 
 .buttonsContainer select {    
     width: 28.3%;
-    height: 50%;
-    margin: 2%;
+    height: 40%;
+    margin: 1% 2%;
     background: #d4d4d4;
     font-size: 2em;
+    border-radius: 10px;
+}
+.searchBarContainer {
+    text-align: center;
+    /*position: relative;*/
+    /*height: 25%;*/
+    height: 7vh;
+    margin-top: 2vh;
 }
 
+.searchBarContainer div{
+    position: absolute;
+    top:50%;
+    width: 100%;
+    height: 40%;
+    transform: translate(0,-50%);
+}
 .searchBarContainer .searchButton {    
     border-radius: 5px;
     background-color: rgb(111, 111, 111);
@@ -43,28 +60,15 @@
     margin-top: 1%;
 }
 
-.searchBarContainer a {
-    padding-top: 2.5%;
-    padding-left: 2%;
-    padding-right: 2%;
-    font-size: 1.7em;
-    text-decoration: none;
-    border-radius: 5px;
-    height: 52%;
-}
-
-.searchBarContainer {
-    text-align: center;
-    position: relative;
-    height: 50%;
-}
-
-.searchBarContainer div{
-    position: absolute;
-    top:50%;
-    width: 100%;
-    height: 40%;
-    transform: translate(0,-50%);
+.buttonsContainer a {
+    /*padding-top: 2.5%;*/
+    /*padding-left: 2%;
+    padding-right: 2%;*/
+    font-size: 2.5rem;
+    margin-top: 2vh;
+    /*text-decoration: none;*/
+    border-radius: 10px;
+    /*height: 52%;*/
 }
 
 .searchBarContainer .searchName {
@@ -76,9 +80,12 @@
 
 .searchBarContainer input {
     font-size: 2.5em;
-    width: 76%;
-    height: 100%;
-    margin-right: 2%;
+    width: 93%;
+    height: 80%;
+    padding: 0 1%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    /*margin-right: 2%;*/
 }
 
 .searchNumber {
@@ -89,4 +96,11 @@
 .searchName {
     float:left;
     width: 48%;
+}
+
+.instruction {
+    margin: 1vh auto;
+    font-size: 1.7rem;
+    text-align: center;
+    color: #baba28;
 }
