@@ -22,6 +22,7 @@ import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
 import AxiosError from '../tools/errorHandling/error';
+import SignUpDetails from '../login/signUp/signupDetails';
 require('../../assets/images/piglogo.png');
 
 class App extends Component{
@@ -250,6 +251,8 @@ class App extends Component{
                     <Route path='/checkoutComplete/:orderNumber' render={props => <CheckoutComplete  urlBack={this.urlBack} {...props}/>}/>
                     <Route path='/error' component={AxiosError}/>
                     <Route path='/signup' component={SignUp}/>
+                    <Route path='/signUpDetails' component={SignUpDetails}/>
+
 
                     <Footer/> 
                 </div>
