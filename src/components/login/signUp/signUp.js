@@ -70,7 +70,7 @@ class SignUp extends Component {
                     this.setState({
                        errorMessage: 'Invalid Email'
                    })
-                }else if(resp.data.duplicate[0] === "User already exists"){
+                }else if(resp.data.hasOwnProperty('duplicate')){
                     this.setState({
                         errorMessage: 'User Already Exists'
                     })
