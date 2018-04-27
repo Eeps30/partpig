@@ -46,10 +46,13 @@
     .container{
         font-size: 1.2em;
     }
-
-    
+   
     .filter{
         font-size: 1.1em;
+    }
+
+    #menu {
+        width: 13%;
     }
 }
 
@@ -76,6 +79,11 @@
     .imageDetailsContainer {
         width: 26vw;
         height: 26vw;
+    }
+
+    #menu {
+        position: absolute;
+        width: 20%;
     }
 }
 
@@ -122,6 +130,13 @@
         font-size: 1.1vmin;
     }
     
+    #menu {
+        width: 29%;
+        margin: -8% 0 0 -5%;
+        padding-top: 7%;
+        font-size: 1.2em;
+    }
+
     .imageContainer {
         width: 79vw;
         height: 65vw;
