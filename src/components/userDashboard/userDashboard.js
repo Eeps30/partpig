@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './userDashboard.css';
 import './media.css';
+import './media2.css';
 import Loading from '../tools/loading/loading';
 import axios from 'axios';
 import UserParts from './userParts/userParts';

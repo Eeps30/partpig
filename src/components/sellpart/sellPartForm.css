@@ -1,6 +1,7 @@
 .sellPartContainer {
-    margin: 2% auto;
-    width: 60%;
+    margin: 2vh auto;
+    width: 60vw;
+    height: 86vh;
     overflow-y: auto;
     background-color: white;
     border-radius: 2px;
@@ -26,6 +27,10 @@
     width: 100%;
     text-align: center;    
     font-size: 1.7em;
+}
+
+.buttonContainer button {
+    font-size: 2rem;
 }
 
 .sellPartForm{
@@ -142,7 +147,7 @@
     margin: 1%;
     width: 31%;
     display: inline-block;
-    font-size: 1.2em;
+    font-size: 2rem;
     padding: 1%;
 }
 /*=========================== image uploader styling ============================ */
@@ -150,8 +155,8 @@
     position: relative;
     display: inline-block;
     margin: 0 0.4%;
-    width: 5vw;
-    height: 4vw;
+    width: 30%;
+    height: 12vmin;
     border: 1px solid black;
     vertical-align: top;
 }
@@ -166,10 +171,13 @@
 }
 
 .displayImages{
-    width: 75%;
-    height: 20vh;
+    width: 70%;
+    height: 17vmin;
     overflow-y: auto;
     display: inline-block;
+    border: 0.5rem dashed darkslategray;
+    /*border-radius: 10px;*/
+    margin-left: 2vmin;
 }
 
 .fileInput{
@@ -179,14 +187,25 @@
 
 .dropZone {
     width: 20%;
+    height: 17vmin;
     display: inline-block;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     background-color: lightgray;
     text-align: center;
-    font-size: 1.7em;
-    padding: 5% 1%;
-    border: 0.3em dashed darkslategray;
+    /*font-size: 1.6em;*/
+    /*padding: 5% 1%;*/
+    border: 0.5rem dashed darkslategray;
     vertical-align: top;
+    position: relative;
+}
+.dropZone p {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    margin: 0;
 }
 
 .imageUploadContainer{
@@ -203,4 +222,8 @@
     position: absolute;
     right: 0;
     top: 0;
+    width: 2vmin;
+    height: 2vmin;
+    font-size: 1.3rem;
+    padding: 0;
 }

@@ -140,7 +140,7 @@ class SellPartForm extends Component{
         const {name,value,placeholder,required} = event.target;
         const newPartErrors = {...this.state.partErrors};
         if(value ==='' && required){           
-            newPartErrors[name] = placeholder + ' is requiered';           
+            newPartErrors[name] = placeholder + ' is required';           
         }else{
             delete newPartErrors[name];            
         }
