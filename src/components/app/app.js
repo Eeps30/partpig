@@ -253,7 +253,6 @@ class App extends Component{
                     <Route path='/signup' component={SignUp}/>
                     <Route path='/signUpDetails' component={SignUpDetails}/>
 
-
                     <Footer/> 
                 </div>
             </Router>  

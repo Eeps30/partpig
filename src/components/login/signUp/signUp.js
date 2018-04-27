@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './signUp.css';
 import axios from 'axios';
+import Loading from '../../tools/loading/loading';
 
 class SignUp extends Component {
    constructor(props){
@@ -13,7 +14,8 @@ class SignUp extends Component {
            userExists: false,
            password: '',
            confirmPass: '',
-           errorMessage: ''
+           errorMessage: '',
+           isLoading: false
        }
 
        this.handleChange = this.handleChange.bind(this);
@@ -46,6 +48,10 @@ class SignUp extends Component {
 
    handleSubmit(event){
        event.preventDefault();
+
+        this.setState({
+            isLoading: true
+        });
       
        const { username, email, password } = this.state
        const params = {
@@ -76,6 +82,9 @@ class SignUp extends Component {
                     })
                 }
                 else if(resp.data.success){
+                    this.setState({
+                        isLoading: false
+                    })
                     this.props.history.push('/signUpDetails');
                 }
            }).catch(err => {
@@ -85,6 +94,14 @@ class SignUp extends Component {
    }
 
    render(){
+
+    if (this.state.isLoading) {
+        return(
+            <div className='container'>
+                <Loading />;
+            </div>
+        );
+    }
 
         return (
             <div>
