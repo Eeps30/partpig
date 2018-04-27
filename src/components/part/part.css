@@ -113,14 +113,13 @@
 
 .productDetailsContainer{
     display: inline-block;
-    width: 55%;
+    width: 60%;
     height: 80%;
     font-size: 2em;
     margin-top: 3%;
     padding: 1%;
     box-sizing: border-box;
     text-align: left;
-    margin-right: 5%;
 }
 
 .productCart{
@@ -179,9 +178,10 @@
 
 .addButton {
     float: right;
-    width: 40%;
+    width: 47%;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 0.7em;
+    margin-right: 2%;
 }
 
 .editButton {
@@ -242,7 +242,7 @@
 /*=======================  sorter styling ================================*/
 .sorterContainer{
     float: right;
-    width: 40%;
+    width: 50%;    
     text-align: right;
 }
 

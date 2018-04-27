@@ -4,7 +4,6 @@ html {
     color: rgb(31, 31, 31);
     overflow-x: hidden;
     overflow-y: scroll;
-	height: 94.1vh;   
 }
 a {
 	text-decoration: none;
@@ -13,10 +12,10 @@ a {
 body {
     position: relative;    
     width: 100%;
-    height: 100%;
     margin: 0px;
     background-color:  whitesmoke;    
-	min-height: 600px;
+    min-height: 600px;
+    min-width: 375px;
 }
 
 #root{
@@ -113,6 +112,7 @@ header {
     color: rgb(238, 75, 0);
     width: 100%;
     height: 5vh;
+    min-height: 40px;
     margin-left: 0;
     background-color: rgb(255, 255, 255);
     margin-bottom: 0;
@@ -172,7 +172,7 @@ header {
     border: 2px solid #d0451b;
     vertical-align: top;
     position: relative;
-    top: 40%;
+    top: 33%;
     transform: translate(-50%,0);
 }
 
