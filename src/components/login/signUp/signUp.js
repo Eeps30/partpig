@@ -60,6 +60,7 @@ class SignUp extends Component {
 
        if(this.state.password !== this.state.confirmPass){
            this.setState({
+               isLoading: false,
                errorMessage: 'Mismatching Password Fields'
            })
        }else if(this.state.password === this.state.confirmPass){
@@ -74,10 +75,12 @@ class SignUp extends Component {
                console.log('response is: ', resp);
                if(resp.data === 'invalid email'){
                     this.setState({
+                       isLoading: false,
                        errorMessage: 'Invalid Email'
                    })
                 }else if(resp.data.hasOwnProperty('duplicate')){
                     this.setState({
+                        isLoading: false,
                         errorMessage: 'User Already Exists'
                     })
                 }
