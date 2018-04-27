@@ -59,13 +59,8 @@ class SignUp extends Component {
                }
            }).then(resp => {
                console.log('response is: ', resp);
-               if(resp.data === 'invalid email'){
-                //    this.setState({
-                //        emailError: {
-                //            style:{border: '1px solid red'}
-                //        }
-                //    })
-               }
+                let userId = resp.data.data[1];
+                console.log(userId);
                this.props.history.push('/signUpDetails');
            }).catch(err => {
                console.log('error is: ', err);

@@ -37,10 +37,15 @@ if($testResult->num_rows){
 $testStmt->close();
 
 
-$userFields = ['user_name', 'password', 'email', 'first_name', 'last_name', 'billing_address_id', 'shipping_address_id'];
+$userFields = ['user_name', 'password', 'email', 'first_name', 'last_name', 'billing_address_id', 'shipping_address_id', 'phone_number'];
 $queryValues = [];
 $params = [];
 $letterString = "";
+
+$request_data['first_name'] = 'John';
+$request_data['last_name'] = 'Doe';
+$request_data['phone_number'] = '111-222-333';
+
 
 forEach($userFields as $key => $value){
     if(empty($request_data[$value])){

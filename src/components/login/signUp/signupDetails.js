@@ -13,13 +13,13 @@ class SignUpDetails extends Component {
         this.state = {
             isLoading: false,
             address: {
-                city: "Los Angeles",
+                city: "Irvine",
                 first_name: "John",
                 last_name: "Doe",
                 phone_number: "111-222-3333",
                 state_abbr: "CA",
                 street_address: "1234 Street",
-                zipcode: "11111",
+                zipcode: "92627",
                 country:'USA'
             },
             sameAddress: false,
@@ -60,7 +60,7 @@ class SignUpDetails extends Component {
         }
     }
     buttonSubmit(){
-        this.props.history.push('/dashboard');
+        this.props.history.push('/login');
     }
     render() {
 
@@ -83,7 +83,7 @@ class SignUpDetails extends Component {
                         <h2> or just go with the defaults </h2>
                         <div className="formFields">
                             {addressFields}
-                            <button className="signUp_Button accountDetails_Button" onClick={this.buttonSubmit.bind(this)}>Go to my dashboard!</button>
+                            <button className="signUp_Button accountDetails_Button" onClick={this.buttonSubmit.bind(this)}>Login With My New Account!</button>
                         </div>
                     </div>
                 </div>
