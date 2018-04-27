@@ -71,15 +71,13 @@ class DropDownContainer extends Component {
             <div className="outerDiv">
                 <div className="dropdownMenu">
                     <div className="searchBarContainer">
-                        <div>
-                            <input type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
-                            {searchButton}
-                        </div>                        
+                        <input type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
                     </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                         <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        {searchButton}
                     </div>                    
                 </div>
             </div>
