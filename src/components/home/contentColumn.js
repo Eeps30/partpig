@@ -8,7 +8,7 @@ class ContentColumn extends Component{
       super(props);
       this.state = {
         blockHeight: 100/props.displaySize,
-        position: 0,
+        // position: 0,
         images: props.images
       }
       this.handleTimerUpdate = this.handleTimerUpdate.bind(this);
@@ -28,11 +28,9 @@ class ContentColumn extends Component{
         position: newPosition,
         images: nextArray
       })
-  
     }
 
     componentDidMount(){
-
       // setInterval( this.handleTimerUpdate, 10);
       this.itemHeight = this.column.clientHeight / this.props.displaySize;
     }
@@ -52,7 +50,7 @@ class ContentColumn extends Component{
     render(){
       return (
       <div className="scrollingImgColumn" ref={ element => this.column=element}>
-        <div className="scrollingImgContainer" style={{color:'red', 'bottom': this.state.position + 'px'}}>
+        <div className="scrollingImgContainer" >
           {this.makeAllPictures(this.state.images)}
         </div>
       </div>)
