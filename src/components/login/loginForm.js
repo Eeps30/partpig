@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import Loading from '../../components/tools/loading/loading';
 
 class LoginForm extends Component {
 
@@ -10,13 +11,19 @@ class LoginForm extends Component {
                 user: '',
                 password: ''
             },
-            loginError: false
+            loginError: false,
+            isLoading: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
+
+        this.setState({
+            isLoading: true
+        })
+
         const user = e.target['user'].value;
         const password = e.target['password'].value;
         const params = {
@@ -32,12 +39,16 @@ class LoginForm extends Component {
             }
         }).then(resp => {
             if (resp.data.success) {
+                this.setState({
+                    isLoading: false
+                })
                 this.props.setUserData(resp.data.data);
                 this.props.history.push('/dashboard');
             }
             else {
                 this.setState({
-                    loginError: true
+                    loginError: true,
+                    isLoading: false
                 });
             }
         }).catch(err => {
@@ -48,6 +59,15 @@ class LoginForm extends Component {
     }
 
     render() {
+
+        if(this.state.isLoading){
+            return(
+                <div className="container">
+                    <Loading/>;
+                </div>
+            )
+        }
+
         let errorMessage = '';
         if (this.state.loginError) {
             errorMessage = <h2 className="loginFormErrorMessage">Username or Password Incorrect</h2>;
