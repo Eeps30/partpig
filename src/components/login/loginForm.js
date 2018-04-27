@@ -82,7 +82,7 @@ class LoginForm extends Component {
                     <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
                     <label>Password</label>
                     <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
-                    <input type="submit" value="Sign In" />
+                    <input type="submit" value="Log In" />
                 </form>
                 {errorMessage}
             </div>
