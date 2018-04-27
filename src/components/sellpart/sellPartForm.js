@@ -10,7 +10,7 @@ import ModelDropDown from '../tools/dropdown/modelDropdown';
 import YearDropDown from '../tools/dropdown/yearDropdown';
 import data from '../searchpage/dataModel';
 import Loading from '../tools/loading/loading';
-
+import "./sellPartForm.css";
 
 class SellPartForm extends Component{
     
