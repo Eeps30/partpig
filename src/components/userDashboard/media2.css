@@ -12,11 +12,29 @@
 
 }
 @media (max-width: 750px) {
-
+	.dropZone p,
+	.form-group label,
+    .form-group input, 
+    .form-group select, 
+    .yearMakeModel select {
+        font-size: 2.5rem;
+    }
+    .buttonContainer button{
+		font-size: 3rem;
+	}
 
 }
 @media (max-width: 550px) {
-
+	.dropZone p,
+	.form-group label,
+    .form-group input,    
+    .form-group select, 
+    .yearMakeModel select {
+        font-size: 3rem;
+    }
+	.buttonContainer button{
+		font-size: 4rem;
+	}
 
 }
 

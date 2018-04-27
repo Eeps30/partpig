@@ -221,8 +221,8 @@
     }
 
     .sellPartContainer {     
-        width: 95%;
-    }
+        width: 95%;    
+    } 
 
     .logo-container {
         width: 42%;
@@ -275,5 +275,5 @@
 
     #menuToggle input:checked ~ span {
         width: 10px;
-    } */
+    }
 }
