@@ -17,6 +17,7 @@ class SignUp extends Component {
        }
 
        this.handleChange = this.handleChange.bind(this);
+       this.handleSubmit = this.handleSubmit.bind(this);
    }
 
    handleChange(event){
@@ -43,7 +44,7 @@ class SignUp extends Component {
        })
    }
 
-   onSubmit(event){
+   handleSubmit(event){
        event.preventDefault();
       
        const { username, email, password } = this.state
@@ -86,7 +87,7 @@ class SignUp extends Component {
             <div>
                 <div className="outer-container">
                     <div className="inner-container">
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                             <h2>Create an Account</h2>
                             <label>Email Address:</label>
                             <input value={this.state.email} onChange={this.handleChange.bind(this)} type="email" required/>
@@ -95,8 +96,8 @@ class SignUp extends Component {
                             <label>Password:</label>
                             <input value={this.state.password} onChange={this.handlePassChange.bind(this)} type="password" required/>
                             <label>Confirm Password:</label>
-                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password"/>
-                            <button onClick={this.onSubmit.bind(this)}>Sign Up</button>
+                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password" required/>
+                            <input className="submitButton" type="submit" value="Sign Up"/>
                             <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
                         </form>
                     </div>
