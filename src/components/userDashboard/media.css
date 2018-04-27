@@ -124,7 +124,7 @@
 
     .sellPartContainer {     
         width: 95%;
-    }
+    }    
 }
 
 
@@ -158,10 +158,9 @@
     }
 }
 
-
 @media (min-height: 850px) {
     
     html{        
-        font-size: 0.85vmin;
+        font-size: 0.75vmin;
     }
 }
