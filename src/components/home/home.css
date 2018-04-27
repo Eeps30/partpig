@@ -13,9 +13,9 @@
 .scrollingImg{
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 20vw;
+	/*height: 20vw;*/
 	width: 100%;
-	display: inline-block;
+	/*display: inline-block;*/
 	background-position: top center;
 	margin: 0;
 	border-style: solid;
@@ -24,15 +24,14 @@
 	border-top: none;
 	
 }
-/*.scrollingImgColumn{
+.scrollingImgColumn{
 	width: 100%;
-}*/
-.scrollingImgContainer{
+}
+/*.scrollingImgContainer{
 	position: relative;
 	height: 20vw;
-	/* transition: bottom .1s; */
-
-}
+	transition: bottom .1s; 
+}*/
 .shadow{
     position: absolute;
 	left: 0;

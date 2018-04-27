@@ -28,6 +28,7 @@ class ContentColumn extends Component{
         position: newPosition,
         images: nextArray
       })
+  
     }
 
     componentDidMount(){
@@ -50,9 +51,7 @@ class ContentColumn extends Component{
     render(){
       return (
       <div className="scrollingImgColumn" ref={ element => this.column=element}>
-        <div className="scrollingImgContainer" >
           {this.makeAllPictures(this.state.images)}
-        </div>
       </div>)
     }
   }
