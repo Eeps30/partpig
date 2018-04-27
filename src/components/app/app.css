@@ -1,11 +1,13 @@
 html {
-    font-size: 1vmin;
-	font-family: Verdana, Geneva, sans-serif;
-	color: rgb(31, 31, 31);
+	font-size: 1vmin;
+    font-family: Verdana, Geneva, sans-serif;
+    color: rgb(31, 31, 31);
     overflow-x: hidden;
-	overflow-y: scroll;
-    height: 100vh;
-    
+    overflow-y: scroll;
+	height: 94.1vh;   
+}
+a {
+	text-decoration: none;
 }
 
 body {
@@ -13,25 +15,33 @@ body {
     width: 100%;
     height: 100%;
     margin: 0px;
-	padding-bottom: 10vh;
-	background-color:  whitesmoke;
+    background-color:  whitesmoke;    
+	min-height: 600px;
 }
 
 #root{
     width:100%;
-    height: 100%;
 }
 
 .mainContainer {
     width: 100%;
-	height: 100%;
-	min-height: 100%;
+	min-height: 100vh;
 }
 
 .container{
     width: 80%;
     height: 90%;  
     margin: auto;
+	padding-top: 4%;
+	min-height: 82.5vh;
+}
+
+.container > a{
+    position: absolute;
+    top: 7%;
+    left: 10%;
+    text-decoration: none;
+    font-size: 1.5em;
 }
 
 .button-link {
@@ -90,3 +100,331 @@ body {
     opacity: 0.7;
     cursor: default; 
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    opacity: 0.6;
+}
+::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    opacity: 0.6;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    opacity: 0.6;
+}
+/*===================== header styling =========================*/
+header {
+    display: inline-block;
+    color: rgb(238, 75, 0);
+    width: 100%;
+    height: 5vmin;
+    margin-left: 0;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 0;
+    box-shadow: 0 1px 4px rgba(41, 51, 57, 0.397);
+}
+
+.logo-container{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 3vh;
+    color: rgb(238, 75, 0);
+}
+
+.mainLogo {
+    height: 100%;
+}
+
+.user-nav{
+    width: 25%;
+    display: inline-block;
+    font-size: 2em;
+    height: 99%;
+    text-align: right;
+}
+
+.hamburger{
+    width: 25%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 2vmin;
+    height: 100%;
+    text-align: right;
+}
+
+.login-icon{
+    position: relative;
+    top: 10%;
+    right: 2%;
+    height: 80%;
+}
+
+.sellPartButton {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8em;
+    background-color: #d0451b;
+    color: white;
+    padding: 1%;
+    border-radius: 5px;
+    margin-right: 2%;
+    padding: 2% 2%;
+    border: 2px solid #d0451b;
+    vertical-align: top;
+    position: relative;
+    top: 40%;
+    transform: translate(-50%,0);
+}
+
+.sellPartButton:hover{
+    background-color: white; 
+    color: black; 
+    border: 2px solid #d0451b;
+}
+
+.cartDivIcon{
+    display: inline-block;
+    vertical-align: top;
+    height: 80%;
+}
+
+.cartDivIcon a{
+    position: relative;
+    text-decoration: none;
+    top: 14%;
+}
+
+.cartIcon{   
+    position: relative;
+    top: 10%;
+    height: 88%;
+}
+
+.cartCount{
+    position: relative;
+    top: -46%;
+    right: 50%;
+    font-size: 1em;
+    font-weight: bold;
+    color: #bc3315;
+}
+/*==================== footer styling ===========================*/
+footer {
+    color: white;
+    display: inline-block;
+    width: 100%;
+    height: 5vmin;
+    min-height: 50px;
+    background-color: rgb(32, 32, 32);
+}
+
+.legal {
+    position: relative;
+    bottom: 0px;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    margin-left: .5em;
+    margin-right: .5em;
+}
+/*==================== contact page styling ===========================*/
+.contact-us h1{
+    text-align: center;
+    font-weight: bold;
+	font-size: 3rem;
+}
+.contactPageContainer{
+    width: 90%;
+    margin: auto;
+    box-sizing: border-box;
+    background-image:url("../../assets/images/contact_pig.jpg");
+    background-size:cover;
+    border: solid 3px black;
+    height:80vh;
+    margin-bottom: 2vh;
+}
+.contact-header {
+	width: 40%;
+	display: inline-block;
+	vertical-align: top;
+	margin: 2%;
+    text-align: center;
+	box-sizing: border-box;
+	color: #666666;
+	font-family: Verdana, Geneva, sans-serif;
+    font-size: 2rem;
+    height: 40%;
+    text-shadow: 0.5px 0.5px black;
+}
+.contactForm{
+	width: 50%;
+	display: inline-block;
+	font-size: 2rem;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.contactForm input, .contactForm textarea {
+    display: inline-block;
+    height: 4vmin;
+    width: 80%;
+    font-size: 1.6rem;
+    margin: 0 10%;
+    border-radius: 5px;
+    padding: 1%;
+    border-style: groove;
+	font-family: Verdana, Geneva, sans-serif;
+    box-sizing: border-box;
+}
+.contactForm button{
+	margin: 1% 0 0 10%;
+	width: 80%;
+	font-size: 2.2rem;
+}
+.contactForm input[type=text]:focus, .contactForm input[type=email]:focus, .contactForm textarea:focus{
+    border: .2em solid #9C9D99;
+    background-color: #FFF;
+}
+.contactForm textarea.message{
+    height: 20vh;
+    resize: none;
+}
+.input-container{
+    width: 100%;
+}
+.input-container label{
+	display: block;
+    margin: 3% 0 1% 10%;
+    font-size: 2rem;
+}
+.contact_image{
+    border: solid black 5px;
+    border-radius:5%;
+    width: 60%;
+}
+.submitted{
+    text-align:center;
+    color:darkgreen;
+    text-shadow: 0.5px 0.5px darkgrey;
+}
+
+@media screen and (max-width: 600px){
+	.contactForm {
+		width: 100%;
+	}
+    .contact-header {
+        text-align: center;
+        width: 100%;
+    }
+    .input-container {
+    	width: 100%;
+    }
+    .input-container > input, .input-container > textarea  {
+		width: 80%;
+    }
+    .contactForm > button{
+        width: 80%;
+    }
+}
+/*==================== hamburger menu styling ===========================*/
+ 
+ #menu a {
+    text-decoration: none;
+    color: #232323;
+    transition: color 0.3s ease;
+ }
+ 
+ #menu a:hover {
+    color: rgb(224, 34, 0);
+ }
+ 
+ #menuToggle {
+    margin-top: 3%;
+    margin-left: 3%;
+    height: 100%;
+    z-index: 2;
+    -webkit-user-select: none;
+    user-select: none;
+ }
+ 
+ #menuToggle input {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    opacity: 0; /* hide this */
+    z-index: 3; /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+ }
+
+ #menuToggle span {
+    display: block;
+    width: 32px;
+    height: 6px;
+    margin-bottom: 5px;
+    position: relative;
+    background:  rgb(206, 0, 17);
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+ }
+ 
+ #menuToggle span:first-child {
+    transform-origin: 0% 0%;
+ }
+ 
+ #menuToggle span:nth-last-child(2) {
+   transform-origin: 0% 100%;
+ }
+ 
+ #menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-3px, 0px);
+  background: rgb(206, 0, 17);
+  width: 34px;
+  z-index: 2;
+ }
+ 
+ #menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  width: 2px;
+  height: 1px;
+  transform: rotate(0deg) scale(0.2, 0.2);
+ }
+ 
+ #menuToggle input:checked ~ span:nth-last-child(2) {
+   transform: rotate(-45deg) translate(-1px, -1px);
+ }
+ 
+ #menu {
+  position: absolute;
+  width: 16%;
+  margin: -5% 0 0 -5%;
+  padding: 1%;
+  padding-top: 4%;
+  background: #ededed;
+  list-style-type: none;
+  z-index:1;
+   -webkit-font-smoothing: antialiased;
+   transform-origin: 0% 0%;
+   transform: translate(-100%, 0);
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+ }
+ 
+ #menu li {
+   padding: 2% 0;
+   font-size: 0.9em;
+ }
+
+ #menuToggle input:checked ~ ul {
+   transform: none;
+ }

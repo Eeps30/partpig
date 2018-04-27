@@ -1,0 +1,144 @@
+.mainContainer {
+    box-sizing: border-box;
+}
+
+.aboutUsContainer {
+    width: 100vmin;
+    height: 85vmin;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.images {
+    box-sizing: border-box;
+    height: 60vmin;
+}
+
+.person {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 20vmin;
+
+}
+
+.person:hover .head {
+    animation: bobble 0.45s infinite;
+}
+
+.infoContainer {
+    height: 25vmin;
+    box-sizing: border-box;
+}
+
+.infoContainer .users {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 100%;
+    width: 20vmin;
+}
+
+.userName {
+    height: 20%;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.userRole {
+    font-size: 1.8em;
+    text-align: center;
+    height: 20%;
+}
+
+.contactIcons {
+    margin-top: 10%;
+}
+
+.contactIcons img {
+    max-width: 40%;
+    cursor: pointer;
+}
+
+.githubLink img {
+    margin-left: 50%;
+    cursor: pointer;
+}
+
+.githubLink {
+    width: 50%;
+    display: inline-block;
+}
+
+.linkedInLink img {
+    margin-left: 10%;
+}
+
+.linkedInLink {
+    width: 50%;
+    display: inline-block;
+}
+
+@keyframes bobble {
+    0% {transform: translate(6px, 10px) rotate(1deg);}
+    25% {transform: translate(-1px, -2px) rotate(-2deg);}
+    50% {transform: translate(-2px, -3px) rotate(-3deg);}
+    75% {transform: translate(2px, 2px) rotate(-1deg);}
+    100% {transform: translate(6px, 10px) rotate(1deg);}
+}
+
+.bobbleAnimation {
+    animation: bobble .45s;
+}
+
+.bobbleBody1 {
+    background-image: url('../../assets/images/bobble-bodies/partPigBobbleBody.png');
+    height: 80%;
+    width: 100%;
+    margin-top: 10vmin;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.head{
+    position: absolute;
+    bottom: 60%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bobbleHead1.head {
+    content: url('../../assets/images/bobble-bodies/dave-head2.png');
+    width: 86%;
+    margin: 0 4.5% 0 9.5%;
+}
+
+.bobbleHead2 {
+    content: url('../../assets/images/bobble-bodies/alex-head2.png');
+    width: 76%;
+    margin: 0 11% 0 13%;
+    bottom: 60.5%;
+}
+
+.bobbleHead3 {
+    content: url('../../assets/images/bobble-bodies/evan-head2.png');
+    width: 76%;
+    margin: 0 12%;
+    bottom: 60.5%;
+}
+
+.bobbleHead4 {
+    content: url('../../assets/images/bobble-bodies/li-head2.png');
+    width: 80%;
+    margin: 0 10%;
+}
+
+.bobbleHead5 {
+    content: url('../../assets/images/bobble-bodies/brian-head2.png');
+    width: 86%;
+    margin: 0 7%;
+}
+

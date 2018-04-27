@@ -2,9 +2,6 @@
 header("Access-Control-Allow-Origin: *");
 require_once('mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
-$entityBody = file_get_contents('php://input');
-$request_data = json_decode($entityBody, true);
-$_GET = $request_data['objName'];
 
 $output = [
     'success'=> false,
@@ -12,48 +9,44 @@ $output = [
     'data' => []
 ];
 
-$_GET['part_id'] = 2;
-$_GET['user_id'] = 2;
-
-if(!isset($_GET['part_id'])){
-    $output['error'][] = 'Error: user id not specified';
-}
-else{
-    $part_id = $_GET['part_id'];  
+if(empty($_GET['user_id']) OR empty($_GET['part_id'])){
+    die("user id and part id required");
 }
 
-$status = 'available';
+$buyer_id = (int)$_GET['user_id'];
+$part_id = (int)$_GET['part_id'];
 
-$query = "UPDATE `part` 
-          SET `status` = '$status' 
-          WHERE `part`.`id` = $part_id"; 
+// $query = "DELETE FROM `order_meta`
+//            WHERE `order_meta`.`buyer_id` = '$buyer_id'";
 
-$result = mysqli_query($conn, $query);
-if($result){
+
+$query = "DELETE FROM `shoppingcart`
+           WHERE `shoppingcart`.`buyer_id` = ?
+           AND `shoppingcart`.`part_id` = ?;
+
+           ";
+
+
+//prepared statement for query
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ii", $buyer_id, $part_id);
+$stmt->execute();
+$result = $stmt->get_result();
+print_r($result);
+
+if($stmt->affected_rows > 0){
     $output['success'] = true;
-    $output['data'] = "part '$part_id' status updated to $status";
+    $output['data'][] = "Successfully removed records from table shoppingcart. Total rows affected: {$stmt->affected_rows}";
+
+} else {
+    preg_match_all('/(\S[^:]+): (\d+)/', $conn->info, $matches); 
+    $infoArr = array_combine ($matches[1], $matches[2]);
+    $output['error'][] = $infoArr;
+    $output['error'][] = "error with deletion";
 }
-else{
-    $output['error'][] = 'Error in database query, probably problem with enum letters';
-}
+$stmt->close();
 
 $json_output = json_encode($output);
 print($json_output);
 
-$buyer_id = $_GET['user_id'];
-$part_id = $_GET['part_id'];
-
-$query2 = "DELETE FROM `shoppingcart`
-           WHERE `shoppingcart`.`buyer_id` = '$buyer_id'
-           AND `shoppingcart`.`part_id` = '$part_id';
-           ";
-
-$result2 = mysqli_query($conn, $query2);
-$rows_affected = mysqli_affected_rows($conn);
-if($result2){
-    echo "Successfully removed records from table shoppingcart. Total rows affected: ", $rows_affected .".";
-} else {
-    echo "Error: " . mysqli_error($conn);
-}
-mysqli_close($conn);
 ?>
