@@ -15,8 +15,10 @@ class SignUpDetails extends Component {
             address: {
                 city: "Irvine",
                 first_name: "John",
+                middle_name: '',
                 last_name: "Doe",
                 phone_number: "111-222-3333",
+                apt_suite: '',
                 state_abbr: "CA",
                 street_address: "1234 Street",
                 zipcode: "92627",
@@ -30,7 +32,6 @@ class SignUpDetails extends Component {
     }
 
 
-
     onSubmit(event) {
         event.preventDefault();
 
@@ -41,7 +42,7 @@ class SignUpDetails extends Component {
         const { value, name } = event.target;
         const newUserInfo = { ...this.state.address };
         newUserInfo[name] = value;
-        if (name === 'first_name' || name === 'last_name') {
+        if (name === 'first_name' || name === 'last_name' || name === 'middle_name' || name === 'phone_number') {
             this.setState({
                 address: newUserInfo,
                 nameChange: true
@@ -69,58 +70,76 @@ class SignUpDetails extends Component {
         }
     }
     buttonSubmit() {
+        const userId = this.props.match.params.userId;
         const {
-            city,
-            first_name,
-            last_name,
-            phone_number,
-            state_abbr,
-            street_address,
-            zipcode,
+            address: {
+                city,
+                first_name,
+                middle_name,
+                last_name,
+                phone_number,
+                state_abbr,
+                street_address,
+                apt_suite,
+                zipcode
+            },
             nameChange,
             addressChange
         } = this.state;
 
+        let promiseArray = [];
+
+        console.log("state is : ", this.state);
         if (nameChange) {
-            const url = 'http://localhost:8000/teampartpig/src/assets/php/login/newAddress.php';
-            axios({
+            let params = {
+                first_name, middle_name, last_name, phone_number, userId
+            }
+            console.log("params are", params);
+            const url = 'http://localhost:8000/teampartpig/src/assets/php/login/updateUserName.php';
+            promiseArray.push(axios({
                 url: url,
                 method: 'post',
                 data: params,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            }).then(resp => {
-                console.log('response is: ', resp);
+            }))
+            // .then(resp => {
+            //     console.log('response is: ', resp);
 
-            }).catch(err => {
-                console.log('error is: ', err);
-                this.props.history.push('/error');
-            });
+            // }).catch(err => {
+            //     console.log('error is: ', err);
+            //     this.props.history.push('/error');
+            // });
 
         }
 
         if (addressChange) {
+            let params = {
+                city, state_abbr, apt_suite, street_address, zipcode, userId
+            }
             const url = 'http://localhost:8000/teampartpig/src/assets/php/login/newAddress.php';
-            axios({
+            promiseArray.push(axios({
                 url: url,
                 method: 'post',
                 data: params,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            }).then(resp => {
+            }))
+
+        }
+        Promise.all(promiseArray)
+            .then(resp => {
+                console.log("promise array is: ", promiseArray);
                 console.log('response is: ', resp);
+                // this.props.history.push('/login');
 
             }).catch(err => {
                 console.log('error is: ', err);
                 this.props.history.push('/error');
             });
 
-        }
-
-
-        // this.props.history.push('/login');
     }
     render() {
 

@@ -251,7 +251,7 @@ class App extends Component{
                     <Route path='/checkoutComplete/:orderNumber' render={props => <CheckoutComplete  urlBack={this.urlBack} {...props}/>}/>
                     <Route path='/error' component={AxiosError}/>
                     <Route path='/signup' component={SignUp}/>
-                    <Route path='/signUpDetails' component={SignUpDetails}/>
+                    <Route path='/signUpDetails/:userId' component={SignUpDetails}/>
 
 
                     <Footer/> 

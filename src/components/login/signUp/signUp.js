@@ -76,7 +76,8 @@ class SignUp extends Component {
                     })
                 }
                 else if(resp.data.success){
-                    this.props.history.push('/signUpDetails');
+                    let userId = resp.data.data[1];
+                    this.props.history.push(`/signUpDetails/${userId}`);
                 }
            }).catch(err => {
                console.log('error is: ', err);

@@ -69,6 +69,7 @@ $result = $stmt->get_result();
 if($stmt->affected_rows === 1){
     $output['success'] = true;
     $output['data'][] = "new user created";
+    $output['data'][] = $conn->insert_id;
 }
 else{
     preg_match_all('/(\S[^:]+): (\d+)/', $conn->info, $matches); 
