@@ -63,12 +63,18 @@ class SignUp extends Component {
                isLoading: false,
                errorMessage: 'Password Must be at Least 8 Characters Long'
            })
-            if(this.state.password !== this.state.confirmPass){
+           return false
+        }
+
+        if(this.state.password !== this.state.confirmPass){
            this.setState({
                isLoading: false,
                errorMessage: 'Mismatching Password Fields'
            })
-        }else if(this.state.password === this.state.confirmPass){
+           return false
+        }
+
+        if((this.state.password === this.state.confirmPass) && ((this.state.password.length > 7) && (this.state.confirmPass.length > 7))){
            axios({
                url: 'http://localhost:8000/teampartpig/src/assets/php/login/newUserSignup.php',
                method: 'post',
@@ -100,7 +106,7 @@ class SignUp extends Component {
             });
             }
         }
-    }
+    
 
    render(){
 
