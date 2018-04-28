@@ -36,20 +36,19 @@ class Checkout extends Component {
                 subtotal += item.price_usd;
             });
         }
-
         const shipping = JSON.parse(localStorage.getItem('shipping'));
         const billing = JSON.parse(localStorage.getItem('billing'));
         if (this.userId) {
-            if (shipping && billing) {
-                //if we saved the addresses before when we went back
-                this.setState({
-                    isLoading: true,
-                    shippingAddress: shipping,
-                    billingAddress: billing,
-                    sameAddress: this.compareTwoAddresses(shipping, billing),
-                    subtotal: subtotal
-                });
-            } else {
+            // if (shipping && billing) {
+            //     //if we saved the addresses before when we went back
+            //     this.setState({
+            //         isLoading: true,
+            //         shippingAddress: shipping,
+            //         billingAddress: billing,
+            //         sameAddress: this.compareTwoAddresses(shipping, billing),
+            //         subtotal: subtotal
+            //     });
+            // } else {
                 //Shiping Address
                 const params = {
                     user_id: parseInt(this.userId),
@@ -81,7 +80,7 @@ class Checkout extends Component {
                     console.log('error is: ', err);
                     this.props.history.push('/error');      
                 });
-            }
+            // }
         } else {
             //anonymous user
             this.setState({

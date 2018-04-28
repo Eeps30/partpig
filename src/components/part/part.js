@@ -14,7 +14,7 @@ const Part = (props) => {
             <PartInfo fromDashboard={false} {...props} isDetails={false}/>
         </div> 
     );
-}
+}   
 
 export default Part;
 

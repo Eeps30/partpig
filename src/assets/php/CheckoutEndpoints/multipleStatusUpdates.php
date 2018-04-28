@@ -17,6 +17,9 @@ if(empty($_GET['id']) OR empty($_GET['status'])){
 $id = json_decode($_GET['id'], TRUE);
 $status = $_GET['status'];
 
+if(count($id) === 0){
+    die('no parts to change');
+}
 
 if($status === 'sold'){
     if(empty($_GET['buyer_id'])){

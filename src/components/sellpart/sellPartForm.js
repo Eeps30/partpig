@@ -51,7 +51,7 @@ class SellPartForm extends Component{
         }
     }
 
-    componentDidUpdate(){  
+    componentDidUpdate(){
         
         if(this.state.isLoading){
             const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
@@ -80,7 +80,7 @@ class SellPartForm extends Component{
         delete newPartErrors['images'];            
         
         for(let i=0; i < files.length; i++){
-            let reader = new FileReader();            
+            let reader = new FileReader();
             let file = files[i];
         
             reader.onloadend = () => {

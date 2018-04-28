@@ -13,7 +13,7 @@ import About from './about';
 import ContactPage from './contact';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
-import SignUp from '../signUp/signUp';
+import SignUp from '../login/signUp/signUp';
 import Home from '../home/home';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
@@ -22,6 +22,7 @@ import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
 import AxiosError from '../tools/errorHandling/error';
+import SignUpDetails from '../login/signUp/signupDetails';
 require('../../assets/images/piglogo.png');
 
 class App extends Component{
@@ -250,6 +251,7 @@ class App extends Component{
                     <Route path='/checkoutComplete/:orderNumber' render={props => <CheckoutComplete  urlBack={this.urlBack} {...props}/>}/>
                     <Route path='/error' component={AxiosError}/>
                     <Route path='/signup' component={SignUp}/>
+                    <Route path='/signUpDetails/:userId' component={SignUpDetails}/>
 
                     <Footer/> 
                 </div>

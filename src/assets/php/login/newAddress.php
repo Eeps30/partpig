@@ -15,61 +15,49 @@ $output = [
 $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
 
-if(!isset($request_data['user_id']) AND ($isset($request_data['shipping']) OR $isset($request_data['shipping']))){
-    die('send a user_id, and shipping or billing address');
+if(!isset($request_data['userId'])){
+    die('user id required');
 }
-$user_id = $request_data['user_id'];
-unset($request_data['user_id']);
-$shipping = $request_data['shipping'];
+$userId = $request_data['userId'];
 
-if(!empty($request_data['billing'])){
-   $billing = $request_data['billing'];
-}
 
-$addressTypes = ['shipping', 'billing'];
-$addressFieldsToCheck = ['company_name', 'street_address', 'apt_suite', 'city', 'state', 'state_abbr', 'zipcode'];
 
-foreach($request_data as $key => $val){
-    if(!in_array($key, $addressTypes)){
-        continue;
-    }
-    $subqueryItems = [];
-    $subqueryValues = [];
-    foreach($val as $item => $itemValue){
-        if(in_array($item, $addressFieldsToCheck)){
-            $subqueryItems[] = "$item";
-            $subqueryValues[] = "'$itemValue'";
-        }
-    }
-    $query = "INSERT INTO `address` (" . implode(' , ', $subqueryItems) . ")
-        VALUES (" . implode(' , ', $subqueryValues) . ")";
+$addressFields = ['street_address', 'apt_suite', 'city', 'state_abbr', 'state', 'zipcode'];
+
+$query = "INSERT INTO `address` (" . implode(' , ', $addressFields) . ")
+        VALUES (?, ?, ?, ?, ?, ?)";
       
-        $result = mysqli_query($conn, $query);
-        $last_id = mysqli_insert_id($conn);
 
-        if($result){
+
+$stmt = $conn->prepare($query);
+$stmt->bind_param('ssssss', $request_data['street_address'], $request_data['apt_suite'],  $request_data['city'], $request_data['state_abbr'], $request_data['state'], $request_data['zipcode']);
+$stmt->execute();
+
+
+    if($stmt->affected_rows > 0){
+        $output['data'][] = "1 address table updated for $userId";
+        $addressId = $conn->insert_id;
+        }
+    else{
+        $output['success'] = false;
+        $output['error'][] = 'Error in inserting address';
+        die("error in inserting address");
+    }
+
+    $userQuery = "UPDATE `user` SET billing_address_id = $addressId, shipping_address_id = $addressId WHERE `user`.id = ?";
+   
+    $userStmt = $conn->prepare($userQuery);
+    $userStmt->bind_param('s', $userId);
+    $userStmt->execute();
+   
+        if($userStmt->affected_rows > 0){
             $output['success'] = true;
-            $output['data'][] = "1 address table updated for $user_id";
-        }
-        else{
-            $output['success'] = false;
-            $output['error'][] = 'Error in inserting address';
-            break;
-        }
-
-    $userQuery = "UPDATE `user` SET $key" ."_address_id = $last_id WHERE `user`.id = $user_id";
-    $userResult = mysqli_query($conn, $userQuery);
-        if($userResult){
-            $output['data'][] = "Updated user $user_id info with address table at $last_id";
+            $output['data'][] = "Updated user $userId info with address table at $addressId";
         }
         else{
             $output['success'] = false;
             $output['error'][] = 'error in updating user table';
-            break;
         }
-        unset($subqueryItems);
-        unset($subqueryValues);
-}
 
 $json_output = json_encode($output);
 print($json_output);
