@@ -3,7 +3,7 @@ import './signUp.css';
 import axios from 'axios';
 import Field from '../../tools/field';
 import inputs from './addressFieldsData';
-
+import states, { abbrState } from '../../tools/states';
 
 class SignUpDetails extends Component {
 
@@ -20,6 +20,7 @@ class SignUpDetails extends Component {
                 phone_number: "111-222-3333",
                 apt_suite: '',
                 state_abbr: "CA",
+                state:'California',
                 street_address: "1234 Street",
                 zipcode: "92627",
                 country: 'USA'
@@ -41,6 +42,12 @@ class SignUpDetails extends Component {
     handleAddressInputChange(event) {
         const { value, name } = event.target;
         const newUserInfo = { ...this.state.address };
+
+        if(name === 'state_abbr'){
+            let state = abbrState(value, 'abbr');
+            newUserInfo.state = state;
+            }
+
         newUserInfo[name] = value;
         if (name === 'first_name' || name === 'last_name' || name === 'middle_name' || name === 'phone_number') {
             this.setState({
@@ -49,10 +56,11 @@ class SignUpDetails extends Component {
             });
         }
         else {
-            this.setState({
-                address: newUserInfo,
-                addressChange: true
-            });
+                this.setState({
+                    address: newUserInfo,
+                    addressChange: true
+                });
+            
         }
     }
 
@@ -79,6 +87,7 @@ class SignUpDetails extends Component {
                 last_name,
                 phone_number,
                 state_abbr,
+                state,
                 street_address,
                 apt_suite,
                 zipcode
@@ -89,12 +98,10 @@ class SignUpDetails extends Component {
 
         let promiseArray = [];
 
-        console.log("state is : ", this.state);
         if (nameChange) {
             let params = {
                 first_name, middle_name, last_name, phone_number, userId
             }
-            console.log("params are", params);
             const url = 'http://localhost:8000/teampartpig/src/assets/php/login/updateUserName.php';
             promiseArray.push(axios({
                 url: url,
@@ -104,19 +111,11 @@ class SignUpDetails extends Component {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }))
-            // .then(resp => {
-            //     console.log('response is: ', resp);
-
-            // }).catch(err => {
-            //     console.log('error is: ', err);
-            //     this.props.history.push('/error');
-            // });
-
         }
 
         if (addressChange) {
             let params = {
-                city, state_abbr, apt_suite, street_address, zipcode, userId
+                city, state_abbr, state, apt_suite, street_address, zipcode, userId
             }
             const url = 'http://localhost:8000/teampartpig/src/assets/php/login/newAddress.php';
             promiseArray.push(axios({
@@ -131,9 +130,9 @@ class SignUpDetails extends Component {
         }
         Promise.all(promiseArray)
             .then(resp => {
-                console.log("promise array is: ", promiseArray);
                 console.log('response is: ', resp);
-                // this.props.history.push('/login');
+                
+                this.props.history.push('/login');
 
             }).catch(err => {
                 console.log('error is: ', err);
@@ -151,7 +150,6 @@ class SignUpDetails extends Component {
         }).bind(this));
         // }
 
-        console.log(this.state);
         return (
             <div>
                 <div className="outer-container">

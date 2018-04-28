@@ -22,15 +22,15 @@ $userId = $request_data['userId'];
 
 
 
-$addressFields = ['street_address', 'apt_suite', 'city', 'state_abbr', 'zipcode'];
+$addressFields = ['street_address', 'apt_suite', 'city', 'state_abbr', 'state', 'zipcode'];
 
 $query = "INSERT INTO `address` (" . implode(' , ', $addressFields) . ")
-        VALUES (?, ?, ?, ?, ?)";
+        VALUES (?, ?, ?, ?, ?, ?)";
       
 
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param('sssss', $request_data['street_address'], $request_data['apt_suite'],  $request_data['city'], $request_data['state_abbr'], $request_data['zipcode']);
+$stmt->bind_param('ssssss', $request_data['street_address'], $request_data['apt_suite'],  $request_data['city'], $request_data['state_abbr'], $request_data['state'], $request_data['zipcode']);
 $stmt->execute();
 
 
@@ -50,10 +50,9 @@ $stmt->execute();
     $userStmt->bind_param('s', $userId);
     $userStmt->execute();
    
-    $userResult = mysqli_query($conn, $userQuery);
-        if($userResult){
+        if($userStmt->affected_rows > 0){
             $output['success'] = true;
-            $output['data'][] = "Updated user $user_id info with address table at $last_id";
+            $output['data'][] = "Updated user $userId info with address table at $addressId";
         }
         else{
             $output['success'] = false;
