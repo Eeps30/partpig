@@ -1,91 +1,107 @@
-@media (max-width: 1250px) {
+/*@media only screen and (max-width: 1250px) {
 	.legal {
 		font-size: 1.2rem;
 	}
 
-}
-@media (max-width: 950px) {
-	.legal {
-		font-size: 1.4rem;
+}*/
+@media only screen and (max-width: 950px) {
+	.buttonsContainer select {
+		font-size: 12px;
 	}
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 600px){
+	.contactForm {
+		width: 100%;
+	}
+    .contact-header {
+        text-align: center;
+        width: 100%;
+    }
+    .input-container {
+    	width: 100%;
+    }
+    .input-container > input, .input-container > textarea  {
+		width: 80%;
+    }
+    .contactForm > button{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
 	.buttonsContainer input,
 	.buttonsContainer select,
-	.instruction,
 	.dropZone p,
+	.searchBarContainer input,
 	.form-group label,
     .form-group input, 
-    .form-group select, 
+    .form-group select,
+	.instruction,
     .yearMakeModel select {
-        font-size: 2.2rem;
+        font-size: 14px;
     }
+
     .buttonContainer button, .buttonsContainer a{
-		font-size: 3rem;
+		font-size: 18px;
 	}
 	.legal {
-		font-size: 1.7rem;
+		font-size: 11px;
 	}	
 	.cartCount {
-		font-size: 2.6rem;
+		font-size: 14px;
+	}
+	#menu li {
+		font-size: 14px;
+	}	
+	.user-nav {
+		text-align: right;
 	}
 
 }
-@media (max-width: 550px) {
-	.buttonsContainer input,
-	.dropZone p,
-	.form-group label,
+@media only screen and (max-width: 550px) {
+    /*.buttonsContainer input,*/
+	/*.dropZone p,*/
+/*	.form-group label,
     .form-group input,    
     .form-group select, 
-    .yearMakeModel select {
-        font-size: 3rem;
+    .yearMakeModel select*/ 
+	.buttonsContainer select {
+        font-size: 12px;
     }
-	.buttonContainer button, .buttonsContainer a{
-		font-size: 4rem;
+}
+@media only screen and (max-width: 450px) {
+	.buttonsContainer select {
+        font-size: 11px;
+    }	
+    .user-nav {
+		text-align: center;
+	}
+}
+@media only screen and (max-width: 360px) {
+	.outerDiv {
+		width: 95%;
+		margin: 0;
 	}	
 	.instruction {
-        font-size: 2.6rem;
-    }
-	.legal {
-		font-size: 2.2rem;
-	}
-	.cartCount {
-		font-size: 3rem;
-	}
-}
-
-@media (max-width: 360px) {
-	.buttonsContainer input,
-	.buttonsContainer select,
-	.dropZone p,
-	.form-group label,
-    .form-group input, 
-    .form-group select, 
-    .yearMakeModel select,
-    .instruction {
-    	font-size: 3rem;
-    }
-    .legal {
-        font-size: 2.4rem;
-    }
-	.outerDiv {
-		width: 90%;
+		font-size: 11px;
 	}	
-	.cartCount {
-		font-size: 4rem;
-	}
+	.buttonsContainer select,
+	.legal {
+		font-size: 9px;
+	}		
 }
 
-@media (max-width: 320px) {
+@media only screen and (max-width: 320px) {
 	.outerDiv {
 		width: 84%;
-		margin: 4px;
+		margin: 2px;
 	}
 	.user-nav {
 		text-align: left;
 	}
-	.cartCount {
-		font-size: 4rem;
+	.login-icon {
+		right: 12%;
 	}
 }
+
