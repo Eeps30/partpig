@@ -19,7 +19,7 @@
 @media (min-width: 1850px) {
         
     html {
-        font-size: .4vw;
+        font-size: .5vw;
     }
 
     .container{
@@ -35,17 +35,24 @@
     }
 }
 
+@media (max-width: 1650px) {
+    
+    html {
+        font-size: .67vw;
+    }
+}
+
 @media (max-width: 1450px) {
     
     html {
-        font-size: .6vw;
+        font-size: .7vw;
     }
 }
 
 @media (max-width: 1250px) {
     
     html {
-        font-size: .8vw;
+        font-size: .75vw;
     }
 
     .singlePart{        
@@ -80,7 +87,7 @@
 @media (max-width: 950px){
     
     html {
-        font-size: .9vw;
+        font-size: .77vw;
     }
 
     .imageContainer {
@@ -118,10 +125,10 @@
     }
 }
 
-@media (max-width: 750px){
+@media (max-width: 768px){
           
     html {
-        font-size: 1.1vw;
+        font-size: 0.85vw;
     }
     
     #menu {
@@ -253,7 +260,7 @@
 @media (max-width: 550px){
           
     html {
-        font-size: 1.2vw;
+        font-size: 0.9vw;
     }
 
     .sorterContainer {     
