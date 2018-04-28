@@ -2,7 +2,7 @@ import React from 'react';
 import AboutPage from './about-page';
 
 const About = () => (
-            <div>
+            <div className='about-page'>
                <AboutPage/>
             </div>
         );

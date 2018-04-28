@@ -1,5 +1,19 @@
+@media (max-width: 1250px) {
+	.legal {
+		font-size: 1.2rem;
+	}
+
+}
+@media (max-width: 950px) {
+	.legal {
+		font-size: 1.4rem;
+	}
+}
 
 @media (max-width: 750px) {
+	.buttonsContainer input,
+	.buttonsContainer select,
+	.instruction,
 	.dropZone p,
 	.form-group label,
     .form-group input, 
@@ -7,12 +21,18 @@
     .yearMakeModel select {
         font-size: 2.5rem;
     }
-    .buttonContainer button{
+    .buttonContainer button, .buttonsContainer a{
 		font-size: 3rem;
+	}
+	.legal {
+		font-size: 1.7rem;
 	}
 
 }
 @media (max-width: 550px) {
+	.buttonsContainer input,
+	.buttonsContainer select,
+	.instruction,	
 	.dropZone p,
 	.form-group label,
     .form-group input,    
@@ -20,9 +40,11 @@
     .yearMakeModel select {
         font-size: 3rem;
     }
-	.buttonContainer button{
+	.buttonContainer button, .buttonsContainer a{
 		font-size: 4rem;
 	}
-
+	.legal {
+		font-size: 2.2rem;
+	}
 }
 
