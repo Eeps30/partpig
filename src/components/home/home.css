@@ -1,6 +1,7 @@
 .homeMainContainer{
 	position: relative;
 	height: 90vh;
+	min-height: 500px;
 	width: 100%;
 }
 
@@ -36,7 +37,7 @@
     position: absolute;
 	left: 0;
 	top: 0;
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	background-image: linear-gradient(rgba(0,0,0,.8) 0%, rgba(0, 0, 0, 0.541) 50%, rgba(0, 0, 0, 0.712) 100%);;
 }

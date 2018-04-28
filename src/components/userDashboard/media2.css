@@ -4,11 +4,11 @@
 	}
 
 }*/
-/*@media only screen and (max-width: 950px) {
-	.legal {
-		font-size: 1.4rem;
+@media only screen and (max-width: 950px) {
+	.buttonsContainer select {
+		font-size: 12px;
 	}
-}*/
+}
 
 @media screen and (max-width: 600px){
 	.contactForm {
@@ -39,20 +39,16 @@
     .form-group select,
 	.instruction,
     .yearMakeModel select {
-        /*font-size: 2.2rem;*/
         font-size: 14px;
     }
 
     .buttonContainer button, .buttonsContainer a{
-		/*font-size: 3rem;*/
 		font-size: 18px;
 	}
 	.legal {
-		/*font-size: 1.7rem;*/
 		font-size: 11px;
 	}	
 	.cartCount {
-		/*font-size: 2.6rem;*/
 		font-size: 14px;
 	}
 	#menu li {
@@ -93,7 +89,7 @@
 	.buttonsContainer select,
 	.legal {
 		font-size: 9px;
-	}	
+	}		
 }
 
 @media only screen and (max-width: 320px) {
@@ -103,6 +99,9 @@
 	}
 	.user-nav {
 		text-align: left;
+	}
+	.login-icon {
+		right: 12%;
 	}
 }
 
