@@ -1,11 +1,11 @@
-@media (min-height: 750px) {
+@media only screen and (min-height: 750px) {
     
     .container{
         font-size: 1.3em;
     }
 }
 
-@media (min-width: 950px) {
+@media only screen and (min-width: 950px) {
 
     .container{
         font-size: .8em;
@@ -16,7 +16,7 @@
     }
 }
 
-@media (min-width: 1850px) {
+@media only screen and (min-width: 1850px) {
         
     html {
         font-size: .5vw;
@@ -35,21 +35,21 @@
     }
 }
 
-@media (max-width: 1650px) {
+@media only screen and (max-width: 1650px) {
     
     html {
         font-size: .67vw;
     }
 }
 
-@media (max-width: 1450px) {
+@media only screen and (max-width: 1450px) {
     
     html {
         font-size: .7vw;
     }
 }
 
-@media (max-width: 1250px) {
+@media only screen and (max-width: 1250px) {
     
     html {
         font-size: .75vw;
@@ -84,7 +84,7 @@
     }
 }
 
-@media (max-width: 950px){
+@media only screen and (max-width: 950px){
     
     html {
         font-size: .77vw;
@@ -118,14 +118,14 @@
     
 }
 
-@media (max-height: 950px) {
+@media only screen and (max-height: 950px) {
     
     .productContainer {
         height: 18vh;
     }
 }
 
-@media (max-width: 768px){
+@media only screen and (max-width: 768px){
           
     html {
         font-size: 0.85vw;
@@ -257,7 +257,7 @@
     }
 }
 
-@media (max-width: 550px){
+@media only screen and (max-width: 550px){
           
     html {
         font-size: 0.9vw;

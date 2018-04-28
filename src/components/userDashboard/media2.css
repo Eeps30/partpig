@@ -1,16 +1,16 @@
-@media (max-width: 1250px) {
+@media only screen and (max-width: 1250px) {
 	.legal {
 		font-size: 1.2rem;
 	}
 
 }
-@media (max-width: 950px) {
+@media only screen and (max-width: 950px) {
 	.legal {
 		font-size: 1.4rem;
 	}
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 	.buttonsContainer input,
 	.buttonsContainer select,
 	.instruction,
@@ -32,7 +32,7 @@
 	}
 
 }
-@media (max-width: 550px) {
+@media only screen and (max-width: 550px) {
 	.buttonsContainer input,
 	.dropZone p,
 	.form-group label,
@@ -55,7 +55,7 @@
 	}
 }
 
-@media (max-width: 360px) {
+@media only screen and (max-width: 360px) {
 	.buttonsContainer input,
 	.buttonsContainer select,
 	.dropZone p,
@@ -77,7 +77,7 @@
 	}
 }
 
-@media (max-width: 320px) {
+@media only screen and (max-width: 320px) {
 	.outerDiv {
 		width: 84%;
 		margin: 4px;
@@ -86,6 +86,10 @@
 		text-align: left;
 	}
 	.cartCount {
-		font-size: 4rem;
+		/*font-size: 4rem;*/
+		font-size: 12px;
+	}
+	html {
+		font-size: 4px;
 	}
 }
