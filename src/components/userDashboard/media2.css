@@ -26,6 +26,9 @@
 	}
 	.legal {
 		font-size: 1.7rem;
+	}	
+	.cartCount {
+		font-size: 2.6rem;
 	}
 
 }
@@ -47,6 +50,9 @@
 	.legal {
 		font-size: 2.2rem;
 	}
+	.cartCount {
+		font-size: 3rem;
+	}
 }
 
 @media (max-width: 360px) {
@@ -57,13 +63,29 @@
     .form-group input, 
     .form-group select, 
     .yearMakeModel select,
+    .instruction {
+    	font-size: 3rem;
+    }
     .legal {
         font-size: 2.4rem;
     }
-	.instruction {
-		font-size: 3rem;
-	}
 	.outerDiv {
 		width: 90%;
+	}	
+	.cartCount {
+		font-size: 4rem;
+	}
+}
+
+@media (max-width: 320px) {
+	.outerDiv {
+		width: 84%;
+		margin: 4px;
+	}
+	.user-nav {
+		text-align: left;
+	}
+	.cartCount {
+		font-size: 4rem;
 	}
 }
