@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './signUp.css';
 import axios from 'axios';
+import Loading from '../../tools/loading/loading';
 
 class SignUp extends Component {
    constructor(props){
@@ -13,7 +14,8 @@ class SignUp extends Component {
            userExists: false,
            password: '',
            confirmPass: '',
-           errorMessage: ''
+           errorMessage: '',
+           isLoading: false
        }
 
        this.handleChange = this.handleChange.bind(this);
@@ -46,17 +48,33 @@ class SignUp extends Component {
 
    handleSubmit(event){
        event.preventDefault();
+
+        this.setState({
+            isLoading: true
+        });
       
        const { username, email, password } = this.state
        const params = {
            username, email, password
        }
 
-       if(this.state.password !== this.state.confirmPass){
+        if((this.state.password.length < 8) && (this.state.confirmPass.length < 8)){
            this.setState({
+               isLoading: false,
+               errorMessage: 'Password Must be at Least 8 Characters Long'
+           })
+           return false
+        }
+
+        if(this.state.password !== this.state.confirmPass){
+           this.setState({
+               isLoading: false,
                errorMessage: 'Mismatching Password Fields'
            })
-       }else if(this.state.password === this.state.confirmPass){
+           return false
+        }
+
+        if((this.state.password === this.state.confirmPass) && ((this.state.password.length > 7) && (this.state.confirmPass.length > 7))){
            axios({
                url: 'http://localhost:8000/teampartpig/src/assets/php/login/newUserSignup.php',
                method: 'post',
@@ -64,28 +82,42 @@ class SignUp extends Component {
                headers: {
                    'Content-Type': 'application/x-www-form-urlencoded'
                }
-           }).then(resp => {
+            }).then(resp => {
                console.log('response is: ', resp);
                if(resp.data === 'invalid email'){
                     this.setState({
+                       isLoading: false,
                        errorMessage: 'Invalid Email'
                    })
                 }else if(resp.data.hasOwnProperty('duplicate')){
                     this.setState({
+                        isLoading: false,
                         errorMessage: 'User Already Exists'
                     })
                 }
                 else if(resp.data.success){
                     let userId = resp.data.data[1];
+                    this.setState({
+                        isLoading: false
+                    })
                     this.props.history.push(`/signUpDetails/${userId}`);
                 }
-           }).catch(err => {
+            }).catch(err => {
                console.log('error is: ', err);
-           });
-       }
-   }
+            });
+            }
+        }
+    
 
    render(){
+
+    if (this.state.isLoading) {
+        return(
+            <div className='container'>
+                <Loading />;
+            </div>
+        );
+    }
 
         return (
             <div>
