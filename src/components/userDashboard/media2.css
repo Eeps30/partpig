@@ -1,18 +1,15 @@
 @media (max-width: 1250px) {
-    
 	.legal {
 		font-size: 1.2rem;
 	}
 
 }
 @media (max-width: 950px) {
-     html{        
-        font-size: 0.75vmin;
-    }
 	.legal {
 		font-size: 1.4rem;
 	}
 }
+
 @media (max-width: 750px) {
 	.buttonsContainer input,
 	.buttonsContainer select,
