@@ -232,10 +232,16 @@ footer a {
     margin-right: .5em;
 }
 /*==================== contact page styling ===========================*/
+.contact-us {
+    margin: 2vh 0;
+    min-height: 86vh;
+}
+
 .contact-us h1{
     text-align: center;
     font-weight: bold;
 	font-size: 3rem;
+    margin: 0;
 }
 .contactPageContainer{
     width: 90%;

@@ -29,10 +29,8 @@ class Contact extends Component {
 		const { name, email, subject, body } = this.state.form;
 
 		return (
-			<div>
-				<div className="contact-us">
-					<h1>CONTACT US</h1>
-				</div>
+			<div className="contact-us">
+				<h1>CONTACT US</h1>
 				<div className='container contactPageContainer'>
 					<div className="contact-header">
 						<h3>Have a question? Drop us a line!</h3>
