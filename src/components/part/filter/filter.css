@@ -39,7 +39,8 @@
 .filterBrand div:first-child{
     display: inline-block;
     vertical-align: middle; 
-    width: 22%;
+    width: 22%;    
+    text-align: right;
 }
 
 .filterBrand div:nth-child(2){

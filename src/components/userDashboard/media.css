@@ -1,32 +1,7 @@
 @media (min-height: 750px) {
     
-    html{        
-        font-size: 0.9vmin;
-    }
-
     .container{
         font-size: 1.3em;
-    }
-}
-
-@media (max-height: 950px) {
-    
-    html{        
-        font-size: 1.1vmin;
-    }
-}
-
-@media (max-height: 750px) {
-    
-    html{        
-        font-size: 1.3vmin;
-    }
-}
-
-@media (max-height: 550px) {
-    
-    html{        
-        font-size: 1.7vmin;
     }
 }
 
@@ -42,7 +17,11 @@
 }
 
 @media (min-width: 1850px) {
-    
+        
+    html {
+        font-size: .4vw;
+    }
+
     .container{
         font-size: 1.2em;
     }
@@ -56,8 +35,19 @@
     }
 }
 
+@media (max-width: 1450px) {
+    
+    html {
+        font-size: .6vw;
+    }
+}
+
 @media (max-width: 1250px) {
     
+    html {
+        font-size: .8vw;
+    }
+
     .singlePart{        
         width: 30%;
     }
@@ -88,6 +78,10 @@
 }
 
 @media (max-width: 950px){
+    
+    html {
+        font-size: .9vw;
+    }
 
     .imageContainer {
         width: 34vw;
@@ -127,7 +121,7 @@
 @media (max-width: 750px){
           
     html {
-        font-size: 1.1vmin;
+        font-size: 1.1vw;
     }
     
     #menu {
@@ -259,36 +253,10 @@
 @media (max-width: 550px){
           
     html {
-        font-size: 1.4vmin;
+        font-size: 1.2vw;
     }
 
     .sorterContainer {     
         width: 61%;
-    }
-    /* #menu {
-        width: 19%;
-    }
-
-    #menuToggle input {
-        width: 17px;
-        height: 17px;
-    }
-
-    #menuToggle span {
-        width: 15px;
-        height: 3px;
-        margin-bottom: 3px;
-    }
-
-    #menuToggle input:checked ~ span {
-        transform: rotate(45deg) translate(2px, 2px);
-    }
-
-    #menuToggle input:checked ~ span:nth-last-child(2) {
-        transform: rotate(-45deg) translate(3px, -2px);
-    }
-
-    #menuToggle input:checked ~ span {
-        width: 10px;
-    }*/
+    }    
 }
