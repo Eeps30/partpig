@@ -1,4 +1,4 @@
-@media only screen and (min-height: 750px) {
+@media only screen and (min-height: 768px) {
     
     .container{
         font-size: 1.3em;
@@ -18,9 +18,9 @@
 
 @media only screen and (min-width: 1850px) {
         
-    html {
+  /*  html {
         font-size: .5vw;
-    }
+    }*/
 
     .container{
         font-size: 1.2em;
@@ -37,23 +37,23 @@
 
 @media only screen and (max-width: 1650px) {
     
-    html {
+/*    html {
         font-size: .67vw;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 1450px) {
     
-    html {
+ /*   html {
         font-size: .7vw;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 1250px) {
     
-    html {
+ /*   html {
         font-size: .75vw;
-    }
+    }*/
 
     .singlePart{        
         width: 30%;
@@ -86,9 +86,9 @@
 
 @media only screen and (max-width: 950px){
     
-    html {
+ /*   html {
         font-size: .77vw;
-    }
+    }*/
 
     .imageContainer {
         width: 34vw;
@@ -127,9 +127,9 @@
 
 @media only screen and (max-width: 768px){
           
-    html {
+/*    html {
         font-size: 0.85vw;
-    }
+    }*/
     
     #menu {
         width: 29%;
@@ -259,9 +259,9 @@
 
 @media only screen and (max-width: 550px){
           
-    html {
+/*    html {
         font-size: 0.9vw;
-    }
+    }*/
 
     .sorterContainer {     
         width: 61%;

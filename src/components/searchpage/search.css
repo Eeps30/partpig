@@ -1,3 +1,4 @@
+
 .outerDiv {
     width: 50%;
     height: 35%;
@@ -31,7 +32,7 @@
     height: 5.6vh;
     margin: 1% 2%;
     background: #d4d4d4;
-    font-size: 2em;
+    font-size: 14px;
     border-radius: 10px;
     border-width: 2px;
     outline: none;
@@ -51,7 +52,7 @@
     height: 40%;
     transform: translate(0,-50%);
 }
-.searchBarContainer .searchButton {    
+/*.searchBarContainer .searchButton {    
     border-radius: 5px;
     background-color: rgb(111, 111, 111);
     box-shadow: 2px 2px;
@@ -60,10 +61,10 @@
     width: 20%;
     margin-left: 10%;
     margin-top: 1%;
-}
+}*/
 
 .buttonsContainer a {
-    font-size: 2.5rem;
+    font-size: 18px;
     margin-top: 2vh;
     border-radius: 10px;
     height: 5.6vh;
@@ -80,7 +81,7 @@
 }
 
 .searchBarContainer input {
-    font-size: 2.5em;
+    font-size: 14px;
     width: 93%;
     height: 5.6vh;
     padding: 0 1%;
@@ -101,7 +102,7 @@
 
 .instruction {
     margin: 1vh auto;
-    font-size: 1.7rem;
+    font-size: 14px;
     text-align: center;
     color: #baba28;
 }
