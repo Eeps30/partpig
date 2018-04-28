@@ -20,7 +20,10 @@
 $request_data['user_name'] = $request_data['username'];
 $request_data['password'] = sha1($request_data['password']);
 if(!filter_var($request_data['email'], FILTER_VALIDATE_EMAIL)){
-    die("invalid email");
+    $output['data'][] = 'invalid email';
+    $json_output = json_encode($output);
+    print($json_output);
+    die();
 } 
 $testQuery = "SELECT * FROM `user` WHERE user_name=?";
     
@@ -32,6 +35,7 @@ if($testResult->num_rows){
     $output['duplicate'][] = "User already exists";
     $json_output = json_encode($output);
     print($json_output);
+    
     die();
 }  
 $testStmt->close();

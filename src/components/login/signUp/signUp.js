@@ -84,7 +84,7 @@ class SignUp extends Component {
                }
             }).then(resp => {
                console.log('response is: ', resp);
-               if(resp.data === 'invalid email'){
+               if(resp.data.data[0] === 'invalid email'){
                     this.setState({
                        isLoading: false,
                        errorMessage: 'Invalid Email'
