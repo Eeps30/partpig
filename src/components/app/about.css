@@ -40,7 +40,6 @@
 .aboutUsContainer .users {
     box-sizing: border-box;
     display: inline-block;
-    height: 100%;
     width: 18vmin;
     margin-right: 2vmin;
 }

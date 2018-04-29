@@ -72,9 +72,35 @@
     .sellPartContainer .sellPartTitle {
 		font-size: 24px;
 	}
+	.aboutUsContainer{
+		text-align: center;
+		margin: 0;
+	}
+	.aboutUsContainer .users {
+	    height: 100%;
+	    width: 55%;
+	    margin: 3vmin 0;
+	}
+	.person {
+		width: 45%;
+	}
+	.infoContainer {
+		width: 55%;
+		height: 60vmin;
+		vertical-align: top;
+		padding-top: 20%;
+	}
+	.userName {
+		font-size: 0.8rem;
+		height: 2.4rem;
+	}
+	.userRole {
+		font-size: 0.75rem;
+		height: 2rem;
+	}
 }
 @media only screen and (max-width: 450px) {
-	 .buttonsContainer input,
+	.buttonsContainer input,
 	.dropZone p,
 	.form-group label,
     .form-group input,    
@@ -85,6 +111,13 @@
     }	
     .user-nav {
 		text-align: center;
+	}
+	@keyframes bobble {
+	    0% {transform: translate(3px, 5px) rotate(1deg);}
+	    25% {transform: translate(-1px, -2px) rotate(-2deg);}
+	    50% {transform: translate(-2px, -3px) rotate(-3deg);}
+	    75% {transform: translate(2px, 2px) rotate(-1deg);}
+	    100% {transform: translate(3px, 5px) rotate(1deg);}
 	}
 }
 @media only screen and (max-width: 360px) {
