@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import PartList from '../part/partList';
 import PartDetails from '../part/partDetails';
-import About from './about-page';
+import About from './about';
 import ContactPage from './contact';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';

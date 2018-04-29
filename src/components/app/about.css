@@ -12,16 +12,16 @@
     box-sizing: border-box;
 }
 
-.images {
+/*.images {
     box-sizing: border-box;
     height: 60vmin;
-}
+}*/
 
 .person {
     box-sizing: border-box;
     position: relative;
     display: inline-block;
-    height: 100%;
+    height: 60vmin;
     width: 20vmin;
 
 }
@@ -95,7 +95,7 @@
     animation: bobble .45s;
 }
 
-.bobbleBody1 {
+.bobbleBody {
     background-image: url('../../assets/images/bobble-bodies/partPigBobbleBody.png');
     height: 80%;
     width: 100%;
