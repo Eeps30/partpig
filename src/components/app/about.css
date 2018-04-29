@@ -22,7 +22,7 @@
     position: relative;
     display: inline-block;
     height: 60vmin;
-    width: 20vmin;
+    width: 100%;
 
 }
 
@@ -31,28 +31,31 @@
 }
 
 .infoContainer {
-    height: 25vmin;
+    height: 30vmin;
     box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
 }
 
-.infoContainer .users {
+.aboutUsContainer .users {
     box-sizing: border-box;
     display: inline-block;
     height: 100%;
-    width: 20vmin;
+    width: 18vmin;
+    margin-right: 2vmin;
 }
 
 .userName {
-    height: 20%;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.2rem;
     font-weight: bold;
+    height: 4rem;
 }
 
 .userRole {
-    font-size: 1.8em;
+    font-size: 1rem;
     text-align: center;
-    height: 20%;
+    height: 2rem;
 }
 
 .contactIcons {
