@@ -16,7 +16,7 @@
 }
 
 .sellPartContainer .help-block{
-    font-size: 1.2em;
+    font-size: 0.8rem;
 }
 
 .buttonContainer {
@@ -42,7 +42,7 @@
 }
 
 .makeModelYearContainer .help-block{
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 .checkboxItem {
 	position: relative;
@@ -209,7 +209,7 @@
 }
 
 .imageSection .help-block{
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .removeImg {
