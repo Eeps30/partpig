@@ -239,7 +239,7 @@ footer a {
 .contact-us h1{
     text-align: center;
     font-weight: bold;
-	font-size: 3rem;
+	font-size: 30px;
     margin: 0;
 }
 .contactPageContainer{
@@ -261,32 +261,32 @@ footer a {
 	box-sizing: border-box;
 	color: #666666;
 	font-family: Verdana, Geneva, sans-serif;
-    font-size: 2rem;
+    /*font-size: 2rem;*/
     height: 40%;
     text-shadow: 0.5px 0.5px black;
+}
+.contact-header h3 {
+    font-size: 1.5rem;
 }
 .contactForm{
 	width: 50%;
 	display: inline-block;
-	font-size: 2rem;
-	font-family: Verdana, Geneva, sans-serif;
 }
 .contactForm input, .contactForm textarea {
     display: inline-block;
     height: 4vmin;
     width: 80%;
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin: 0 10%;
     border-radius: 5px;
     padding: 1%;
     border-style: groove;
-	font-family: Verdana, Geneva, sans-serif;
     box-sizing: border-box;
 }
 .contactForm button{
 	margin: 1% 0 0 10%;
 	width: 80%;
-	font-size: 2.2rem;
+	font-size: 1.3rem;
 }
 .contactForm input[type=text]:focus, .contactForm input[type=email]:focus, .contactForm textarea:focus{
     border: .2em solid #9C9D99;
@@ -302,7 +302,7 @@ footer a {
 .input-container label{
 	display: block;
     margin: 3% 0 1% 10%;
-    font-size: 2rem;
+    font-size: 1.3rem;
 }
 .contact_image{
     border: solid black 5px;

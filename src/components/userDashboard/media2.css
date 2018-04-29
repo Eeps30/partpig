@@ -99,6 +99,13 @@
 	.userRole {
 		font-size: 0.75rem;
 		height: 2rem;
+	}	
+	@keyframes bobble {
+	    0% {transform: translate(3px, 5px) rotate(1deg);}
+	    25% {transform: translate(-1px, -2px) rotate(-2deg);}
+	    50% {transform: translate(-2px, -3px) rotate(-3deg);}
+	    75% {transform: translate(2px, 2px) rotate(-1deg);}
+	    100% {transform: translate(3px, 5px) rotate(1deg);}
 	}
 }
 @media only screen and (max-width: 450px) {
@@ -113,13 +120,6 @@
     }	
     .user-nav {
 		text-align: center;
-	}
-	@keyframes bobble {
-	    0% {transform: translate(3px, 5px) rotate(1deg);}
-	    25% {transform: translate(-1px, -2px) rotate(-2deg);}
-	    50% {transform: translate(-2px, -3px) rotate(-3deg);}
-	    75% {transform: translate(2px, 2px) rotate(-1deg);}
-	    100% {transform: translate(3px, 5px) rotate(1deg);}
 	}
 }
 @media only screen and (max-width: 360px) {
