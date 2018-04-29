@@ -9,27 +9,24 @@
 
 .sellPartContainer .sellPartTitle{
     text-align: center;
-    font-size: 3rem;
+    font-size: 30px;
     color: white;
     background-color: rgb(0, 0, 0);
     margin: 0;
-    top: 0;
-    left: 0;
 }
 
 .sellPartContainer .help-block{
-    font-size: 1.2em;
+    font-size: 0.8rem;
 }
 
 .buttonContainer {
     margin: 2% auto;
     width: 100%;
     text-align: center;    
-    font-size: 1.7em;
 }
 
 .buttonContainer button {
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 .sellPartForm{
@@ -37,19 +34,16 @@
 }
 
 .makeModelYearContainer{
-    font-size: 1.3em;
+    font-size: 1rem;
+}
+
+.makeModelYearContainer h1{
+    font-size: 1.2rem;
 }
 
 .makeModelYearContainer .help-block{
-    font-size: 1.2em;
+    font-size: 0.8rem;
 }
-
-.uploadImages{
-    font-size: 1.3em;
-}
-/* IOS Toggle Icon */
-
-
 .checkboxItem {
 	position: relative;
 	box-sizing: border-box;
@@ -75,7 +69,11 @@
 
 .partDetailsSellForm{
     width: 100%;
-    font-size: 1.3em;
+    font-size: 1rem;
+}
+
+.partDetailsSellForm h1{
+    font-size: 1.2rem;
 }
 
 .toggleButton {
@@ -146,54 +144,23 @@
     margin: 1%;
     width: 31%;
     display: inline-block;
-    font-size: 2rem;
+    font-size: 1rem;
     padding: 1%;
 }
 /*=========================== image uploader styling ============================ */
-.imgThumbContainer {
-    position: relative;
-    display: inline-block;
-    margin: 0 0.4%;
-    width: 30%;
-    height: 12vmin;
-    border: 1px solid black;
-    vertical-align: top;
+.uploadImages{
+    font-size: 1rem;
 }
-
-.imgThumb {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 100%;
-    max-height: 100%;
+.uploadImages h1{
+    font-size: 1.2rem;
 }
-
-.displayImages{
-    width: 70%;
-    height: 17vmin;
-    overflow-y: auto;
-    display: inline-block;
-    border: 0.5rem dashed darkslategray;
-    /*border-radius: 10px;*/
-    margin-left: 2vmin;
-}
-
-.fileInput{
-    width: 25%;
-    height: 40px;
-}
-
 .dropZone {
     width: 20%;
-    height: 17vmin;
+    height: 16vh;
     display: inline-block;
-    /*border-radius: 10px;*/
     background-color: lightgray;
     text-align: center;
-    /*font-size: 1.6em;*/
-    /*padding: 5% 1%;*/
-    border: 0.5rem dashed darkslategray;
+    border: 0.25rem dashed darkslategray;
     vertical-align: top;
     position: relative;
 }
@@ -203,18 +170,46 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2rem;
+    font-size: 1rem;
     margin: 0;
 }
-
 .imageUploadContainer{
     width: 100%;
     padding: 1%;
     box-sizing: border-box;
 }
+.imgThumbContainer {
+    position: relative;
+    display: inline-block;
+    margin: 0 0.4%;
+    width: 30%;
+    height: 12vmin;
+    border: 1px solid black;
+    vertical-align: top;
+}
+.displayImages{
+    width: 70%;
+    height: 16vh;
+    overflow-y: auto;
+    display: inline-block;
+    border: 0.25rem dashed darkslategray;
+    margin-left: 2vmin;
+}
+.imgThumb {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+}
+.fileInput{
+    width: 25%;
+    height: 40px;
+}
 
 .imageSection .help-block{
-    font-size: 1.3em;
+    font-size: 0.8rem;
 }
 
 .removeImg {
@@ -223,6 +218,7 @@
     top: 0;
     width: 2vmin;
     height: 2vmin;
-    font-size: 1.3rem;
+    font-size: 1.2vmin;
+    font-weight: bold;
     padding: 0;
 }

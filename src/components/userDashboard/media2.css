@@ -60,18 +60,27 @@
 
 }
 @media only screen and (max-width: 550px) {
-    /*.buttonsContainer input,*/
-	/*.dropZone p,*/
-/*	.form-group label,
+    .buttonsContainer input,
+	.dropZone p,
+	.form-group label,
     .form-group input,    
     .form-group select, 
-    .yearMakeModel select*/ 
+    .yearMakeModel select, 
 	.buttonsContainer select {
         font-size: 12px;
     }
+    .sellPartContainer .sellPartTitle {
+		font-size: 24px;
+	}
 }
 @media only screen and (max-width: 450px) {
-	.buttonsContainer select {
+	 .buttonsContainer input,
+	.dropZone p,
+	.form-group label,
+    .form-group input,    
+    .form-group select, 
+    .yearMakeModel select,
+    .buttonsContainer select {
         font-size: 11px;
     }	
     .user-nav {
@@ -102,6 +111,10 @@
 	}
 	.login-icon {
 		right: 12%;
+	}
+	.sellPartContainer {
+    width: 86%;
+    margin: 0 2px;
 	}
 }
 
