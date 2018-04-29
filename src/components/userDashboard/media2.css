@@ -93,6 +93,8 @@
 	.userName {
 		font-size: 0.8rem;
 		height: 2.4rem;
+		width: 90%;
+		margin: 0 auto;
 	}
 	.userRole {
 		font-size: 0.75rem;
