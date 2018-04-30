@@ -109,14 +109,17 @@
 		padding-top: 20%;
 	}
 	.userName {
-		font-size: 0.8rem;
-		height: 2.4rem;
+		font-size: 1rem;
+		height: 3rem;
 		width: 90%;
 		margin: 0 auto;
 	}
 	.userRole {
 		font-size: 0.75rem;
 		height: 2rem;
+	}
+	.contactIcons .linkedInLink {
+		text-align: left;
 	}	
 	@keyframes bobble {
 	    0% {transform: translate(3px, 5px) rotate(1deg);}
@@ -125,6 +128,8 @@
 	    75% {transform: translate(2px, 2px) rotate(-1deg);}
 	    100% {transform: translate(3px, 5px) rotate(1deg);}
 	}
+
+
 }
 @media only screen and (max-width: 450px) {
 	.buttonsContainer input,
