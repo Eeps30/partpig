@@ -55,7 +55,7 @@ class PriceFilter extends Component{
         
         return (            
             <div id='priceFilterDiv'>                
-                <h2>Price</h2>
+                <h3>Price</h3>
                 <input type="text" id="slider" />                               
             </div>  
         )

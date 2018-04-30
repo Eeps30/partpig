@@ -1,55 +1,44 @@
-@media only screen and (min-height: 768px) {
-    
-    .container{
-        font-size: 1.3em;
-    }
-}
-
-@media only screen and (min-width: 950px) {
-
-    .container{
-        font-size: .8em;
-    }
-    
-    .filter{
-        font-size: 1.4em;
-    }
-}
 
 @media only screen and (min-width: 1850px) {
-
-    .container{
-        font-size: 1.2em;
-    }
-   
-    .filter{
-        font-size: 1.1em;
-    }
 
     #menu {
         width: 13%;
     }
 }
 
+@media only screen and (max-width: 1850px) {
+    
+   html {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 1750px) {
+    
+    html {
+        font-size: 14px;
+    }
+}
+
 @media only screen and (max-width: 1650px) {
     
-/*    html {
-        font-size: .67vw;
-    }*/
+    html {
+        font-size: 13px;
+    }
 }
 
-@media only screen and (max-width: 1450px) {
+@media only screen and (max-width: 1500px) {
     
- /*   html {
-        font-size: .7vw;
-    }*/
+   html {
+        font-size: 12px;
+    }
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1400px) {
     
- /*   html {
-        font-size: .75vw;
-    }*/
+    html {
+        font-size: 13px;
+    }
 
     .singlePart{        
         width: 30%;
@@ -78,14 +67,14 @@
         position: absolute;
         width: 20%;
     }
+
+    .productDetailsContainer {
+        font-size: 1.4em;
+    }
 }
 
-@media only screen and (max-width: 950px){
-    
- /*   html {
-        font-size: .77vw;
-    }*/
-
+@media only screen and (max-width: 1250px){
+   
     .imageContainer {
         width: 34vw;
         height: 32vw;
@@ -107,11 +96,30 @@
     .productContainer {
         height: 12vh;
     }
-
-    .productDetailsContainer {
-        font-size: 1em;
-    }
     
+    .productDetailsContainer {
+        font-size: 1.2em;
+    }
+
+    .cartPartsContainer > span {
+        font-size: 1.2em;
+    }
+
+    .emptyMessage {
+        font-size: 1.2em;
+    }
+
+    .cartTotal {
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 1050px){
+       
+    .productDetailsContainer {
+        font-size: 1.1em;
+    }
+
 }
 
 @media only screen and (max-height: 950px) {
@@ -121,11 +129,11 @@
     }
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 950px){
           
-/*    html {
-        font-size: 0.85vw;
-    }*/
+   html {
+        font-size: 12px;
+    }
     
     #menu {
         width: 29%;
@@ -146,7 +154,7 @@
 
     .productContainer {
         height: 13.5vh;
-        font-size: 1.5em;
+        font-size: 1.1em;
     }
 
     .resultsBar > button{
@@ -249,6 +257,18 @@
     }
 
     .productDetailsContainer {
+        font-size: 1.3em;
+    }
+
+    .cartPartsContainer > span {
+        font-size: 1.5em;
+    }
+
+    .emptyMessage {
+        font-size: 1.5em;
+    }
+
+    .cartTotal {
         font-size: 1.5em;
     }
 }

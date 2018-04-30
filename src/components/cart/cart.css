@@ -8,7 +8,7 @@
 }
 
 .cartPartsContainer > span{
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -29,7 +29,7 @@
 
 .cartTotal{
     display: inline-block;
-    font-size: 2em;
+    font-size: 1.4em;
     width: 28%;
     height: 70%;
     margin: 2% 2.5%;
@@ -63,7 +63,7 @@
 .emptyMessage{
     text-align: center;
     margin-top: 10%;
-    font-size: 3em;
+    font-size: 1.5em;
 }
 
 .emptyMessage img{
