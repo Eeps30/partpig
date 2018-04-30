@@ -54,5 +54,7 @@
 }
 
 .loginFormErrorMessage {
-    font-size: 0.7em
+    color: #ff5555;
+    text-decoration: underline;
+    text-align: center;
 }
