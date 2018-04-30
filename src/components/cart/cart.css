@@ -8,7 +8,7 @@
 }
 
 .cartPartsContainer > span{
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -29,7 +29,7 @@
 
 .cartTotal{
     display: inline-block;
-    font-size: 2em;
+    font-size: 1.4em;
     width: 28%;
     height: 70%;
     margin: 2% 2.5%;
@@ -63,7 +63,7 @@
 .emptyMessage{
     text-align: center;
     margin-top: 10%;
-    font-size: 3em;
+    font-size: 1.5em;
 }
 
 .emptyMessage img{
@@ -80,15 +80,15 @@
     position: fixed;
     right: 1%;
     top: 1%;
-    width: 19vmin;
-    height: 1%;
+    width: 14rem;
+    height: 2%;
     background-color: lightgrey;
     border-radius: 0.8em;
     -webkit-border-radius: 0.8em;
     -moz-border-radius: 0.8em;
     transition: all 0.5s ease-in;
-    padding: 2%;
-    font-size: 1.5em;
+    padding: 2% 0 2% 1%;
+    font-size: 1rem;
     font-weight: bold;
     color: #193282;
     opacity: 0;

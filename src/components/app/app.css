@@ -15,7 +15,7 @@ body {
     margin: 0px;
     background-color:  whitesmoke;    
     min-height: 600px;
-    min-width: 375px;
+    min-width: 320px;
 }
 
 #root{
@@ -36,8 +36,7 @@ body {
 }
 
 .goBack{
-    text-align: left;    
-    font-size: 14px;
+    text-align: left;  
 }
 
 .button-link {
@@ -60,7 +59,7 @@ body {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:0.75em;
+	font-size:1em;
 	padding:0.5em 1em;
 	text-decoration:none;
     text-shadow:0px 1px 0px #854629;
@@ -88,7 +87,7 @@ body {
 	cursor:pointer;
 	color:#ffffff;
     font-family:Arial;    
-	font-size:0.75em;
+	font-size:1em;
 	padding:0.5em 1em;
 	text-decoration:none;
     text-shadow:0px 1px 0px darkgrey;
@@ -117,6 +116,7 @@ header {
     background-color: rgb(255, 255, 255);
     margin-bottom: 0;
     box-shadow: 0 1px 4px rgba(41, 51, 57, 0.397);
+    font-size: 1.2em;
 }
 
 .logo-container{
@@ -125,7 +125,6 @@ header {
     text-align: center;
     display: inline-block;
     vertical-align: top;
-    font-size: 3vh;
     color: rgb(238, 75, 0);
 }
 
@@ -147,7 +146,7 @@ header {
     vertical-align: top;
     height: 100%;
     text-align: right;
-    font-size: 14px;
+    /* font-size: 14px; */
 }
 
 .login-icon{
@@ -161,7 +160,7 @@ header {
     border: none;
     text-align: center;
     text-decoration: none;
-    font-size: 14px;
+    /* font-size: 14px; */
     background-color: #d0451b;
     color: white;
     padding: 1%;
@@ -203,7 +202,7 @@ header {
     position: relative;
     top: -46%;
     right: 50%;
-    font-size: 14px;
+    /* font-size: 14px; */
     font-weight: bold;
     color: #bc3315;
 }
@@ -418,7 +417,7 @@ footer a {
  
  #menu li {
    padding: 2% 0;
-   font-size: 14px;
+   /* font-size: 14px; */
  }
 
 #menuToggle input:checked ~ ul {

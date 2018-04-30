@@ -54,7 +54,7 @@ class CategoryFilter extends Component{
 
         return (            
             <div>                
-                <h2>Categories</h2>
+                <h3>Categories</h3>
                 <div className="filterScroll">
                     {categoryList}
                 </div>

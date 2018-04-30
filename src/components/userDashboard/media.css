@@ -1,55 +1,44 @@
-@media only screen and (min-height: 768px) {
-    
-    .container{
-        font-size: 1.3em;
-    }
-}
-
-@media only screen and (min-width: 950px) {
-
-    .container{
-        font-size: .8em;
-    }
-    
-    .filter{
-        font-size: 1.4em;
-    }
-}
 
 @media only screen and (min-width: 1850px) {
-
-    .container{
-        font-size: 1.2em;
-    }
-   
-    .filter{
-        font-size: 1.1em;
-    }
 
     #menu {
         width: 13%;
     }
 }
 
+@media only screen and (max-width: 1850px) {
+    
+   html {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 1750px) {
+    
+    html {
+        font-size: 14px;
+    }
+}
+
 @media only screen and (max-width: 1650px) {
     
-/*    html {
-        font-size: .67vw;
-    }*/
+    html {
+        font-size: 13px;
+    }
 }
 
-@media only screen and (max-width: 1450px) {
+@media only screen and (max-width: 1500px) {
     
- /*   html {
-        font-size: .7vw;
-    }*/
+   html {
+        font-size: 12px;
+    }
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1400px) {
     
- /*   html {
-        font-size: .75vw;
-    }*/
+    html {
+        font-size: 13px;
+    }
 
     .singlePart{        
         width: 30%;
@@ -78,14 +67,24 @@
         position: absolute;
         width: 20%;
     }
+
+    .productDetailsContainer {
+        font-size: 1.4em;
+    }
+
+    .productCart{
+        font-size: 1vw;
+        width: 79%;
+    }
+
+    .imageCartContainer {
+        width: 9vw;
+        height: 9vw;
+    }
 }
 
-@media only screen and (max-width: 950px){
-    
- /*   html {
-        font-size: .77vw;
-    }*/
-
+@media only screen and (max-width: 1250px){
+   
     .imageContainer {
         width: 34vw;
         height: 32vw;
@@ -107,10 +106,48 @@
     .productContainer {
         height: 12vh;
     }
-
+    
     .productDetailsContainer {
-        font-size: 1em;
+        font-size: 1.2em;
     }
+
+    .cartPartsContainer > span {
+        font-size: 1.2em;
+    }
+
+    .emptyMessage {
+        font-size: 1.2em;
+    }
+
+    .cartTotal {
+        font-size: 1.2em;
+    }
+    
+    .productCart{
+        font-size: 1.1vw;
+        width: 77%;
+    }
+
+    .imageCartContainer {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .formCheckoutContainer {
+        font-size: 1.1em;
+    }
+
+    .checkoutTotal {
+        font-size: 1.1em;
+    }
+}
+
+@media only screen and (max-width: 1050px){
+       
+    .productDetailsContainer {
+        font-size: 1.1em;
+    }
+
 }
 
 @media only screen and (max-height: 950px) {
@@ -120,11 +157,11 @@
     }
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 950px){
           
-/*    html {
-        font-size: 0.85vw;
-    }*/
+   html {
+        font-size: 12px;
+    }
     
     #menu {
         width: 29%;
@@ -134,18 +171,27 @@
     }
 
     .imageContainer {
-        width: 79vw;
-        height: 65vw;
+        display: inline-block;    
+        width: 16vw;
+        height: 16vw;
+        vertical-align: top;
+        text-align: center;
     }
     .singlePart{        
-        width: 89%;
-        margin: 5% auto;
+        width: 94%;
+        margin: 2% auto;
         display: block;
     }
 
     .productContainer {
-        height: 13.5vh;
-        font-size: 1.5em;
+        font-size: 1.4vw;
+        display: inline-block;
+        width: 80%;
+        padding: 1%;
+        margin-top:0;
+        box-sizing: border-box;
+        text-align: left;
+        vertical-align: top;
     }
 
     .resultsBar > button{
@@ -203,6 +249,7 @@
     .cartTotal {
         display: block; 
         width: 90%;
+        font-size: 1.5em;
     }
 
     .cartPartsContainer {
@@ -220,11 +267,6 @@
         display: block;
         width: 95%;
         margin: auto;
-    }
-
-    .imageCartContainer {
-        width: 13vw;
-        height: 13vw;
     }
 
     .outerDiv {
@@ -248,17 +290,145 @@
     }
 
     .productDetailsContainer {
+        font-size: 1.3em;
+    }
+
+    .cartPartsContainer > span {
         font-size: 1.5em;
+    }
+
+    .emptyMessage {
+        font-size: 1.5em;
+    }
+
+    .imageCartContainer {
+        width: 16vw;
+        height: 16vw;
+    }
+
+    .productCart{
+        font-size: 1.9vw;        
+        width: 79%;
+    }
+
+    .formCheckoutContainer {
+        font-size: 1.4em;
+    }
+
+    .checkoutTotal {
+        font-size: 1.4em;
+    }
+}
+
+@media only screen and (max-width: 750px){
+    
+    .productCart{
+        font-size: 2.1vw;        
+        width: 77%;
+    }    
+
+    .imageCartContainer {
+        width: 18vw;
+        height: 18vw;
+    }
+
+    .productContainer {
+        font-size: 2.1vw;        
+        width: 77%;
+    }
+
+    .imageContainer {
+        width: 18vw;
+        height: 18vw;
+    }
+}
+
+@media only screen and (max-width: 650px){
+        
+    .cartPartsContainer > span {
+        font-size: 1.1em;
+    }
+
+    .cartTotal {
+        font-size: 1.1em;
+    }
+
+    .productCart{
+        font-size: 2.3vw;        
+        width: 72%;
+    }     
+
+    .imageCartContainer {
+        width: 20vw;
+        height: 20vw;
+    } 
+
+    .productContainer {
+        font-size: 2.3vw;        
+        width: 72%;
+    }
+
+    .imageContainer {
+        width: 21vw;
+        height: 21vw;
+    }  
+
+    
+    .formCheckoutContainer {
+        font-size: .9em;
+    }
+
+    .checkoutTotal {
+        font-size: .9em;
     }
 }
 
 @media only screen and (max-width: 550px){
           
-/*    html {
-        font-size: 0.9vw;
-    }*/
+    .productCart{
+        font-size: 2.5vw;        
+        width: 70%;
+    }    
+
+    .imageCartContainer {
+        width: 23vw;
+        height: 23vw;
+    }
 
     .sorterContainer {     
         width: 61%;
+    }  
+
+    .productContainer {
+        font-size: 2.5vw;        
+        width: 63%;
+    }
+
+    .imageContainer {
+        width: 30vw;
+        height: 30vw;
     }    
+}
+
+@media only screen and (max-width: 450px){
+          
+    .productCart{
+        font-size: 2.7vw;        
+        width: 67%;
+    }    
+
+    .imageCartContainer {
+        width: 25vw;
+        height: 25vw;
+    }    
+
+    .productContainer {
+        font-size: 2.7vw;        
+        width: 61%;
+    }
+
+    .imageContainer {
+        width: 32vw;
+        height: 32vw;
+    }  
 }
