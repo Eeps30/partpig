@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './signUp.css';
+import './signUpMedia.css';
 import axios from 'axios';
 import Loading from '../../tools/loading/loading';
 
@@ -140,7 +141,7 @@ class SignUp extends Component {
                             <label>Confirm Password:</label>
                             <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password" required/>
                             <input className="submitButton" type="submit" value="Sign Up"/>
-                            <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
+                            <h2 className="signUpFormErrorMessage">{this.state.errorMessage}</h2>
                         </form>
                     </div>
                 </div>
