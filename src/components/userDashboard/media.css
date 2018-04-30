@@ -320,7 +320,7 @@
     }
 }
 
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 768px){
     
     .productCart{
         font-size: 2.1vw;        

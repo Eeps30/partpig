@@ -96,6 +96,9 @@
 	    width: 55%;
 	    margin: 3vmin 0;
 	}
+	.users:hover {
+	    box-shadow: 5px 10px 18px #888888;
+	}
 	.person {
 		width: 45%;
 	}
