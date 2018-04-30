@@ -30,6 +30,16 @@
 }
 
 @media only screen and (max-width: 768px) {
+	.contact-header{
+		margin: 0;
+	}
+	.contact-header h3,
+	.input-container label,
+	.contactForm button {
+		font-size: 1rem;
+	}
+	.contactForm input, 
+	.contactForm textarea,
 	.buttonsContainer input,
 	.buttonsContainer select,
 	.dropZone p,
@@ -41,8 +51,12 @@
     .yearMakeModel select {
         font-size: 14px;
     }
+    .contactPageContainer {
+    	min-height: none;
+    }
 
-    .buttonContainer button, .buttonsContainer a{
+    .buttonContainer button, 
+    .buttonsContainer a{
 		font-size: 18px;
 	}
 	.legal {
