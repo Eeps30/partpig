@@ -171,18 +171,27 @@
     }
 
     .imageContainer {
-        width: 79vw;
-        height: 65vw;
+        display: inline-block;    
+        width: 16vw;
+        height: 16vw;
+        vertical-align: top;
+        text-align: center;
     }
     .singlePart{        
-        width: 89%;
-        margin: 5% auto;
+        width: 94%;
+        margin: 2% auto;
         display: block;
     }
 
     .productContainer {
-        height: 13.5vh;
-        font-size: 1.1em;
+        font-size: 1.4vw;
+        display: inline-block;
+        width: 80%;
+        padding: 1%;
+        margin-top:0;
+        box-sizing: border-box;
+        text-align: left;
+        vertical-align: top;
     }
 
     .resultsBar > button{
@@ -325,6 +334,16 @@
         width: 18vw;
         height: 18vw;
     }
+
+    .productContainer {
+        font-size: 2.1vw;        
+        width: 77%;
+    }
+
+    .imageContainer {
+        width: 18vw;
+        height: 18vw;
+    }
 }
 
 @media only screen and (max-width: 650px){
@@ -337,7 +356,17 @@
     .imageCartContainer {
         width: 20vw;
         height: 20vw;
-    }   
+    } 
+
+    .productContainer {
+        font-size: 2.3vw;        
+        width: 72%;
+    }
+
+    .imageContainer {
+        width: 21vw;
+        height: 21vw;
+    }  
 }
 
 @media only screen and (max-width: 550px){
@@ -354,6 +383,16 @@
 
     .sorterContainer {     
         width: 61%;
+    }  
+
+    .productContainer {
+        font-size: 2.5vw;        
+        width: 63%;
+    }
+
+    .imageContainer {
+        width: 30vw;
+        height: 30vw;
     }    
 }
 
@@ -368,4 +407,14 @@
         width: 25vw;
         height: 25vw;
     }    
+
+    .productContainer {
+        font-size: 2.7vw;        
+        width: 61%;
+    }
+
+    .imageContainer {
+        width: 32vw;
+        height: 32vw;
+    }  
 }
