@@ -24,24 +24,28 @@ class SignUp extends Component {
 
    handleChange(event){
        this.setState({
+           errorMessage: '',
            email: event.target.value
        })
    }
 
    handleUserChange(event){
        this.setState({
+           errorMessage: '',
            username: event.target.value
        })
    }
 
    handlePassChange(event){
        this.setState({
+           errorMessage: '',
            password: event.target.value
        })
    }
 
    handleConfirm(event){
        this.setState({
+           errorMessage: '',
            confirmPass: event.target.value
        })
    }
@@ -124,7 +128,7 @@ class SignUp extends Component {
                 <div className="outer-container">
                     <div className="inner-container">
                         <form onSubmit={this.handleSubmit}>
-                            <h2>Create an Account</h2>
+                            <h2 className="createAccountHeader">Create an Account</h2>
                             <label>Email Address:</label>
                             <input value={this.state.email} onChange={this.handleChange.bind(this)} type="email" required/>
                             <label>Desired Username:</label>

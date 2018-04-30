@@ -2,57 +2,54 @@
     box-sizing: border-box;
 }
 
-.about-page {
+/*.about-page {
     min-height: 90vh;
-}
+}*/
 .aboutUsContainer {
     width: 100vmin;
-    height: 85vmin;
+    min-height: 90vh;
     margin: 0 auto;
     box-sizing: border-box;
-}
-
-.images {
-    box-sizing: border-box;
-    height: 60vmin;
 }
 
 .person {
     box-sizing: border-box;
     position: relative;
     display: inline-block;
-    height: 100%;
-    width: 20vmin;
+    height: 60vmin;
+    width: 100%;
 
 }
 
-.person:hover .head {
+.users:hover .head {
     animation: bobble 0.45s infinite;
 }
 
 .infoContainer {
-    height: 25vmin;
-    box-sizing: border-box;
-}
-
-.infoContainer .users {
+    height: 30vmin;
     box-sizing: border-box;
     display: inline-block;
-    height: 100%;
-    width: 20vmin;
+    width: 100%;
+}
+
+.aboutUsContainer .users {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 18vmin;
+    margin-right: 2vmin;
 }
 
 .userName {
-    height: 20%;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.2rem;
     font-weight: bold;
+    height: 4rem;
 }
 
 .userRole {
-    font-size: 1.8em;
+    font-size: 1rem;
     text-align: center;
-    height: 20%;
+    height: 2rem;
 }
 
 .contactIcons {
@@ -95,7 +92,7 @@
     animation: bobble .45s;
 }
 
-.bobbleBody1 {
+.bobbleBody {
     background-image: url('../../assets/images/bobble-bodies/partPigBobbleBody.png');
     height: 80%;
     width: 100%;
