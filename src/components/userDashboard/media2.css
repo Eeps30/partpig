@@ -147,6 +147,20 @@
 	.buttonsContainer select,
 	.legal {
 		font-size: 9px;
+	}
+	.contact-us {
+		width: 96%;
+	}	
+	.contact-us > h1 {
+		font-size: 20px;
+	}
+	.contact-header h3,
+	.input-container label {
+		font-size: 14px;
+	}
+	.contactForm input, 
+	.contactForm textarea {
+		font-size: 12px;
 	}		
 }
 
@@ -164,6 +178,10 @@
 	.sellPartContainer {
     width: 86%;
     margin: 0 2px;
-	}
+	}	
+	.contact-us {
+		width: 86%;
+	}	
 }
-
+	 	
+	
