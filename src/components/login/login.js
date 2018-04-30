@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginForm from "./loginForm";
 import "./login.css";
+import './loginMedia.css';
 import SignUpButton from './signUp/signUpButton';
 
 const Login = (props) => (

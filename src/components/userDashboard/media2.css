@@ -170,25 +170,9 @@
 	}		
 }
 
-@media only screen and (max-width: 320px) {
-	.outerDiv {
-		width: 84%;
-		margin: 2px;
+@media only screen and (max-width: 331px) {
+	.signUp_Container {
+		width: 60%;
 	}
-  
-	.login-icon {
-		right: 12%;
-	}
-  
-	.sellPartContainer {
-		width: 86%;
-		margin: 0 2px;
-	}
-
-  .contact-us {
-		width: 86%;
-	}	
-  
 }
-	 	
-	
+		 

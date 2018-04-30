@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import Loading from '../../components/tools/loading/loading';
 import './login.css';
+import './loginMedia.css';
 
 class LoginForm extends Component {
 
@@ -77,7 +78,7 @@ class LoginForm extends Component {
         return (
             <div className="loginForm">
 
-                <h2>Login with username</h2>
+                <h2>Login with Username</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username</label>
                     <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
