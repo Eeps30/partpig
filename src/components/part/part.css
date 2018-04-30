@@ -28,8 +28,8 @@
 
 .imageCartContainer{
     display: inline-block;
-    width: 7vw;
-    height: 7vw;
+    width: 8vw;
+    height: 8vw;
     text-align: center;
 }
 
@@ -122,8 +122,9 @@
 }
 
 .productCart{
+    font-size: 0.8vw;
     display: inline-block;
-    width: 83%;
+    width: 82%;
     padding: 1%;
     box-sizing: border-box;
     text-align: left;
@@ -160,7 +161,7 @@
 .productPrice{
     width: 100%;
     color:darkblue;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .editable{
