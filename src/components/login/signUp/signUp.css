@@ -106,4 +106,5 @@
 .loginFormErrorMessage{
     color: #ff5555;
     text-decoration: underline;
+    text-align: center;
 }

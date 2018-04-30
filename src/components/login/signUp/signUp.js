@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './signUp.css';
+import './signUpMedia.css';
 import axios from 'axios';
 import Loading from '../../tools/loading/loading';
 

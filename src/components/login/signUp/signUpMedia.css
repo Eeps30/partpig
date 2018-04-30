@@ -1,0 +1,53 @@
+@media only screen and (max-width: 1920px) { 
+    .inner-container {
+        width: 40%;
+    }
+    .loginFormErrorMessage {
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 950px) { 
+    .inner-container {
+        width: 40%;
+    }
+    .loginFormErrorMessage {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+	.inner-container {
+        width: 60%;
+    }
+    .loginFormErrorMessage {
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 584px) {
+    .inner-container {
+        width: 70%;
+    }
+    .loginFormErrorMessage {
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+	.inner-container {
+        width: 80%;
+    }
+    .loginFormErrorMessage {
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+	.inner-container {
+        width: 90%;
+    }
+    .loginFormErrorMessage {
+        font-size: 1.2em;
+    }
+}
