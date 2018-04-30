@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Loading from '../../components/tools/loading/loading';
+import './login.css';
 
 class LoginForm extends Component {
 
@@ -95,6 +96,7 @@ class LoginForm extends Component {
                 ...this.state.form,
                 user: value
             },
+            loginError: false,
             ...this.state.loginError
         });
     }
@@ -102,9 +104,11 @@ class LoginForm extends Component {
         const { value } = e.target
         this.setState({
             form: {
+                password: '',
                 ...this.state.form,
                 password: value
             },
+            loginError: false,
             ...this.state.loginError
         });
     }

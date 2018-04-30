@@ -52,3 +52,7 @@
 .loginForm label {
     float: left;
 }
+
+.loginFormErrorMessage {
+    font-size: 0.7em
+}
