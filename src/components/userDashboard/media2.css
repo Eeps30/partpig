@@ -30,6 +30,17 @@
 }
 
 @media only screen and (max-width: 768px) {
+	.contact-header{
+		margin: 0;
+		padding: 0 1%;
+	}
+	.contact-header h3,
+	.input-container label,
+	.contactForm button {
+		font-size: 1rem;
+	}
+	.contactForm input, 
+	.contactForm textarea,
 	.buttonsContainer input,
 	.buttonsContainer select,
 	.dropZone p,
@@ -41,8 +52,12 @@
     .yearMakeModel select {
         font-size: 14px;
     }
+    .contactPageContainer {
+    	min-height: none;
+    }
 
-    .buttonContainer button, .buttonsContainer a{
+    .buttonContainer button, 
+    .buttonsContainer a{
 		font-size: 18px;
 	}
 	.legal {
@@ -99,6 +114,13 @@
 	.userRole {
 		font-size: 0.75rem;
 		height: 2rem;
+	}	
+	@keyframes bobble {
+	    0% {transform: translate(3px, 5px) rotate(1deg);}
+	    25% {transform: translate(-1px, -2px) rotate(-2deg);}
+	    50% {transform: translate(-2px, -3px) rotate(-3deg);}
+	    75% {transform: translate(2px, 2px) rotate(-1deg);}
+	    100% {transform: translate(3px, 5px) rotate(1deg);}
 	}
 }
 @media only screen and (max-width: 450px) {
@@ -114,13 +136,6 @@
     .user-nav {
 		text-align: center;
 	}
-	@keyframes bobble {
-	    0% {transform: translate(3px, 5px) rotate(1deg);}
-	    25% {transform: translate(-1px, -2px) rotate(-2deg);}
-	    50% {transform: translate(-2px, -3px) rotate(-3deg);}
-	    75% {transform: translate(2px, 2px) rotate(-1deg);}
-	    100% {transform: translate(3px, 5px) rotate(1deg);}
-	}
 }
 @media only screen and (max-width: 360px) {
 	.outerDiv {
@@ -133,6 +148,20 @@
 	.buttonsContainer select,
 	.legal {
 		font-size: 9px;
+	}
+	.contact-us {
+		width: 96%;
+	}	
+	.contact-us > h1 {
+		font-size: 20px;
+	}
+	.contact-header h3,
+	.input-container label {
+		font-size: 14px;
+	}
+	.contactForm input, 
+	.contactForm textarea {
+		font-size: 12px;
 	}		
 }
 
@@ -150,6 +179,10 @@
 	.sellPartContainer {
     width: 86%;
     margin: 0 2px;
-	}
+	}	
+	.contact-us {
+		width: 86%;
+	}	
 }
-
+	 	
+	

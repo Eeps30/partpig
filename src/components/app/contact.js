@@ -59,11 +59,6 @@ class Contact extends Component {
 
 					</form>
 				</div>
-				<div className="modal-overlay"></div>
-				<div className="modal">
-					<div className="close"></div>
-					<label></label>
-				</div>
 			</div>
 		)
 	}
