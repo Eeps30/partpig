@@ -4,7 +4,7 @@
     margin: 0 1%;
     padding: 0 1%;
     box-sizing: border-box;
-    font-size: 2em;
+    font-size: 1.3em;
 }
 
 .formCheckoutContainer > span{
@@ -48,7 +48,7 @@
 
 .checkoutTotal{
     display: inline-block;
-    font-size: 2em;
+    font-size: 1.3em;
     width: 35%;
     min-height: 70%;
     margin: 2% 1%;
@@ -100,17 +100,17 @@
 
 .shippingAddress > span{
     display: block;
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: bold;
 }
 
 .shippingAddress > p{    
-    font-size: 1.1em;
+    font-size: 1em;
     margin-bottom: 10%;
 }
 
 .shippingAddress > p select{    
-    font-size: 1.1em;
+    font-size: 1em;
     margin-left: 5%;
 }
 

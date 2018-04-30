@@ -132,6 +132,14 @@
         width: 10vw;
         height: 10vw;
     }
+
+    .formCheckoutContainer {
+        font-size: 1.1em;
+    }
+
+    .checkoutTotal {
+        font-size: 1.1em;
+    }
 }
 
 @media only screen and (max-width: 1050px){
@@ -295,6 +303,14 @@
     .productCart{
         font-size: 1.9vw;        
         width: 79%;
+    }
+
+    .formCheckoutContainer {
+        font-size: 1.4em;
+    }
+
+    .checkoutTotal {
+        font-size: 1.4em;
     }
 }
 
