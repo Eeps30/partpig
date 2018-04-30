@@ -14,7 +14,8 @@ class LoginForm extends Component {
                 password: ''
             },
             loginError: false,
-            isLoading: false
+            isLoading: false,
+            errorMessage: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -50,7 +51,8 @@ class LoginForm extends Component {
             else {
                 this.setState({
                     loginError: true,
-                    isLoading: false
+                    isLoading: false,
+                    errorMessage: 'Invalid Username or Password'
                 });
             }
         }).catch(err => {
@@ -86,7 +88,7 @@ class LoginForm extends Component {
                     <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
                     <input type="submit" value="Log In" />
                 </form>
-                {errorMessage}
+                <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
             </div>
         );
     }
@@ -97,6 +99,7 @@ class LoginForm extends Component {
                 ...this.state.form,
                 user: value
             },
+            errorMessage: '',
             loginError: false,
             ...this.state.loginError
         });
@@ -109,6 +112,7 @@ class LoginForm extends Component {
                 ...this.state.form,
                 password: value
             },
+            errorMessage: '',
             loginError: false,
             ...this.state.loginError
         });

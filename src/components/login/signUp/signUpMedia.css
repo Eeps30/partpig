@@ -2,7 +2,7 @@
     .inner-container {
         width: 40%;
     }
-    h2.loginFormErrorMessage {
+    .signUpFormErrorMessage {
         font-size: 1.5em;
     }
 }
@@ -11,7 +11,7 @@
     .inner-container {
         width: 40%;
     }
-    h2.loginFormErrorMessage {
+    .signUpFormErrorMessage {
         font-size: 1.2em;
     }
 }
@@ -20,7 +20,7 @@
 	.inner-container {
         width: 60%;
     }
-    h2.loginFormErrorMessage {
+    .signUpFormErrorMessage {
         font-size: 1.2em;
     }
 }
@@ -29,7 +29,7 @@
     .inner-container {
         width: 70%;
     }
-    h2.loginFormErrorMessage {
+    .signUpFormErrorMessage {
         font-size: 1.2em;
     }
 }
@@ -38,7 +38,7 @@
 	.inner-container {
         width: 80%;
     }
-    h2.loginFormErrorMessage {
+    .signUpFormErrorMessage {
         font-size: 1.2em;
     }
 }
@@ -47,7 +47,7 @@
 	.inner-container {
         width: 90%;
     }
-    h2.loginFormErrorMessage {
+    .signUpFormErrorMessage {
         font-size: 1.2em;
     }
 }
