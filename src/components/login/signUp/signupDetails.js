@@ -4,6 +4,7 @@ import axios from 'axios';
 import Field from '../../tools/field';
 import inputs from './addressFieldsData';
 import states, { abbrState } from '../../tools/states';
+import '../../userDashboard/media4.css';
 
 class SignUpDetails extends Component {
 

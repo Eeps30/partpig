@@ -108,6 +108,8 @@ class SignUp extends Component {
                 }
             }).catch(err => {
                console.log('error is: ', err);
+               this.props.history.push('/error');                
+
             });
             }
         }
