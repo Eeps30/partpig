@@ -1,0 +1,37 @@
+
+@media only screen and (max-width: 950px) {
+    .accountDetails_Button{
+        font-size: 0.7em;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .errorMessageContainer{
+        text-align:center;
+        width:90vw;
+    }
+    .contactDetails-container {
+        width: 90vw;
+    }
+    .accountDetails_Button{
+        font-size: 0.6em;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+	#errorHeader{
+        font-size:3.5em;     
+     }
+    .errorMessageContainer p{
+        font-size: 1.8em;
+    }
+}
+@media only screen and (max-width: 360px) {
+    #errorHeader{
+        font-size:2.5em;   
+     }
+}
+
+
+	

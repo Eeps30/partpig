@@ -3,14 +3,14 @@
 
 }
 
-.errorMessage{
+.errorMessageContainer{
     text-align:center;
-    width:30vw;
+    width:70vw;
     margin:auto;
     margin-top: 5vh;
     border: solid .5vw black;
 }
-.errorMessage p{
+.errorMessageContainer p{
     font-size: 2em;
 }
 .errorTitle{

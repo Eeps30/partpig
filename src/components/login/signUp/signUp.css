@@ -1,6 +1,7 @@
 .outer-container {
-    height: 90vh;
+    height: 90%;
     box-sizing: border-box;
+    min-height: 86.2vh;
  }
  
  .inner-container{
@@ -84,6 +85,8 @@
     text-align:center;
     width:80%;
     font-size:1.2em;
+    margin:auto;
+    margin-top: 5%;
 }
 .formFields{
     display:inline-block;
@@ -91,9 +94,10 @@
     font-size: 2em;
 }
 .accountDetails_Button{
-    width: 34%;
+    width: 43%;
     margin: 0 4%;
-    font-size: 1.2em;
+    padding: 1% 1%;
+    font-size: 0.8em;
 }
 .formFields label{
     text-align: left;

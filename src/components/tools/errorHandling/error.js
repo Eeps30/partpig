@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './error.css';
+import '../../userDashboard/media4.css';
 
 class AxiosError extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class AxiosError extends Component {
         return (
 
             <div className="errorContainer">
-                <div className="errorMessage">
+                <div className="errorMessageContainer">
                     <div className="errorTitle">
                         <p id="errorHeader">Server Error</p>
                     </div>
