@@ -82,10 +82,7 @@
     .yearMakeModel select,
     .buttonsContainer select {
         font-size: 11px;
-    }	
-    .user-nav {
-		text-align: center;
-	}
+    }
 }
 @media only screen and (max-width: 360px) {
 	.outerDiv {
@@ -98,7 +95,11 @@
 	.buttonsContainer select,
 	.legal {
 		font-size: 9px;
-	}		
+	}	
+	
+	.resultsBar {
+		font-size: 1em;
+	}
 }
 
 @media only screen and (max-width: 320px) {
@@ -106,15 +107,12 @@
 		width: 84%;
 		margin: 2px;
 	}
-	.user-nav {
-		text-align: left;
-	}
 	.login-icon {
 		right: 12%;
 	}
 	.sellPartContainer {
-    width: 86%;
-    margin: 0 2px;
+		width: 86%;
+		margin: 0 2px;
 	}
 }
 

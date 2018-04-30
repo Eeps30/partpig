@@ -249,6 +249,7 @@
     .cartTotal {
         display: block; 
         width: 90%;
+        font-size: 1.5em;
     }
 
     .cartPartsContainer {
@@ -300,10 +301,6 @@
         font-size: 1.5em;
     }
 
-    .cartTotal {
-        font-size: 1.5em;
-    }
-    
     .imageCartContainer {
         width: 16vw;
         height: 16vw;
@@ -347,7 +344,15 @@
 }
 
 @media only screen and (max-width: 650px){
-          
+        
+    .cartPartsContainer > span {
+        font-size: 1.1em;
+    }
+
+    .cartTotal {
+        font-size: 1.1em;
+    }
+
     .productCart{
         font-size: 2.3vw;        
         width: 72%;
@@ -367,6 +372,15 @@
         width: 21vw;
         height: 21vw;
     }  
+
+    
+    .formCheckoutContainer {
+        font-size: .9em;
+    }
+
+    .checkoutTotal {
+        font-size: .9em;
+    }
 }
 
 @media only screen and (max-width: 550px){
