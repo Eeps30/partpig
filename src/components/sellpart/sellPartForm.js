@@ -1,18 +1,16 @@
 import React, {Component} from "react";
-import "./sellpart.css";
-import "./yearMakeModelSelect.css";
-import ImageUpload from '../imageUploader/imageUploader';
+import ImageUpload from './imageUploader';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Field from '../tools/field';
-import ListingSuccess from "../listingSuccess/listingSuccess";
+import ListingSuccess from "./listingSuccess";
 import formInputs from './formData';
-import MakeDropDown from '../searchpage/dropdown/makeDropdown';
-import ModelDropDown from '../searchpage/dropdown/modelDropdown';
-import YearDropDown from '../searchpage/dropdown/yearDropdown';
+import MakeDropDown from '../tools/dropdown/makeDropdown';
+import ModelDropDown from '../tools/dropdown/modelDropdown';
+import YearDropDown from '../tools/dropdown/yearDropdown';
 import data from '../searchpage/dataModel';
-import Loading from '../loading/loading';
-
+import Loading from '../tools/loading/loading';
+import "./sellPartForm.css";
 
 class SellPartForm extends Component{
     
@@ -20,6 +18,9 @@ class SellPartForm extends Component{
         super(props);
 
         this.userId = localStorage.getItem('user');
+        if(!this.userId){
+            props.history.push('/login');
+        }
         this.state = { 
             isLoading: false,
             part:{
@@ -47,11 +48,17 @@ class SellPartForm extends Component{
     handleSellPartSubmit(event){
         event.preventDefault();
         if(this.validateFields()){
-            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
-
             this.setState({
-               isLoading: true
-            });
+                isLoading: true
+             });
+        }
+    }
+
+    componentDidUpdate(){
+        
+        if(this.state.isLoading){
+            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
+            
             axios({
                 url: url,
                 method: 'post',
@@ -61,9 +68,11 @@ class SellPartForm extends Component{
                 }
             }).then(resp=>{
                 console.log("Server Response:", resp);
-                this.props.history.push('/dashboard/activeparts');
+                this.props.history.push(`/partdetails/${resp.data.data[0]}/newPart/true`);
             }).catch(err => {
                 console.log("There was an error:");
+                this.props.history.push('/error');                
+
             });
         }
     }
@@ -74,7 +83,7 @@ class SellPartForm extends Component{
         delete newPartErrors['images'];            
         
         for(let i=0; i < files.length; i++){
-            let reader = new FileReader();            
+            let reader = new FileReader();
             let file = files[i];
         
             reader.onloadend = () => {
@@ -133,7 +142,7 @@ class SellPartForm extends Component{
         const {name,value,placeholder,required} = event.target;
         const newPartErrors = {...this.state.partErrors};
         if(value ==='' && required){           
-            newPartErrors[name] = placeholder + ' is requiered';           
+            newPartErrors[name] = placeholder + ' is required';           
         }else{
             delete newPartErrors[name];            
         }
@@ -208,9 +217,10 @@ class SellPartForm extends Component{
     render() {
         
         if (this.state.isLoading) {
-            <div className='container'>
-                <Loading />;
-            </div>
+            return(<div className='container'>
+                        <Loading />
+                    </div>
+                   );
         }
 
         const fields = formInputs.map((field,index) => {

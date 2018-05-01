@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import MakeDropDown from './dropdown/makeDropdown';
-import ModelDropDown from './dropdown/modelDropdown';
-import YearDropDown from './dropdown/yearDropdown';
+import MakeDropDown from '../tools/dropdown/makeDropdown';
+import ModelDropDown from '../tools/dropdown/modelDropdown';
+import YearDropDown from '../tools/dropdown/yearDropdown';
 import data from './dataModel';
 import './search.css';
 import {Link} from 'react-router-dom';
@@ -92,16 +92,17 @@ class DropDownContainer extends Component {
             <div className="outerDiv">
                 <div className="dropdownMenu">
                     <div className="searchBarContainer">
-                        <div>
-                            <input type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
-                            {searchButton}
-                        </div>
+                        <input type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
                     </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>
                         <ModelDropDown data={data} value={this.state.model} modelSelect={this.catchModelSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
                         <YearDropDown data={data} value={this.state.year} yearSelect={this.catchYearSelect} selectedMake={this.state.make} selectedModel={this.state.model}/>
+                        {searchButton}
                     </div>
+                    <div className='instruction'>
+                        Please enter keywords or select all the three fields to start your search.
+                    </div>                    
                 </div>
             </div>
         )

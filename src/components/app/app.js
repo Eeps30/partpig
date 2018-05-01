@@ -1,26 +1,28 @@
 import React, {Component} from 'react';
 import './app.css';
-import Header from '../header/header';
-import Footer from '../footer/footer';
+import Header from './header';
+import Footer from './footer';
 import {
     BrowserRouter as Router,
     Route,
     Link
 } from 'react-router-dom';
-import PartList from '../part/partList/partList';
-import PartDetails from '../part/partDetails/partDetails';
-import About from '../about/about';
-import ContactPage from '../contact/contact';
-import ContactSeller from '../contact/seller/contactSeller';
+import PartList from '../part/partList';
+import PartDetails from '../part/partDetails';
+import About from './about';
+import ContactPage from './contact';
 import SellPartForm from '../sellpart/sellPartForm';
 import Login from '../login/login';
+import SignUp from '../login/signUp/signUp';
 import Home from '../home/home';
 import Cart from '../cart/cart';
 import Checkout from '../checkout/checkout';
-import ListingSuccess from '../listingSuccess/listingSuccess';
+import ListingSuccess from '../sellpart/listingSuccess';
 import UserDashboard from '../userDashboard/userDashboard';
 import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
+import AxiosError from '../tools/errorHandling/error';
+import SignUpDetails from '../login/signUp/signupDetails';
 
 class App extends Component{
 
@@ -41,6 +43,7 @@ class App extends Component{
         this.saveUrlBack = this.saveUrlBack.bind(this);
         this.setUserData = this.setUserData.bind(this);
         this.removeAllPartsFromCart = this.removeAllPartsFromCart.bind(this);
+        this.removeAllPartsYouOwnFromCart = this.removeAllPartsYouOwnFromCart.bind(this);
         this.urlBack = '';
         this.user = null;
         if(this.state.userId){
@@ -66,6 +69,7 @@ class App extends Component{
         const params = {               
             user_id: parseInt(userId)
         };
+        this.removeAllPartsYouOwnFromCart(this.state.cartParts);
         const url = 'http://localhost:8000/teampartpig/src/assets/php/buyerCart.php';        
         axios.get(url,{params}).then(resp=>{
             if(resp.data.success){
@@ -78,6 +82,8 @@ class App extends Component{
             }         
         }).catch(err => {
             console.log('error is: ', err);
+            this.props.history.push('/error');      
+            
         });
     }
 
@@ -103,6 +109,8 @@ class App extends Component{
                 this.addPartToCart(partInfo,initLoad);
             }).catch(err => {
                 console.log('error is: ', err);
+                this.props.history.push('/error');
+                
             });
         
         }else{
@@ -129,7 +137,7 @@ class App extends Component{
                         cartMessage[0].classList.remove("show_block");
                     }
                 }
-            },3000);
+            },2000);
             this.setState({
                 cartParts: partList
             });
@@ -155,6 +163,8 @@ class App extends Component{
                 this.removePartFromCart(partInfo);
             }).catch(err => {
                 console.log('error is: ', err);
+                this.props.history.push('/error');      
+                
             });
         }else{
             this.removePartFromCart(partInfo);
@@ -166,6 +176,26 @@ class App extends Component{
         const partList = [...this.state.cartParts];
         for(let i=0;i<partList.length;i++){
             if(partList[i].id === partInfo.id){
+                partList.splice(i,1);
+            }
+        }               
+        const cartCount = document.getElementsByClassName('cartCount');
+        cartCount[0].textContent = partList.length;
+        this.setState({
+            cartParts: partList
+        });
+    }
+
+    removeAllPartsYouOwnFromCart(partArray){
+        partArray.map((item ,index)=>{
+            this.removePartYouOwnFromCart(item);
+         });
+    }
+
+    removePartYouOwnFromCart(partInfo){
+        const partList = [...this.state.cartParts];
+        for(let i=0;i<partList.length;i++){
+            if(partList[i].id === partInfo.id && partInfo.seller_id === this.state.userId){
                 partList.splice(i,1);
             }
         }               
@@ -207,17 +237,21 @@ class App extends Component{
                     <Route path='/partresults/make/:make/model/:model/year/:year/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />                   
                     <Route exact path='/partresults/make/:make/model/:model/year/:year/keyword/:keyword' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
                     <Route path='/partresults/make/:make/model/:model/year/:year/keyword/:keyword/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} /> 
-                    <Route path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                    
+                    <Route exact path='/partdetails/:id/:fromDashboard' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />
+                    <Route path='/partdetails/:id/newPart/:newPart' render={props => <PartDetails urlBack={this.urlBack} cartParts={this.state.cartParts} addCart={this.addPart} {...props}/>} />                                        
                     <Route path='/about' component={About}/>
                     <Route path='/contact' component={ContactPage}/>
-                    <Route path='/contactSeller' component={ContactSeller}/>
                     <Route path='/cart' render={props => <Cart cartParts={this.state.cartParts} removePart={this.removePart} urlBack={this.urlBack} {...props}/>}/>
                     <Route path='/checkout' render={props => <Checkout removeAllPartsFromCart={this.removeAllPartsFromCart} cartParts={this.state.cartParts} {...props}/>}/>
                     <Route path='/sellpart' component={SellPartForm}/>
                     <Route path='/login' render={props => <Login setUserData={this.setUserData} {...props}/>}/>
                     <Route path='/listingsuccess' component={ListingSuccess}/>
                     <Route path='/dashboard' render={props => <UserDashboard userData={this.state.userName} {...props}/>}/>
-                    <Route path='/checkoutComplete/:orderNumber' component={CheckoutComplete}/>
+                    <Route path='/checkoutComplete/:orderNumber' render={props => <CheckoutComplete  urlBack={this.urlBack} {...props}/>}/>
+                    <Route path='/error' component={AxiosError}/>
+                    <Route path='/signup' component={SignUp}/>
+                    <Route path='/signUpDetails/:userId' component={SignUpDetails}/>
+
                     <Footer/> 
                 </div>
             </Router>  

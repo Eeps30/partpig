@@ -1,0 +1,195 @@
+/*@media only screen and (max-width: 1250px) {
+	.legal {
+		font-size: 1.2rem;
+	}
+
+}*/
+@media only screen and (max-width: 950px) {
+	.buttonsContainer select {
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 600px){
+	.contactForm {
+		width: 100%;
+	}
+    .contact-header {
+        text-align: center;
+        width: 100%;
+    }
+    .input-container {
+    	width: 100%;
+    }
+    .input-container > input, .input-container > textarea  {
+		width: 80%;
+    }
+    .contactForm > button{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+	.contact-header{
+		margin: 0;
+		padding: 0 1%;
+	}
+	.contact-header h3 {
+		font-size: 1.3rem;
+	}
+	.input-container label,
+	.contactForm button {
+		font-size: 1rem;
+	}
+	.contactForm input, 
+	.contactForm textarea,
+	.buttonsContainer input,
+	.buttonsContainer select,
+	.dropZone p,
+	.searchBarContainer input,
+	.form-group label,
+    .form-group input, 
+    .form-group select,
+	.instruction,
+    .yearMakeModel select {
+        font-size: 14px;
+    }
+    .contactPageContainer {
+    	min-height: none;
+    }
+
+    .buttonContainer button, 
+    .buttonsContainer a{
+		font-size: 18px;
+	}
+	.legal {
+		font-size: 11px;
+	}	
+	.cartCount {
+		font-size: 14px;
+	}
+	#menu li {
+		font-size: 14px;
+	}	
+	.user-nav {
+		text-align: right;
+	}
+
+}
+@media only screen and (max-width: 550px) {
+    .buttonsContainer input,
+	.dropZone p,
+	.form-group label,
+    .form-group input,    
+    .form-group select, 
+    .yearMakeModel select, 
+	.buttonsContainer select {
+        font-size: 12px;
+    }
+    .sellPartContainer .sellPartTitle {
+		font-size: 24px;
+	}
+	.aboutUsContainer{
+		text-align: center;
+		margin: 0;
+	}
+	.aboutUsContainer .users {
+	    height: 100%;
+	    width: 55%;
+	    margin: 3vmin 0;
+	}
+	.users:hover {
+	    box-shadow: 5px 10px 18px #888888;
+	}
+	.person {
+		width: 45%;
+	}
+	.infoContainer {
+		width: 55%;
+		height: 60vmin;
+		vertical-align: top;
+		padding-top: 20%;
+	}
+	.userName {
+		font-size: 1rem;
+		height: 3rem;
+		width: 90%;
+		margin: 0 auto;
+	}
+	.userRole {
+		font-size: 0.75rem;
+		height: 2rem;
+	}
+	.contactIcons .linkedInLink {
+		text-align: left;
+	}	
+	@keyframes bobble {
+	    0% {transform: translate(3px, 5px) rotate(1deg);}
+	    25% {transform: translate(-1px, -2px) rotate(-2deg);}
+	    50% {transform: translate(-2px, -3px) rotate(-3deg);}
+	    75% {transform: translate(2px, 2px) rotate(-1deg);}
+	    100% {transform: translate(3px, 5px) rotate(1deg);}
+	}
+
+
+}
+@media only screen and (max-width: 450px) {
+	.buttonsContainer input,
+	.dropZone p,
+	.form-group label,
+    .form-group input,    
+    .form-group select, 
+    .yearMakeModel select,
+    .buttonsContainer select {
+        font-size: 11px;
+    }
+}
+@media only screen and (max-width: 360px) {
+	.outerDiv {
+		width: 96%;
+		margin: 0 auto;
+	}	
+	.instruction {
+		font-size: 11px;
+	}	
+	.buttonsContainer select,
+	.legal {
+		font-size: 9px;
+	}	
+	
+	.resultsBar {
+		font-size: 1em;
+	}
+	
+	.contact-us {
+		width: 96%;
+	}	
+	.contact-us > h1 {
+		font-size: 20px;
+	}
+	.contact-header h3,
+	.input-container label {
+		font-size: 14px;
+	}
+	.contactForm input, 
+	.contactForm textarea {
+		font-size: 12px;
+	}		
+}
+
+@media only screen and (max-width: 320px) {
+	.login-icon {
+		right: 12%;
+	}
+
+	.sellPartContainer {
+		width: 86%;
+		margin: 0 2px;
+	}
+
+  	.contact-us {
+		width: 86%;
+	}	
+}
+
+		 

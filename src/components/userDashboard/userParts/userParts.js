@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './userParts.css';
+import './userPartsMedia.css';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
+import Loading from '../../tools/loading/loading';
 import axios from 'axios';
 import UpdatePartStatus from "./updatePartStatus"
 
@@ -18,7 +19,6 @@ class UserParts extends Component {
     }
 
     componentDidMount(){
-        // const id = this.props.match.params.id;
         const seller_id = this.state.seller_id;
         const url = 'http://localhost:8000/teampartpig/src/assets/php/allPartBySeller.php';
         const params = {seller_id};      
@@ -29,16 +29,16 @@ class UserParts extends Component {
                 }); 
             }).catch(err => {
                 console.log('error is: ', err);
+                this.props.history.push('/error');                
             }
         ); 
     } 
 
     render(){
-
         if (!this.state.isLoading) {
             return (
                 <div className='container'>
-                    <Loading />;
+                    <Loading />
                 </div>
             );
         }
@@ -49,7 +49,6 @@ class UserParts extends Component {
             let id = item.id;
             let status = item.status;
             return  (
-                // <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
                 <div key={index} className="dashboardPart">
                     <img className="mainImage alignMiddle" src={item.images}></img>
                     <div className="listingId alignMiddle">{item.id}</div>

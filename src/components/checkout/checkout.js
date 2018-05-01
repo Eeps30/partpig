@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './checkout.css';
 import {Link} from 'react-router-dom';
 import Field from '../tools/field';
-import Loading from '../loading/loading';
+import Loading from '../tools/loading/loading';
 import axios from 'axios';
 import inputs from './fieldsData';
 
@@ -15,13 +15,13 @@ class Checkout extends Component {
             isLoading: false,
             billingAddress: {},
             shippingAddress: {},
-            sameAddress: false,
+            sameAddress: true,
             shippingErrors: {},
             billingErrors: {},
             shippingPrice: 14.99,
             subtotal: 0,
             saveShippingAddress: false,
-            saveBillingAddress: false
+            saveBillingAddress: true
         }
         this.userId = localStorage.getItem('user');
         this.handleShippingInputChange = this.handleShippingInputChange.bind(this);
@@ -36,20 +36,9 @@ class Checkout extends Component {
                 subtotal += item.price_usd;
             });
         }
-
         const shipping = JSON.parse(localStorage.getItem('shipping'));
         const billing = JSON.parse(localStorage.getItem('billing'));
         if (this.userId) {
-            if (shipping && billing) {
-                //if we saved the addresses before when we went back
-                this.setState({
-                    isLoading: true,
-                    shippingAddress: shipping,
-                    billingAddress: billing,
-                    sameAddress: this.compareTwoAddresses(shipping, billing),
-                    subtotal: subtotal
-                });
-            } else {
                 //Shiping Address
                 const params = {
                     user_id: parseInt(this.userId),
@@ -70,16 +59,18 @@ class Checkout extends Component {
                         this.setState({
                             isLoading: true,
                             billingAddress: resp.data.data[0],
-                            sameAddress: this.compareTwoAddresses(this.state.shippingAddress, resp.data.data[0]),
+                            // sameAddress: this.compareTwoAddresses(this.state.shippingAddress, resp.data.data[0]),
                             subtotal: subtotal
                         });
                     }).catch(err => {
                         console.log('error is: ', err);
+                        this.props.history.push('/error');      
                     });
                 }).catch(err => {
                     console.log('error is: ', err);
+                    this.props.history.push('/error');      
                 });
-            }
+            // }
         } else {
             //anonymous user
             this.setState({
@@ -104,6 +95,7 @@ class Checkout extends Component {
             console.log(resp.data);
         }).catch(err => {
             console.log('error is: ', err);
+            this.props.history.push('/error');      
         });
     }
 
@@ -150,6 +142,7 @@ class Checkout extends Component {
             }
         }).catch(err => {
             console.log('error is: ', err);
+            this.props.history.push('/error');      
         });
     }
 
@@ -199,6 +192,8 @@ class Checkout extends Component {
                                 console.log("Server Response:", resp);
                             }).catch(err => {
                                 console.log("There was an error:");
+                                this.props.history.push('/error');      
+                                
                             });
                         }
                         
@@ -238,10 +233,14 @@ class Checkout extends Component {
                             console.log("Server email Response:", resp);
                         }).catch(err => {
                             console.log("There was an error:", err);
+                            this.props.history.push('/error');      ;
+                            
                         });
                     }
                 }).catch(err => {
                     console.log('error is: ', err);
+                    this.props.history.push('/error');      ;
+                    
                 });
 
             }
@@ -418,7 +417,7 @@ class Checkout extends Component {
 
         if (!this.state.isLoading) {
             <div className='container'>
-                <Loading />;
+                <Loading />
             </div>
         }
 
@@ -452,7 +451,7 @@ class Checkout extends Component {
                         <span>Shipping Address</span>
                         <hr />
                         {shipingFields}
-                        <input type="checkbox" checked={this.state.shippingFlag} onChange={this.handleSaveShippingAddress.bind(this)} />Save the changes in the shipping address
+                        <input type="checkbox" checked={this.state.saveShippingAddress} onChange={this.handleSaveShippingAddress.bind(this)} />Save the changes in the shipping address
                     </form>
                     <form className='shippingAddress'>
                         <span>Billing Address</span>
@@ -461,7 +460,7 @@ class Checkout extends Component {
                             <input type="checkbox" checked={this.state.sameAddress} onChange={this.handleCheckbox.bind(this)} name="sameAddress" />My billing address is the same as my shipping address
                         </div>
                         {billingFields}
-                        <input type="checkbox" checked={this.state.shippingFlag} onChange={this.handleSaveBillingAddress.bind(this)} />Save the changes in the billing address
+                        <input type="checkbox" checked={this.state.saveBillingAddress} onChange={this.handleSaveBillingAddress.bind(this)} />Save the changes in the billing address
                     </form>
                     <div className='shippingAddress'>
                         <span>Shipping Method</span>
@@ -477,10 +476,8 @@ class Checkout extends Component {
                 </div>
                 <div className='checkoutTotal'>
                     <div className="cartTitle"><b>CART SUMMARY: ({listParts.length} items)</b> </div>
-                    <div className="checkoutList">
-                        <ul>
-                            {listParts}
-                        </ul>
+                    <div className="checkoutList">                        
+                        {listParts}                        
                         <button onClick={this.backToCart.bind(this)} className='button-link'>Go Back</button>
                     </div>
                     <hr />

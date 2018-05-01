@@ -55,8 +55,10 @@ class BrandFilter extends Component{
 
         return (            
             <div>
-                <h2>Brands</h2>
-                {brandList}
+                <h3>Brands</h3>
+                <div className="filterScroll">
+                    {brandList}
+                </div>
             </div>   
         )
     }

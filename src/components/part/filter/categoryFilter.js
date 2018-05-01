@@ -53,9 +53,11 @@ class CategoryFilter extends Component{
         }).bind(this));
 
         return (            
-            <div>
-                <h2>Categories</h2>
-                {categoryList}
+            <div>                
+                <h3>Categories</h3>
+                <div className="filterScroll">
+                    {categoryList}
+                </div>
             </div>   
         )
     }

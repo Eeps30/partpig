@@ -1,6 +1,7 @@
 .homeMainContainer{
 	position: relative;
 	height: 90vh;
+	min-height: 500px;
 	width: 100%;
 }
 
@@ -13,9 +14,9 @@
 .scrollingImg{
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 20vw;
+	/*height: 20vw;*/
 	width: 100%;
-	display: inline-block;
+	/*display: inline-block;*/
 	background-position: top center;
 	margin: 0;
 	border-style: solid;
@@ -27,18 +28,17 @@
 .scrollingImgColumn{
 	width: 100%;
 }
-.scrollingImgContainer{
+/*.scrollingImgContainer{
 	position: relative;
 	height: 20vw;
-	/* transition: bottom .1s; */
-
-}
+	transition: bottom .1s; 
+}*/
 .shadow{
     position: absolute;
 	left: 0;
 	top: 0;
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	background-image: linear-gradient(rgba(0,0,0,.8) 0%, rgba(0, 0, 0, 0.541) 50%, rgba(0, 0, 0, 0.712) 100%);;
 }
 #welcomeMessage{

@@ -11,10 +11,10 @@ const Cart = (props) => {
     let list = (<div className='emptyMessage'>
                     <img src={emptyCart}/>
                     <p>Your Shopping Cart is Empty</p>
-                    <Link  className='button-link' to="/partResults">Keep Shopping</Link>
+                    <Link  className='button-link' to={props.urlBack}>Keep Shopping</Link>
                 </div>
                 );
-    let checkoutButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</Link>;
+    let checkoutButton = <button  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</button>;
 
     function checkIfUserIsLogin(){
         if(userId){
@@ -37,7 +37,9 @@ const Cart = (props) => {
     }
     return (
         <div className="container">
-            <Link  className='button-link' to={props.urlBack}>Go Back</Link>            
+            <div className="goBack">
+                <button  className='button-link' onClick={()=>props.history.goBack()}>Go Back</button>
+            </div>
             <div className="cartPartsContainer">            
                 <span>YOUR SHOPPING CART</span>
                 {list}                
@@ -49,7 +51,9 @@ const Cart = (props) => {
                     <hr/>
                     <p>TOTAL:  <span>${total}</span></p>
                     <hr/>
-                    {checkoutButton}
+                    <div className="cartCheckout">
+                        {checkoutButton}
+                    </div>                    
                 </div>
             </div>
         </div>

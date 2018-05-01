@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
+import Loading from '../../tools/loading/loading';
 import axios from 'axios';
-import './updatePartStatus.css'
+import './updatePartStatus.css';
 
 
 class UpdatePartStatus extends Component {
@@ -39,6 +39,7 @@ class UpdatePartStatus extends Component {
 
             }).catch(err => {
                 console.log('error is: ', err);
+                this.props.history.push('/error');                
             }
         );
         window.location.reload()  
@@ -66,7 +67,7 @@ class UpdatePartStatus extends Component {
         if (this.state.isLoading) {
             return (
                 <div className='container'>
-                    <Loading />;
+                    <Loading />
                 </div>
             );
         }

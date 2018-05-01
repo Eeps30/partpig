@@ -5,7 +5,6 @@ header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 require("../mysqlConnect.php");
-require("../sanitizeInput.php");
 
 $entityBody = file_get_contents('php://input');
 $request_data = json_decode($entityBody, true);
@@ -24,7 +23,7 @@ $fieldsToSanitize = ['part_name', 'description', 'category_id', 'part_condition'
 
 $fields = [];
 forEach($fieldsToSanitize as $value){
-	 $fields[$value] = sanitizeInput($request_data[$value]);
+	 $fields[$value] = $request_data[$value];
 }
 $fields['description'] = $fields['description'] ?: 'There is no description for this part.';
 $fields['part_condition'] = (int)$fields['part_condition'] ?: 1;
@@ -33,25 +32,41 @@ $fields['category_id'] = (int)$fields['category_id'] ?: 8;
 $fields['year'] = (int)$fields['year'];
 $fields['price_usd'] = (float)$fields['price_usd'];
 $fields['seller_id'] = (int)$fields['seller_id'];
+$fields['status'] = 'draft';
 
 $query = "INSERT INTO `part` "; 
-$tableFields = '';
-$tableValues = '';
+$tableValues =  [];
+$tableFields = [];
+$params = [];
+$letterString = "";
 
 forEach($fields as $key => $value){
-	$tableFields .= $key . ", ";
-	$tableValues .= "'" . $value . "', ";
+	$tableFields[] = $key;
+	$params[] = $value;
+	$tableValues[] = "?";
+	if(gettype($value) === 'integer'){
+		$letterString .= "i";
+	}
+	else if(gettype($value) === 'double'){
+		$letterString .= "d";
+	}
+	else{
+		$letterString .= "s";
+	}
 }
-
-$tableFields = "(" . substr($tableFields, 0, -2) . ")";
-$tableValues = "VALUES (" . substr($tableValues, 0, -2) . ")";
+$tableFields = "(" . implode(" , ", $tableFields) . ")";
+$tableValues = "VALUES (" . implode(" , ", $tableValues) . ")";
 
 $query .= $tableFields . $tableValues;
-// echo "The Query was: ".$query;
-// error_log("The Query was: ".$query , 0);
-$result = mysqli_query($conn, $query);
-if($result){
-	$last_id = mysqli_insert_id($conn);
+//prepared statement for query
+$stmt = $conn->prepare($query);
+$stmt->bind_param($letterString, ...$params);
+$stmt->execute();
+$result = $stmt->get_result();
+
+
+if($stmt->affected_rows === 1){
+	$last_id = $conn->insert_id;
 	$imgSubQuery = [];
 	
 	foreach($imageUrl as $image){
@@ -62,7 +77,7 @@ if($result){
 
 	$imgResult = mysqli_query($conn, $imgQuery);
 	
-	$output['data'][] = "last Id was $last_id";
+	$output['data'][] = "$last_id";
 	$output['data'][] = "The Query was: ".$imgQuery ." result was" .$imgResult;
 	if(!$imgResult){
 		$output['error'] = mysqli_error($conn);
@@ -80,5 +95,5 @@ else {
 $json_output = json_encode($output);
 print($json_output);
 
-mysqli_close($conn);
+$stmt->close();
 ?>
