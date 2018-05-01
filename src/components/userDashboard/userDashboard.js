@@ -37,7 +37,7 @@ class UserDashboard extends Component {
                 <div className="dashboardTabs">
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/activeparts">Active</NavLink>
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/partdrafts" >Drafts</NavLink>
-                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/watchlist" >Watching</NavLink>
+                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/watchlist" >Watchlist</NavLink>
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/searchhistory" >History</NavLink>
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/accountsettings" >Settings</NavLink>  
                 </div>                   
