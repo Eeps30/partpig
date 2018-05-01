@@ -14,7 +14,7 @@ const Cart = (props) => {
                     <Link  className='button-link' to={props.urlBack}>Keep Shopping</Link>
                 </div>
                 );
-    let checkoutButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</Link>;
+    let checkoutButton = <button  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</button>;
 
     function checkIfUserIsLogin(){
         if(userId){
@@ -38,7 +38,7 @@ const Cart = (props) => {
     return (
         <div className="container">
             <div className="goBack">
-                <Link  className='button-link' to={props.urlBack}>Go Back</Link>
+                <button  className='button-link' onClick={()=>props.history.goBack()}>Go Back</button>
             </div>
             <div className="cartPartsContainer">            
                 <span>YOUR SHOPPING CART</span>

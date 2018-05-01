@@ -23,7 +23,6 @@ import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
 import AxiosError from '../tools/errorHandling/error';
 import SignUpDetails from '../login/signUp/signupDetails';
-require('../../assets/images/piglogo.png');
 
 class App extends Component{
 
