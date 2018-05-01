@@ -14,6 +14,13 @@
     .contactDetails-container {
         width: 90vw;
     }
+    .noResultsMessage {
+        width: 90vw;
+    }
+    .searchAgain {
+        
+        width: 80%;
+    }
     .accountDetails_Button{
         font-size: 0.6em;
     }
