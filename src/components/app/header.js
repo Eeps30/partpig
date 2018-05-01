@@ -14,10 +14,10 @@ const Header = (props) => {
         props.logout();
     }
 
-    let logIcon = <Link to="/" onClick={logout}><img src={loginOut} alt='Logout' className="login-icon"/></Link>
+    let logIcon = <Link to="/" onClick={logout}><img src={loginOut} title='Logout' alt='Logout' className="login-icon"/></Link>
     let sellPartIcon = <Link className="sellPartButton" to="/sellpart"> Sell Part</Link>  
     if(!props.userId){
-        logIcon = <Link to="/login"><img src={loginIcon} alt='Login' className="login-icon"/></Link>
+        logIcon = <Link to="/login"><img src={loginIcon} title='Login' alt='Login' className="login-icon"/></Link>
         sellPartIcon = <Link className="sellPartButton" to="/login"> Sell Part</Link> 
     }
     
