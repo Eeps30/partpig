@@ -228,7 +228,7 @@ class App extends Component{
             <Router>
                 <div className='mainContainer'>
                     <Header userId={this.state.userId} logout={this.logout.bind(this)}/>            
-                    <Route exact path='/' component={ ()=>  <Home images={this.images} />}/>
+                    <Route exact path='/' render={props => <Home images={this.images} {...props}/>} />
                     <Route exact path='/partresults' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
                     <Route path='/partresults/filters/:filters' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
                     <Route exact path='/partresults/keyword/:keyword' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack}  addCart={this.addPart} {...props}/>} />
