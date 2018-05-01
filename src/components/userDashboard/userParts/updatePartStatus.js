@@ -77,7 +77,7 @@ class UpdatePartStatus extends Component {
                    case "available":
                         return (
                             <div>    
-                            <h3>Confirm Listing</h3>
+                            <h3>Confirm</h3>
                             {confirmButton}
                             {cancelButton}
                         </div>  
@@ -92,7 +92,7 @@ class UpdatePartStatus extends Component {
                             )   
                     case "shipped":
                         return (
-                            <div>    
+                            <div> 
                                 <h3>Would you like to add a tracking number?</h3>
                                 {confirmButton}
                                 {cancelButton}
@@ -101,7 +101,7 @@ class UpdatePartStatus extends Component {
                     case "draft":
                         return ( 
                         <div>    
-                            <h3>Confirm Save</h3>
+                            <h3>Confirm</h3>
                             {confirmButton}
                             {cancelButton}
                         </div>    
@@ -119,7 +119,7 @@ class UpdatePartStatus extends Component {
                     case "deleted":
                         return (
                         <div>    
-                            <h3>Confirm Delete</h3>
+                            <h3>Delete?</h3>
                             {confirmButton}
                             {cancelButton}
                         </div>
