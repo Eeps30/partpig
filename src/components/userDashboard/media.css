@@ -285,10 +285,6 @@
         width: 33%;
     }
 
-    .sellPartButton {
-        display: none;
-    }
-
     .productDetailsContainer {
         font-size: 1.3em;
     }
@@ -340,6 +336,10 @@
     .imageContainer {
         width: 18vw;
         height: 18vw;
+    }
+    
+    .sellPartButton {
+        display: none;
     }
 }
 
