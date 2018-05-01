@@ -23,6 +23,9 @@ class UserDashboard extends Component {
     constructor(props){
         super(props);
         const userId = localStorage.getItem('user');
+        if(!userId){
+            props.history.push('/login');
+        }
         this.state = {
             isLoading: false,  
             seller_id: userId,
