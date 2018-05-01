@@ -119,7 +119,7 @@ class UpdatePartStatus extends Component {
                     case "deleted":
                         return (
                         <div>    
-                            <h3>Are you sure you want to remove your listing?</h3>
+                            <h3>Confirm Delete</h3>
                             {confirmButton}
                             {cancelButton}
                         </div>
