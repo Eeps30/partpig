@@ -336,8 +336,8 @@ footer a {
  }
  
  #menuToggle {
-    margin-top: 3%;
-    margin-left: 3%;
+    margin-top: 10px;
+    margin-left: 10px;
     height: 100%;
     z-index: 2;
     -webkit-user-select: none;
