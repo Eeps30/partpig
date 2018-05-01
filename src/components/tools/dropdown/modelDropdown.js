@@ -7,8 +7,8 @@ class ModelDropdown extends Component {
         super(props)
     }
 
-    handleChildClick(event){
-        this.props.modelSelect(event.currentTarget.value)
+    handleChildClick(event){  
+        this.props.modelSelect(event.currentTarget.value);
     }
 
     componentWillReceiveProps(nextProps){

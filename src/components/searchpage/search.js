@@ -14,8 +14,10 @@ class DropDownContainer extends Component {
             make: 'default',
             model: 'default',
             year: 'default',
-            searchText:''
+            searchText:'',
+            showErrorBorder: {}
         }
+        this.validateFields = this.validateFields.bind(this);
         this.catchMakeSelect = this.catchMakeSelect.bind(this)
         this.catchModelSelect = this.catchModelSelect.bind(this)
         this.catchYearSelect = this.catchYearSelect.bind(this)
@@ -48,11 +50,29 @@ class DropDownContainer extends Component {
     handleChange(event){
         this.setState({
             searchText: event.target.value
-        })
+        });
     }
 
+    // handleError(){
+    //     this.setState({
+    //         showErrorBorder : {
+    //             border: 'solid red 2px'
+    //         }
+    //     })
+    // }
+
     validateFields(){
-        return ((this.state.make !== 'default' && this.state.model !== 'default' && this.state.year !== 'default') || this.state.searchText !== '');
+
+        if((this.state.make !== 'default' && this.state.model !== 'default' && this.state.year !== 'default') || this.state.searchText !== ''){
+            if((this.state.searchText !== '') && (this.state.make !== 'default' && this.state.model === 'default' && this.state.year === 'default')){
+                // this.handleError();
+                return false
+            }else if((this.state.searchText !== '') && (this.state.make !== 'default' && this.state.model !== 'default' && this.state.year === 'default')){
+                return false;
+            }else{
+                return true;
+            }
+        }
     }
 
     render(){
@@ -65,6 +85,7 @@ class DropDownContainer extends Component {
         let searchButton = <Link className='button-link' to={"/partresults" + queryStr}> FIND PARTS </Link>
         if(!this.validateFields()){
             searchButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/partresults" + queryStr}> FIND PARTS </Link>
+            //after button throw, run the check that is before the handlerError method from above
         }
         
         return(
