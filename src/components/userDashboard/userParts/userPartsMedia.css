@@ -1,186 +1,566 @@
 @media only screen and (min-width: 300px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 90%;
+        font-size: 33%;
+    }
     body .listingId{
         font-size: .6rem;
+    }
+    div.listingId.alignMiddle {
+        display: none;
     }
     body .partNumber {
         font-size: .5rem;
     }
+    .listingColumns .title-partNumber {
+        width: 22%;
+    }
+    .dashboardPart .partNumber {
+        width: 22%;
+    }
     body .brand {
         font-size: .7rem;
+    }
+    .listingColumns .title-brand {
+        width: 14%;
+    }
+    .dashboardPart .brand {
+        width: 14%;
     }
     body .partName {
         font-size: .7rem;
     }
+    .listingColumns .title-partName {
+        width: 22%;
+    }
+    .dashboardPart .partName {
+        width: 22%;
+    }
     body .fitment {
         font-size: .7rem;
+    }
+    div.fitment.alignMiddle {
+        display: none;
     }
     body .price {
         font-size: .7rem;
     }
-    body .title-listingId {
+    .listingColumns .title-price {
+        width: 17%;
+    }
+    .dashboardPart .price {
+        width: 17.5%;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 0.6rem;
+    }
+    div.title-listingId {
         display: none;
+    }
+    div.title-fitment {
+        display: none;
+    }
+    .listingColumns .title-status {
+        width: 14%;
     }
 }
 
 @media only screen and (min-width: 420px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 85%;
+        font-size: 40%;
+    }
     body .listingId{
         font-size: .7rem;
+    }
+    div.listingId.alignMiddle {
+        display: none;
     }
     body .partNumber {
         font-size: .7rem;
     }
+    .listingColumns .title-partNumber {
+        width: 22%;
+    }
+    .dashboardPart .partNumber {
+        width: 22%;
+    }
     body .brand {
         font-size: .7rem;
+    }
+    .listingColumns .title-brand {
+        width: 14%;
+    }
+    .dashboardPart .brand {
+        width: 14%;
     }
     body .partName {
         font-size: .7rem;
     }
+    .listingColumns .title-partName {
+        width: 22%;
+    }
+    .dashboardPart .partName {
+        width: 22%;
+    }
     body .fitment {
         font-size: .7rem;
     }
+    div.fitment.alignMiddle {
+        display: none;
+    }
     body .price {
         font-size: .7rem;
+    }
+    .listingColumns .title-price {
+        width: 17%;
+    }
+    .dashboardPart .price {
+        width: 17.5%;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 0.8rem;
+    }
+    div.title-listingId {
+        display: none;
+    }
+    div.title-fitment {
+        display: none;
+    }
+    .listingColumns .title-status {
+        width: 14%;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 90%;
+        font-size: 45%;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 0.8rem;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 520px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 90%;
+        font-size: 52%;
     }
 }
 
 @media only screen and (min-width: 700px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 100%;
+        font-size: 60%;
+    }
     body .listingId{
         font-size: 1rem;
+    }
+    div.listingId.alignMiddle {
+        display: none;
     }
     body .partNumber {
         font-size: 1rem;
     }
+    .listingColumns .title-partNumber {
+        width: 22%;
+    }
+    .dashboardPart .partNumber {
+        width: 22%;
+    }
     body .brand {
         font-size: 1rem;
+    }
+    .listingColumns .title-brand {
+        width: 14%;
+    }
+    .dashboardPart .brand {
+        width: 14%;
     }
     body .partName {
         font-size: 1rem;
     }
+    .listingColumns .title-partName {
+        width: 22%;
+    }
+    .dashboardPart .partName {
+        width: 22%;
+    }
     body .fitment {
         font-size: 1rem;
+    }
+    div.fitment.alignMiddle {
+        display: none;
     }
     body .price {
         font-size: 1rem;
     }
+    .listingColumns .title-price {
+        width: 17%;
+    }
+    .dashboardPart .price {
+        width: 17.5%;
+    }
     body .statusUpdateDropdown select {
-        font-size: 0.6rem;
+        font-size: 1.0rem;
+        width: 100%;
+    }
+    div.title-listingId {
+        display: none;
+    }
+    div.title-fitment {
+        display: none;
+    }
+    .listingColumns .title-status {
+        width: 14%;
+    }
+}
+
+@media only screen and (min-width: 760px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 100%;
+        font-size: 60%;
     }
 }
 
 @media only screen and (min-width: 900px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 100%;
+        font-size: 88%;
+    }
     body .listingId{
         font-size: 1rem;
+    }
+    div.listingId.alignMiddle {
+        display: inline-block;
     }
     body .partNumber {
         font-size: 1rem;
     }
+    .listingColumns .title-partNumber {
+        width: 15%;
+    }
+    .dashboardPart .partNumber {
+        width: 15%;
+    }
     body .brand {
         font-size: 1rem;
+    }
+    .listingColumns .title-brand {
+        width: 7%;
+    }
+    .dashboardPart .brand {
+        width: 7.3%;
     }
     body .partName {
         font-size: 1rem;
     }
+    .listingColumns .title-partName {
+        width: 17%;
+    }
+    .dashboardPart .partName {
+        width: 17.5%;
+    }
     body .fitment {
         font-size: 1rem;
+    }
+    div.fitment.alignMiddle {
+        display: inline-block;
     }
     body .price {
         font-size: 1rem;
     }
+    .listingColumns .title-price {
+        width: 10%;
+    }
+    .dashboardPart .price {
+        width: 8.7%;
+    }
+    .listingColumns .title-status {
+        width: 12%;
+    }
     body .statusUpdateDropdown select {
-        font-size: 0.6rem;
+        font-size: 1.0rem;
+        width: 100%;
+    }
+    div.title-listingId {
+        display: inline-block;
+    }
+    div.title-fitment {
+        display: inline-block;
     }
 }
 
 @media only screen and (min-width: 1030px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 100%;
+        font-size: 88%;
+    }
     body .listingId{
         font-size: 1rem;
+    }
+    div.listingId.alignMiddle {
+        display: inline-block;
     }
     body .partNumber {
         font-size: 1rem;
     }
+    .listingColumns .title-partNumber {
+        width: 15%;
+    }
+    .dashboardPart .partNumber {
+        width: 15%;
+    }
     body .brand {
         font-size: 1rem;
+    }
+    .listingColumns .title-brand {
+        width: 7%;
+    }
+    .dashboardPart .brand {
+        width: 7.3%;
     }
     body .partName {
         font-size: 1rem;
     }
+    .listingColumns .title-partName {
+        width: 17%;
+    }
+    .dashboardPart .partName {
+        width: 17.5%;
+    }
     body .fitment {
         font-size: 1rem;
+    }
+    div.fitment.alignMiddle {
+        display: inline-block;
     }
     body .price {
         font-size: 1rem;
     }
-    body .statusUpdateDropdown select {
-        font-size: 0.8rem;
+    .listingColumns .title-price {
+        width: 10%;
     }
-    
+    .dashboardPart .price {
+        width: 8.7%;
+    }
+    .listingColumns .title-status {
+        width: 12%;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 1.0rem;
+        width: 100%;
+    }
+    div.title-listingId {
+        display: inline-block;
+    }
+    div.title-fitment {
+        display: inline-block;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 100%;
+        font-size: 88%;
+    }
     body .listingId{
         font-size: 1.3rem;
+    }
+    div.listingId.alignMiddle {
+        display: inline-block;
     }
     body .partNumber {
         font-size: 1.3rem;
     }
+    .listingColumns .title-partNumber {
+        width: 15%;
+    }
+    .dashboardPart .partNumber {
+        width: 15%;
+    }
     body .brand {
         font-size: 1.3rem;
+    }
+    .listingColumns .title-brand {
+        width: 7%;
+    }
+    .dashboardPart .brand {
+        width: 7.3%;
     }
     body .partName {
         font-size: 1.3rem;
     }
+    .listingColumns .title-partName {
+        width: 17%;
+    }
+    .dashboardPart .partName {
+        width: 17.5%;
+    }
     body .fitment {
         font-size: 1.3rem;
+    }
+    div.fitment.alignMiddle {
+        display: inline-block;
     }
     body .price {
         font-size: 1.3rem;
     }
+    .listingColumns .title-price {
+        width: 10%;
+    }
+    .dashboardPart .price {
+        width: 8.7%;
+    }
+    .listingColumns .title-status {
+        width: 12%;
+    }
     body .statusUpdateDropdown select {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
+        width: 100%;
+    }
+    div.title-listingId {
+        display: inline-block;
+    }
+    div.title-fitment {
+        display: inline-block;
     }
 }
 
 @media only screen and (min-width: 1400px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 100%;
+        font-size: 88%;
+    }
     body .listingId{
         font-size: 1.3rem;
+    }
+    div.listingId.alignMiddle {
+        display: inline-block;
     }
     body .partNumber {
         font-size: 1.3rem;
     }
+    .listingColumns .title-partNumber {
+        width: 15%;
+    }
+    .dashboardPart .partNumber {
+        width: 15%;
+    }
     body .brand {
         font-size: 1.3rem;
+    }
+    .listingColumns .title-brand {
+        width: 7%;
+    }
+    .dashboardPart .brand {
+        width: 7.3%;
     }
     body .partName {
         font-size: 1.3rem;
     }
+    .listingColumns .title-partName {
+        width: 17%;
+    }
+    .dashboardPart .partName {
+        width: 17.5%;
+    }
     body .fitment {
         font-size: 1.3rem;
+    }
+    div.fitment.alignMiddle {
+        display: inline-block;
     }
     body .price {
         font-size: 1.3rem;
     }
+    .listingColumns .title-price {
+        width: 10%;
+    }
+    .dashboardPart .price {
+        width: 8.7%;
+    }
+    .listingColumns .title-status {
+        width: 12%;
+    }
     body .statusUpdateDropdown select {
         font-size: 1.2rem;
+        width: 100%;
+    }
+    div.title-listingId {
+        display: inline-block;
+    }
+    div.title-fitment {
+        display: inline-block;
     }
 }
 
 @media only screen and (min-width: 1580px) {
+    .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
+        width: 100%;
+        font-size: 88%;
+    }
     body .listingId{
         font-size: 1.8rem;
+    }
+    div.listingId.alignMiddle {
+        display: inline-block;
     }
     body .partNumber {
         font-size: 1.6rem;
     }
+    .listingColumns .title-partNumber {
+        width: 15%;
+    }
+    .dashboardPart .partNumber {
+        width: 15%;
+    }
     body .brand {
         font-size: 1.3rem;
+    }
+    .listingColumns .title-brand {
+        width: 7%;
+    }
+    .dashboardPart .brand {
+        width: 7.3%;
     }
     body .partName {
         font-size: 1.3rem;
     }
+    .listingColumns .title-partName {
+        width: 17%;
+    }
+    .dashboardPart .partName {
+        width: 17.5%;
+    }
     body .fitment {
         font-size: 1.2rem;
     }
+    div.fitment.alignMiddle {
+        display: inline-block;
+    }
     body .price {
         font-size: 1.4rem;
+    }
+    .listingColumns .title-price {
+        width: 10%;
+    }
+    .dashboardPart .price {
+        width: 8.7%;
+    }
+    .listingColumns .title-status {
+        width: 12%;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 1.2rem;
+        width: 100%;
+    }
+    div.title-listingId {
+        display: inline-block;
+    }
+    div.title-fitment {
+        display: inline-block;
     }
 }
