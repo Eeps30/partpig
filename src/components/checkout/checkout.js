@@ -417,7 +417,7 @@ class Checkout extends Component {
 
         if (!this.state.isLoading) {
             <div className='container'>
-                <Loading />;
+                <Loading />
             </div>
         }
 

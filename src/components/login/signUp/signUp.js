@@ -121,7 +121,7 @@ class SignUp extends Component {
     if (this.state.isLoading) {
         return(
             <div className='container'>
-                <Loading />;
+                <Loading />
             </div>
         );
     }
