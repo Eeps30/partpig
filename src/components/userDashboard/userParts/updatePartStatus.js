@@ -77,7 +77,7 @@ class UpdatePartStatus extends Component {
                    case "available":
                         return (
                             <div>    
-                            <h3>Are you sure you would like to list this part for sale?</h3>
+                            <h3>Confirm Listing</h3>
                             {confirmButton}
                             {cancelButton}
                         </div>  
