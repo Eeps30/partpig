@@ -1,3 +1,186 @@
-@media only screen and (min-width: 1850px) {
+@media only screen and (min-width: 300px) {
+    body .listingId{
+        font-size: .6rem;
+    }
+    body .partNumber {
+        font-size: .5rem;
+    }
+    body .brand {
+        font-size: .7rem;
+    }
+    body .partName {
+        font-size: .7rem;
+    }
+    body .fitment {
+        font-size: .7rem;
+    }
+    body .price {
+        font-size: .7rem;
+    }
+    body .title-listingId {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 420px) {
+    body .listingId{
+        font-size: .7rem;
+    }
+    body .partNumber {
+        font-size: .7rem;
+    }
+    body .brand {
+        font-size: .7rem;
+    }
+    body .partName {
+        font-size: .7rem;
+    }
+    body .fitment {
+        font-size: .7rem;
+    }
+    body .price {
+        font-size: .7rem;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    body .listingId{
+        font-size: 1rem;
+    }
+    body .partNumber {
+        font-size: 1rem;
+    }
+    body .brand {
+        font-size: 1rem;
+    }
+    body .partName {
+        font-size: 1rem;
+    }
+    body .fitment {
+        font-size: 1rem;
+    }
+    body .price {
+        font-size: 1rem;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 0.6rem;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    body .listingId{
+        font-size: 1rem;
+    }
+    body .partNumber {
+        font-size: 1rem;
+    }
+    body .brand {
+        font-size: 1rem;
+    }
+    body .partName {
+        font-size: 1rem;
+    }
+    body .fitment {
+        font-size: 1rem;
+    }
+    body .price {
+        font-size: 1rem;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 0.6rem;
+    }
+}
+
+@media only screen and (min-width: 1030px) {
+    body .listingId{
+        font-size: 1rem;
+    }
+    body .partNumber {
+        font-size: 1rem;
+    }
+    body .brand {
+        font-size: 1rem;
+    }
+    body .partName {
+        font-size: 1rem;
+    }
+    body .fitment {
+        font-size: 1rem;
+    }
+    body .price {
+        font-size: 1rem;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 0.8rem;
+    }
     
+}
+
+@media only screen and (min-width: 1200px) {
+    body .listingId{
+        font-size: 1.3rem;
+    }
+    body .partNumber {
+        font-size: 1.3rem;
+    }
+    body .brand {
+        font-size: 1.3rem;
+    }
+    body .partName {
+        font-size: 1.3rem;
+    }
+    body .fitment {
+        font-size: 1.3rem;
+    }
+    body .price {
+        font-size: 1.3rem;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    body .listingId{
+        font-size: 1.3rem;
+    }
+    body .partNumber {
+        font-size: 1.3rem;
+    }
+    body .brand {
+        font-size: 1.3rem;
+    }
+    body .partName {
+        font-size: 1.3rem;
+    }
+    body .fitment {
+        font-size: 1.3rem;
+    }
+    body .price {
+        font-size: 1.3rem;
+    }
+    body .statusUpdateDropdown select {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (min-width: 1580px) {
+    body .listingId{
+        font-size: 1.8rem;
+    }
+    body .partNumber {
+        font-size: 1.6rem;
+    }
+    body .brand {
+        font-size: 1.3rem;
+    }
+    body .partName {
+        font-size: 1.3rem;
+    }
+    body .fitment {
+        font-size: 1.2rem;
+    }
+    body .price {
+        font-size: 1.4rem;
+    }
 }

@@ -144,8 +144,8 @@
 }
 @media only screen and (max-width: 360px) {
 	.outerDiv {
-		width: 95%;
-		margin: 0;
+		width: 96%;
+		margin: 0 auto;
 	}	
 	.instruction {
 		font-size: 11px;
@@ -175,9 +175,19 @@
 	}		
 }
 
-@media only screen and (max-width: 331px) {
-	.signUp_Container {
-		width: 60%;
+@media only screen and (max-width: 320px) {
+	.login-icon {
+		right: 12%;
 	}
+
+	.sellPartContainer {
+		width: 86%;
+		margin: 0 2px;
+	}
+
+  	.contact-us {
+		width: 86%;
+	}	
 }
+
 		 
