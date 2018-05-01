@@ -67,7 +67,7 @@ class UpdatePartStatus extends Component {
         if (this.state.isLoading) {
             return (
                 <div className='container'>
-                    <Loading />;
+                    <Loading />
                 </div>
             );
         }

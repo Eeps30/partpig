@@ -112,7 +112,7 @@ class PartInfo extends Component {
         const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/updatePartStatus.php';
         axios.get(urlStatus, { params }).then(resp => {
             if (resp.data.success) {
-                this.props.history.push('/dashboard');
+                this.props.history.push('/dashboard/activeparts');
             }
         }).catch(err => {
             console.log('error is: ', err);
