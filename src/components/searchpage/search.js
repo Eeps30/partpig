@@ -75,6 +75,12 @@ class DropDownContainer extends Component {
         }
     }
 
+    handleEnterKey(e,queryStr){
+        if (e.charCode == 13) {
+            this.props.history.push("/partresults" + queryStr);
+        }
+    }
+
     render(){
 
         let queryStr = this.state.make !== 'default' ? '/make/' + this.state.make : '';
@@ -92,7 +98,7 @@ class DropDownContainer extends Component {
             <div className="outerDiv">
                 <div className="dropdownMenu">
                     <div className="searchBarContainer">
-                        <input type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
+                        <input onKeyPress={(e)=>this.handleEnterKey(e,queryStr)} type="text" value={this.state.searchText} onChange={this.handleChange.bind(this)} placeholder='Search By Part Name'/> 
                     </div>
                     <div className="buttonsContainer">
                         <MakeDropDown data={data} makeSelect={this.catchMakeSelect} currentMake={this.state.make}/>

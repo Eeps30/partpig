@@ -40,7 +40,7 @@ class Home extends Component {
           <ContentColumn shiftRate={.6} displaySize={7} images={this.randomizeArray(this.state.images)} />
           <ContentColumn shiftRate={1.0} displaySize={7} images={this.randomizeArray(this.state.images)} />
           <div className="shadow">                     
-            <Search/>
+            <Search {...this.props}/>
           </div>
         </div>
       </div>  
