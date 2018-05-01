@@ -7,7 +7,7 @@
 }
 
 .noResultsMessage {
-    width: 40%;
+    width: 70%;
     height: 55%;
     background-color: rgb(255, 255, 255);
     display: block;
@@ -22,7 +22,7 @@
 
 .searchAgain {
     vertical-align: top;
-    width: 86%;
+    width: 45%;
     background-color: rgb(255, 94, 36);
     color: white;
     display: block;
