@@ -44,7 +44,7 @@ class Contact extends Component {
 						</div>
 						<div className="input-container">
 							<label>Email:</label>
-							<input type="text" className="email" value={email} placeholder="Enter your email address here" onChange={this.handleEmailInputChange.bind(this)} required />
+							<input type="email" className="email" value={email} placeholder="Enter your email address here" onChange={this.handleEmailInputChange.bind(this)} required />
 						</div>
 						<div className="input-container">
 							<label>Subject:</label>

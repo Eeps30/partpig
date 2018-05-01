@@ -1,4 +1,7 @@
 @media only screen and (min-width: 300px) {
+    .userPartsContainer{
+        width:95%;
+    }
     .dashboardHeader h2 {
         font-size: 1.8rem;
         line-height: calc(20px + 2vmin);
@@ -101,6 +104,9 @@
 }
 
 @media only screen and (min-width: 420px) {
+    .userPartsContainer{
+        width:95%;
+    }
     .dashboardHeader h2 {
         font-size: calc(18px + 1rem);
         line-height: calc(20px + 2vmin);
@@ -203,6 +209,9 @@
 }
 
 @media only screen and (min-width: 500px) {
+    .userPartsContainer{
+        width:90%;
+    }
     .dashboardHeader h2 {
         font-size: calc(18px + 1rem);
         line-height: calc(20px + 2vmin);
@@ -249,6 +258,9 @@
 }
 
 @media only screen and (min-width: 520px) {
+    .userPartsContainer{
+        width:95%;
+    }
     .dashboardHeader h2 {
         font-size: calc(18px + 1rem);
         line-height: calc(20px + 2vmin);
@@ -386,6 +398,9 @@
     .cancelButton{
         background-color: rgb(255, 72, 72); 
         right: -16%;
+    }
+    .userPartsContainer{
+        width:85%;
     }
 }
 
