@@ -1,4 +1,12 @@
 @media only screen and (min-width: 300px) {
+    .dashboardHeader h2 {
+        font-size: 1.8rem;
+        line-height: calc(20px + 2vmin);
+    }
+    .userDashboard .tabContent h2 {
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 90%;
         font-size: 33%;
@@ -66,6 +74,14 @@
 }
 
 @media only screen and (min-width: 420px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 1rem);
+        line-height: calc(20px + 2vmin);
+    }
+    .userDashboard .tabContent h2 {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 85%;
         font-size: 40%;
@@ -133,6 +149,14 @@
 }
 
 @media only screen and (min-width: 500px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 1rem);
+        line-height: calc(20px + 2vmin);
+    }
+    .userDashboard .tabContent h2 {
+        font-size: 1.3rem;
+        text-transform: uppercase;
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 90%;
         font-size: 45%;
@@ -144,6 +168,10 @@
 }
 
 @media only screen and (min-width: 520px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 1rem);
+        line-height: calc(20px + 2vmin);
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 90%;
         font-size: 52%;
@@ -151,6 +179,14 @@
 }
 
 @media only screen and (min-width: 700px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 1rem);
+        line-height: calc(20px + 2vmin);
+    }
+    .userDashboard .tabContent h2 {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 100%;
         font-size: 60%;
@@ -219,6 +255,10 @@
 }
 
 @media only screen and (min-width: 760px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 1rem);
+        line-height: calc(20px + 2vmin);
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 100%;
         font-size: 60%;
@@ -226,6 +266,14 @@
 }
 
 @media only screen and (min-width: 900px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 2rem);
+        line-height: calc(20px + 2vmin);
+    }
+    .userDashboard .tabContent h2 {
+        font-size: 1.6rem;
+        text-transform: uppercase;
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 100%;
         font-size: 88%;
@@ -294,6 +342,14 @@
 }
 
 @media only screen and (min-width: 1030px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 2rem);
+        line-height: calc(20px + 2vmin);
+    }
+    .userDashboard .tabContent h2 {
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 100%;
         font-size: 88%;
@@ -362,6 +418,14 @@
 }
 
 @media only screen and (min-width: 1200px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 2rem);
+        line-height: calc(20px + 2vmin);
+    }
+    .userDashboard .tabContent h2 {
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 100%;
         font-size: 88%;
@@ -430,6 +494,10 @@
 }
 
 @media only screen and (min-width: 1400px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 2rem);
+        line-height: calc(20px + 2vmin);
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 100%;
         font-size: 88%;
@@ -498,6 +566,10 @@
 }
 
 @media only screen and (min-width: 1580px) {
+    .dashboardHeader h2 {
+        font-size: calc(18px + 2rem);
+        line-height: calc(20px + 2vmin);
+    }
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 100%;
         font-size: 88%;
