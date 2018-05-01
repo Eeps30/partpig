@@ -163,6 +163,7 @@
     border: 0.25rem dashed darkslategray;
     vertical-align: top;
     position: relative;
+    cursor: pointer;
 }
 .dropZone p {
     position: absolute;

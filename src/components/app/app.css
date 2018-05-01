@@ -146,7 +146,6 @@ header {
     vertical-align: top;
     height: 100%;
     text-align: right;
-    /* font-size: 14px; */
 }
 
 .login-icon{
@@ -160,7 +159,6 @@ header {
     border: none;
     text-align: center;
     text-decoration: none;
-    /* font-size: 14px; */
     background-color: #d0451b;
     color: white;
     padding: 1%;
@@ -202,7 +200,6 @@ header {
     position: relative;
     top: -46%;
     right: 50%;
-    /* font-size: 14px; */
     font-weight: bold;
     color: #bc3315;
 }
@@ -250,7 +247,6 @@ footer a {
     background-position: bottom;
     background-position-x: left;
     border: solid 3px black;
-    /*height:80vh;*/
     min-height: 550px;
     margin-bottom: 2vh;
 }
@@ -264,6 +260,8 @@ footer a {
 	color: rgba(28, 108, 237, 0.7);
 	font-family: Verdana, Geneva, sans-serif;
     text-shadow: 0.5px 0.5px black;
+    background-color: rgba(255,255,255,.85);
+    border-radius: 15px;
 }
 .contact-header h3 {
     font-size: 1.5rem;
@@ -338,8 +336,8 @@ footer a {
  }
  
  #menuToggle {
-    margin-top: 3%;
-    margin-left: 3%;
+    margin-top: 10px;
+    margin-left: 10px;
     height: 100%;
     z-index: 2;
     -webkit-user-select: none;
@@ -354,7 +352,7 @@ footer a {
     left: 0px;
     cursor: pointer;
     opacity: 0; /* hide this */
-    z-index: 3; /* and place it over the hamburger */
+    z-index: 3; /* and place it over the hamburger menu */
     -webkit-touch-callout: none;
  }
 
@@ -417,7 +415,6 @@ footer a {
  
  #menu li {
    padding: 2% 0;
-   /* font-size: 14px; */
  }
 
 #menuToggle input:checked ~ ul {
