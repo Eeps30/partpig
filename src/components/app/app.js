@@ -137,7 +137,7 @@ class App extends Component{
                         cartMessage[0].classList.remove("show_block");
                     }
                 }
-            },3000);
+            },2000);
             this.setState({
                 cartParts: partList
             });

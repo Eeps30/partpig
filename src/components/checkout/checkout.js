@@ -15,13 +15,13 @@ class Checkout extends Component {
             isLoading: false,
             billingAddress: {},
             shippingAddress: {},
-            sameAddress: false,
+            sameAddress: true,
             shippingErrors: {},
             billingErrors: {},
             shippingPrice: 14.99,
             subtotal: 0,
             saveShippingAddress: false,
-            saveBillingAddress: false
+            saveBillingAddress: true
         }
         this.userId = localStorage.getItem('user');
         this.handleShippingInputChange = this.handleShippingInputChange.bind(this);
@@ -39,16 +39,6 @@ class Checkout extends Component {
         const shipping = JSON.parse(localStorage.getItem('shipping'));
         const billing = JSON.parse(localStorage.getItem('billing'));
         if (this.userId) {
-            // if (shipping && billing) {
-            //     //if we saved the addresses before when we went back
-            //     this.setState({
-            //         isLoading: true,
-            //         shippingAddress: shipping,
-            //         billingAddress: billing,
-            //         sameAddress: this.compareTwoAddresses(shipping, billing),
-            //         subtotal: subtotal
-            //     });
-            // } else {
                 //Shiping Address
                 const params = {
                     user_id: parseInt(this.userId),
@@ -69,7 +59,7 @@ class Checkout extends Component {
                         this.setState({
                             isLoading: true,
                             billingAddress: resp.data.data[0],
-                            sameAddress: this.compareTwoAddresses(this.state.shippingAddress, resp.data.data[0]),
+                            // sameAddress: this.compareTwoAddresses(this.state.shippingAddress, resp.data.data[0]),
                             subtotal: subtotal
                         });
                     }).catch(err => {
@@ -461,7 +451,7 @@ class Checkout extends Component {
                         <span>Shipping Address</span>
                         <hr />
                         {shipingFields}
-                        <input type="checkbox" checked={this.state.shippingFlag} onChange={this.handleSaveShippingAddress.bind(this)} />Save the changes in the shipping address
+                        <input type="checkbox" checked={this.state.saveShippingAddress} onChange={this.handleSaveShippingAddress.bind(this)} />Save the changes in the shipping address
                     </form>
                     <form className='shippingAddress'>
                         <span>Billing Address</span>
@@ -470,7 +460,7 @@ class Checkout extends Component {
                             <input type="checkbox" checked={this.state.sameAddress} onChange={this.handleCheckbox.bind(this)} name="sameAddress" />My billing address is the same as my shipping address
                         </div>
                         {billingFields}
-                        <input type="checkbox" checked={this.state.shippingFlag} onChange={this.handleSaveBillingAddress.bind(this)} />Save the changes in the billing address
+                        <input type="checkbox" checked={this.state.saveBillingAddress} onChange={this.handleSaveBillingAddress.bind(this)} />Save the changes in the billing address
                     </form>
                     <div className='shippingAddress'>
                         <span>Shipping Method</span>
