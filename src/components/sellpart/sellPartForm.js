@@ -18,6 +18,9 @@ class SellPartForm extends Component{
         super(props);
 
         this.userId = localStorage.getItem('user');
+        if(!this.userId){
+            props.history.push('/login');
+        }
         this.state = { 
             isLoading: false,
             part:{
