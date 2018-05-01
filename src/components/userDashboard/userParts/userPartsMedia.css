@@ -71,6 +71,33 @@
     .listingColumns .title-status {
         width: 14%;
     }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 53vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: .4rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 55%;
+        font-size: 0.3rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: -16%;
+    }
 }
 
 @media only screen and (min-width: 420px) {
@@ -146,6 +173,33 @@
     .listingColumns .title-status {
         width: 14%;
     }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 54vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: .6rem;
+        margin: 0;
+        text-align: left;    
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 55%;
+        font-size: 0.4rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: -16%;
+    }
 }
 
 @media only screen and (min-width: 500px) {
@@ -165,6 +219,33 @@
         font-size: 0.8rem;
         width: 100%;
     }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 46vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: .6rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 55%;
+        font-size: 0.5rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: -16%;
+    }
 }
 
 @media only screen and (min-width: 520px) {
@@ -175,6 +256,33 @@
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 90%;
         font-size: 52%;
+    }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 46vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: .6rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 55%;
+        font-size: 0.5rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: -16%;
     }
 }
 
@@ -252,6 +360,33 @@
     .listingColumns .title-status {
         width: 14%;
     }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 45vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: .8rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 56%;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: -16%;
+    }
 }
 
 @media only screen and (min-width: 760px) {
@@ -262,6 +397,33 @@
     .userPartsList > .dashboardPart > .statusUpdateContainer .editPart {
         width: 100%;
         font-size: 60%;
+    }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 51vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: .9rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 40%;
+        font-size: 0.7rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: -2%;
     }
 }
 
@@ -339,6 +501,33 @@
     div.title-fitment {
         display: inline-block;
     }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 60vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: 1rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 40%;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: 5%;
+    }
 }
 
 @media only screen and (min-width: 1030px) {
@@ -414,6 +603,33 @@
     }
     div.title-fitment {
         display: inline-block;
+    }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 51vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: .8rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 40%;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: 5%;
     }
 }
 
@@ -491,6 +707,33 @@
     div.title-fitment {
         display: inline-block;
     }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 60vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: 1rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 40%;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: 5%;
+    }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -563,6 +806,33 @@
     div.title-fitment {
         display: inline-block;
     }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 70vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: 1.2rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 40%;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: 5%;
+    }
 }
 
 @media only screen and (min-width: 1580px) {
@@ -634,5 +904,32 @@
     }
     div.title-fitment {
         display: inline-block;
+    }
+    .statusUpdateContainer h3 {
+        position: absolute;
+        height: 6%;
+        width: 72vmin;
+        bottom: 0%;
+        right: 0%;
+        line-height: normal;
+        font-size: 1.2rem;
+        margin: 0;
+        text-align: left;
+    }
+    .confirmButton, .cancelButton {
+        position: absolute;
+        bottom: -8%;
+        height: 23%;
+        width: 40%;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    .confirmButton {
+        background-color: rgb(0, 235, 0);
+        right: 50%;
+    }
+    .cancelButton{
+        background-color: rgb(255, 72, 72); 
+        right: 5%;
     }
 }
