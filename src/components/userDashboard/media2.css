@@ -34,7 +34,9 @@
 		margin: 0;
 		padding: 0 1%;
 	}
-	.contact-header h3,
+	.contact-header h3 {
+		font-size: 1.3rem;
+	}
 	.input-container label,
 	.contactForm button {
 		font-size: 1rem;
