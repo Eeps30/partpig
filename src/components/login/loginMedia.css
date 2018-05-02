@@ -1,64 +1,26 @@
 @media only screen and (max-width: 1920px) { 
-/*    .login-container {
-        height: 80%;
-    }*/
-/*    .loginForm {
-        width: 60%;
-    }*/
-/*    .loginFormErrorMessage {
-        font-size: 0.8em;
-    }*/
-  /*  .signUp_Button {
-        font-size: 2.2em;
-    }*/
+
 }
 
 @media only screen and (max-width: 950px) { 
-/*    .login-container {
-        height: 80%;
-    }*/
-/*    .loginForm {
-        width: 70%;
-    }*/
-/*    .signUp_Button {
-        font-size: 2.2em;
-    }*/
-    .loginFormErrorMessage {
-        font-size: .8em;
-    }
-    .signUp_Container {
+
+}
+
+@media only screen and (max-width: 768px) {
+	.login-container {
         width: 90%;
     }
 }
 
-@media only screen and (max-width: 768px) {
-	.loginForm{
-        width: 80%;
+@media only screen and (max-width: 550px) {
+    .login-container {
+        width: 100%;
     }
-    .signUp_Button {
-        font-size: 2.0em;
-    }
-    .loginFormErrorMessage {
-        font-size: .8em;
-    }
-}
-
-@media only screen and (max-width: 584px) {
-    .signUp_Button {
-        font-size: 1.8em;
-    }
-    .loginForm {
-        width: 80%;
-    }
-    .loginFormErrorMessage {
-        font-size: .6em;
-    }
+   
 }
 
 @media only screen and (max-width: 450px) {
-	.login-container {
-        width: 100%;
-    }
+
     .signUp_Message {
         font-size: 0.8em;
     }
@@ -68,15 +30,8 @@
 }
 
 @media only screen and (max-width: 360px) {
-	.login-container {
-        width: 100%;
-    }
-    .loginForm {
-        width: 90%;
-    }
-    .signUp_Message {
-        font-size: 0.8em;
-    }
+
+
 }
 
 @media only screen and (max-width: 320px) {
