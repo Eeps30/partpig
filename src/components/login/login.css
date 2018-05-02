@@ -1,16 +1,9 @@
 .login-container {
-    /*width: 70%;*/
-    /*height: 75%;*/
-    /*margin: auto;*/
-    /*margin-top: 2%;*/
-    /*padding: 1%;*/
     box-sizing: border-box;
     text-align: center;
-    /*min-height: 86.2vh;*/
     margin: 2vh auto;
     width: 60vw;
     min-height: 86vh;
-    /*background-color: white;*/
 }
 /*======================== login form styling =============================*/
 .loginForm {

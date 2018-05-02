@@ -127,25 +127,23 @@ class SignUp extends Component {
         }
 
         return (
-            <div>
-                <div className="outer-container">
-                    <div className="inner-container">
-                        <form onSubmit={this.handleSubmit}>
-                            <h2 className="createAccountHeader">Create an Account</h2>
-                            <label>Email Address:</label>
-                            <input value={this.state.email} onChange={this.handleChange.bind(this)} type="email" required/>
-                            <label>Desired Username:</label>
-                            <input value={this.state.username} onChange={this.handleUserChange.bind(this)} type="text" required/>
-                            <label>Password:</label>
-                            <input value={this.state.password} onChange={this.handlePassChange.bind(this)} type="password" required/>
-                            <label>Confirm Password:</label>
-                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password" required/>
-                            <input className="submitButton" type="submit" value="Sign Up"/>
-                            <h2 className="signUpFormErrorMessage">{this.state.errorMessage}</h2>
-                        </form>
-                    </div>
-                </div>
-            </div>
+              <div className="outer-container">
+                  <div className="inner-container">
+                      <form onSubmit={this.handleSubmit}>
+                          <h2 className="createAccountHeader">Create an Account</h2>
+                          <label>Email Address:</label>
+                          <input value={this.state.email} onChange={this.handleChange.bind(this)} type="email" required/>
+                          <label>Desired Username:</label>
+                          <input value={this.state.username} onChange={this.handleUserChange.bind(this)} type="text" required/>
+                          <label>Password:</label>
+                          <input value={this.state.password} onChange={this.handlePassChange.bind(this)} type="password" required/>
+                          <label>Confirm Password:</label>
+                          <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password" required/>
+                          <input className="submitButton button-link" type="submit" value="Sign Up"/>
+                          <h2 className="signUpFormErrorMessage">{this.state.errorMessage}</h2>
+                      </form>
+                  </div>
+              </div>
         )
    }
 }
