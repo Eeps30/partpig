@@ -62,36 +62,6 @@ class LoginForm extends Component {
         this.reset();
     }
 
-    render() {
-
-        if(this.state.isLoading){
-            return(
-                <div className="container">
-                    <Loading/>;
-                </div>
-            )
-        }
-
-        let errorMessage = '';
-        if (this.state.loginError) {
-            errorMessage = <h2 className="loginFormErrorMessage">Username or Password Incorrect</h2>;
-        }
-        const {user, password} = this.state.form;
-        return (
-            <div className="loginForm">
-
-                <h2 className='loginTitle'>Login with Username</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Username</label>
-                    <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
-                    <label>Password</label>
-                    <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
-                    <input type="submit" value="Login" />
-                </form>
-                <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
-            </div>
-        );
-    }
     handleUserInputChange(e) {
         const { value } = e.target
         this.setState({
@@ -126,6 +96,37 @@ class LoginForm extends Component {
             },
             ...this.state.loginError
         })
+    }
+    
+    render() {
+
+        if(this.state.isLoading){
+            return(
+                <div className="container">
+                    <Loading/>
+                </div>
+            )
+        }
+
+        let errorMessage = '';
+        if (this.state.loginError) {
+            errorMessage = <h2 className="loginFormErrorMessage">Username or Password Incorrect</h2>;
+        }
+        const {user, password} = this.state.form;
+        return (
+            <div className="loginForm">
+
+                <h2 className='loginTitle'>Login with Username</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Username</label>
+                    <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
+                    <input type="submit" value="Login" />
+                </form>
+                <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
+            </div>
+        );
     }
 }
 
