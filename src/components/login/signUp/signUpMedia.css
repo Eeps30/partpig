@@ -1,28 +1,19 @@
-@media only screen and (max-width: 1920px) { 
-/*    .inner-container {
-        width: 40%;
+@media only screen and (min-width: 1920px) { 
+    .inner-container {
+        width: 35%;
     }
-    .signUpFormErrorMessage {
-        font-size: 1.5em;
-    }*/
 }
 
 @media only screen and (max-width: 950px) { 
     .inner-container {
         width: 60%;
     }
- /*   .signUpFormErrorMessage {
-        font-size: 1.2em;
-    }*/
 }
 
 @media only screen and (max-width: 768px) {
 	.inner-container {
         width: 65%;
     }
-/*    .signUpFormErrorMessage {
-        font-size: 1.2em;
-    }*/
 }
 
 @media only screen and (max-width: 550px) {
