@@ -8,21 +8,21 @@
 /*    .loginFormErrorMessage {
         font-size: 0.8em;
     }*/
-    .signUp_Button {
+  /*  .signUp_Button {
         font-size: 2.2em;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 950px) { 
 /*    .login-container {
         height: 80%;
     }*/
-    .loginForm {
+/*    .loginForm {
         width: 70%;
-    }
-    .signUp_Button {
+    }*/
+/*    .signUp_Button {
         font-size: 2.2em;
-    }
+    }*/
     .loginFormErrorMessage {
         font-size: .8em;
     }

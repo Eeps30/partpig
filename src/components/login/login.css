@@ -15,10 +15,10 @@
 /*======================== login form styling =============================*/
 .loginForm {
     width: 80%;
-    height: 55%;
+    /*height: 55%;*/
     background-color: rgb(255, 255, 255);
     display: inline-block;
-    /*margin: 3%;*/
+    margin-top: 20px;
     padding: 0 4%;
     box-sizing: border-box;
     text-align: center;
@@ -33,18 +33,19 @@
 
 .loginForm label {
     float: left;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 .loginForm input[type=text], .loginForm select, .loginForm input[type=password] {
     width: 100%;
     padding: 2% 2%;
     margin: 2% 0;
-    font-size: 16px;
+    font-size: 1rem;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
+    outline: none;
 }
 
 .loginForm input[type=submit] {
@@ -56,7 +57,7 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 .loginForm input[type=submit]:hover {

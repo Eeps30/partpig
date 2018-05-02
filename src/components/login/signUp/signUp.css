@@ -49,12 +49,12 @@
 }
 
 .signUp_Container{
-    margin:auto;
-    width: 70%;
+    margin: 0 auto;
+    width: 80%;
 }
 
 .signUp_Message{
-    margin:5%;
+    /*margin:5%;*/
 }
 
 
@@ -67,14 +67,15 @@
     background-color: #59d0ff;
 }
 .signUp_Button{
-    width: 100%;
+    /*width: 100%;*/
     background-color: #4CAF50;
     color: white;
     padding: 2% 2%;
-    margin-top: 5%;
-    border: none;
-    border-radius: 4px;
+    /*margin-top: 5%;*/
+    border-radius: 10px;
     cursor: pointer;
+    font-size: 1.5rem;
+    display: inline-block;
 }
 .signUp_Button:hover{
     background-color: #45a049;
