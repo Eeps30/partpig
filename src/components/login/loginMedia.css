@@ -1,22 +1,22 @@
 @media only screen and (max-width: 1920px) { 
-    .login-container {
+/*    .login-container {
         height: 80%;
-    }
-    .loginForm {
+    }*/
+/*    .loginForm {
         width: 60%;
-    }
-    .loginFormErrorMessage {
+    }*/
+/*    .loginFormErrorMessage {
         font-size: 0.8em;
-    }
+    }*/
     .signUp_Button {
         font-size: 2.2em;
     }
 }
 
 @media only screen and (max-width: 950px) { 
-    .login-container {
+/*    .login-container {
         height: 80%;
-    }
+    }*/
     .loginForm {
         width: 70%;
     }
@@ -44,9 +44,6 @@
 }
 
 @media only screen and (max-width: 584px) {
-  
- 
-  
     .signUp_Button {
         font-size: 1.8em;
     }

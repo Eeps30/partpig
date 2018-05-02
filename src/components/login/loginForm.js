@@ -80,13 +80,13 @@ class LoginForm extends Component {
         return (
             <div className="loginForm">
 
-                <h2>Login with Username</h2>
+                <h2 className='loginTitle'>Login with Username</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username</label>
                     <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
                     <label>Password</label>
                     <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
-                    <input type="submit" value="Log In" />
+                    <input type="submit" value="Login" />
                 </form>
                 <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
             </div>
