@@ -1,4 +1,8 @@
-
+@media only screen and (min-width: 1950px) {
+	.userDashboard .tabContent {
+		width: 70%;
+	}
+}
 @media only screen and (max-width: 950px) {
 	.buttonsContainer select {
 		font-size: 12px;
@@ -69,6 +73,16 @@
 	.user-nav {
 		text-align: right;
 	}
+	.userDashboard h1,
+	.dashboardHeader h2{
+		font-size: 20px;
+		line-height: 40px;
+	}
+	.dashboardTabs .tabLinks {
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+
 
 }
 @media only screen and (max-width: 550px) {
@@ -124,6 +138,10 @@
 	    50% {transform: translate(-2px, -3px) rotate(-3deg);}
 	    75% {transform: translate(2px, 2px) rotate(-1deg);}
 	    100% {transform: translate(3px, 5px) rotate(1deg);}
+	}
+	.statContainer {
+		font-size: 1.5rem;
+    	margin: 4% 10%;
 	}
 }
 
@@ -182,6 +200,14 @@
     .buttonsContainer select {
         font-size: 11px;
     }
+    .userDashboard .tabContent h2 {
+    	font-size: 1.6rem;
+    }
+    .dashboardTabs .tabLinks {
+    	font-size: 1rem;
+    	float: none;
+    	margin-right: 0.3rem;
+    }
 }
 @media only screen and (max-width: 360px) {
 	.outerDiv {
@@ -213,6 +239,9 @@
 	.contactForm input, 
 	.contactForm textarea {
 		font-size: 12px;
+	}
+	.statContainer {
+		font-size: 1.3rem;
 	}		
 }
 
