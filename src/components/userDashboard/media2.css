@@ -1,9 +1,4 @@
-/*@media only screen and (max-width: 1250px) {
-	.legal {
-		font-size: 1.2rem;
-	}
 
-}*/
 @media only screen and (max-width: 950px) {
 	.buttonsContainer select {
 		font-size: 12px;
@@ -182,12 +177,7 @@
 		right: 12%;
 	}
 
-	.sellPartContainer {
-		width: 86%;
-		margin: 0 2px;
-	}
-
-  	.contact-us {
+ 	.contact-us {
 		width: 86%;
 	}	
 }
