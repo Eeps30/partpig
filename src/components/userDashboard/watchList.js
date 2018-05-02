@@ -12,7 +12,7 @@ class WatchList extends Component {
 
                 <div className="userPartsContainer">     
                     <div className="userPartsList">
-                        <h2>Your Watch List</h2>
+                        <h2>Your Watchlist</h2>
                         <img src={construction} alt=""/>
                     </div>
                 </div>
