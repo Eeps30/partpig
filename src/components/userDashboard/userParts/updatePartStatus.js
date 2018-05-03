@@ -24,9 +24,6 @@ class UpdatePartStatus extends Component {
     }
 
     updateStatus(){
-        // this.setState({
-        //     isLoading: true  
-        // });
         const params = {status: this.state.pendingStatus, id: this.props.id};
         console.log(params)
         const url = 'http://localhost:8000/teampartpig/src/assets/php/updatePartStatus.php';      
