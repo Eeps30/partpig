@@ -23,6 +23,10 @@
     box-sizing: border-box;
  }
  
+ .inner-container > .goBack {    
+    padding-top: 2%;
+ }
+
  .inner-container form {
     padding: 1%;
  }
