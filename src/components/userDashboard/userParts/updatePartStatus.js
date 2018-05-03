@@ -76,11 +76,11 @@ class UpdatePartStatus extends Component {
                 switch(this.state.pendingStatus){
                    case "available":
                         return (
-                            <div>    
-                            <h3>Confirm</h3>
-                            {confirmButton}
-                            {cancelButton}
-                        </div>  
+                            <div className='draftEditContainer'>    
+                                <h3>Confirm</h3>
+                                {confirmButton}
+                                {cancelButton}
+                            </div>  
                         )
                     case "sold":
                         return ( 
@@ -100,8 +100,8 @@ class UpdatePartStatus extends Component {
                         )   
                     case "draft":
                         return ( 
-                        <div>    
-                            <h3>Confirm</h3>
+                        <div className='draftEditContainer'>    
+                            <h3>Save?</h3>
                             {confirmButton}
                             {cancelButton}
                         </div>    
@@ -118,7 +118,7 @@ class UpdatePartStatus extends Component {
                     )
                     case "deleted":
                         return (
-                        <div>    
+                        <div className='draftEditContainer'>    
                             <h3>Delete?</h3>
                             {confirmButton}
                             {cancelButton}
@@ -138,7 +138,7 @@ class UpdatePartStatus extends Component {
                         <option value="deleted">Remove</option>          
                     </select>
             </div>
-                 );    
+            );    
         }
     }
 }

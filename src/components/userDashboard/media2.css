@@ -7,6 +7,9 @@
 	.buttonsContainer select {
 		font-size: 12px;
 	}
+	.draftEditContainer {
+	    right: 13px;
+	}
 }
 
 @media screen and (max-width: 600px){
@@ -115,6 +118,23 @@
 	.dashboardPart .statusUpdateContainer {
 	    width: 20%;
 	}
+	.draftEditContainer {
+	    left: 0;
+	}
+	.statusUpdateContainer .draftEditContainer h3 {
+	    right: 110%;
+	    font-size: 1.1rem;
+	}
+	.confirmButton,
+	.cancelButton {
+		font-size: 0.8rem;
+	}
+	.draftEditContainer .confirmButton {
+		right: 50%;
+	}
+	.draftEditContainer .cancelButton {
+		right: 0;
+	}
 }
 
 @media only screen and (max-width: 550px) {
@@ -172,49 +192,39 @@
 	    100% {transform: translate(3px, 5px) rotate(1deg);}
 	}
 	.listingColumns,
-	/*.listingColumns .title-partNumber,*/
 	.dashboardPart .partNumber,	
-	/*.listingColumns .title-brand,*/
 	.dashboardPart .brand {
 		display: none;
 	}	
-	/*.listingColumns .title-mainImage,*/
 	.dashboardPart .mainImage {
 	    width: 40%;
 	    display: block;
 		max-height: 100px
 	}
-	/*.listingColumns .title-partName,*/
 	.dashboardPart .partName {
 	    width: 60%;
 	    padding: 5px;
 	    display: block;
 	    text-align: left;
+	    padding-left: 10px;
 	}
-	/*.listingColumns .title-price,*/
 	.dashboardPart .price {
 	    width: 60%;
 	    display: block;
+	    padding: 5px;
 	    text-align: left;
 	    font-weight: bold;
+	    padding-left: 10px;
 	}
-	/*.listingColumns .title-status,*/
 	.dashboardPart .statusUpdateContainer {
 	    width: 35%;
 	}
 	.dashboardPart {
 		height: 180px;
 	}
-/*	.editPart {
-		position: absolute;
-		top: 50%;
-		right: 10%;
-		transform: translateY(-50%);
-	}*/
 }
 
 @media only screen and (max-height: 550px) {
-
 	.aboutUsContainer{
 		text-align: center;
 		margin: 0 auto;
@@ -289,7 +299,6 @@
 	.legal {
 		font-size: 9px;
 	}	
-	
 	.resultsBar {
 		font-size: 1em;
 	}
@@ -320,7 +329,6 @@
 	.login-icon {
 		right: 12%;
 	}
-
  	.contact-us {
 		width: 86%;
 	}	

@@ -96,8 +96,6 @@
 
 /*=================================== user draft styling ================================*/
 .editPart{
-/*    display: inline-block;
-    float: right;*/
     position: absolute;
     top: 50%;
     right: 10%;
