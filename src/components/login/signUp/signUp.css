@@ -5,6 +5,7 @@
  }
  
  .inner-container{
+    border-radius: 10px;
     width: 40%;
     margin: 0 auto;
     padding: 0 2%;

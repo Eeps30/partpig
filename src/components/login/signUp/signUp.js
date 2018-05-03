@@ -61,7 +61,7 @@ class SignUp extends Component {
 
     validate(){
         if (this.validateEmail()) {
-            console.log('email verified');
+            
         } else {
             this.setState({
                 isLoading: false,
@@ -121,7 +121,7 @@ class SignUp extends Component {
                if(resp.data.data[0] === 'invalid email'){
                     this.setState({
                        isLoading: false,
-                       errorMessage: 'Invalid Email'
+                       errorMessage: 'Invalid Email Address'
                    })
                 }else if(resp.data.hasOwnProperty('duplicate')){
                     this.setState({
