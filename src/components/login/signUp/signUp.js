@@ -129,6 +129,9 @@ class SignUp extends Component {
         return (
               <div className="outer-container">
                   <div className="inner-container">
+                     <div className="goBack"> 
+                        <button className='button-link' onClick={()=>this.props.history.goBack()}>Go Back</button>
+                      </div>
                       <form onSubmit={this.handleSubmit}>
                           <h2 className="createAccountHeader">Create an Account</h2>
                           <label>Email Address:</label>
@@ -139,7 +142,7 @@ class SignUp extends Component {
                           <input value={this.state.password} onChange={this.handlePassChange.bind(this)} type="password" required/>
                           <label>Confirm Password:</label>
                           <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password" required/>
-                          <input className="submitButton button-link" type="submit" value="Sign Up"/>
+                          <input className="submitButton button-link" type="submit" value="Sign Up"/>                         
                           <h2 className="signUpFormErrorMessage">{this.state.errorMessage}</h2>
                       </form>
                   </div>
