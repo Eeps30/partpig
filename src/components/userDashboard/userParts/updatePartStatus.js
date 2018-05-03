@@ -101,7 +101,7 @@ class UpdatePartStatus extends Component {
                     case "draft":
                         return ( 
                         <div className='draftEditContainer'>    
-                            <h3>Save?</h3>
+                            <h3>Confirm?</h3>
                             {confirmButton}
                             {cancelButton}
                         </div>    
