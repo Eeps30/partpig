@@ -33,6 +33,7 @@ class App extends Component{
             userId: localStorage.getItem('user'),
             userName:''
         }
+        // creates images for background
         this.images = ['part1.jpg','part2.jpg','part3.jpg','part4.jpg','part5.jpg','part6.jpg','part7.jpg','part8.jpg','part9.jpg','part10.jpg','part11.jpg','part12.jpg','part13.jpg','part14.jpg','part15.jpg','part16.jpg','part17.jpg','part18.jpg','part19.jpg','part20.jpg','part21.jpg','part22.jpg','part23.jpg','part24.jpg','part25.jpg','part26.jpg','part27.jpg','part28.jpg','part29.jpg','part30.jpg'];
 
 
