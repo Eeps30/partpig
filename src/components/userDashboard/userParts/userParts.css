@@ -80,9 +80,9 @@
 .title-status{
     width: 10%;
 }
-.mainImage,
+.dash-mainImage,
 .listingId,
-.partNumber, 
+.dash-partNumber, 
 .brand, 
 .partName, 
 .fitment, 
@@ -93,7 +93,7 @@
     font-size: 1rem;
     box-sizing: border-box;
 }
-.mainImage{
+.dash-mainImage{
     margin: 0;
     max-height: 15vmin;
     width: 10%;
@@ -105,7 +105,7 @@
 .listingId {
     width: 10%;
 }
-.partNumber {
+.dash-partNumber {
     float: none;
     width: 15%; 
     word-wrap: break-word;
