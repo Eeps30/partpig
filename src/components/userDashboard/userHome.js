@@ -12,15 +12,15 @@ class UserHome extends Component {
         return  (
             <div className="userDashboard">     
                 <div className="dashboardTitle">
-                    <h1>{this.props.userData} Welcome to your user dashboard!</h1>
+                    <h2>{this.props.userData} Welcome to your user dashboard!</h2>
                 </div>
                 <Link to={"/dashboard/activeparts"}>
-                    <div className="statContainer">
+                    <div className="statContainer button-link">
                         Active Listings 
                     </div>
                 </Link>
                 <Link to={"/dashboard/partdrafts"}>
-                    <div className="statContainer">
+                    <div className="statContainer button-link">
                         Saved Drafts 
                     </div>
                 </Link>

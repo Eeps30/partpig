@@ -215,9 +215,8 @@ class PartInfo extends Component {
                 {/* {share} */}
                 <span id='brand'>{this.state.partInfo.brand}</span> <span id='part_number' className="partNumber">{this.state.partInfo.part_number} </span><span className="partNumber">P/N:</span>
                 <h3 className="productTitle"><span id='part_name'>{this.state.partInfo.part_name}</span></h3>
-                <span><b>{this.state.partInfo.category} - {this.state.partInfo.make} {this.state.partInfo.model} {this.state.partInfo.year} </b></span>
-                
-                <p className="productPrice"><span>$</span><span id='price_usd'>{this.state.partInfo.price_usd}</span> {multiUsebutton}</p>          
+                <span><b>{this.state.partInfo.category} - {this.state.partInfo.make} {this.state.partInfo.model} {this.state.partInfo.year} </b></span>                
+                <p className="productPrice"><span>$</span><span id='price_usd'>{this.state.partInfo.price_usd.toFixed(2)}</span> {multiUsebutton}</p>          
                 {details}
             </div> 
         );

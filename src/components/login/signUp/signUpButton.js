@@ -8,7 +8,7 @@ const SignUpButton = () => (
             <h2 >No account? No problem! </h2>
             <h2>Sign up for a Partpig account! </h2>
         </div>
-        <Link className="signUp_Button" to={"/signup"}> Sign up now!</Link>
+        <Link className="signUp_Button button-link" to={"/signup"}> Sign up now!</Link>
     </div>
 );
 

@@ -36,7 +36,7 @@ class UserDashboard extends Component {
     render(){
         return (            
             <div className="userDashboard">
-                <div className="dashboardHeader"><h2>User Dashboard</h2></div>  
+                <div className="dashboardHeader"><h1>User Dashboard</h1></div>  
                 <div className="dashboardTabs">
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/activeparts">Active</NavLink>
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/partdrafts" >Drafts</NavLink>

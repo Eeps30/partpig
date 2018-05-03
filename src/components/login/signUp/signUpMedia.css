@@ -1,6 +1,6 @@
-@media only screen and (max-width: 1920px) { 
+@media only screen and (min-width: 1920px) { 
     .inner-container {
-        width: 40%;
+        width: 50%;
     }
     .signUpFormErrorMessage {
         font-size: 1.5em;
@@ -9,7 +9,7 @@
 
 @media only screen and (max-width: 950px) { 
     .inner-container {
-        width: 40%;
+        width: 50%;
     }
     .signUpFormErrorMessage {
         font-size: 1.2em;
@@ -18,14 +18,11 @@
 
 @media only screen and (max-width: 768px) {
 	.inner-container {
-        width: 60%;
-    }
-    .signUpFormErrorMessage {
-        font-size: 1.2em;
+        width: 65%;
     }
 }
 
-@media only screen and (max-width: 584px) {
+@media only screen and (max-width: 550px) {
     .inner-container {
         width: 70%;
     }
@@ -38,16 +35,10 @@
 	.inner-container {
         width: 80%;
     }
-    .signUpFormErrorMessage {
-        font-size: 1.2em;
-    }
 }
 
 @media only screen and (max-width: 360px) {
 	.inner-container {
         width: 90%;
-    }
-    .signUpFormErrorMessage {
-        font-size: 1.2em;
     }
 }

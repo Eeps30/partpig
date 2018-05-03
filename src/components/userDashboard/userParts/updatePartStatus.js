@@ -24,9 +24,6 @@ class UpdatePartStatus extends Component {
     }
 
     updateStatus(){
-        // this.setState({
-        //     isLoading: true  
-        // });
         const params = {status: this.state.pendingStatus, id: this.props.id};
         console.log(params)
         const url = 'http://localhost:8000/teampartpig/src/assets/php/updatePartStatus.php';      
@@ -76,11 +73,11 @@ class UpdatePartStatus extends Component {
                 switch(this.state.pendingStatus){
                    case "available":
                         return (
-                            <div>    
-                            <h3>Confirm</h3>
-                            {confirmButton}
-                            {cancelButton}
-                        </div>  
+                            <div className='draftEditContainer'>    
+                                <h3>Confirm?</h3>
+                                {confirmButton}
+                                {cancelButton}
+                            </div>  
                         )
                     case "sold":
                         return ( 
@@ -100,8 +97,8 @@ class UpdatePartStatus extends Component {
                         )   
                     case "draft":
                         return ( 
-                        <div>    
-                            <h3>Confirm</h3>
+                        <div className='draftEditContainer'>    
+                            <h3>Confirm?</h3>
                             {confirmButton}
                             {cancelButton}
                         </div>    
@@ -118,7 +115,7 @@ class UpdatePartStatus extends Component {
                     )
                     case "deleted":
                         return (
-                        <div>    
+                        <div className='draftEditContainer'>    
                             <h3>Delete?</h3>
                             {confirmButton}
                             {cancelButton}
@@ -135,10 +132,10 @@ class UpdatePartStatus extends Component {
                     <select onChange={this.statusChange} value={this.state.status} name="status" type="text">
                         <option value="available">Active</option>
                         <option value="draft">Draft</option>
-                        <option value="deleted">Remove Listing</option>          
+                        <option value="deleted">Remove</option>          
                     </select>
             </div>
-                 );    
+            );    
         }
     }
 }
