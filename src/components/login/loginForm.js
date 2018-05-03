@@ -23,6 +23,22 @@ class LoginForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        if(this.state.form.user === ''){
+            this.setState({
+                isLoading: false,
+                errorMessage: 'Please Enter Your Username'
+            })
+            return false
+        }
+
+        if (this.state.form.password === ''){
+            this.setState({
+                isLoading: false,
+                errorMessage: 'Please Enter Your Password'
+            })
+            return false
+        }
+        
         this.setState({
             isLoading: true
         })
@@ -83,9 +99,9 @@ class LoginForm extends Component {
                 <h2>Login with Username</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username</label>
-                    <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
+                    <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)}/>
                     <label>Password</label>
-                    <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
+                    <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)}/>
                     <input type="submit" value="Log In" />
                 </form>
                 <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
