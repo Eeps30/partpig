@@ -97,7 +97,7 @@
 /*=================================== user draft styling ================================*/
 .editPart{
     position: absolute;
-    top: 50%;
+    top: 10%;
     right: 10%;
     transform: translateY(-50%);
 }

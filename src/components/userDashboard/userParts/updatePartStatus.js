@@ -77,7 +77,7 @@ class UpdatePartStatus extends Component {
                    case "available":
                         return (
                             <div className='draftEditContainer'>    
-                                <h3>Confirm</h3>
+                                <h3>Confirm?</h3>
                                 {confirmButton}
                                 {cancelButton}
                             </div>  

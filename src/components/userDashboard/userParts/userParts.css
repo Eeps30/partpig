@@ -130,8 +130,8 @@
 
 .draftEditContainer h3 {
   position: absolute;
-  bottom: 0%;
-  right: 120px;
+  bottom: 25px;
+  right: 15px;
   line-height: normal;
   font-size: 1.2rem;
   margin: 0;
@@ -155,5 +155,9 @@
     right: 10px;
 }
 
+.confirmButton:hover, 
+.cancelButton:hover {
+  background-color: #d0451b;
+}
 
 

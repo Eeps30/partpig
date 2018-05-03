@@ -121,20 +121,6 @@
 	.draftEditContainer {
 	    left: 0;
 	}
-	.statusUpdateContainer .draftEditContainer h3 {
-	    right: 110%;
-	    font-size: 1.1rem;
-	}
-	.confirmButton,
-	.cancelButton {
-		font-size: 0.8rem;
-	}
-	.draftEditContainer .confirmButton {
-		right: 50%;
-	}
-	.draftEditContainer .cancelButton {
-		right: 0;
-	}
 }
 
 @media only screen and (max-width: 550px) {
@@ -322,7 +308,10 @@
 	}
 	.dashboardPart {
 		height: 160px;
-	}		
+	}
+	.confirmButton {
+		right: 45px;
+	}	
 }
 
 @media only screen and (max-width: 320px) {
