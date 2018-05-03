@@ -62,9 +62,6 @@
     width: 90%;
     margin: 0 auto;
     min-height: 500px;
-    /*padding: 6px 12px;*/
-    /*border: 1px solid #ccc;*/
-    /*border-top: none;*/
 }
 
 #userParts{
@@ -83,17 +80,14 @@
 }
 
 .statContainer {
-    /*height: 50px;*/
     width: 45%;
     background-color: #fff;
-    /*display: inline-block;*/
     margin: 2% 10%;
     box-sizing: border-box;
     text-align: center;
     border-radius: 2px;
     box-shadow: 0 1px 4px rgba(41,51,57,.5);
     font-size: 1.8rem;
-    /*line-height: 50px;*/
 }
 
 .statContainer:hover {
