@@ -210,7 +210,10 @@
         display: inline-block;
         width: 26%;
         vertical-align: top;
-        text-align: right;
+        text-align: right;        
+        overflow-y: auto;
+        height: 78%;
+ 
     }
 
     .imageList img {
