@@ -65,7 +65,7 @@ class SignUp extends Component {
         } else {
             this.setState({
                 isLoading: false,
-                errorMessage: 'Invalid Email'
+                errorMessage: 'Invalid Email Address'
             })
         }return false;
     }
@@ -169,7 +169,7 @@ class SignUp extends Component {
                             <input value={this.state.password} onChange={this.handlePassChange.bind(this)} type="password"/>
                             <label>Confirm Password:</label>
                             <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password"/>
-                            <input className="submitButton" type="submit" value="Sign Up"/>
+                            <input className="submitButton button-link" type="submit" value="Sign Up"/>
                             <h2 className="signUpFormErrorMessage">{this.state.errorMessage}</h2>
                         </form>
                     </div>

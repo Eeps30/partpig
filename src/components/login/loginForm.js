@@ -135,9 +135,9 @@ class LoginForm extends Component {
                 <h2 className='loginTitle'>Login with Username</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username</label>
-                    <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)} required/>
+                    <input type="text" id="user" name="user" value={user} placeholder="user" onChange={this.handleUserInputChange.bind(this)}/>
                     <label>Password</label>
-                    <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)} required/>
+                    <input type="password" id="password" name="password" value={password} placeholder="Password" onChange={this.handlePasswordInputChange.bind(this)}/>
                     <input type="submit" value="Login" />
                 </form>
                 <h2 className="loginFormErrorMessage">{this.state.errorMessage}</h2>
