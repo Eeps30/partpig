@@ -41,7 +41,7 @@
     font-size: 1rem;
     font-weight: bold;
     display: inline-block;
-    float: left;
+    /*float: left;*/
     box-sizing: border-box;
 }
 
@@ -59,7 +59,7 @@
     padding: 0 5px;
 }
 .title-brand{
-    width: 7%; 
+    width: 10%; 
 }
 .title-partName {
     width: 17.5%;
@@ -96,7 +96,7 @@
     padding: 0 3px;
 }
 .brand {
-    width: 7%; 
+    width: 10%; 
 }
 .partName {
     width: 17.5%;
