@@ -95,7 +95,11 @@
 }
 
 /*=================================== user draft styling ================================*/
-button .editPart{
-    display: inline-block;
-    float: right;
+.editPart{
+/*    display: inline-block;
+    float: right;*/
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
 }

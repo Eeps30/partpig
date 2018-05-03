@@ -171,30 +171,46 @@
 	    75% {transform: translate(2px, 2px) rotate(-1deg);}
 	    100% {transform: translate(3px, 5px) rotate(1deg);}
 	}
-	.listingColumns .title-partNumber,
+	.listingColumns,
+	/*.listingColumns .title-partNumber,*/
 	.dashboardPart .partNumber,	
-	.listingColumns .title-brand,
+	/*.listingColumns .title-brand,*/
 	.dashboardPart .brand {
 		display: none;
 	}	
-	.listingColumns .title-mainImage,
+	/*.listingColumns .title-mainImage,*/
 	.dashboardPart .mainImage {
-	    width: 25%;
+	    width: 40%;
+	    display: block;
+		max-height: 100px
 	}
-	.listingColumns .title-partName,
+	/*.listingColumns .title-partName,*/
 	.dashboardPart .partName {
-	    width: 30%;
-	    padding: 0 5px;
+	    width: 60%;
+	    padding: 5px;
+	    display: block;
+	    text-align: left;
 	}
-	.listingColumns .title-price,
+	/*.listingColumns .title-price,*/
 	.dashboardPart .price {
-	    width: 10%;
-	    padding-left: 5px;
+	    width: 60%;
+	    display: block;
+	    text-align: left;
+	    font-weight: bold;
 	}
-	.listingColumns .title-status,
+	/*.listingColumns .title-status,*/
 	.dashboardPart .statusUpdateContainer {
 	    width: 35%;
 	}
+	.dashboardPart {
+		height: 180px;
+	}
+/*	.editPart {
+		position: absolute;
+		top: 50%;
+		right: 10%;
+		transform: translateY(-50%);
+	}*/
 }
 
 @media only screen and (max-height: 550px) {
@@ -294,6 +310,9 @@
 	}
 	.statContainer {
 		font-size: 1.3rem;
+	}
+	.dashboardPart {
+		height: 160px;
 	}		
 }
 
