@@ -157,6 +157,7 @@
 .dropZone {
     width: 20%;
     height: 16vh;
+    min-height: 100px;
     display: inline-block;
     background-color: lightgray;
     text-align: center;
@@ -191,6 +192,7 @@
 .displayImages{
     width: 70%;
     height: 16vh;
+    min-height: 100px;
     overflow-y: auto;
     display: inline-block;
     border: 0.25rem dashed darkslategray;

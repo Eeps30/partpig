@@ -32,7 +32,9 @@ class AboutPage extends Component {
 
         return(
             <div className="aboutUsContainer">
-                {contactElements}
+                <div className='innerContainer'>
+                    {contactElements}
+                </div>
             </div>
         )
     }

@@ -9,6 +9,10 @@
     box-sizing: border-box;
 }
 
+.innerContainer {
+    min-height: 550px;
+}
+
 .person {
     box-sizing: border-box;
     position: relative;
