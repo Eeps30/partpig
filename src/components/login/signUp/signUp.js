@@ -19,8 +19,11 @@ class SignUp extends Component {
            isLoading: false
        }
 
+       this.validateEmail = this.validateEmail.bind(this);
+       this.validate = this.validate.bind(this);
        this.handleChange = this.handleChange.bind(this);
        this.handleSubmit = this.handleSubmit.bind(this);
+       
    }
 
    handleChange(event){
@@ -44,24 +47,50 @@ class SignUp extends Component {
        })
    }
 
-   handleConfirm(event){
-       this.setState({
+    handleConfirm(event){
+        this.setState({
            errorMessage: '',
            confirmPass: event.target.value
-       })
-   }
+        })
+    }
+
+    validateEmail(){
+        var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regex.test(this.state.email);
+    }
+
+    validate(){
+        if (this.validateEmail()) {
+            console.log('email verified');
+        } else {
+            this.setState({
+                isLoading: false,
+                errorMessage: 'Invalid Email'
+            })
+        }return false;
+    }
 
    handleSubmit(event){
        event.preventDefault();
 
-        this.setState({
-            isLoading: true
-        });
-      
        const { username, email, password } = this.state
        const params = {
            username, email, password
        }
+
+        this.setState({
+            isLoading: true
+        });
+
+        this.validate();
+
+        if(!this.state.username){
+            this.setState({
+                isLoading: false,
+                errorMessage: 'Please Enter a Username'
+            })
+            return false
+        }
 
         if((this.state.password.length < 8) && (this.state.confirmPass.length < 8)){
            this.setState({
@@ -133,13 +162,13 @@ class SignUp extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <h2 className="createAccountHeader">Create an Account</h2>
                             <label>Email Address:</label>
-                            <input value={this.state.email} onChange={this.handleChange.bind(this)} type="email" required/>
+                            <input value={this.state.email} onChange={this.handleChange.bind(this)} type="text"/>
                             <label>Desired Username:</label>
-                            <input value={this.state.username} onChange={this.handleUserChange.bind(this)} type="text" required/>
+                            <input value={this.state.username} onChange={this.handleUserChange.bind(this)} type="text"/>
                             <label>Password:</label>
-                            <input value={this.state.password} onChange={this.handlePassChange.bind(this)} type="password" required/>
+                            <input value={this.state.password} onChange={this.handlePassChange.bind(this)} type="password"/>
                             <label>Confirm Password:</label>
-                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password" required/>
+                            <input value={this.state.confirmPass} onChange={this.handleConfirm.bind(this)} type="password"/>
                             <input className="submitButton" type="submit" value="Sign Up"/>
                             <h2 className="signUpFormErrorMessage">{this.state.errorMessage}</h2>
                         </form>
