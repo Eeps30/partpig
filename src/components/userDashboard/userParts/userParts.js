@@ -55,7 +55,7 @@ class UserParts extends Component {
                     <div className="brand alignMiddle"> {item.brand} </div>
                     <div className="partName alignMiddle">{item.part_name}</div>
                     <div className="fitment alignMiddle"> {item.make} {item.model} {item.year}</div>
-                    <div className="price alignMiddle">${parseFloat(item.price_usd)}</div>
+                    <div className="price alignMiddle">${parseFloat(item.price_usd).toFixed(2)}</div>
                     <div className="statusUpdateContainer">
                     <Link className="button-link editPart" key={index} to={"/partdetails/" + item.id+'/true'}>Edit</Link> 
                     <UpdatePartStatus id = {id} status = {status}/></div>       
