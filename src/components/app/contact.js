@@ -42,7 +42,7 @@ class Contact extends Component {
 
     validate(){
         if (this.validateEmail()) {
-            
+            console.log('verified email address');
         } else {
             this.setState({
                 anyMessages: true,
@@ -73,14 +73,17 @@ class Contact extends Component {
 			return false
 		}
 
+		if(this.state.form.email !== ''){
+			this.validate();
+			return false
+		}
+
 		if(this.state.form.email === ''){
 			this.setState({
 				anyMessages: true,
 				errorMessage: 'Please Enter an Email'
 			})
 			return false
-		}else if(this.state.form.email !== ''){
-			this.validate();
 		}
 
 		if(this.state.form.body === ''){
