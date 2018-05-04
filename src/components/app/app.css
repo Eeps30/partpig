@@ -247,7 +247,7 @@ footer a {
     background-position: bottom;
     background-position-x: left;
     border: solid 3px black;
-    min-height: 620px;
+    min-height: 660px;
     margin-bottom: 2vh;
 }
 .contact-header {
@@ -318,8 +318,12 @@ footer a {
 }
 .submitted{
     text-align:center;
-    color:darkgreen;
+    color:rgb(0, 131, 0);
     text-shadow: 0.5px 0.5px darkgrey;
+}
+.errorMessageContactPage {
+    color: red;
+    text-align:center;
 }
 
 
