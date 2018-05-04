@@ -3,7 +3,7 @@
     min-height: 84vh;
     margin: 3vh auto;
  }
-/*  
+ 
  .inner-container{
     border-radius: 10px;
     width: 40%;
@@ -12,7 +12,7 @@
     box-shadow: 0 1px 4px rgba(41,51,57,.5);
     background-color: rgb(255, 255, 255);
     min-height: 500px;
- } */
+ }
  
  .inner-container > form > input {
     width: 100%;
