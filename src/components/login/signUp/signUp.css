@@ -78,7 +78,7 @@
 }
 .contactDetails-container .formFields{
     display:inline-block;
-    margin:3%;
+    margin:auto;
     font-size: 2em;
     text-align:left;
 }
