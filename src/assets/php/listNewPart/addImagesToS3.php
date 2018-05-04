@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+require('../vendor/autoload.php');
 require('./awsConnect.php');
 require('s3Functions.php');
 

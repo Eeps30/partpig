@@ -177,7 +177,12 @@ class PartInfo extends Component {
                 deletePartButton = <button className='button-link editButton' onClick={this.cancelPart.bind(this)}>Cancel</button>;
             }
             if(this.state.editable){
-                editableUsebutton = <button className='button-link editButton' onClick={this.savePartInfo.bind(this)}>Save</button>;
+                if(this.state.errorPrice === ''){
+                    editableUsebutton = <button className='button-link editButton' onClick={this.savePartInfo.bind(this)}>Save</button>;
+                }
+                else{
+                    editableUsebutton = <button className='button-link editButton disabled'>Save</button>;
+                }
                 cancelButton = <button className='button-link editButton' onClick={this.resetPartInfo}>Cancel</button>;
                 messageEditable = <span className='editMessage'>Click in the elements on blue to edit them</span>
                 confirmButton='';
