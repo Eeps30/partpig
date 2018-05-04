@@ -5,6 +5,9 @@
     .signUpFormErrorMessage {
         font-size: 1.5em;
     }
+    .loginMessage{
+        margin-top: 2%;
+    }
 }
 
 @media only screen and (max-width: 950px) { 
@@ -14,11 +17,17 @@
     .signUpFormErrorMessage {
         font-size: 1.2em;
     }
+    .loginMessage{
+        margin-top: 2%;
+    }
 }
 
 @media only screen and (max-width: 768px) {
 	.inner-container {
         width: 65%;
+    }
+    .loginMessage{
+        margin-top: 2%;
     }
 }
 
@@ -29,16 +38,25 @@
     .signUpFormErrorMessage {
         font-size: 1.2em;
     }
+    .loginMessage{
+        margin-top: 2%;
+    }
 }
 
 @media only screen and (max-width: 450px) {
 	.inner-container {
         width: 80%;
     }
+    .loginMessage{
+        margin-top: 2%;
+    }
 }
 
 @media only screen and (max-width: 360px) {
 	.inner-container {
         width: 90%;
+    }
+    .loginMessage{
+        margin-top: 2%;
     }
 }
