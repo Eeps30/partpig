@@ -160,7 +160,7 @@ class SignUpDetails extends Component {
                         <h2> or just go with the defaults </h2>
                         <div className="formFields">
                             {addressFields}
-                            <button className="signUp_Button accountDetails_Button" onClick={this.buttonSubmit.bind(this)}>Login With My New Account!</button>
+                            <button className="accountDetails_Button button-link" onClick={this.buttonSubmit.bind(this)}>Login Now!</button>
                         </div>
                     </div>
                 </div>
