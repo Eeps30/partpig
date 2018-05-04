@@ -59,7 +59,7 @@ class Contact extends Component {
 					submitted:''
 				})
 			};
-		}, 5000);
+		}, 3000);
 	}
 		
 	handleSubmit(event) {
