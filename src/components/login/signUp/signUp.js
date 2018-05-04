@@ -10,7 +10,6 @@ class SignUp extends Component {
           
        this.state = {
            email: '',
-           emailError: false,
            username: '',
            userExists: false,
            password: '',
@@ -60,15 +59,16 @@ class SignUp extends Component {
     }
 
     validate(){
-        if (this.validateEmail()) {
-            
-        } else {
-            this.setState({
+        if (this.validateEmail() === true) {
+			return true
+		}else if(this.validateEmail() === false){
+			this.setState({
                 isLoading: false,
-                errorMessage: 'Invalid Email Address'
-            })
-        }return false;
-    }
+				errorMessage: 'Invalid Email Address'
+			})
+			return false;
+		}
+	}
 
    handleSubmit(event){
        event.preventDefault();
@@ -82,7 +82,17 @@ class SignUp extends Component {
             isLoading: true
         });
 
-        this.validate();
+        if(this.state.email === ''){
+			this.setState({
+				isLoading: false,
+				errorMessage: 'Please Enter an Email'
+			})
+			return false
+		}else if(this.state.email !== ''){
+			if(!this.validate()){
+				return false
+			}
+		}
 
         if(!this.state.username){
             this.setState({
