@@ -2,6 +2,9 @@
     .accountDetails_Button{
         font-size: 0.7em;
     }
+    .contactDetails-container {
+        width: 80%;
+    }
    
     
 }
@@ -26,11 +29,39 @@
     }
 }
 
+
+@media only screen and (max-width: 550px) {
+    .contactDetails-container h1{
+        font-size:1.5em;
+    }
+    .contactDetails-container h2{
+        font-size:1em;
+    }
+    .accountDetails_Button{
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    .contactDetails-container .form-group{
+        margin:2%;
+        width:46% !important;
+        padding:8px 0;
+    }
+    /* .formFields{
+        margin:auto;
+    } */
+    .signUpFormErrorMessage {
+        font-size: 1.2em;
+    }
+}
+
 @media only screen and (max-width: 450px) {
+    .contactDetails-container {
+        width: 85%;
+    }
 	#errorHeader{
         font-size:3.5em;     
      }
-    .errorMessageContainer p{
+     .errorMessageContainer p{
         font-size: 1.8em;
     }
 }
@@ -38,7 +69,22 @@
     #errorHeader{
         font-size:2.5em;   
      }
+     .contactDetails-container {
+        width: 90%;
+    }
 }
 
 
-	
+@media only screen and (min-width: 1920px) { 
+   
+    .signUpFormErrorMessage {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 950px) { 
+  
+    .signUpFormErrorMessage {
+        font-size: 1.2em;
+    }
+}
