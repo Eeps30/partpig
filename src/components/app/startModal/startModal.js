@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import './startModal.css';
-import '../../userDashboard/media4.css';
 
 
 class Modal extends Component {
