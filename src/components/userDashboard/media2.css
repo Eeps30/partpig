@@ -91,28 +91,33 @@
 	.listingColumns .title-listingId,
 	.dashboardPart .listingId,
 	.listingColumns .title-fitment,
-	.dashboardPart .fitment {
+	.dashboardPart .fitment,
+	.listingColumns .title-partNumber,
+	.dashboardPart .dash-partNumber {
 		display: none;
 	}
 	.listingColumns .title-mainImage,
-	.dashboardPart .mainImage {
-	    width: 17.5%;
-	}
-	.listingColumns .title-partNumber,
-	.dashboardPart .partNumber {
+	.dashboardPart .dash-mainImage {
 	    width: 20%;
 	}
+	.dash-mainImage {
+		padding-top: 5px;
+	}
+/*	.listingColumns .title-partNumber,
+	.dashboardPart .dash-partNumber {
+	    width: 20%;
+	}*/
 	.listingColumns .title-brand,
 	.dashboardPart .brand {
-	    width: 10%; 
+	    width: 15%; 
 	}
 	.listingColumns .title-partName,
 	.dashboardPart .partName {
-	    width: 22.5%;
+	    width: 25%;
 	}
 	.listingColumns .title-price,
 	.dashboardPart .price {
-	    width: 10%;
+	    width: 20%;
 	}
 	.listingColumns .title-status,
 	.dashboardPart .statusUpdateContainer {
@@ -178,14 +183,14 @@
 	    100% {transform: translate(3px, 5px) rotate(1deg);}
 	}
 	.listingColumns,
-	.dashboardPart .partNumber,	
+	.dashboardPart .dash-partNumber,	
 	.dashboardPart .brand {
 		display: none;
 	}	
-	.dashboardPart .mainImage {
+	.dashboardPart .dash-mainImage {
 	    width: 40%;
 	    display: block;
-		max-height: 100px
+		max-height: 100px;
 	}
 	.dashboardPart .partName {
 	    width: 60%;

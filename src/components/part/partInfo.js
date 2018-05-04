@@ -13,7 +13,8 @@ class PartInfo extends Component {
         this.state = {
             partInfo:props.partInfo,
             editable: false,
-            updated: false
+            updated: false,
+            errorPrice: ''
         }
         this.oldPartInfo = props.partInfo; 
         this.editField = this.editField.bind(this);
@@ -42,11 +43,18 @@ class PartInfo extends Component {
         const element = event.target;
         const elementId = element.id;
         const elementText = element.textContent
-        const newPartInfo = {...this.state.partInfo};
-        newPartInfo[elementId] = elementText;
-        this.setState({
-            partInfo: newPartInfo
-        });
+        if(elementId==='price_usd' && isNaN(elementText)){
+            this.setState({
+                errorPrice:'Please input a valid price'
+            });
+        }else{
+            const newPartInfo = {...this.state.partInfo};
+            newPartInfo[elementId] = elementText;
+            this.setState({
+                partInfo: newPartInfo,
+                errorPrice:''
+            });
+        }
     }
 
     handleEditButton(element,editableFlag){
@@ -78,6 +86,7 @@ class PartInfo extends Component {
     }
 
     savePartInfo(){
+
         //axios call to update the part  
         const url = "http://localhost:8000/teampartpig/src/assets/php/editPartDetails.php";
 
@@ -98,8 +107,7 @@ class PartInfo extends Component {
             
         }).catch(err => {
             console.log("There was an error:");
-            this.props.history.push('/error');                
-
+            this.props.history.push('/error');            
         });
         
     }
@@ -215,9 +223,8 @@ class PartInfo extends Component {
                 {/* {share} */}
                 <span id='brand'>{this.state.partInfo.brand}</span> <span id='part_number' className="partNumber">{this.state.partInfo.part_number} </span><span className="partNumber">P/N:</span>
                 <h3 className="productTitle"><span id='part_name'>{this.state.partInfo.part_name}</span></h3>
-                <span><b>{this.state.partInfo.category} - {this.state.partInfo.make} {this.state.partInfo.model} {this.state.partInfo.year} </b></span>
-                
-                <p className="productPrice"><span>$</span><span id='price_usd'>{this.state.partInfo.price_usd}</span> {multiUsebutton}</p>          
+                <span><b>{this.state.partInfo.category} - {this.state.partInfo.make} {this.state.partInfo.model} {this.state.partInfo.year} </b></span>                
+                <p className="productPrice"><span>$</span><span id='price_usd'>{parseFloat(this.state.partInfo.price_usd).toFixed(2)}</span><span className="errorPrice">{this.state.errorPrice}</span> {multiUsebutton}</p>          
                 {details}
             </div> 
         );

@@ -49,13 +49,13 @@ class UserParts extends Component {
             let status = item.status;
             return  (
                 <div key={index} className="dashboardPart">
-                    <img className="mainImage alignMiddle" src={item.images}></img>
+                    <img className="dash-mainImage alignMiddle" src={item.images}></img>
                     <div className="listingId alignMiddle">{item.id}</div>
-                    <div className="partNumber alignMiddle">{item.part_number}</div>
+                    <div className="dash-partNumber alignMiddle">{item.part_number}</div>
                     <div className="brand alignMiddle"> {item.brand} </div>
                     <div className="partName alignMiddle">{item.part_name}</div>
                     <div className="fitment alignMiddle"> {item.make} {item.model} {item.year}</div>
-                    <div className="price alignMiddle">${parseFloat(item.price_usd)}</div>
+                    <div className="price alignMiddle">${parseFloat(item.price_usd).toFixed(2)}</div>
                     <div className="statusUpdateContainer">
                     <Link className="button-link editPart" key={index} to={"/partdetails/" + item.id+'/true'}>Edit</Link> 
                     <UpdatePartStatus id = {id} status = {status}/></div>       

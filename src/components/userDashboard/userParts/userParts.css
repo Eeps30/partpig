@@ -18,7 +18,7 @@
     line-height: 15vmin;
     box-sizing: border-box;
     background-color: white;
-    box-shadow: 3px 3px 4px rgba(41,51,57,.7);
+    box-shadow: 3px 3px 3px rgba(41,51,57,.7);
     font-size: 0;
     padding: 0;
     min-height: 120px;
@@ -28,18 +28,24 @@
 .dashboardPart:hover{    
     box-shadow: 1px 3px 3px #888888;
 }
-.dashboardPart > div{
-    font-size: 1.1rem;
-    box-sizing: border-box;
-}
 
 .listingColumns {
     height: 3rem;
-    width: 100%;
+    width: 99%;
     margin-top: 3vh;
+    padding: 0 1px;
+    box-sizing: border-box;
     border-bottom: 2px solid #888888;
 }
-.listingColumns > div {
+ 
+.title-mainImage,
+.title-listingId,
+.title-partNumber,
+.title-brand,
+.title-partName,
+.title-fitment,
+.title-price,
+.title-status {
     font-size: 1rem;
     font-weight: bold;
     display: inline-block;
@@ -68,16 +74,25 @@
 }
 .title-price{
     width: 10%;
+    padding-right: 8px;
 }
 .title-status{
     width: 10%;
 }
- .dashboardPart > div, 
- .dashboardPart > img {
+.dash-mainImage,
+.listingId,
+.dash-partNumber, 
+.brand, 
+.partName, 
+.fitment, 
+.price, 
+.statusUpdateContainer {
     display: inline-block;
     text-align: center;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
-.mainImage{
+.dash-mainImage{
     margin: 0;
     max-height: 15vmin;
     width: 10%;
@@ -89,7 +104,7 @@
 .listingId {
     width: 10%;
 }
-.partNumber {
+.dash-partNumber {
     float: none;
     width: 15%; 
     word-wrap: break-word;
@@ -100,6 +115,7 @@
 }
 .partName {
     width: 17.5%;
+    padding-right: 5px;
 }
 .fitment{
     width: 17.5%;
@@ -107,6 +123,9 @@
 }
 .price{
     width: 10%;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 8px;
 }
 .statusUpdateContainer {
     position: absolute;
