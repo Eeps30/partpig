@@ -50,7 +50,8 @@ class Contact extends Component {
 			})
 			return false;
 		}
-    }
+	}
+	
 	submitMessageTimer(){
 		setTimeout(() => {
 			if(this.props.history.location.pathname === "/contact"){
@@ -86,7 +87,9 @@ class Contact extends Component {
 		}
 		
 		if(this.state.form.email !== ''){
-			this.validate();
+			if(!this.validate()){
+				return false
+			}	
 		}
 
 		if(this.state.form.body === ''){
