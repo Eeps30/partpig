@@ -9,7 +9,7 @@ $output = [
     'data' => []
 ];
 
-require("../mysqlConnect.php");
+require("../config/mysqlConnect.php");
 require_once('./addImagesToS3.php');
 
 
