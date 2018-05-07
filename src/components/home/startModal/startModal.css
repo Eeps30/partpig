@@ -3,11 +3,11 @@
     z-index:15;
     width: 95%;
     margin: auto;
-    height: 42%;
+    height: 47%;
     position: absolute;
     left: 50%;
     top:50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -59%);
     background-color: rgba(192,192,192,0.97);
     border: 2px solid black;
     border-radius: 8px;
@@ -24,6 +24,7 @@
     z-index: 5;
     width: 100vw;
     height: 100vh;
+
 }
  div.text{
     text-align: center;

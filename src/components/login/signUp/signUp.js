@@ -3,6 +3,7 @@ import './signUp.css';
 import './signUpMedia.css';
 import axios from 'axios';
 import Loading from '../../tools/loading/loading';
+import {Link} from 'react-router-dom';
 
 class SignUp extends Component {
    constructor(props){
@@ -10,7 +11,6 @@ class SignUp extends Component {
           
        this.state = {
            email: '',
-           emailError: false,
            username: '',
            userExists: false,
            password: '',
@@ -60,15 +60,16 @@ class SignUp extends Component {
     }
 
     validate(){
-        if (this.validateEmail()) {
-            
-        } else {
-            this.setState({
+        if (this.validateEmail() === true) {
+			return true
+		}else if(this.validateEmail() === false){
+			this.setState({
                 isLoading: false,
-                errorMessage: 'Invalid Email Address'
-            })
-        }return false;
-    }
+				errorMessage: 'Invalid Email Address'
+			})
+			return false;
+		}
+	}
 
    handleSubmit(event){
        event.preventDefault();
@@ -82,7 +83,17 @@ class SignUp extends Component {
             isLoading: true
         });
 
-        this.validate();
+        if(this.state.email === ''){
+			this.setState({
+				isLoading: false,
+				errorMessage: 'Please Enter an Email'
+			})
+			return false
+		}else if(this.state.email !== ''){
+			if(!this.validate()){
+				return false
+			}
+		}
 
         if(!this.state.username){
             this.setState({
@@ -172,6 +183,10 @@ class SignUp extends Component {
                             <input className="submitButton button-link" type="submit" value="Sign Up"/>
                             <h2 className="signUpFormErrorMessage">{this.state.errorMessage}</h2>
                         </form>
+                    </div>
+                    <div className="loginMessage">
+                        <h3>Already Have an Account?</h3>
+                        <h3>Click <Link to={"/login"}>HERE</Link> to Log In</h3>
                     </div>
                 </div>
             </div>

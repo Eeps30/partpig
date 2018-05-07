@@ -41,16 +41,17 @@ class Contact extends Component {
     }
 
     validate(){
-        if (this.validateEmail()) {
-            console.log('verified email address');
-        } else {
-            this.setState({
-                anyMessages: true,
-                errorMessage: 'Invalid Email Address'
+        if (this.validateEmail() === true) {
+			return true
+		}else if(this.validateEmail() === false){
+			this.setState({
+				anyMessages: true,
+				errorMessage: 'Invalid Email Address'
 			})
 			return false;
 		}
-    }
+	}
+	
 	submitMessageTimer(){
 		setTimeout(() => {
 			if(this.props.history.location.pathname === "/contact"){
@@ -65,16 +66,15 @@ class Contact extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
+		this.setState({
+			anyMessages: false
+		})
+
 		if(this.state.form.name === ''){
 			this.setState({
 				anyMessages: true,
 				errorMessage: 'Please Enter a Name'
 			})
-			return false
-		}
-
-		if(this.state.form.email !== ''){
-			this.validate();
 			return false
 		}
 
@@ -84,6 +84,10 @@ class Contact extends Component {
 				errorMessage: 'Please Enter an Email'
 			})
 			return false
+		}else if(this.state.form.email !== ''){
+			if(!this.validate()){
+				return false
+			}
 		}
 
 		if(this.state.form.body === ''){

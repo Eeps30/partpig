@@ -23,7 +23,6 @@ import axios from 'axios';
 import CheckoutComplete from './../checkout/checkoutComplete';
 import AxiosError from '../tools/errorHandling/error';
 import SignUpDetails from '../login/signUp/signupDetails';
-import Modal from './startModal/startModal';
 
 class App extends Component {
 
@@ -225,10 +224,10 @@ class App extends Component {
     }
 
     render() {
+     
         return (
             <Router>
                 <div className='mainContainer'>
-                       <div className='fadeOverlay'></div>
                         <Header userId={this.state.userId} logout={this.logout.bind(this)} />
                         <Route exact path='/' render={props => <Home images={this.images} {...props} />} />
                         <Route exact path='/partresults' render={props => <PartList cartParts={this.state.cartParts} saveUrlBack={this.saveUrlBack} addCart={this.addPart} {...props} />} />
@@ -253,8 +252,6 @@ class App extends Component {
                         <Route path='/error' component={AxiosError} />
                         <Route path='/signup' component={SignUp} />
                         <Route path='/signUpDetails/:userId' component={SignUpDetails} />
-
-                        <Modal />
                         <Footer />
                     </div>
             </Router>
