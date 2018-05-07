@@ -21,4 +21,4 @@ class UserHistory extends Component {
     }
 }
 
-export default UserHistory
+export default UserHistory;

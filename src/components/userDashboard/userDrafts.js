@@ -3,7 +3,7 @@ import './userParts/userParts.css';
 import {Link} from 'react-router-dom';
 import Loading from '../tools/loading/loading';
 import axios from 'axios';
-import UpdatePartStatus from "./userParts/updatePartStatus"
+import UpdatePartStatus from "./userParts/updatePartStatus";
 
 
 class UserDrafts extends Component {
@@ -27,7 +27,7 @@ class UserDrafts extends Component {
                     isLoading: true           
                 }); 
             }).catch(err => {
-                console.log('error is: ', err);
+                // console.log('error is: ', err);
                 this.props.history.push('/error');                
             }
         ); 
@@ -45,7 +45,6 @@ class UserDrafts extends Component {
         let part = this.state.partInfo;
         const list = part.map((item,index)=>{
             if(item.status === "draft"){
-                console.log(item.usd_price)
             let id = item.id;
             let status = item.status;
             return  (

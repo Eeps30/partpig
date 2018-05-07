@@ -19,4 +19,4 @@ class WatchList extends Component {
     }
 }
 
-export default WatchList
+export default WatchList;
