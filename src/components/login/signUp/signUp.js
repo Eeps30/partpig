@@ -127,8 +127,7 @@ class SignUp extends Component {
                headers: {
                    'Content-Type': 'application/x-www-form-urlencoded'
                }
-            }).then(resp => {
-               console.log('response is: ', resp);
+            }).then(resp => {               
                if(resp.data.data[0] === 'invalid email'){
                     this.setState({
                        isLoading: false,
@@ -148,7 +147,7 @@ class SignUp extends Component {
                     this.props.history.push(`/signUpDetails/${userId}`);
                 }
             }).catch(err => {
-               console.log('error is: ', err);
+            //    console.log('error is: ', err);
                this.props.history.push('/error');                
 
             });

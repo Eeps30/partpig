@@ -111,9 +111,9 @@ class Contact extends Component {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			}
 		}).then(resp => {
-			console.log("Server Response:", resp);
+			
 		}).catch(err => {
-			console.log("There was an error:", err);
+			// console.log("There was an error:", err);
 			this.props.history.push('/error');
 		});
 	}

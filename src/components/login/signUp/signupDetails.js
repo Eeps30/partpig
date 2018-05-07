@@ -137,7 +137,6 @@ class SignUpDetails extends Component {
         Promise.all(promiseArray)
             .then(resp => {
                 this.props.history.push('/login');
-
             }).catch(err => {
                 // console.log('error is: ', err);
                 this.props.history.push('/error');
