@@ -31,6 +31,7 @@ class UserParts extends Component {
                 this.props.history.push('/error');                
             }
         ); 
+        
     } 
 
     render(){
