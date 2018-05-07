@@ -65,11 +65,11 @@ class Checkout extends Component {
                             subtotal: subtotal
                         });
                     }).catch(err => {
-                        console.log('error is: ', err);
+                        // console.log('error is: ', err);
                         this.props.history.push('/error');      
                     });
                 }).catch(err => {
-                    console.log('error is: ', err);
+                    // console.log('error is: ', err);
                     this.props.history.push('/error');      
                 });            
         } else {
@@ -93,9 +93,9 @@ class Checkout extends Component {
         };
         const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';
         axios.get(urlStatus, { params }).then(resp => {
-            console.log(resp.data);
+           
         }).catch(err => {
-            console.log('error is: ', err);
+            // console.log('error is: ', err);
             this.props.history.push('/error');      
         });
     }
@@ -159,7 +159,7 @@ class Checkout extends Component {
                 this.props.history.push('/cart');
             }
         }).catch(err => {
-            console.log('error is: ', err);
+            // console.log('error is: ', err);
             this.props.history.push('/error');      
         });
     }
@@ -220,9 +220,9 @@ class Checkout extends Component {
                                     'Content-Type': 'application/x-www-form-urlencoded'
                                 }
                             }).then(resp => {
-                                console.log("Server Response:", resp);
+                               
                             }).catch(err => {
-                                console.log("There was an error:");
+                                // console.log("There was an error:");
                                 this.props.history.push('/error');      
                                 
                             });
@@ -261,15 +261,15 @@ class Checkout extends Component {
                                 'Content-Type': 'application/x-www-form-urlencoded'
                             }
                         }).then(resp => {
-                            console.log("Server email Response:", resp);
+                            
                         }).catch(err => {
-                            console.log("There was an error:", err);
+                            // console.log("There was an error:", err);
                             this.props.history.push('/error');      ;
                             
                         });
                     }
                 }).catch(err => {
-                    console.log('error is: ', err);
+                    // console.log('error is: ', err);
                     this.props.history.push('/error');      ;
                     
                 });

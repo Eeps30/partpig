@@ -37,7 +37,7 @@ class PartDetails extends Component {
                         this.oldPartInfo = resp.data.data[0];
                     }
                 }).catch(err => {
-                    console.log('error is: ', err);
+                    // console.log('error is: ', err);
                     this.props.history.push('/error');                
                 }
             ); 

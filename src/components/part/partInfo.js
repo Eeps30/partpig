@@ -136,7 +136,7 @@ class PartInfo extends Component {
             this.handleEditButton(document.getElementsByClassName('productDetailsContainer')[0],false);
             
         }).catch(err => {
-            console.log("There was an error:");
+            // console.log("There was an error:");
             this.props.history.push('/error');            
         });
         
@@ -156,7 +156,7 @@ class PartInfo extends Component {
                 this.props.history.push('/dashboard/activeparts');
             }
         }).catch(err => {
-            console.log('error is: ', err);
+            // console.log('error is: ', err);
         });
     }
 
@@ -174,7 +174,7 @@ class PartInfo extends Component {
                 this.props.history.push('/sellpart');
             }
         }).catch(err => {
-            console.log('error is: ', err);
+            // console.log('error is: ', err);
         });
     }
 
