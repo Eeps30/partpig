@@ -50,10 +50,10 @@ class SignUpDetails extends Component {
             });
         }
         else {
-                this.setState({
-                    address: newUserInfo,
-                    addressChange: true
-                });
+            this.setState({
+                address: newUserInfo,
+                addressChange: true
+            });
             
         }
     }
