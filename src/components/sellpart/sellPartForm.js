@@ -67,10 +67,9 @@ class SellPartForm extends Component{
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(resp=>{
-                console.log("Server Response:", resp);
                 this.props.history.push(`/partdetails/${resp.data.data[0]}/newPart/true`);
             }).catch(err => {
-                console.log("There was an error:");
+                // console.log("There was an error:");
                 this.props.history.push('/error');                
 
             });
