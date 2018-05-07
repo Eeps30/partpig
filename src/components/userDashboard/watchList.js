@@ -9,7 +9,6 @@ class WatchList extends Component {
    
         render(){
             return  (
-
                 <div className="userPartsContainer">     
                     <div className="userPartsList">
                         <h2>Your Watchlist</h2>
@@ -17,7 +16,6 @@ class WatchList extends Component {
                     </div>
                 </div>
             );
-                    
     }
 }
 

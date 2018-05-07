@@ -34,7 +34,6 @@ class UserDrafts extends Component {
     } 
 
     render(){
-
         if (!this.state.isLoading) {
             return (
                 <div>                    
@@ -50,26 +49,24 @@ class UserDrafts extends Component {
             let id = item.id;
             let status = item.status;
             return  (
-                
-                    <div key={index} className="dashboardPart">
-                        <img className="dash-mainImage alignMiddle" src={item.images}></img>
-                        <div className="listingId alignMiddle">{item.id}</div>
-                        <div className="dash-partNumber alignMiddle">{item.part_number}</div>
-                        <div className="brand alignMiddle"> {item.brand} </div>
-                        <div className="partName alignMiddle">{item.part_name}</div>
-                        <div className="fitment alignMiddle"> {item.make} {item.model} {item.year}</div>
-                        <div className="price alignMiddle">${parseFloat(item.price_usd)}</div>
-                        <div className="statusUpdateContainer">
-                        <Link className="button-link editPart" key={index} to={"/partdetails/" + item.id+'/true'}>Edit</Link> 
-                        <UpdatePartStatus id = {id} status = {status}/></div> 
-                     </div>
-                     );
-                    } else {
-                        return
-                    }                    
+                <div key={index} className="dashboardPart">
+                    <img className="dash-mainImage alignMiddle" src={item.images}></img>
+                    <div className="listingId alignMiddle">{item.id}</div>
+                    <div className="dash-partNumber alignMiddle">{item.part_number}</div>
+                    <div className="brand alignMiddle"> {item.brand} </div>
+                    <div className="partName alignMiddle">{item.part_name}</div>
+                    <div className="fitment alignMiddle"> {item.make} {item.model} {item.year}</div>
+                    <div className="price alignMiddle">${parseFloat(item.price_usd)}</div>
+                    <div className="statusUpdateContainer">
+                    <Link className="button-link editPart" key={index} to={"/partdetails/" + item.id+'/true'}>Edit</Link> 
+                    <UpdatePartStatus id = {id} status = {status}/></div> 
+                 </div>
+                 );
+            } else {
+                return
+            }                    
         });
 
-        
         return  (
             <div className="userPartsContainer"> 
             <h2>Your Drafts</h2>    
@@ -88,8 +85,7 @@ class UserDrafts extends Component {
                 </div>
             </div>        
         );
-                    
     }
 }
 
-export default UserDrafts
+export default UserDrafts;

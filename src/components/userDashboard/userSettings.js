@@ -9,7 +9,6 @@ class UserSettings extends Component {
         
         render(){
             return  (
-
                 <div className="userPartsContainer">     
                     <div className="userPartsList">
                         <h2>Your Settings</h2>
@@ -17,8 +16,7 @@ class UserSettings extends Component {
                     </div>
                 </div>
             );
-                    
     }
 }
 
-export default UserSettings
+export default UserSettings;
