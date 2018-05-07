@@ -5,7 +5,9 @@
     .contactDetails-container {
         width: 80%;
     }
-   
+    .scrollingImgColumn:nth-child(6), .scrollingImgColumn:nth-child(7) {
+        display:none;
+    }
     
 }
 
@@ -51,6 +53,9 @@
     } */
     .signUpFormErrorMessage {
         font-size: 1.2em;
+    }
+    .scrollingImgColumn:nth-child(4), .scrollingImgColumn:nth-child(5) {
+        display:none;
     }
 }
 
