@@ -38,7 +38,6 @@ class App extends Component {
 
         this.addPart = this.addPart.bind(this);
         this.removePart = this.removePart.bind(this);
-        this.removeListing = this.removeListing.bind(this);
         this.saveFilters = this.saveFilters.bind(this);
         this.saveUrlBack = this.saveUrlBack.bind(this);
         this.setUserData = this.setUserData.bind(this);
@@ -81,7 +80,7 @@ class App extends Component {
                 });
             }
         }).catch(err => {
-            console.log('error is: ', err);
+            // console.log('error is: ', err);
             this.props.history.push('/error');
 
         });
@@ -108,7 +107,7 @@ class App extends Component {
             axios.get(url, { params }).then(resp => {
                 this.addPartToCart(partInfo, initLoad);
             }).catch(err => {
-                console.log('error is: ', err);
+                // console.log('error is: ', err);
                 this.props.history.push('/error');
 
             });
@@ -162,7 +161,7 @@ class App extends Component {
             axios.get(url, { params }).then(resp => {
                 this.removePartFromCart(partInfo);
             }).catch(err => {
-                console.log('error is: ', err);
+                // console.log('error is: ', err);
                 this.props.history.push('/error');
 
             });
@@ -204,10 +203,6 @@ class App extends Component {
         this.setState({
             cartParts: partList
         });
-    }
-
-    removeListing(partInfo) {
-        console.log("removed part")
     }
 
     saveFilters(filters) {
