@@ -20,10 +20,12 @@
 .fadeOverlay{
 
     background-color: rgba(0,0,0,.65);
-    position: absolute;
+    position: fixed;
     z-index: 5;
+    top: 0%;
+    left: 0%;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 
 }
  div.text{

@@ -139,7 +139,7 @@ class SignUpDetails extends Component {
                 this.props.history.push('/login');
 
             }).catch(err => {
-                console.log('error is: ', err);
+                // console.log('error is: ', err);
                 this.props.history.push('/error');
             });
 

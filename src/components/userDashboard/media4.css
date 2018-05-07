@@ -64,6 +64,10 @@
      .errorMessageContainer p{
         font-size: 1.8em;
     }
+    .startModal{
+        height: 75%;
+        top:55%;
+    }
 }
 @media only screen and (max-width: 360px) {
     #errorHeader{
