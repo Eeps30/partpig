@@ -48,7 +48,7 @@ class LoginForm extends Component {
         const params = {
             user, password
         }
-        const url = 'http://localhost:8000/teampartpig/src/assets/php/login/loginSubmitted.php';
+        const url = '/assets/php/login/loginSubmitted.php';
         axios({
             url: url,
             method: 'post',
