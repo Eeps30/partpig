@@ -6,18 +6,15 @@ import construction from '../../assets/images/webConstruction.jpg';
 
 class UserHistory extends Component {
 
-        render(){
-
-        
+    render(){
         return  (
             <div className="userPartsContainer">     
                 <div className="userPartsList">
-                <h2>Your History</h2>
-                <img src={construction} alt=""/>
+                    <h2>Your History</h2>
+                    <img src={construction} alt=""/>
                 </div>
             </div>     
         );
-                    
     }
 }
 

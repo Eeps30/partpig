@@ -17,6 +17,10 @@ class UserDrafts extends Component {
         }
     }
 
+    /**
+     * [componentDidMount: use seller_id to retrieve all the parts that were listed by that user]
+     * @return {promise} [data contains info for all the parts and the 1st image of each part]
+     */
     componentDidMount(){
         const seller_id = this.state.seller_id;
         const url = 'http://localhost:8000/teampartpig/src/assets/php/allPartBySeller.php';
