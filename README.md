@@ -35,8 +35,11 @@ view this project [live](partpig.briantmorris.com)
 - [Confluence/Jira](https://www.atlassian.com/software)
 
 ## Contributors
-- [caxpper](https://github.com/caxpper)
-- [ByLiZhang](https://github.com/ByLiZhang)
-- [Eeps30](https://github.com/Eeps30)
-- [daveforman](https://github.com/daveforman)
-- [Briantmorr](https://github.com/Briantmorr)
+[caxpper](https://github.com/caxpper) |
+[ByLiZhang](https://github.com/ByLiZhang) |
+[Eeps30](https://github.com/Eeps30) |
+[daveforman](https://github.com/daveforman) |
+[Briantmorr](https://github.com/Briantmorr)
+
+## License
+This project is licensed under the MIT License © [Brian Morris](https://briantmorris.com)
