@@ -7,6 +7,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import Modal from './startModal/startModal';
 
 class Home extends Component {
   
@@ -31,6 +32,7 @@ class Home extends Component {
   render() {
     return (
       <div className="homeMainContainer">
+        <Modal/>
         <div className="scrollingBackground">
           <ContentColumn shiftRate={1.0} displaySize={7} images={this.randomizeArray(this.state.images)} />
           <ContentColumn shiftRate={0.6} displaySize={7} images={this.randomizeArray(this.state.images)} />
