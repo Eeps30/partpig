@@ -33,13 +33,6 @@ class SignUpDetails extends Component {
         this.handleAddressInputChange = this.handleAddressInputChange.bind(this);
     }
 
-
-    onSubmit(event) {
-        event.preventDefault();
-
-
-    }
-
     handleAddressInputChange(event) {
         const { value, name } = event.target;
         const newUserInfo = { ...this.state.address };
@@ -65,7 +58,6 @@ class SignUpDetails extends Component {
         }
     }
 
-
     handleAddressOnBlur(event) {
         const { name, value, placeholder, required } = event.target;
         const newAddressErrors = { ...this.state.addressErrors };
@@ -78,6 +70,7 @@ class SignUpDetails extends Component {
             });
         }
     }
+
     buttonSubmit() {
         const userId = this.props.match.params.userId;
         const {
@@ -141,15 +134,13 @@ class SignUpDetails extends Component {
             });
 
     }
+    
     render() {
-
         let addressFields = '';
-        // if (!this.state.sameAddress) {
         addressFields = inputs.map(((field, index) => {
             return <Field key={index} {...field} error={this.state.addressErrors[field.name]}
                 handleInputChange={this.handleAddressInputChange} handleOnBlur={this.handleAddressOnBlur.bind(this)} value={this.state.address[field.name] || ''} />
         }).bind(this));
-        // }
 
         return (
             <div>
