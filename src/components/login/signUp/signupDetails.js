@@ -6,8 +6,10 @@ import inputs from './addressFieldsData';
 import states, { abbrState } from '../../tools/states';
 import '../../userDashboard/media4.css';
 
+/**
+ * Renders user profile form and handles calls to update information in database
+ */
 class SignUpDetails extends Component {
-
     constructor(props) {
         super(props);
 
@@ -37,11 +39,19 @@ class SignUpDetails extends Component {
         const { value, name } = event.target;
         const newUserInfo = { ...this.state.address };
 
+        /**
+         *  We only need the user to enter an abbreviation, then we turn the abbreviation into a state for the
+         *  database
+         */
         if(name === 'state_abbr'){
             let state = abbrState(value, 'abbr');
             newUserInfo.state = state;
             }
 
+        /** 
+         * if the field changed was a name field update state and set nameChange to true
+         * else it is an address field and set addressChange to true
+         */
         newUserInfo[name] = value;
         if (name === 'first_name' || name === 'last_name' || name === 'middle_name' || name === 'phone_number') {
             this.setState({
@@ -73,6 +83,7 @@ class SignUpDetails extends Component {
 
     buttonSubmit() {
         const userId = this.props.match.params.userId;
+        //destructure state to compose our endpoint calls
         const {
             address: {
                 city,
@@ -91,7 +102,7 @@ class SignUpDetails extends Component {
         } = this.state;
 
         let promiseArray = [];
-
+        //if a name field was changed, call our update name endpoint with those fields
         if (nameChange) {
             let params = {
                 first_name, middle_name, last_name, phone_number, userId
@@ -106,7 +117,7 @@ class SignUpDetails extends Component {
                 }
             }))
         }
-
+        //if an address field was changed, call our update address endpoint with those fields
         if (addressChange) {
             let params = {
                 city, state_abbr, state, apt_suite, street_address, zipcode, userId
@@ -122,10 +133,9 @@ class SignUpDetails extends Component {
             }))
 
         }
+        //process 1, 2, or none of those calls depending on the users input
         Promise.all(promiseArray)
             .then(resp => {
-                console.log('response is: ', resp);
-                
                 this.props.history.push('/login');
 
             }).catch(err => {
@@ -136,8 +146,8 @@ class SignUpDetails extends Component {
     }
     
     render() {
-        let addressFields = '';
-        addressFields = inputs.map(((field, index) => {
+        //use our field component to render our form data
+        let addressFields = inputs.map(((field, index) => {
             return <Field key={index} {...field} error={this.state.addressErrors[field.name]}
                 handleInputChange={this.handleAddressInputChange} handleOnBlur={this.handleAddressOnBlur.bind(this)} value={this.state.address[field.name] || ''} />
         }).bind(this));
