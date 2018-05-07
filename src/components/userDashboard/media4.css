@@ -88,3 +88,11 @@
         font-size: 1.2em;
     }
 }
+
+/* media query to remove modal for iphone */
+@supports (-webkit-overflow-scrolling: touch) {
+    .fadeOverlay{
+        display:none;
+    }
+}
+  
