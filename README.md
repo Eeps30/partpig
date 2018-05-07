@@ -5,7 +5,7 @@
 PartPig is an ecommerce platform for selling used car parts.
 
 ## Motivation
-PartPig exists to fill the gap in connecting the buyer and the seller in a way that is user friendly and convenient
+PartPig exists to fill the gap in connecting the buyer and the seller in a way that is user friendly and convenient.
 
 ## Usage
 PartPig is still in beta. Because of that we focused most of the parts for sale under 
@@ -13,10 +13,10 @@ PartPig is still in beta. Because of that we focused most of the parts for sale 
 - model: Impreza WRX STI
 - year: 2007
 
-To see most of the used parts we currently have listed please search that category.
+Please search these categories to get a better experience.
 
 ### Project
-view this project [live](https://partpig.briantmorris.com)
+view this project [live](partpig.briantmorris.com)
 
 
 ## Features
