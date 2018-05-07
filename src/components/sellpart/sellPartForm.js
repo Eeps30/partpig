@@ -57,7 +57,7 @@ class SellPartForm extends Component{
     componentDidUpdate(){
         
         if(this.state.isLoading){
-            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
+            const url = "/assets/php/listNewPart/processSellPartForm.php";
             
             axios({
                 url: url,

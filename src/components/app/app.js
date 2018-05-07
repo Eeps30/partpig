@@ -70,7 +70,7 @@ class App extends Component {
             user_id: parseInt(userId)
         };
         this.removeAllPartsYouOwnFromCart(this.state.cartParts);
-        const url = 'http://localhost:8000/teampartpig/src/assets/php/buyerCart.php';
+        const url = '/assets/php/buyerCart.php';
         axios.get(url, { params }).then(resp => {
             if (resp.data.success) {
                 resp.data.data.map((item, index) => {
@@ -104,7 +104,7 @@ class App extends Component {
                 part_id: parseInt(partInfo.id),
                 user_id: parseInt(this.state.userId)
             };
-            const url = 'http://localhost:8000/teampartpig/src/assets/php/addPartToCart.php';
+            const url = '/assets/php/addPartToCart.php';
             axios.get(url, { params }).then(resp => {
                 this.addPartToCart(partInfo, initLoad);
             }).catch(err => {
@@ -158,7 +158,7 @@ class App extends Component {
                 part_id: parseInt(partInfo.id),
                 user_id: parseInt(this.state.userId)
             };
-            const url = 'http://localhost:8000/teampartpig/src/assets/php/deletePartFromCart.php';
+            const url = '/assets/php/deletePartFromCart.php';
             axios.get(url, { params }).then(resp => {
                 this.removePartFromCart(partInfo);
             }).catch(err => {

@@ -121,7 +121,7 @@ class SignUp extends Component {
 
         if((this.state.password === this.state.confirmPass) && ((this.state.password.length > 7) && (this.state.confirmPass.length > 7))){
            axios({
-               url: 'http://localhost:8000/teampartpig/src/assets/php/login/newUserSignup.php',
+               url: '/assets/php/login/newUserSignup.php',
                method: 'post',
                data: params,
                headers: {
