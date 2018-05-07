@@ -5,58 +5,37 @@
     .signUpFormErrorMessage {
         font-size: 1.5rem;
     }
-/*    .loginMessage{
-        margin-top: 2%;
-    }*/
 }
 
 @media only screen and (max-width: 950px) { 
     .inner-container {
-        width: 50%;
+        width: 55%;
     }
     .signUpFormErrorMessage {
         font-size: 1.2rem;
     }
-/*    .loginMessage{
-        margin-top: 2%;
-    }*/
 }
 
 @media only screen and (max-width: 768px) {
 	.inner-container {
         width: 65%;
     }
-/*    .loginMessage{
-        margin-top: 2%;
-    }*/
 }
 
 @media only screen and (max-width: 550px) {
     .inner-container {
         width: 70%;
     }
-    .signUpFormErrorMessage {
-        font-size: 1.2rem;
-    }
-/*    .loginMessage{
-        margin-top: 2%;
-    }*/
 }
 
 @media only screen and (max-width: 450px) {
 	.inner-container {
         width: 80%;
     }
-/*    .loginMessage{
-        margin-top: 2%;
-    }*/
 }
 
 @media only screen and (max-width: 360px) {
 	.inner-container {
         width: 90%;
     }
-/*    .loginMessage{
-        margin-top: 2%;
-    }*/
 }
