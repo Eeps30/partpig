@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './userDashboard.css';
 import './media.css';
+import './media2.css';
 import Loading from '../tools/loading/loading';
 import axios from 'axios';
 import UserParts from './userParts/userParts';
@@ -22,6 +23,9 @@ class UserDashboard extends Component {
     constructor(props){
         super(props);
         const userId = localStorage.getItem('user');
+        if(!userId){
+            props.history.push('/login');
+        }
         this.state = {
             isLoading: false,  
             seller_id: userId,
@@ -30,14 +34,13 @@ class UserDashboard extends Component {
     }
   
     render(){
-
         return (            
             <div className="userDashboard">
-                <div className="dashboardHeader"><h2>User Dashboard</h2></div>  
+                <div className="dashboardHeader"><h1>User Dashboard</h1></div>  
                 <div className="dashboardTabs">
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/activeparts">Active</NavLink>
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/partdrafts" >Drafts</NavLink>
-                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/watchlist" >Watching</NavLink>
+                    <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/watchlist" >Watchlist</NavLink>
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/searchhistory" >History</NavLink>
                     <NavLink activeClassName='active selected' className="tabLinks" to="/dashboard/accountsettings" >Settings</NavLink>  
                 </div>                   

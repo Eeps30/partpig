@@ -10,7 +10,7 @@ import ModelDropDown from '../tools/dropdown/modelDropdown';
 import YearDropDown from '../tools/dropdown/yearDropdown';
 import data from '../searchpage/dataModel';
 import Loading from '../tools/loading/loading';
-
+import "./sellPartForm.css";
 
 class SellPartForm extends Component{
     
@@ -18,6 +18,9 @@ class SellPartForm extends Component{
         super(props);
 
         this.userId = localStorage.getItem('user');
+        if(!this.userId){
+            props.history.push('/login');
+        }
         this.state = { 
             isLoading: false,
             part:{
@@ -51,10 +54,10 @@ class SellPartForm extends Component{
         }
     }
 
-    componentDidUpdate(){  
+    componentDidUpdate(){
         
         if(this.state.isLoading){
-            const url = "http://localhost:8000/teampartpig/src/assets/php/listNewPart/processSellPartForm.php";
+            const url = "/assets/php/listNewPart/processSellPartForm.php";
             
             axios({
                 url: url,
@@ -64,10 +67,9 @@ class SellPartForm extends Component{
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(resp=>{
-                console.log("Server Response:", resp);
                 this.props.history.push(`/partdetails/${resp.data.data[0]}/newPart/true`);
             }).catch(err => {
-                console.log("There was an error:");
+                // console.log("There was an error:");
                 this.props.history.push('/error');                
 
             });
@@ -80,7 +82,7 @@ class SellPartForm extends Component{
         delete newPartErrors['images'];            
         
         for(let i=0; i < files.length; i++){
-            let reader = new FileReader();            
+            let reader = new FileReader();
             let file = files[i];
         
             reader.onloadend = () => {
@@ -117,12 +119,12 @@ class SellPartForm extends Component{
         }       
     }
 
-    containsImage(obj, list) {        
+    containsImage(obj, list) {
         for (let i = 0; i < list.length; i++) {
             if (list[i].imagePreviewUrl === obj.name) {
                 return i;
             }
-        }    
+        }
         return -1;
     }
 
@@ -132,15 +134,14 @@ class SellPartForm extends Component{
         newPart[name] = value;
         this.setState({
             part:newPart
-        });  
+        });
     }
 
     partHandleOnBlur(event){
-        
         const {name,value,placeholder,required} = event.target;
         const newPartErrors = {...this.state.partErrors};
         if(value ==='' && required){           
-            newPartErrors[name] = placeholder + ' is requiered';           
+            newPartErrors[name] = placeholder + ' is required';           
         }else{
             delete newPartErrors[name];            
         }
@@ -176,7 +177,7 @@ class SellPartForm extends Component{
         this.setState({
             part: newPart,
             partErrors:newPartErrors
-        });  
+        });
     }
 
     validateFields(){
@@ -202,7 +203,7 @@ class SellPartForm extends Component{
         if(this.state.part.price_usd === 0){
             newPartErrors['price_usd'] = 'Price is required';           
         }else{
-            delete newPartErrors['price_usd'];            
+            delete newPartErrors['price_usd'];
         }              
         
         this.setState({
@@ -216,7 +217,7 @@ class SellPartForm extends Component{
         
         if (this.state.isLoading) {
             return(<div className='container'>
-                        <Loading />;
+                        <Loading />
                     </div>
                    );
         }
@@ -251,7 +252,7 @@ class SellPartForm extends Component{
                         <button type='button' onClick={this.handleSellPartSubmit.bind(this)} className="button-link">List Part</button>
                     </div>
                 </form>
-            </div>          
+            </div>
         );
     
     }

@@ -1,10 +1,9 @@
 html {
-	font-size: 1vmin;
+	font-size: 16px;
     font-family: Verdana, Geneva, sans-serif;
     color: rgb(31, 31, 31);
     overflow-x: hidden;
     overflow-y: scroll;
-	height: 94.1vh;   
 }
 a {
 	text-decoration: none;
@@ -13,10 +12,10 @@ a {
 body {
     position: relative;    
     width: 100%;
-    height: 100%;
     margin: 0px;
     background-color:  whitesmoke;    
-	min-height: 600px;
+    min-height: 600px;
+    min-width: 320px;
 }
 
 #root{
@@ -32,16 +31,12 @@ body {
     width: 80%;
     height: 90%;  
     margin: auto;
-	padding-top: 4%;
-	min-height: 82.5vh;
+	padding-top: 2%;
+	min-height: 88vh;
 }
 
-.container > a{
-    position: absolute;
-    top: 7%;
-    left: 10%;
-    text-decoration: none;
-    font-size: 1.5em;
+.goBack{
+    text-align: left;  
 }
 
 .button-link {
@@ -64,7 +59,7 @@ body {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:0.75em;
+	font-size:1em;
 	padding:0.5em 1em;
 	text-decoration:none;
     text-shadow:0px 1px 0px #854629;
@@ -92,7 +87,7 @@ body {
 	cursor:pointer;
 	color:#ffffff;
     font-family:Arial;    
-	font-size:0.75em;
+	font-size:1em;
 	padding:0.5em 1em;
 	text-decoration:none;
     text-shadow:0px 1px 0px darkgrey;
@@ -115,11 +110,13 @@ header {
     display: inline-block;
     color: rgb(238, 75, 0);
     width: 100%;
-    height: 5vmin;
+    height: 5vh;
+    min-height: 50px;
     margin-left: 0;
     background-color: rgb(255, 255, 255);
     margin-bottom: 0;
     box-shadow: 0 1px 4px rgba(41, 51, 57, 0.397);
+    font-size: 1.2em;
 }
 
 .logo-container{
@@ -128,18 +125,17 @@ header {
     text-align: center;
     display: inline-block;
     vertical-align: top;
-    font-size: 3vh;
     color: rgb(238, 75, 0);
 }
 
 .mainLogo {
-    height: 100%;
+    height: 100%;    
+    vertical-align: top;
 }
 
 .user-nav{
     width: 25%;
     display: inline-block;
-    font-size: 2em;
     height: 99%;
     text-align: right;
 }
@@ -148,7 +144,6 @@ header {
     width: 25%;
     display: inline-block;
     vertical-align: top;
-    font-size: 2vmin;
     height: 100%;
     text-align: right;
 }
@@ -164,7 +159,6 @@ header {
     border: none;
     text-align: center;
     text-decoration: none;
-    font-size: 0.8em;
     background-color: #d0451b;
     color: white;
     padding: 1%;
@@ -174,7 +168,7 @@ header {
     border: 2px solid #d0451b;
     vertical-align: top;
     position: relative;
-    top: 40%;
+    top: 29%;
     transform: translate(-50%,0);
 }
 
@@ -206,7 +200,6 @@ header {
     position: relative;
     top: -46%;
     right: 50%;
-    font-size: 1em;
     font-weight: bold;
     color: #bc3315;
 }
@@ -215,7 +208,7 @@ footer {
     color: white;
     display: inline-block;
     width: 100%;
-    height: 5vmin;
+    height: 5vh;
     min-height: 50px;
     background-color: rgb(32, 32, 32);
 }
@@ -223,30 +216,44 @@ footer {
 .legal {
     position: relative;
     bottom: 0px;
-    font-size: 1rem;
+    font-size: 11px;
     color: white;
     text-align: center;
 }
 
-footer a {
+.footer {
     color: white;
     margin-left: .5em;
     margin-right: .5em;
 }
+
+.legal > p {
+    display: inline-block;
+    margin-right: 2%;
+    margin-bottom: 0;
+}
 /*==================== contact page styling ===========================*/
+.contact-us {
+    margin: 2vh 0;
+    min-height: 86vh;
+}
+
 .contact-us h1{
     text-align: center;
     font-weight: bold;
-	font-size: 3rem;
+	font-size: 30px;
+    margin: 0;
 }
 .contactPageContainer{
     width: 90%;
-    margin: auto;
     box-sizing: border-box;
     background-image:url("../../assets/images/contact_pig.jpg");
     background-size:cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-position-x: left;
     border: solid 3px black;
-    height:80vh;
+    min-height: 660px;
     margin-bottom: 2vh;
 }
 .contact-header {
@@ -256,34 +263,41 @@ footer a {
 	margin: 2%;
     text-align: center;
 	box-sizing: border-box;
-	color: #666666;
+	color: rgba(28, 108, 237, 0.7);
 	font-family: Verdana, Geneva, sans-serif;
-    font-size: 2rem;
-    height: 40%;
     text-shadow: 0.5px 0.5px black;
+    background-color: rgba(255,255,255,.85);
+    border-radius: 15px;
+}
+.contact-header h3 {
+    font-size: 1.5rem;
 }
 .contactForm{
 	width: 50%;
 	display: inline-block;
-	font-size: 2rem;
-	font-family: Verdana, Geneva, sans-serif;
+    height: 80%;
+    min-height: 550px;
 }
 .contactForm input, .contactForm textarea {
     display: inline-block;
-    height: 4vmin;
+    height: 5vh;
+    min-height: 35px;
     width: 80%;
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin: 0 10%;
     border-radius: 5px;
     padding: 1%;
     border-style: groove;
-	font-family: Verdana, Geneva, sans-serif;
     box-sizing: border-box;
+    opacity: 0.9;
+}
+.contactForm textarea {
+    min-height: 100px;
 }
 .contactForm button{
-	margin: 1% 0 0 10%;
+	margin: 1% 0 2% 10%;
 	width: 80%;
-	font-size: 2.2rem;
+	font-size: 1.3rem;
 }
 .contactForm input[type=text]:focus, .contactForm input[type=email]:focus, .contactForm textarea:focus{
     border: .2em solid #9C9D99;
@@ -299,7 +313,9 @@ footer a {
 .input-container label{
 	display: block;
     margin: 3% 0 1% 10%;
-    font-size: 2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: rgba(28, 108, 237, 0.9);
 }
 .contact_image{
     border: solid black 5px;
@@ -308,28 +324,20 @@ footer a {
 }
 .submitted{
     text-align:center;
-    color:darkgreen;
+    color:rgb(0, 131, 0);
     text-shadow: 0.5px 0.5px darkgrey;
 }
-
-@media screen and (max-width: 600px){
-	.contactForm {
-		width: 100%;
-	}
-    .contact-header {
-        text-align: center;
-        width: 100%;
-    }
-    .input-container {
-    	width: 100%;
-    }
-    .input-container > input, .input-container > textarea  {
-		width: 80%;
-    }
-    .contactForm > button{
-        width: 80%;
-    }
+.errorMessageContactPage {
+    color: red;
+    text-align:center;
 }
+.errorMessageContactPage h3, .submitted h3{
+    background-color: rgba(255,255,255, 0.9);
+    width: 50%;
+    margin: 0 auto;
+}
+
+
 /*==================== hamburger menu styling ===========================*/
  
  #menu a {
@@ -343,8 +351,8 @@ footer a {
  }
  
  #menuToggle {
-    margin-top: 3%;
-    margin-left: 3%;
+    margin-top: 12px;
+    margin-left: 10px;
     height: 100%;
     z-index: 2;
     -webkit-user-select: none;
@@ -359,14 +367,14 @@ footer a {
     left: 0px;
     cursor: pointer;
     opacity: 0; /* hide this */
-    z-index: 3; /* and place it over the hamburger */
+    z-index: 3; /* and place it over the hamburger menu */
     -webkit-touch-callout: none;
  }
 
  #menuToggle span {
     display: block;
     width: 32px;
-    height: 6px;
+    height: 5px;
     margin-bottom: 5px;
     position: relative;
     background:  rgb(206, 0, 17);
@@ -383,38 +391,37 @@ footer a {
  }
  
  #menuToggle span:nth-last-child(2) {
-   transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
  }
  
- #menuToggle input:checked ~ span {
-  opacity: 1;
-  transform: rotate(45deg) translate(-3px, 0px);
-  background: rgb(206, 0, 17);
-  width: 34px;
-  z-index: 2;
- }
- 
+#menuToggle input:checked ~ span {
+    opacity: 1;
+    z-index: 2;
+ } 
+ /*
  #menuToggle input:checked ~ span:nth-last-child(3) {
-  opacity: 0;
-  width: 2px;
-  height: 1px;
-  transform: rotate(0deg) scale(0.2, 0.2);
+    opacity: 0;
+    width: 2px;
+    height: 1px;
+    transform: rotate(0deg) scale(0.2, 0.2);
  }
  
  #menuToggle input:checked ~ span:nth-last-child(2) {
-   transform: rotate(-45deg) translate(-1px, -1px);
- }
+    transform: rotate(-45deg) translate(-1px, -1px);
+ } */
  
  #menu {
-  position: absolute;
-  width: 16%;
-  margin: -5% 0 0 -5%;
-  padding: 1%;
-  padding-top: 4%;
-  background: #ededed;
-  list-style-type: none;
-  z-index:1;
-   -webkit-font-smoothing: antialiased;
+   position: absolute;
+   width: 16%;
+   margin: -5% 0 0 -5%;
+   padding: 1%;
+   padding-top: 4%;
+   background: #ededed;
+   list-style-type: none;
+   z-index:1;
+   -webkit-font-smoothing: antialiased;   
+   border-radius: 7px;
+   box-shadow: 5px 10px 15px rgba(10,10,10,.5);
    transform-origin: 0% 0%;
    transform: translate(-100%, 0);
    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
@@ -422,9 +429,8 @@ footer a {
  
  #menu li {
    padding: 2% 0;
-   font-size: 0.9em;
  }
 
- #menuToggle input:checked ~ ul {
+#menuToggle input:checked ~ ul {
    transform: none;
- }
+}

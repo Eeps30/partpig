@@ -28,8 +28,8 @@
 
 .imageCartContainer{
     display: inline-block;
-    width: 7vw;
-    height: 7vw;
+    width: 8vw;
+    height: 8vw;
     text-align: center;
 }
 
@@ -73,7 +73,8 @@
 .pageButton{
     border: 1px solid lightgrey;
     padding: 0.5% 0.8%;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    cursor: pointer;
 }
 
 .pageButton:hover{
@@ -91,7 +92,6 @@
     display: inline-block;
     width: 100%;    
     height: 8vw;
-    font-size: 1.3em;
     margin-top: 5%;
     padding: 1%;
     box-sizing: border-box;
@@ -113,21 +113,19 @@
 
 .productDetailsContainer{
     display: inline-block;
-    width: 55%;
+    width: 60%;
     height: 80%;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 3%;
     padding: 1%;
     box-sizing: border-box;
     text-align: left;
-    margin-right: 5%;
 }
 
 .productCart{
+    font-size: 0.8vw;
     display: inline-block;
-    width: 83%;
-    height: 100%;
-    font-size: 1.3em;
+    width: 82%;
     padding: 1%;
     box-sizing: border-box;
     text-align: left;
@@ -164,7 +162,7 @@
 .productPrice{
     width: 100%;
     color:darkblue;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .editable{
@@ -179,9 +177,10 @@
 
 .addButton {
     float: right;
-    width: 40%;
+    width: 47%;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 0.7em;
+    margin-right: 2%;
 }
 
 .editButton {
@@ -190,6 +189,13 @@
     text-align: center;
     font-size: 0.6em;
     margin-right: 1%;
+}
+
+.errorPrice{
+    color: red;
+    margin-left: 1%;
+    font-size: .7em;
+    font-weight: bold;
 }
 
 /*======================= part list styling =========================*/
@@ -203,6 +209,7 @@
 .partListFilter{
     width: 83%;
     margin-left: 2%;
+    font-size: .85em;
 }
 
 .partList::-webkit-scrollbar {
@@ -211,7 +218,7 @@
 
 .resultsBar{
     padding: 1% 2.5% 1% 2.5%;
-    font-size: 2em;
+    font-size: 1.2em;
     background-color: black;
     color: whitesmoke;
     margin-top: 1%;
@@ -242,11 +249,12 @@
 /*=======================  sorter styling ================================*/
 .sorterContainer{
     float: right;
-    width: 40%;
+    width: 50%;    
     text-align: right;
 }
 
 .sorterContainer select{
     padding: 1%;
-    box-sizing: content-box;
+    box-sizing: content-box;    
+    font-size: 1em;
 }

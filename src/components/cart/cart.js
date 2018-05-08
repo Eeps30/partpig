@@ -8,14 +8,21 @@ const Cart = (props) => {
 
     const userId = localStorage.getItem('user');
     let total = 0;
+    //If the user don't have parts in his cart, show empty logo and button to continue shopping
     let list = (<div className='emptyMessage'>
                     <img src={emptyCart}/>
                     <p>Your Shopping Cart is Empty</p>
                     <Link  className='button-link' to={props.urlBack}>Keep Shopping</Link>
                 </div>
                 );
-    let checkoutButton = <Link  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</Link>;
+    //Disabled the checkout button
+    let checkoutButton = <button  onClick={e => e.preventDefault()} className='disabled' to={"/checkout"}>Proceed to checkout</button>;
 
+    /**
+     * Function that control if the user is login before go to the checkout page
+     * It's not login then go to the login page
+     * 
+     */
     function checkIfUserIsLogin(){
         if(userId){
             props.history.push('/checkout');
@@ -24,6 +31,7 @@ const Cart = (props) => {
         }
     }
 
+    //if the user have parts we map throught all of them and create part components
     if(props.cartParts.length > 0){
         list = props.cartParts.map(function(item,index){
             total += item.price_usd;
@@ -37,7 +45,9 @@ const Cart = (props) => {
     }
     return (
         <div className="container">
-            <Link  className='button-link' to={props.urlBack}>Go Back</Link>            
+            <div className="goBack">
+                <button  className='button-link' onClick={()=>props.history.goBack()}>Go Back</button>
+            </div>
             <div className="cartPartsContainer">            
                 <span>YOUR SHOPPING CART</span>
                 {list}                
@@ -49,7 +59,9 @@ const Cart = (props) => {
                     <hr/>
                     <p>TOTAL:  <span>${total}</span></p>
                     <hr/>
-                    {checkoutButton}
+                    <div className="cartCheckout">
+                        {checkoutButton}
+                    </div>                    
                 </div>
             </div>
         </div>

@@ -1,7 +1,5 @@
 <?php
-
-header("Access-Control-Allow-Origin: *");
-require_once('mysqlConnect.php');
+require_once('./config/mysqlConnect.php');
 
 if(empty($_GET['id'])){
     die("id required");

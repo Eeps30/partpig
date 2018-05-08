@@ -5,29 +5,26 @@ import axios from 'axios';
 
 
 class UserHome extends Component {
-        
  
-        render(){
-
+    render(){
         return  (
             <div className="userDashboard">     
                 <div className="dashboardTitle">
-                    <h1>{this.props.userData} Welcome to your user dashboard!</h1>
+                    <h2>Welcome to your user dashboard {this.props.userData}</h2>
                 </div>
                 <Link to={"/dashboard/activeparts"}>
-                    <div className="statContainer">
+                    <div className="statContainer button-link">
                         Active Listings 
                     </div>
                 </Link>
                 <Link to={"/dashboard/partdrafts"}>
-                    <div className="statContainer">
+                    <div className="statContainer button-link">
                         Saved Drafts 
                     </div>
                 </Link>
             </div>     
         );
-                    
     }
 }
 
-export default UserHome
+export default UserHome;

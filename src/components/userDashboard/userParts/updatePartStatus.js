@@ -23,26 +23,24 @@ class UpdatePartStatus extends Component {
         this.updateStatus = this.updateStatus.bind(this);
     }
 
+    /**
+     * [updateStatus: use the current logged-in user's id to update a selected part's status in the DB]
+     */
     updateStatus(){
-        // this.setState({
-        //     isLoading: true  
-        // });
         const params = {status: this.state.pendingStatus, id: this.props.id};
-        console.log(params)
-        const url = 'http://localhost:8000/teampartpig/src/assets/php/updatePartStatus.php';      
+        const url = '/assets/php/updatePartStatus.php';      
         axios.get(url,{params}).then(resp=>{
-            console.log("Update Status",  resp)               
                 this.setState({
                     status:resp.data.data.status,
                     pendingStatus:resp.data.data.status,  
                 }); 
 
             }).catch(err => {
-                console.log('error is: ', err);
+                // console.log('error is: ', err);
                 this.props.history.push('/error');                
             }
         );
-        window.location.reload()  
+        window.location.reload();  
     }
 
     statusChange(event) {
@@ -51,23 +49,23 @@ class UpdatePartStatus extends Component {
     }
 
     cancelStatusChange(){
-        this.setState({pendingStatus: this.state.status})
+        this.setState({pendingStatus: this.state.status});
   
     }
     
     confirmStatusChange(){
-        this.updateStatus()
+        this.updateStatus();
     }
         
 
     render(){
-        let confirmButton = <button className="confirmButton" onClick={this.confirmStatusChange}>Yes</button>
-        let cancelButton = <button className="cancelButton" onClick={this.cancelStatusChange}>No</button>
+        let confirmButton = <button className="confirmButton" onClick={this.confirmStatusChange}>Yes</button>;
+        let cancelButton = <button className="cancelButton" onClick={this.cancelStatusChange}>No</button>;
 
         if (this.state.isLoading) {
             return (
                 <div className='container'>
-                    <Loading />;
+                    <Loading />
                 </div>
             );
         }
@@ -76,11 +74,11 @@ class UpdatePartStatus extends Component {
                 switch(this.state.pendingStatus){
                    case "available":
                         return (
-                            <div>    
-                            <h3>Are you sure you would like to list this part for sale?</h3>
-                            {confirmButton}
-                            {cancelButton}
-                        </div>  
+                            <div className='draftEditContainer'>    
+                                <h3>Confirm?</h3>
+                                {confirmButton}
+                                {cancelButton}
+                            </div>  
                         )
                     case "sold":
                         return ( 
@@ -92,7 +90,7 @@ class UpdatePartStatus extends Component {
                             )   
                     case "shipped":
                         return (
-                            <div>    
+                            <div> 
                                 <h3>Would you like to add a tracking number?</h3>
                                 {confirmButton}
                                 {cancelButton}
@@ -100,48 +98,44 @@ class UpdatePartStatus extends Component {
                         )   
                     case "draft":
                         return ( 
-                        <div>    
-                            <h3>Are you sure you would like to save this as a draft?</h3>
-                            {confirmButton}
-                            {cancelButton}
-                        </div>    
+                            <div className='draftEditContainer'>    
+                                <h3>Confirm?</h3>
+                                {confirmButton}
+                                {cancelButton}
+                            </div>    
                         )
-                    
-
                     case "unavailable":
-                    return (
-                        <div>    
-                            <h3>Are you sure you want make your part unavailable?</h3>
-                            {confirmButton}
-                            {cancelButton}
-                        </div>
-                    )
+                        return (
+                            <div>    
+                                <h3>Are you sure you want make your part unavailable?</h3>
+                                {confirmButton}
+                                {cancelButton}
+                            </div>
+                        )
                     case "deleted":
                         return (
-                        <div>    
-                            <h3>Are you sure you want to remove your listing?</h3>
-                            {confirmButton}
-                            {cancelButton}
-                        </div>
+                            <div className='draftEditContainer'>    
+                                <h3>Delete?</h3>
+                                {confirmButton}
+                                {cancelButton}
+                            </div>
                         )
             
                     default:
                         return
                 }
             } else {        
-
-        return  (
-            <div className="statusUpdateDropdown">
-                    <select onChange={this.statusChange} value={this.state.status} name="status" type="text">
-                        <option value="available">Active</option>
-                        <option value="draft">Draft</option>
-                        <option value="deleted">Remove Listing</option>          
-                    </select>
-            </div>
-                 );    
+                return  (
+                    <div className="statusUpdateDropdown">
+                            <select onChange={this.statusChange} value={this.state.status} name="status" type="text">
+                                <option value="available">Active</option>
+                                <option value="draft">Draft</option>
+                                <option value="deleted">Remove</option>          
+                            </select>
+                    </div>
+                    );    
+            }
         }
-    }
 }
 
-
-export default UpdatePartStatus
+export default UpdatePartStatus;

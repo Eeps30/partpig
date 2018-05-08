@@ -21,7 +21,7 @@ class ImageUpload extends Component {
           <div className="imageUploadContainer">
             <Dropzone imgarray={this.props.images} className="dropZone" onDrop={this.props.handleImageChange} 
               accept="image/jpeg, image/png">
-                <p>Drop or Click to upload your images</p>
+                <p>Drop or Click here to upload images</p>
             </Dropzone>             
             <div className='displayImages'>
               {imagesToUpload}

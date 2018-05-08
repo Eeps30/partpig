@@ -1,7 +1,7 @@
 {
-  "name": "react_demo",
+  "name": "partpig",
   "version": "1.0.0",
-  "description": "Demo repo for learning React",
+  "description": "Ecomerce for used car parts develope with React in the frontend and php in the backend",
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
@@ -12,7 +12,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": " https://github.com/daveforman/teampartpig.git"
+    "url": " https://github.com/caxpper/teampartpig.git"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -22,11 +22,7 @@
     "react-dom": "^16.3.1",
     "react-dropzone": "^4.2.9",
     "react-flip-move": "^3.0.1",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-form": "^7.3.0",
-    "redux-promise": "^0.5.3"
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

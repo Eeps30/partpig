@@ -1,9 +1,6 @@
 <?php
- header("Access-Control-Allow-Origin: *");
- header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
- header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
- 
- require_once('../mysqlConnect.php');
+
+ require_once('../config/mysqlConnect.php');
  
  $entityBody = file_get_contents('php://input');
  $request_data = json_decode($entityBody, true);
@@ -20,7 +17,10 @@
 $request_data['user_name'] = $request_data['username'];
 $request_data['password'] = sha1($request_data['password']);
 if(!filter_var($request_data['email'], FILTER_VALIDATE_EMAIL)){
-    die("invalid email");
+    $output['data'][] = 'invalid email';
+    $json_output = json_encode($output);
+    print($json_output);
+    die();
 } 
 $testQuery = "SELECT * FROM `user` WHERE user_name=?";
     
@@ -32,15 +32,21 @@ if($testResult->num_rows){
     $output['duplicate'][] = "User already exists";
     $json_output = json_encode($output);
     print($json_output);
+    
     die();
 }  
 $testStmt->close();
 
 
-$userFields = ['user_name', 'password', 'email', 'first_name', 'last_name', 'billing_address_id', 'shipping_address_id'];
+$userFields = ['user_name', 'password', 'email', 'first_name', 'last_name', 'billing_address_id', 'shipping_address_id', 'phone_number'];
 $queryValues = [];
 $params = [];
 $letterString = "";
+
+$request_data['first_name'] = 'John';
+$request_data['last_name'] = 'Doe';
+$request_data['phone_number'] = '111-222-333';
+
 
 forEach($userFields as $key => $value){
     if(empty($request_data[$value])){
@@ -64,6 +70,7 @@ $result = $stmt->get_result();
 if($stmt->affected_rows === 1){
     $output['success'] = true;
     $output['data'][] = "new user created";
+    $output['data'][] = $conn->insert_id;
 }
 else{
     preg_match_all('/(\S[^:]+): (\d+)/', $conn->info, $matches); 

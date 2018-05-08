@@ -15,13 +15,13 @@ class Checkout extends Component {
             isLoading: false,
             billingAddress: {},
             shippingAddress: {},
-            sameAddress: false,
+            sameAddress: true,
             shippingErrors: {},
             billingErrors: {},
             shippingPrice: 14.99,
             subtotal: 0,
             saveShippingAddress: false,
-            saveBillingAddress: false
+            saveBillingAddress: true
         }
         this.userId = localStorage.getItem('user');
         this.handleShippingInputChange = this.handleShippingInputChange.bind(this);
@@ -31,57 +31,47 @@ class Checkout extends Component {
 
     componentDidMount() {
         let subtotal = 0;
+        //calculate the total price of all parts
         if (this.props.cartParts.length > 0) {
             this.props.cartParts.map(function (item, index) {
                 subtotal += item.price_usd;
             });
         }
-
+        //we recover the addresses from the localstorage in case the user went back to the cart
         const shipping = JSON.parse(localStorage.getItem('shipping'));
         const billing = JSON.parse(localStorage.getItem('billing'));
         if (this.userId) {
-            if (shipping && billing) {
-                //if we saved the addresses before when we went back
-                this.setState({
-                    isLoading: true,
-                    shippingAddress: shipping,
-                    billingAddress: billing,
-                    sameAddress: this.compareTwoAddresses(shipping, billing),
-                    subtotal: subtotal
-                });
-            } else {
-                //Shiping Address
+                //get the info for the shiping Address from the server
                 const params = {
                     user_id: parseInt(this.userId),
                     addressType: 'shipping'
                 };
-                const url = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/getAddressInfo.php';
+                const url = '/assets/php/CheckoutEndpoints/getAddressInfo.php';
                 axios.get(url, { params }).then(resp => {
                     this.setState({
                         shippingAddress: resp.data.data[0]
                     });
-                    //billing Address     
+                    //get the info for the billing Address from the server    
                     const params = {
                         user_id: parseInt(this.userId),
                         addressType: 'billing'
                     };
-                    const url = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/getAddressInfo.php';
+                    const url = '/assets/php/CheckoutEndpoints/getAddressInfo.php';
                     axios.get(url, { params }).then(resp => {
                         this.setState({
                             isLoading: true,
                             billingAddress: resp.data.data[0],
-                            sameAddress: this.compareTwoAddresses(this.state.shippingAddress, resp.data.data[0]),
+                            // sameAddress: this.compareTwoAddresses(this.state.shippingAddress, resp.data.data[0]),
                             subtotal: subtotal
                         });
                     }).catch(err => {
-                        console.log('error is: ', err);
+                        // console.log('error is: ', err);
                         this.props.history.push('/error');      
                     });
                 }).catch(err => {
-                    console.log('error is: ', err);
+                    // console.log('error is: ', err);
                     this.props.history.push('/error');      
-                });
-            }
+                });            
         } else {
             //anonymous user
             this.setState({
@@ -101,19 +91,28 @@ class Checkout extends Component {
             status: 'incheckout',
             id: JSON.stringify(partsId)
         };
-        const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';
+        const urlStatus = '/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';
         axios.get(urlStatus, { params }).then(resp => {
-            console.log(resp.data);
+           
         }).catch(err => {
-            console.log('error is: ', err);
+            // console.log('error is: ', err);
             this.props.history.push('/error');      
         });
     }
 
+    /**
+     * Compare two addresses field by field
+     * @param {} address1 
+     * @param {} address2 
+     */
     compareTwoAddresses(address1, address2) {
         return address1.street_address === address2.street_address && address1.city === address2.city && address1.state === address2.state && address1.zipcode === address2.zipcode
     }
 
+    /**
+     * to control the changes in the input field for the shipping address
+     * @param {*} event 
+     */
     handleShippingInputChange(event) {
         const { value, name } = event.target;
         const newUserInfo = { ...this.state.shippingAddress };
@@ -123,6 +122,10 @@ class Checkout extends Component {
         });
     }
 
+    /**
+     * to control the changes in the input field for the billing address
+     * @param {*} event 
+     */
     handleBillingInputChange(event) {
         const { value, name } = event.target;
         const newUserInfo = { ...this.state.billingAddress };
@@ -132,60 +135,77 @@ class Checkout extends Component {
         });
     }
 
+    /**
+     * save in the localstorage the addresses and call the server to change the status of the parts in the cart
+     */
     backToCart() {
-        //Change the status of the parts in the cart to available
+        //save the data in the addresses in localstorage
         localStorage.setItem('shipping', JSON.stringify(this.state.shippingAddress));
         localStorage.setItem('billing', JSON.stringify(this.state.billingAddress));
+        //Change the status of the parts in the cart to available
         let partsId = [];
         if (this.props.cartParts.length > 0) {
             partsId = this.props.cartParts.map(function (item, index) {
                 return item.id
             });
-        }
+        }         
         const params = {
             status: 'available',
             id: JSON.stringify(partsId)
         };
-        const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';
+        const urlStatus = '/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';
         axios.get(urlStatus, { params }).then(resp => {
             if (resp.data.success) {
                 this.props.history.push('/cart');
             }
         }).catch(err => {
-            console.log('error is: ', err);
+            // console.log('error is: ', err);
             this.props.history.push('/error');      
         });
     }
 
+    /**
+     * change the checkbox that indicate if the user use the the shipping address for the billing address
+     * 
+     * @param {*} event 
+     */
     handleCheckbox(event) {
         this.setState({
             sameAddress: event.target.checked
         });
     }
 
+    /**
+     * 
+     */
     completePurchase() {
+        //first we check if all the requiere fields have data
         if(this.validateFields()){
+            //control if the user is loggin
             if (this.userId) {
                 let partsId = [];
+                //the user have part in the cart
                 if (this.props.cartParts.length > 0) {
                     partsId = this.props.cartParts.map(function (item, index) {
                         return item.id
                     });
                 }
 
+                //call the server to change the status of the parts and create an order
                 const params = {
                     status: 'sold',
                     buyer_id: this.userId,
                     id: JSON.stringify(partsId)
                 };
-                const urlStatus = 'http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';
+                const urlStatus = '/assets/php/CheckoutEndpoints/multipleStatusUpdates.php';
                 axios.get(urlStatus, { params }).then(resp => {
                     if (resp.data.success) {
+                        //remove the variables for addresses in the local storage
                         localStorage.removeItem("shipping");
                         localStorage.removeItem("billing");
                         if (this.state.saveShippingAddress || this.state.saveBillingAddress) {
-                            //Save addresses in the DB
-                            const url = "http://localhost:8000/teampartpig/src/assets/php/CheckoutEndpoints/updateAddressInfo.php";
+                            //Save addresses in the DB if the user checked the save option
+                            const url = "/assets/php/CheckoutEndpoints/updateAddressInfo.php";
 
                             const data = {
                                 "user_id": this.userId,
@@ -200,9 +220,9 @@ class Checkout extends Component {
                                     'Content-Type': 'application/x-www-form-urlencoded'
                                 }
                             }).then(resp => {
-                                console.log("Server Response:", resp);
+                               
                             }).catch(err => {
-                                console.log("There was an error:");
+                                // console.log("There was an error:");
                                 this.props.history.push('/error');      
                                 
                             });
@@ -218,7 +238,7 @@ class Checkout extends Component {
                         this.props.removeAllPartsFromCart(this.props.cartParts);
                         this.props.history.push('/checkoutComplete/' + resp.data.data.order_number);
 
-                        const emailUrl = "http://localhost:8000/teampartpig/src/assets/php/Mail/transactionalEmail.php";
+                        const emailUrl = "/assets/php/Mail/transactionalEmail.php";
                         const emailData = {
                             name: `${this.state.billingAddress.first_name} ${this.state.billingAddress.last_name} `,
                             email: `${this.state.billingAddress.email}`,
@@ -241,15 +261,15 @@ class Checkout extends Component {
                                 'Content-Type': 'application/x-www-form-urlencoded'
                             }
                         }).then(resp => {
-                            console.log("Server email Response:", resp);
+                            
                         }).catch(err => {
-                            console.log("There was an error:", err);
+                            // console.log("There was an error:", err);
                             this.props.history.push('/error');      ;
                             
                         });
                     }
                 }).catch(err => {
-                    console.log('error is: ', err);
+                    // console.log('error is: ', err);
                     this.props.history.push('/error');      ;
                     
                 });
@@ -258,10 +278,17 @@ class Checkout extends Component {
         }
     }
 
+    /**
+     * Check the shipping and billing addresses
+     */
     validateFields(){
         return this.validateShippingFields() && this.validateBillingFields();
     }
 
+    /**
+     * Check if the shipping address fields are valid
+     * 
+     */
     validateShippingFields(){
         const newShippingErrors = {...this.state.shippingErrors};
                
@@ -320,6 +347,10 @@ class Checkout extends Component {
         return (Object.keys(newShippingErrors).length === 0);
     }
 
+    /**
+     * Check if the billing address fields are valid
+     * 
+     */
     validateBillingFields(){
         const newBillingErrors = {...this.state.billingErrors};
                
@@ -378,6 +409,10 @@ class Checkout extends Component {
         return (Object.keys(newBillingErrors).length === 0);
     }
 
+    /**
+     * check the shipping address field when their lose the focus
+     * @param {*} event 
+     */
     shippinghandleOnBlur(event) {
         const { name, value, placeholder, required } = event.target;
         const newShippingErrors = { ...this.state.shippingErrors };
@@ -391,6 +426,10 @@ class Checkout extends Component {
         }        
     }
 
+    /**
+     * check the billing address field when their lose the focus
+     * @param {*} event 
+     */
     billinghandleOnBlur(event) {
         const { name, value, placeholder, required } = event.target;
         const newBillingErrors = { ...this.state.billingErrors };
@@ -426,14 +465,16 @@ class Checkout extends Component {
 
     render() {
 
+        //loading component when the user is waiting for the server results
         if (!this.state.isLoading) {
             <div className='container'>
-                <Loading />;
+                <Loading />
             </div>
         }
 
         let listParts = [];
 
+        //create a list of parts with their price
         if (this.props.cartParts.length > 0) {
             listParts = this.props.cartParts.map(function (item, index) {
                 return (
@@ -442,10 +483,12 @@ class Checkout extends Component {
             });
         }
 
+        //create a form for the shipping address dynamically from the info in the file fieldsData.js
         const shipingFields = inputs.map(((field, index) => {
             return <Field key={index} {...field} error={this.state.shippingErrors[field.name]} handleOnBlur={this.shippinghandleOnBlur.bind(this)} handleInputChange={this.handleShippingInputChange} value={this.state.shippingAddress[field.name] || ''} />
         }).bind(this));
 
+        //create a form for the billing address dynamically from the info in the file fieldsData.js
         let billingFields = '';
         if (!this.state.sameAddress) {
             billingFields = inputs.map(((field, index) => {
@@ -462,7 +505,7 @@ class Checkout extends Component {
                         <span>Shipping Address</span>
                         <hr />
                         {shipingFields}
-                        <input type="checkbox" checked={this.state.shippingFlag} onChange={this.handleSaveShippingAddress.bind(this)} />Save the changes in the shipping address
+                        <input type="checkbox" checked={this.state.saveShippingAddress} onChange={this.handleSaveShippingAddress.bind(this)} />Save the changes in the shipping address
                     </form>
                     <form className='shippingAddress'>
                         <span>Billing Address</span>
@@ -471,7 +514,7 @@ class Checkout extends Component {
                             <input type="checkbox" checked={this.state.sameAddress} onChange={this.handleCheckbox.bind(this)} name="sameAddress" />My billing address is the same as my shipping address
                         </div>
                         {billingFields}
-                        <input type="checkbox" checked={this.state.shippingFlag} onChange={this.handleSaveBillingAddress.bind(this)} />Save the changes in the billing address
+                        <input type="checkbox" checked={this.state.saveBillingAddress} onChange={this.handleSaveBillingAddress.bind(this)} />Save the changes in the billing address
                     </form>
                     <div className='shippingAddress'>
                         <span>Shipping Method</span>
@@ -487,10 +530,8 @@ class Checkout extends Component {
                 </div>
                 <div className='checkoutTotal'>
                     <div className="cartTitle"><b>CART SUMMARY: ({listParts.length} items)</b> </div>
-                    <div className="checkoutList">
-                        <ul>
-                            {listParts}
-                        </ul>
+                    <div className="checkoutList">                        
+                        {listParts}                        
                         <button onClick={this.backToCart.bind(this)} className='button-link'>Go Back</button>
                     </div>
                     <hr />

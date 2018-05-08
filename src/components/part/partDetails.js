@@ -12,14 +12,15 @@ class PartDetails extends Component {
         this.state = {
             partInfo:{},
             isLoading: false,
-            newPart: false            
+            newPart: false  //when the user list the part          
         }          
     }
 
     componentDidMount(){
         const id = this.props.match.params.id;
+        //call the server to get the information of that specific part
         if(id){
-            const url = 'http://localhost:8000/teampartpig/src/assets/php/singleItemDetail.php';
+            const url = '/assets/php/singleItemDetail.php';
             const params = {id};      
             axios.get(url,{params}).then(resp=>{  
                 
@@ -36,7 +37,7 @@ class PartDetails extends Component {
                         this.oldPartInfo = resp.data.data[0];
                     }
                 }).catch(err => {
-                    console.log('error is: ', err);
+                    // console.log('error is: ', err);
                     this.props.history.push('/error');                
                 }
             ); 
@@ -45,17 +46,19 @@ class PartDetails extends Component {
 
     render(){
 
-        let linkBack = <Link className='button-link' to={this.props.urlBack}><div>Back to results</div></Link>;
-        if(this.props.match.params.fromDashboard == 'true'){
-            linkBack = <Link className='button-link' to={"/dashboard/activeparts"}><div>Back to dashboard</div></Link>;
-        }else if(this.props.match.params.newPart == 'true'){
+        let linkBack = (<div className="goBack"> 
+                        <button className='button-link' onClick={()=>this.props.history.goBack()}>Go Back</button>
+                        </div>
+                        );
+        
+        if(this.props.match.params.newPart == 'true'){
             linkBack ='';
         }
 
         if (!this.state.isLoading) {
             return (
                 <div className='container'>
-                    <Loading />;
+                    <Loading />
                 </div>
             );
         }

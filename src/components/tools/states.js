@@ -60,17 +60,14 @@ var states = [
 export default states;
 
 export function abbrState(input, to){   
-
     if (to == 'abbr'){
-        input = input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-        for(i = 0; i < states.length; i++){
-            if(states[i][0] == input){
-                return(states[i][1]);
+        for(let i = 0; i < states.length; i++){
+            if(states[i][1] == input){
+                return(states[i][0]);
             }
         }    
     } else if (to == 'name'){
-        input = input.toUpperCase();
-        for(i = 0; i < states.length; i++){
+        for(let i = 0; i < states.length; i++){
             if(states[i][1] == input){
                 return(states[i][0]);
             }
