@@ -42,4 +42,4 @@ view this project [live](http://partpig.alejandro-gaspar.com)
 [Briantmorr](https://github.com/Briantmorr)
 
 ## License
-This project is licensed under the MIT License © [Alejandro Gaspar](http://alejanro-gaspar.com)
+This project is licensed under the MIT License © [Alejandro Gaspar](http://alejandro-gaspar.com)
