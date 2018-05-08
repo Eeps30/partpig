@@ -1,6 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-require_once('mysqlConnect.php');
+require_once('./config/mysqlConnect.php');
 //basic output format, all data gets pushed into data[]
 
 $output = [
@@ -10,11 +9,8 @@ $output = [
 ];
 
 
-if(!isset($_GET['part_id'])){
-    $output['error'][] = 'Error: user id not specified';
-}
-else{
-    $part_id = $_GET['part_id'];  
+if(empty($_GET['part_id']) OR empty($_GET['user_id'])){
+    die("part id and user id required");
 }
 
 $buyer_id = (int)$_GET['user_id'];
@@ -25,20 +21,29 @@ $count = 1;
 $order_status = 'Order received';
 $shipping_charge = 9.99;
 
+$params = [$buyer_id, $part_id, $count, $order_status, $shipping_charge];
+
 $query = "INSERT INTO `shoppingcart`
            (buyer_id, part_id, count, status, shipping_charge)
-           Values (
-             '$buyer_id', '$part_id', '$count', '$order_status', '$shipping_charge'
-           )";
+           Values (?, ?, ?, ?, ?)";
 
-$result = mysqli_query($conn, $query);
-$rows_affected = mysqli_affected_rows($conn);
+//prepared statement for query
+$stmt = $conn->prepare($query);
+$stmt->bind_param("iiisi", ...$params);
+$stmt->execute();
 
-if($result){
-    $last_id = mysqli_insert_id($conn);
-    echo "New record created successfully in shoppingcart. Total rows affected: ", $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
+
+$rows_affected = $stmt->affected_rows;
+
+if($rows_affected > 0){
+    $last_id = $conn->insert_id;
+    $output['success'] = true;
+    $output['data'][] = "New record created successfully in shoppingcart. Total rows affected: ". $rows_affected ."." . " Last inserted ID is: ". $last_id . ".";
 } else {
-    echo "Error: " . mysqli_error($conn);
+    $output['error'][] = "error adding part to cart";
 }
-mysqli_close($conn);
+$stmt->close();
+
+$json_output = json_encode($output);
+print($json_output);
 ?>

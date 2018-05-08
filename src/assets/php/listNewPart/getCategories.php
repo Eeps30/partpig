@@ -1,8 +1,6 @@
 <?php
-//blunt fix, will refactor cors when we upload to server
-header("Access-Control-Allow-Origin: *");
 
-require("../mysqlConnect.php");
+require_once('../config/mysqlConnect.php');
 
 $output = [
     'success'=> false,

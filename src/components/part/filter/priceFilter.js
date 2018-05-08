@@ -15,25 +15,17 @@ class PriceFilter extends Component{
         this.newFilters = props.filters;
         this.filterPrices = this.filterPrices.bind(this);
     }
-   
-    componentDidMount(){
-        const slider = new rSlider({
-            target: '#slider',
-            values: this.state.prices[0],
-            range: true,
-            tooltip: true,
-            scale: true,
-            labels: false,
-            set: this.state.prices[1],
-            onChange: this.filterPrices
-        });     
-    }
+      
 
     componentDidUpdate(){
+        //we only update the slider when the user click in the filters button to expand the filter section
         if(this.props.update){
+            //we remove the previous slider to don't have twice the same slider
             var parent = document.getElementById("priceFilterDiv");
             var child = document.getElementsByClassName("rs-container")[0];
-            parent.removeChild(child);
+            if(parent && child){
+                parent.removeChild(child);
+            }
             const slider = new rSlider({
                 target: '#slider',
                 values: this.state.prices[0],
@@ -47,10 +39,15 @@ class PriceFilter extends Component{
         }
     }
 
+    /**
+     * method handle onCahnge in the slider
+     * @param {*} values 
+     */
     filterPrices(values){     
         let sliderElem = document.getElementsByClassName("rs-container")[0]
         //Check if the element is visible
         if(sliderElem && sliderElem.offsetParent !== null){   
+            //we change the values of the filter
             let valArray = values.split(',');
             const min = parseInt(valArray[0]);
             const max = parseInt(valArray[1]);
@@ -65,7 +62,7 @@ class PriceFilter extends Component{
         
         return (            
             <div id='priceFilterDiv'>                
-                <h2 className='priceFilterH2'>Price</h2>
+                <h3>Price</h3>
                 <input type="text" id="slider" />                               
             </div>  
         )

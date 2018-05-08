@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './userParts.css';
 import {Link} from 'react-router-dom';
-import Loading from '../../loading/loading';
+import Loading from '../../tools/loading/loading';
 import axios from 'axios';
 import UpdatePartStatus from "./updatePartStatus"
 
@@ -18,9 +18,8 @@ class UserParts extends Component {
     }
 
     componentDidMount(){
-        // const id = this.props.match.params.id;
         const seller_id = this.state.seller_id;
-        const url = 'http://localhost:8000/teampartpig/src/assets/php/allPartBySeller.php';
+        const url = '/assets/php/allPartBySeller.php';
         const params = {seller_id};      
         axios.get(url,{params}).then(resp=>{               
                 this.setState({
@@ -28,17 +27,18 @@ class UserParts extends Component {
                     isLoading: true           
                 }); 
             }).catch(err => {
-                console.log('error is: ', err);
+                // console.log('error is: ', err);
+                this.props.history.push('/error');                
             }
         ); 
+        
     } 
 
     render(){
-
         if (!this.state.isLoading) {
             return (
                 <div className='container'>
-                    <Loading />;
+                    <Loading />
                 </div>
             );
         }
@@ -49,25 +49,23 @@ class UserParts extends Component {
             let id = item.id;
             let status = item.status;
             return  (
-                // <Link key={index} to={"/partdetails/" + item.id+'/true'}>  
                 <div key={index} className="dashboardPart">
-                    <img className="mainImage alignMiddle" src={item.images}></img>
+                    <img className="dash-mainImage alignMiddle" src={item.images}></img>
                     <div className="listingId alignMiddle">{item.id}</div>
-                    <div className="partNumber alignMiddle">{item.part_number}</div>
+                    <div className="dash-partNumber alignMiddle">{item.part_number}</div>
                     <div className="brand alignMiddle"> {item.brand} </div>
                     <div className="partName alignMiddle">{item.part_name}</div>
                     <div className="fitment alignMiddle"> {item.make} {item.model} {item.year}</div>
-                    <div className="price alignMiddle">${parseFloat(item.price_usd)}</div>
+                    <div className="price alignMiddle">${parseFloat(item.price_usd).toFixed(2)}</div>
                     <div className="statusUpdateContainer">
-                    <Link className="button-link editPart" key={index} to={"/partdetails/" + item.id+'/true'}>Edit Part</Link> 
+                    <Link className="button-link editPart" key={index} to={"/partdetails/" + item.id+'/true'}>Edit</Link> 
                     <UpdatePartStatus id = {id} status = {status}/></div>       
                 </div>         
-                 );
-                } else {
-                    return
-                }                    
-            });
-
+             );
+            } else {
+                return
+            }                    
+        });
         
         return  (
             <div className="userPartsContainer"> 
@@ -91,4 +89,4 @@ class UserParts extends Component {
     }
 }
 
-export default UserParts
+export default UserParts;
