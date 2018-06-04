@@ -35,7 +35,6 @@ class App extends Component {
         }
         this.images = ['part1.jpg','part2.jpg','part3.jpg','part4.jpg','part5.jpg','part6.jpg','part7.jpg','part8.jpg','part10.jpg','part11.jpg','part12.jpg','part13.jpg','part15.jpg','part17.jpg','part18.jpg', 'part20.jpg','part21.jpg','part22.jpg','part23.jpg','part24.jpg','part25.jpg','part26.jpg','part27.jpg','part28.jpg','part29.jpg','part30.jpg'];
 
-
         this.addPart = this.addPart.bind(this);
         this.removePart = this.removePart.bind(this);
         this.saveFilters = this.saveFilters.bind(this);
@@ -215,6 +214,13 @@ class App extends Component {
     logout() {
         this.setState({
             userId: null
+        });
+    }
+
+    componentDidMount(){    
+        window.addEventListener("scroll", function(){
+            let checkboxElem = document.querySelector('#menuToggle input[type=checkbox]');
+            checkboxElem.checked = false;
         });
     }
 
