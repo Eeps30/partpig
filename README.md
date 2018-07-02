@@ -16,7 +16,7 @@ PartPig is still in beta. Because of that we focused most of the parts for sale 
 Please search these categories to get a better experience.
 
 ### Project
-view this project [live](http://partpig.alejandro-gaspar.com)
+view this project [live](http://partpig.evanippolito.online/)
 
 
 ## Features
@@ -42,4 +42,4 @@ view this project [live](http://partpig.alejandro-gaspar.com)
 [Briantmorr](https://github.com/Briantmorr)
 
 ## License
-This project is licensed under the MIT License © [Alejandro Gaspar](http://alejandro-gaspar.com)
+This project is licensed under the MIT License © [Evan Ippolito](https://dev.evanippolito.online/)
